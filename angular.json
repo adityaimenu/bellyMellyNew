@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "restaurent-view"
+    }
+  },
+  "defaultProject": "restaurent-view",
+  "cli": {
+    "analytics": false
+  }
 }
