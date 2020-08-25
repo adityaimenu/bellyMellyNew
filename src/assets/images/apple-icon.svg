@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="63" viewBox="0 0 210 63">
+  <g id="apple-icon" transform="translate(-1868 -1727)">
+    <rect id="Rectangle_19" data-name="Rectangle 19" width="210" height="63" rx="31.5" transform="translate(1868 1727)" fill="#fff"/>
+    <g id="Group_106" data-name="Group 106" transform="translate(5.426 -7)">
+      <path id="Icon_awesome-apple" data-name="Icon awesome-apple" d="M25.875,21.5a7.592,7.592,0,0,1,4.066-6.9,8.738,8.738,0,0,0-6.888-3.627c-2.887-.228-6.043,1.683-7.2,1.683-1.22,0-4.018-1.6-6.213-1.6C5.1,11.131.281,14.677.281,21.89a20.27,20.27,0,0,0,1.171,6.6c1.041,2.985,4.8,10.3,8.718,10.182,2.049-.049,3.5-1.456,6.165-1.456,2.586,0,3.928,1.456,6.213,1.456,3.952-.057,7.352-6.709,8.344-9.7A8.062,8.062,0,0,1,25.875,21.5Zm-4.6-13.354a7.66,7.66,0,0,0,1.952-5.9A8.624,8.624,0,0,0,17.7,5.088a7.78,7.78,0,0,0-2.082,5.847C17.742,11.1,19.678,10.009,21.272,8.146Z" transform="translate(1895.292 1744.75)" fill="#191a1b"/>
+      <text id="Available_on_Apple_Store" data-name="Available on
+Apple Store" transform="translate(1938 1757)" fill="#191a1b" font-size="10" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">AVAILABLE ON</tspan><tspan font-size="16" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="0" y="22">APPLE STORE</tspan></tspan></text>
+    </g>
+  </g>
+</svg>
