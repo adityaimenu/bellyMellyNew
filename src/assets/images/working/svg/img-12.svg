@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104" height="90" viewBox="0 0 104 90">
+  <g id="img-12" transform="translate(-558 -5629)">
+    <path id="Path_121" data-name="Path 121" d="M0,1H104V91H0Z" transform="translate(558 5628)" fill="none"/>
+    <g id="Group_93" data-name="Group 93" transform="translate(562 5636.213)">
+      <g id="Group_92" data-name="Group 92">
+        <path id="Path_122" data-name="Path 122" d="M367.432,553.429s8.16-27.944-4.561-49.72a3.5,3.5,0,0,1,2.981-5.31h50.871a8.265,8.265,0,0,1,6.3,2.932c4.812,5.663,12.987,27.151,4.653,52.1" transform="translate(-348.541 -480.056)" fill="#a8f5c8"/>
+        <g id="Group_89" data-name="Group 89" transform="translate(26.451 26.426)">
+          <line id="Line_12" data-name="Line 12" x2="40.625" stroke-width="2.5" stroke="#191a1b" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <line id="Line_13" data-name="Line 13" x2="25.922" transform="translate(5.374 9.638)" fill="none" stroke="#191a1b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+          <line id="Line_14" data-name="Line 14" x2="25.922" transform="translate(7.352 19.276)" fill="none" stroke="#191a1b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </g>
+        <g id="Group_91" data-name="Group 91" transform="translate(59.725)">
+          <circle id="Ellipse_11" data-name="Ellipse 11" cx="18.343" cy="18.343" r="18.343" transform="translate(0 0)" fill="#fe6b61"/>
+          <g id="Group_90" data-name="Group 90" transform="translate(11.759 11.759)">
+            <line id="Line_15" data-name="Line 15" x2="13.169" y2="13.169" stroke-width="3.185" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <line id="Line_16" data-name="Line 16" x1="13.169" y2="13.169" stroke-width="3.185" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+        </g>
+        <path id="Path_123" data-name="Path 123" d="M366.864,515.521H350.386a20.944,20.944,0,0,1,10.1-13.221" transform="translate(-350.386 -479.456)" fill="none" stroke="#191a1b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+      </g>
+      <line id="Line_17" data-name="Line 17" x2="73.217" transform="translate(12.788 73.372)" fill="none" stroke="#191a1b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+    </g>
+  </g>
+</svg>
