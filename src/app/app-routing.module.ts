@@ -17,6 +17,7 @@ import { ThankyouComponent } from './restaurent/pages/thankyou/thankyou.componen
 import {HomeComponent} from "./home/home.component";
 import {DineInComponent} from "./StaticPages/dine-in/dine-in.component";
 import {JoinUsComponent} from "./StaticPages/join-us/join-us.component";
+import {AboutUsComponent} from "./StaticPages/about-us/about-us.component";
 
 
 
@@ -35,10 +36,11 @@ const routes: Routes = [
   { path: 'us/org/:org', component: FooddepoComponent }, //testing
   {path:'dinein', component: DineInComponent},
   {path:'joinUs', component: JoinUsComponent},
+  {path:'aboutUs', component: AboutUsComponent},
   // { path: 'org/:org',  component: FooddepoComponent }, //live
   {
-    // path: ':country/:mobUrl', //testing
-     path: ':mobUrl', //live
+     path: ':country/:mobUrl', //testing
+    // path: ':mobUrl', //live
     component: BodyComponent,
     children: [
       { path: '', component: MainStructureComponent },

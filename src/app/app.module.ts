@@ -70,6 +70,7 @@ import { DineInComponent } from './StaticPages/dine-in/dine-in.component';
 import { JoinUsComponent } from './StaticPages/join-us/join-us.component';
 // import {NgxUsefulSwiperModule} from "ngx-useful-swiper";
 import {SwiperModule} from "ngx-swiper-wrapper";
+import { AboutUsComponent } from './StaticPages/about-us/about-us.component';
 
 let config = new AuthServiceConfig([
   {
@@ -125,6 +126,7 @@ export function provideConfig() {
     HomeComponent,
     DineInComponent,
     JoinUsComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
