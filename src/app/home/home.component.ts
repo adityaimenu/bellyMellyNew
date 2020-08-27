@@ -46,11 +46,11 @@ export class HomeComponent implements OnInit {
   config: any = {
     slidesPerView: 1,
     spaceBetween: 10,
-    pagination: {
+   /* pagination: {
       el: '.swiper-pagination',
       clickable: true,
       dynamicBullets: true,
-    },
+    },*/
     breakpoints: {
       640: {
         slidesPerView: 1,

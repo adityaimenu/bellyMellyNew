@@ -175,6 +175,17 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWZRHL7" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  <script>
+    $(document).ready(function(){
+      $("#zipcode").click(function(){
+        $(".mobile-search-container").slideDown("medium");
+      });
+      $(".close").click(function(){
+        $(".mobile-search-container").slideUp("medium");
+      });
+    });
+  </script>
+
 
   <script type="text/javascript">
     if (window.location.href.replace('/', '').split('/')[1] != 'localhost:4200') {

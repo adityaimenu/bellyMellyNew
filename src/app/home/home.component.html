@@ -981,31 +981,31 @@
                 <div class="title">In The News</div>
             </div>
             <div class="col-lg-12 news-sec text-center">
-                <div class="col mb-xs-3">
+                <div style="min-width: auto !important;" class="col mb-xs-3">
                     <div class="icon mb-3 min-h-80px">
                         <img src="assets/images/news/img-1.png" height="60px">
                     </div>
                     <a href="https://finance.yahoo.com/news/bellymelly-launches-first-kind-zero-124100663.html" target="_blank" class="btn btn-outline-dark">Know More</a>
                 </div>
-                <div class="col mb-xs-3">
+                <div style="min-width: auto !important;" class="col mb-xs-3">
                     <div class="icon mb-3 min-h-80px">
                         <img src="assets/images/news/img-2.png" height="60px">
                     </div>
                     <a href="https://www.trendhunter.com/trends/dine-in-app" target="_blank" class="btn btn-outline-dark">Know More</a>
                 </div>
-                <div class="col mb-xs-3">
+                <div style="min-width: auto !important;" class="col mb-xs-3">
                     <div class="icon mb-3 min-h-80px">
                         <img src="assets/images/news/img-3.png" height="60px">
                     </div>
                     <a href="https://www.mobilepaymentstoday.com/news/bellymelly-launches-contactless-menu-ordering-for-post-covid-19-recovery" target="_blank" class="btn btn-outline-dark">Know More</a>
                 </div>
-                <div class="col mb-xs-3">
+                <div style="min-width: auto !important;" class="col mb-xs-3">
                     <div class="icon mb-3 min-h-80px">
                         <img src="assets/images/news/img-4.png" height="60px">
                     </div>
                     <a href="https://www.verdictfoodservice.com/news/allset-contactless-ordering-solution-us-restaurants"  target="_blank" class="btn btn-outline-dark">Know More</a>
                 </div>
-                <div class="col mb-xs-3">
+                <div style="min-width: auto !important;" class="col mb-xs-3">
                     <div class="icon mb-3 min-h-80px">
                         <img src="assets/images/news/img-5.png" height="60px">
                     </div>
@@ -1181,14 +1181,8 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/0e6d8136f7.js" crossorigin="anonymous"></script>
-<!--Plugin JavaScript file-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=drawing,weather,geometry,panoramio,places,visualization&amp;key=AIzaSyC4onu-y-_thwzwRNFQKiTzhLgf63dIJo0&amp"></script>
+
+
 
 <!--<script src="js/custom.js"></script>-->
 <!--<script type="text/javascript">
@@ -1215,61 +1209,10 @@
         }
     });
 </script>-->
-<script>
-    $(document).ready(function(){
-        $("#zipcode").click(function(){
-            $(".mobile-search-container").slideDown("medium");
-        });
-        $(".close").click(function(){
-            $(".mobile-search-container").slideUp("medium");
-        });
-    });
-</script>
+
 
 <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=drawing,weather,geometry,panoramio,places,visualization&amp;key=AIzaSyAiygV7gEuFEGJdxGO_KYvj9_TT-u8w3No"></script>-->
 
-<script type="text/javascript">
 
-
-    $(document).ready(function () {
-        google.maps.event.addDomListener(window, 'load', function () {
-            if (document.getElementById('zipcode')) {
-                var places = new google.maps.places.Autocomplete(document.getElementById('zipcode'));
-                places.setComponentRestrictions({ 'country': ['USA'] });
-                google.maps.event.addListener(places, 'place_changed', function () {
-                    var place = places.getPlace();
-                    $("#zipcode").val($("#zipcode").val())
-                    SearchLocation($("#zipcode").val());
-                });
-            }
-        });
-    });
-
-    //  if (window.location.protocol == "http:") {
-
-    //     var cloc = window.location.href;
-    //     var rest = cloc.replace("http://", "");
-
-    //     window.location.href = "https://" + rest;
-    //}
-
-    function SearchLocation(Addr) {
-        if (Addr == null) {
-            Addr = $("#zipcode").val();
-        }
-
-        if (Addr) {
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'address': Addr }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var Lat = results[0].geometry.location.lat();
-                    var Long = results[0].geometry.location.lng();
-                    location.href = "https://bellymelly.com/us/restaurants?latitude=" + Lat + "&longitude=" + Long;
-                }
-            });
-        }
-    }
-
-</script>
 </body>
 </html>
