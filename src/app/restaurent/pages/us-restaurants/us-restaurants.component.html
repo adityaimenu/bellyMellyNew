@@ -169,71 +169,174 @@
     </div>
   </section> -->
   <section class="" id="ggg">
-    <div class="container-fluid m-0 p-0">
-    <div class="row w-100 m-0 p-0" id="botomdata" >
-        <div class="col-lg-3 border-right responsive-filter" *ngIf="FoodTypes.length > 0">
+    <div class="container">
+      <div class="row" id="botomdata" >
+        <div class="col-lg-12 py-3">
+          <div class="d-flex justify-content-center align-items-start">
+            <div class="">
+              <div class="toggle webtoggle second">
+                <input type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
+                <label for="sizeWeight">Pickup</label>
+                <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
+                <label for="sizeDimensions">Delivery</label>
+                <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions1" [checked]="selectedservicetype == 'Curbside'" (click)="selectService('Curbside')"  />
+                <label for="sizeDimensions1">Curbside</label>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-lg-12 py-3 category-view bg-light">
+          <div class="title d-flex">
+            <h6 class="mr-3">Most popular near you </h6> <span class="text-muted">1150 Restaurants</span>
+          </div>
+          <!-- Swiper -->
+          <div class="swiper-container categories">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <div class="item-img">
+                    <figure>
+                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
+                    </figure>
+                  </div>
+                  <div class="text-center">American</div>
+                </div>
+              </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-3 border-right responsive-filter" *ngIf="FoodTypes.length > 0">
           <div class="filter-box py-3" >
             <div class="title mb-4 d-flex justify-content-between">
-              <h6 class="m-0">Filters
-                 <!-- <a href="javascript:void(0)" class="ml-3"><small><b>Clear Filters</b></small></a> -->
-              </h6>
+              <h6 class="m-0">Filters</h6>
              <a href="javascript:void(0)" (click)="clearALl()"> <p  class="mb-0 clearal">Clear All</p></a>
             </div>
             <form>
-                <div class="toggle webtoggle second">
-                    <input type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
-                    <label for="sizeWeight">Pickup</label>
-                    <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
-                    <label for="sizeDimensions">Delivery</label>
-                    <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions1" [checked]="selectedservicetype == 'Curbside'" (click)="selectService('Curbside')"  />
-                    <label for="sizeDimensions1">Curbside</label>
-                  </div>
-                  <div class="accordion" id="accordionExample">
-                    <div class="card">
-                      <div class="card-header bg-transparent title" id="headingOne">
-                        <h6 class="mb-0">
-                          <a href="javascript:void(0)" class="text-dark d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#food-type" aria-expanded="true" aria-controls="collapseOne">
-                            Food Type
-                            <span class="rotating-arrow"><i class="fa fa-angle-down"></i></span>
-                          </a>
-                        </h6>
-                      </div>
-    
-                      <div id="food-type" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body px-0">
-                          <div class="custom-control custom-checkbox" *ngFor="let val of FoodTypes;let i=index;">
-                            <input type="checkbox" class="custom-control-input" id="{{val.FoodTypeId}}w" (click)="FoodTypeF(val.FoodTypeId,$event.target.checked)" name="example1">
-                            <label class="custom-control-label" for="{{val.FoodTypeId}}w">{{val.Name}}</label>
-                          </div>
-                        
-                        </div>
-                        <button *ngIf="FoodTypes.length > 0"  class="btn btn-site" (click)="searchrRestaurantsBoth(servicetype)">Filter</button>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <!-- <div class="card-header bg-transparent title" id="headingOne">
-                        <h6 class="mb-0">
-                          <a href="javascript:void(0)" class="text-dark d-flex justify-content-between align-items-center collapsed" type="button" data-toggle="collapse" data-target="#delivery-time" aria-expanded="true" aria-controls="collapseOne">
-                            Delivery Time
-                            <span class="rotating-arrow"><i class="fa fa-angle-down"></i></span>
-                          </a>
-                        </h6>
-                      </div> -->
-    
-                      <div id="delivery-time" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body px-0">
-                          <input type="text" class="js-range-slider" name="my_range" value="" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+              <div class="toggle webtoggle second">
+                <input type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
+                <label for="sizeWeight">Pickup</label>
+                <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
+                <label for="sizeDimensions">Delivery</label>
+                <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions1" [checked]="selectedservicetype == 'Curbside'" (click)="selectService('Curbside')"  />
+                <label for="sizeDimensions1">Curbside</label>
               </div>
-            </div>
-        
-             
-             
-        <div class=" web" [ngClass]="FoodTypes.length == 0?'col-lg-12':'col-lg-9'" >
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header bg-transparent title" id="headingOne">
+                    <h6 class="mb-0">
+                      <a href="javascript:void(0)" class="text-dark d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#food-type" aria-expanded="true" aria-controls="collapseOne">
+                        Food Type
+                        <span class="rotating-arrow"><i class="fa fa-angle-down"></i></span>
+                      </a>
+                    </h6>
+                  </div>
+                  <div id="food-type" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body px-0">
+                      <div class="custom-control custom-checkbox" *ngFor="let val of FoodTypes;let i=index;">
+                        <input type="checkbox" class="custom-control-input" id="{{val.FoodTypeId}}w" (click)="FoodTypeF(val.FoodTypeId,$event.target.checked)" name="example1">
+                        <label class="custom-control-label" for="{{val.FoodTypeId}}w">{{val.Name}}</label>
+                      </div>
+                    
+                    </div>
+                    <button *ngIf="FoodTypes.length > 0"  class="btn btn-site" (click)="searchrRestaurantsBoth(servicetype)">Filter</button>
+                  </div>
+                </div>
+                <div class="card">
+                  <div id="delivery-time" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body px-0">
+                      <input type="text" class="js-range-slider" name="my_range" value="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div> -->
+        <div class=" web" [ngClass]="FoodTypes.length == 0?'col-lg-12':'col-lg-12'" >
           <div class="row border-bottom py-2 mb-3" *ngIf="foodtype.length > 1 || restaurantname">
             <div class="col-lg-12" >
               <div class="btnlist">
@@ -264,6 +367,7 @@
             </div>
           </div>
           <div class="row list-view" *ngIf="Locations.length > 0">
+            <div class="col-lg-12"></div>
             <ul class="restaurant-list-view my-2">
               <li *ngFor="let val of Locations;let i=index;">
                 <div class="list-item border-bottom p-2 col-lg-12">
@@ -450,87 +554,124 @@
 
     </div>
   </section>
-  <footer class="bg-dark pt-5">
+  <footer class="pt-5">
     <div class="container">
-      <div class="row">
-        <!-- <div class="col-lg-4">
-          <div class="title mb-3">
-            <h6 class="text-white">Get to know us</h6>
-          </div>
-          <ul class="list-unstyled">
-            <li>
-              <a href="javascript:void(0)" class="text-white"><small>About BellyMelly</small></a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-white"><small>Our apps</small></a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-white"><small>Our blog</small></a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-white"><small>Careers</small></a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-white"><small>Investor relations</small></a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-white"><small>News</small></a>
-            </li>
-          </ul>
-        </div> -->
-        <div class="col-lg-6">
-          <div class="title mb-3">
-            <h6 class="text-white">Connect with us</h6>
-          </div>
-          <ul class="list-unstyled">
-            <li>
-              <a href="https://www.facebook.com/bellymelly002/" target="_blank" class="text-white"><small>Facebook</small></a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/bellymelly_/?utm_source=ig_profile_share&igshid=9g4ahptwhudf" target="_blank" class="text-white"><small>Instagram</small></a>
-            </li>
-            <li>
-              <a href="https://chat.whatsapp.com/invite/LtKNMpH3Lyz7juBS5lV4ZC" target="_blank" class="text-white"><small>Whatsapp</small></a>
-            </li>
-            
-          </ul>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="title mb-3">
+                    <h6 class="text-white">CONTACT INFO</h6>
+                </div>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="javascript:void(0);"><small><strong>Call :</strong> 1-888-980-9642</small></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><small><strong>Email :</strong> support@bellymelly.com</small></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><small><strong>For Media Inquiries, Please contact :</strong> bellymelly@interdependence.com</small></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <div class="title mb-3">
+                    <h6 class="text-white">Get to know us</h6>
+                </div>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://bellymelly.com/about.html"><small>About BellyMelly</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/about.html#our-mission"><small>Our Mission</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/about.html#meet-our-team"><small>Meet Our Team</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/in-the-news"><small>In the News</small></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <div class="title mb-3">
+                    <h6 class="text-white">Our Business Solution</h6>
+                </div>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://bellymelly.com/join-now.html"><small>Online Ordering Solution</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/dinein.html "><small>Contactless Dine-In</small></a>
+                    </li>
+                    <li>
+                        <a href="https://play.google.com/store/apps/details?id=com.bellymelly.restaurant&hl=en_US"><small>Download Restaurant Partner Android App</small></a>
+                    </li>
+                    <li>
+                        <a href="https://apps.apple.com/us/app/bellymelly-restaurant-partner/id1481353155"><small>Download Restaurant Partner iOS App</small></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <div class="title mb-3">
+                    <h6 class="text-white">Partner with Us</h6>
+                </div>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://bellymelly.com/join-now.html"><small>Online Ordering For restaurants</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/dine-in.html"><small>Contactless Dine in for Restaurants</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/register-organization.html"><small>For organization</small></a>
+                    </li>
+                    <li>
+                        <a href="https://bellymelly.com/contact.html"><small>Business Enquiry</small></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-lg-6">
-          <div class="title mb-3">
-            <h6 class="text-white">Partner with Us</h6>
-          </div>
-          <ul class="list-unstyled">
-            <li>
-              <a href="{{host}}/join-now.html" target="_blank"  class="text-white"><small>For restaurants</small></a>
-            </li>
-            <li>
-              <a href="{{host}}/register-organization.html" target="_blank" class="text-white"><small>For organization</small></a>
-            </li>
-          </ul>
+        <hr class="white-line">
+        <div class="row text-white pb-3">
+            <div class="col-lg-12">
+                <div class="row w-100 footer-btm no-gutters">
+                    <div class="col-lg-3 col-xs-6">
+                        <span class="text-white">© 2020 BellyMelly</span>
+                    </div>
+                    <div class="col-lg-4 col-xs-6 text-right-xs">
+                        <ul class="list-inline m-0 p-0">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/BellyMellyUS" class="fb social-icons" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://twitter.com/BellyMelly_" class="twitter social-icons" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/bellymelly_/" class="insta social-icons" target="_blank"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/company/bellymelly" class="linkedin social-icons" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5 text-right text-center-xs">
+                        <ul class="list-inline m-0 p-0">
+                            <li class="list-inline-item">
+                                <a href=" https://play.google.com/store/apps/details?id=com.bellymelly.user">
+                                    <img src="assets/images/playstore.png" width="135px"></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://apps.apple.com/us/app/bellymelly-order-local/id1481383437">
+                                    <img src="assets/images/applestore.png" width="135px"></a>
+                            </li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <hr class="white-line">
-      <div class="row text-white pb-3">
-        <div class="col-lg-6">
-          <span class="text-white">Copyright © 2020 <b>BellyMelly</b> All Right Reserved.</span>
-        </div>
-        <div class="col-lg-6 text-right">
-          <!-- <ul class="list-inline m-0 p-0">
-            <li class="list-inline-item">
-              <a href="javascript:void(0)" class="text-white">Terms of Use</a>
-            </li>
-            <li class="list-inline-item">
-              |
-            </li>
-            <li class="list-inline-item">
-              <a href="javascript:void(0)" class="text-white">Privacy Policy</a>
-            </li>
-            
-          </ul> -->
-        </div>
-      </div>
     </div>
-  </footer>
+</footer>
 
 <!-- Button to Open the Modal -->
 

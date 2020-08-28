@@ -67,7 +67,7 @@ export class UsRestaurantsComponent implements OnInit {
     js.stickyNew()
     this.imageUrl = this.url.imageUrl;
     js.scrolltopnm()
-
+    js.categorySwiper();
     js.scrolltop()
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'au') {
@@ -82,8 +82,6 @@ export class UsRestaurantsComponent implements OnInit {
     this.options = {
       componentRestrictions: { country: this.countryCode }
     }
-    js.stickyNew();
-    // this.getCurrentPosition()
     this.comingLatLong();
     /*if(localStorage.getItem('adr_address')) {
       this.selectedAddr = localStorage.getItem('adr_address');

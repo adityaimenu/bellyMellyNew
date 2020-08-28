@@ -1,6 +1,5 @@
 @import 'themes';
 @import '~@nebular/theme/styles/globals';
-@import './assets/css/swiper.min.css';
 
 @include nb-install() {
   @include nb-theme-global();

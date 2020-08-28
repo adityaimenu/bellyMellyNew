@@ -7,6 +7,7 @@ import {CommonService} from "../services/common/common.service";
 import {ToastrManager} from "ng6-toastr-notifications";
 import {ApiService} from "../services/api/api.service";
 import {LocalStorageService} from "angular-web-storage";
+import * as js from "../../assets/js/custom";
 import {SwiperOptions} from "swiper";
 declare var $: any
 
@@ -43,29 +44,6 @@ export class HomeComponent implements OnInit {
   showRestaurant: number = 0;
   showService: number = 0;
   showFoodtype: number = 0;
-  config: any = {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 40,
-      },
-      1024: {
-        slidesPerView: 5,
-        spaceBetween: 50,
-      },
-    }
-  };
 
 
   constructor( private localStorage: LocalStorageService,
@@ -79,6 +57,7 @@ export class HomeComponent implements OnInit {
                private url: UrlService) { }
 
   ngOnInit() {
+    js.swipper();
   }
 
   addressStatic(lat, long, addr?: any) {

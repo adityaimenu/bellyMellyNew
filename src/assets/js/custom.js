@@ -135,7 +135,53 @@ export var swipper = function () {
     observeParents: true,
   });
 
+  var swiper = new Swiper('.organization', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    breakpoints: {
+        640: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        },
+        768: {
+        slidesPerView: 4,
+        spaceBetween: 40,
+        },
+        1024: {
+        slidesPerView: 5,
+        spaceBetween: 50,
+        },
+    }
+  });
 };
+export var categorySwiper = function(){
+  var swiper = new Swiper('.categories', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        640: {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        },
+        768: {
+        slidesPerView: 5,
+        spaceBetween: 10,
+        },
+        1024: {
+        slidesPerView: 8,
+        spaceBetween: 10,
+        },
+    }
+  });
+}
 /******* Show Sidemenu *******/
 export var sideNav = function () {
   $('#sidenav').click(function () {

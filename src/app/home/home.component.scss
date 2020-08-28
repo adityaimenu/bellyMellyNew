@@ -6,7 +6,6 @@ body{
   overflow-x: hidden;
   color: #191A1B;
   line-height: 1.5;
-  overflow-x: hidden;
 }
 *{
   box-sizing: border-box;
@@ -173,15 +172,15 @@ a, a:hover{
 }
 .custom-control-input:checked~.custom-control-label::before{
   border-color: #522C76;
-  background-color: #522C76;
+    background-color: #522C76;
 }
 .custom-control-input:focus~.custom-control-label::before {
-  box-shadow: 0 0 0 0.2rem rgba(103, 58, 183, 0.44);
+    box-shadow: 0 0 0 0.2rem rgba(103, 58, 183, 0.44);
 }
 .custom-control-input:not(:disabled):active~.custom-control-label::before {
-  color: #fff;
-  background-color: #673ab757;
-  border-color: #673ab757;
+    color: #fff;
+    background-color: #673ab757;
+    border-color: #673ab757;
 }
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -199,7 +198,7 @@ a, a:hover{
   padding: 0.75rem 0;
 }
 #mainNav .navbar-nav .nav-item.active .nav-link,
-#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link:hover, 
 #mainNav .navbar-nav .nav-item .nav-link:active {
   color: #FE6B61;
   font-weight: 800;
@@ -258,15 +257,7 @@ a, a:hover{
   }
 }
 
-header.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 72px);
-//  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%), url(../images/bg-masthead.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
+
 
 header.masthead h1 {
   font-size: 2.25rem;
@@ -320,19 +311,19 @@ header{
   z-index: 2;
 }
 .header-video--media, .teaser-video {
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
 }
 video {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 1;
-  width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    width: 100%;
 }
 .header-search, .location-bar{
   position: relative;
@@ -346,25 +337,25 @@ video {
   display: block;
 }
 .header-search button.search{
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 1rem;
-  background: rgba(0,0,0,0);
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  -webkit-transition: all .1s ease-in;
-  transition: all .1s ease-in;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 1rem;
+    background: rgba(0,0,0,0);
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
 }
 .svg-inline--fa{
-  display: inline-block;
-  font-size: inherit;
-  height: 1em;
-  overflow: visible;
-  vertical-align: -0.125em;
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
 }
 /**** mainNav ****/
 
@@ -376,16 +367,16 @@ video {
 .restaurant-list .card .restaurant-name,
 .restaurant-list-view .restaurant-name{
   font-size: 17px;
-  font-weight: 700;
-  word-break: break-word
+    font-weight: 700;
+    word-break: break-word
 }
 .options ul{
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
 }
 .options ul li{
   display: inline-block;
@@ -432,7 +423,7 @@ video {
 }
 .collapsed .rotating-arrow{
   transform: rotate(-90deg);
-
+  
 }
 footer{
   float: left;
@@ -457,11 +448,11 @@ footer{
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  flex-flow: row nowrap;
+          flex-flow: row nowrap;
   -webkit-box-pack: start;
-  justify-content: flex-start;
+          justify-content: flex-start;
   -webkit-box-align: stretch;
-  align-items: stretch;
+          align-items: stretch;
 }
 .toggle input {
   width: 0;
@@ -515,13 +506,13 @@ footer{
   .toggle input + label {
     padding: .75rem .25rem;
     -webkit-box-flex: 0;
-    flex: 0 0 50%;
+            flex: 0 0 50%;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: center;
-    justify-content: center;
+            justify-content: center;
     -webkit-box-align: center;
-    align-items: center;
+            align-items: center;
   }
 }
 .hover-toggle input + label{
@@ -565,11 +556,11 @@ hr.white-line{
     width: 0;
     overflow: hidden;
     transition: width .3s;
-    padding: 0;
+    padding: 0; 
   }
   .responsive-filter.active{
     width: calc(100% - 15px);
-    padding-top: 30px;
+    padding-top: 30px; 
   }
 }
 
@@ -659,15 +650,15 @@ hr.white-line{
   color: #212529;
 }
 .service-1{
- // background: url(../images/services-1.jpg)no-repeat center center;
+  background: url(../../assets/images/services-1.jpg)no-repeat center center;
 }
 .service-2{
-//  background: url(../images/services-2.jpg)no-repeat center center;
+  background: url(../../assets/images/services-2.jpg)no-repeat center center;
   transform: scale(1.07);
   z-index: 2;
 }
 .service-3{
- // background: url(../images/services-3.jpg)no-repeat center center;
+  background: url(../../assets/images/services-3.jpg)no-repeat center center;
 }
 .box{
   position: relative;
@@ -704,7 +695,7 @@ hr.white-line{
   position: relative;
 }
 .extended {
-  padding: 50px 30px;
+    padding: 50px 30px;
 }
 .extended:before {
   content: '';
@@ -789,7 +780,7 @@ img {
   top: 0;
   width: 100%;
   height: 100%;
-//  background: url(../images/pattern-3.png) left top repeat;
+  background: url(../../assets/images/pattern-3.png) left top repeat;
 }
 .sub-title{
   position: relative;
@@ -812,7 +803,7 @@ img {
   margin-right: 15px;
   width: 70px;
   border-bottom: 2px solid #ffffff;
-
+  
 }
 .sub-title:after {
   content: '';
@@ -1028,10 +1019,10 @@ footer li:hover{
   margin: auto;
   width: 420px;
   bottom: 0;
-  -webkit-transform: translate3d(0%, 0, 0);
-  -ms-transform: translate3d(0%, 0, 0);
-  -o-transform: translate3d(0%, 0, 0);
-  transform: translate3d(0%, 0, 0);
+ -webkit-transform: translate3d(0%, 0, 0);
+      -ms-transform: translate3d(0%, 0, 0);
+       -o-transform: translate3d(0%, 0, 0);
+          transform: translate3d(0%, 0, 0);
 }
 .modal.right .modal-content {
   height: 100%;
@@ -1044,9 +1035,9 @@ footer li:hover{
 .modal.right.fade .modal-dialog {
   right: -320px;
   -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-  transition: opacity 0.3s linear, right 0.3s ease-out;
+     -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+       -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+          transition: opacity 0.3s linear, right 0.3s ease-out;
 }
 
 .modal.right.fade.show .modal-dialog {
@@ -1092,7 +1083,7 @@ header.mobile-view{
 {
   text-decoration: none;
   color: #232323;
-
+  
   transition: color 0.3s ease;
 }
 
@@ -1110,12 +1101,12 @@ header.mobile-view{
   position: absolute;
   top: 0px;
   left: 0x;
-
+  
   cursor: pointer;
-
+  
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
-
+  
   -webkit-touch-callout: none;
 }
 
@@ -1129,17 +1120,17 @@ header.mobile-view{
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-
+  
   background: #191A1B;
   border-radius: 3px;
-
+  
   z-index: 2;
-
+  
   transform-origin: 4px 0px;
-
+  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-  opacity 0.55s ease;
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
 }
 
 #menuToggle span:first-child
@@ -1155,7 +1146,7 @@ header.mobile-view{
 #menuToggle span:last-child{
   margin-bottom: 0px;
 }
-/*
+/* 
  * Transform all the slices of hamburger
  * into a crossmark.
  */
@@ -1319,7 +1310,7 @@ header.mobile-view{
 #menuToggle a{
   text-decoration: none;
   color: #191A1B;
-
+  
   transition: color 0.3s ease;
 }
 #menuToggle a:hover{
@@ -1335,10 +1326,10 @@ header.mobile-view{
   top: 0px;
   left: 0px;
   cursor: pointer;
-
+  
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
-
+  
   -webkit-touch-callout: none;
 }
 /*
@@ -1355,8 +1346,8 @@ header.mobile-view{
   z-index: 2;
   transform-origin: 4px 0px;
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-  opacity 0.55s ease;
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
 }
 #menuToggle span:first-child{
   transform-origin: 0% 0%;
@@ -1368,7 +1359,7 @@ header.mobile-view{
 #menuToggle span.last-child{
   margin-bottom: 0;
 }
-/*
+/* 
 * Transform all the slices of hamburger
 * into a crossmark.
 */
@@ -1530,7 +1521,7 @@ footer{
   color: #FFFFFF;
   font-size: 20px;
   font-weight: 800;
-
+  
 }
 .our-team .fig-caption h5{
   text-align: left;
@@ -1542,7 +1533,7 @@ footer{
 }
 .col-5{
   flex: 0 0 20%;
-  max-width: 20%;
+    max-width: 20%;
 }
 @media (max-width: 767px){
   .our-team .row.no-gutters{
@@ -1552,7 +1543,7 @@ footer{
   }
   .col-5{
     flex: 0 0 100%;
-    max-width: 100%;
+      max-width: 100%;
   }
   .web-header{
     display: none;
