@@ -99,10 +99,12 @@ export class RegisterComponent implements OnInit {
     });
   }
   goback() {
+    console.log(this.signUpBody.data.customerData);
     this.flags.isOtpSent = false;
   }
 
   ResendsendOtp() {
+
 
     const data = { tId: this.localStorage.get('BM_tId'), data: { customerData: { fName: this.signUpBody.data.customerData.fName,lName: this.signUpBody.data.customerData.lName, cell: '', mName: '', email: this.signUpBody.data.customerData.eMail, tel: this.signUpBody.data.customerData.tel } } }
     this.api.sendSignUpOtp(data).subscribe((response: any) => {
