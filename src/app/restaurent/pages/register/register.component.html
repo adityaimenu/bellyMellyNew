@@ -25,12 +25,12 @@
           <form *ngIf="!flags.isOtpSent" #userRegisterForm="ngForm">
             <div class="form-group">
               <label>Enter First Name</label>
-              <input type="text" class="form-control" name="name" autocomplete="off" [(ngModel)]="signUpBody.data.customerData.fName" maxlength="50" required />
+              <input type="text" class="form-control" name="fname" autocomplete="off" [(ngModel)]="signUpBody.data.customerData.fName" maxlength="50" required />
               <span class="errormsg" *ngIf="!signUpBody.data.customerData.fName">{{fnameError}}</span>
             </div>
             <div class="form-group">
               <label>Enter Last Name</label>
-              <input type="text" class="form-control" name="name" autocomplete="off" [(ngModel)]="signUpBody.data.customerData.lName" maxlength="50" required />
+              <input type="text" class="form-control" name="lname" autocomplete="off" [(ngModel)]="signUpBody.data.customerData.lName" maxlength="50" required />
               <span class="errormsg" *ngIf="!signUpBody.data.customerData.lName">{{fnameError}}</span>
             </div>
             <div class="form-group">

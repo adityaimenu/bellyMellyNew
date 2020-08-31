@@ -7,14 +7,14 @@ import {SwiperOptions} from "swiper";
   styleUrls: ['./join-us.component.scss']
 })
 export class JoinUsComponent implements OnInit {
-  config: SwiperOptions = {
+/*  config: SwiperOptions = {
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
     spaceBetween: 30
-  };
+  };*/
 
 
   constructor() { }
