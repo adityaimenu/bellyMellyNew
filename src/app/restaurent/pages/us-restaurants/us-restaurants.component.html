@@ -56,118 +56,7 @@
     </div>
   </nav>
  
-  <!-- <header class="masthead">
-    <div class="container h-100 header-text">
-      <div class="row h-100 align-items-center justify-content-center">
-        <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold text-center">Order Food with a Purpose</h1>
-         
-          
-        </div>
-        <div class="col-lg-8 align-self-baseline pr-2 pl-2">
-          <h6 class="text-white font-weight-regular text-center mb-5">With every single order that is placed, a percentage of that sale is donated to the organization of your choice at NO COST TO YOU.</h6>
-           <div class="search-box">
-            <ul class="nav nav-pills">
-              <li ><a data-toggle="pill" href="#location" (click)="changeSearchType(1)" class="active">Search by Location</a></li>
-              <li><a data-toggle="pill" href="#name" (click)="changeSearchType(2)" >Search by Name</a></li>
-            </ul>
-            <div class="tab-content bg-white p-3">
-              <div id="location" class="tab-pane fade in active show">
-                  <form #locationSearch="ngForm">
-                <div class="row">
-                 
-                  <div class="col-lg-10">
-                    <span class="locationSpan" >
-                      <a  href="javascript:void(0)" (click)="getCurrentPosition()"><i  class="fa fa-map-marker text-dark" ></i></a>
-                    </span>
-                    <input ngx-google-places-autocomplete [options]='options' class="form-control shadow-sm bg-white " class="form-control border-top-0 border-left-0 border-right-0 border-bottom addAddressString pl-0 text-truncate p-3" placeholder="Enter a new location"  name="addAddress4545" [(ngModel)]="addAddressString"  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"  required>
-                    <span *ngIf="addAddressString" class="searchBox-clear"><a href="javascript:void(0)" (click)="changeSearchType(1)"> <i class="fa fa-times text-dark"></i></a></span>
-                  </div>
-                  <div class="col-lg-2">   
-                   <button class="btn  rounded-0  btn-outline-primary-site sbutton m-auto"  [disabled]="!locationSearch.valid" (click)="searchrRestaurantsWithAddress(servicetype)" id="srchbtn">Search</button>
-                  </div>
-                
-                </div>
-              </form>
-              </div>
-              <div id="name" class="tab-pane fade">
-                  <form #restoSearch="ngForm">
-                <div class="row">
-               
-                  <div class="col-lg-10">
-                    <input type="text" name="restaurantname" [(ngModel)]="restaurantname" placeholder="Search by Restaurant Name" class="form-control border-bottom pl-0 border-top-0 border-left-0 border-right-0 text-truncate restaurantname" required>
-                
-                    <span class="searchBox-clear"><a href="javascript:void(0)" (click)="changeSearchType(2)"> <i class="fa fa-times text-dark"></i></a></span>
-                  </div>
-                  <div class="col-lg-2 srchbtn">
-               
-                  <button class="btn  rounded-0  btn-outline-primary-site sbutton m-auto"  [disabled]="!restoSearch.valid" (click)="searchrRestaurants(servicetype)" id="srchbtnnme">Search</button>
-                    
-                  </div>
-                
-                </div>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-   
-    <video [muted]="true" autoplay playsinline loop id="teaser-video" class="teaser-video"><source src="assets/video/intro.mp4" type="video/mp4"><source src="assets/video/intro.ogv" type="video/ogg"></video>
-      <div class="overlay"></div>
-  </header> -->
-  <!-- <section class="py-3 bg-light">
-    <div class="container">
-      <div class="row howit">
-        <div class="title col-lg-12 text-center mb-3">
-          <h3>How it works</h3>
-          <p class="text-dark">Every online Order helps to Empower your local Community.</p>
-        </div>
-        <div class="col-lg-4 col-sm-6 pr-1 pl-1 mt-2">
-          <div class="box bg-white shadow-sm text-center p-3">
-            <div class="icon">
-              <h2 class="text-site">
-                <img src="assets/img/search.svg" width="70px">
-              </h2>
-            </div>
-            <div class="content">
-              <h6 class="font-weight-bold my-2">Find a local Restaurant</h6>
-              <p  class="mb-0">Search nearby restaurant options by name, location, or food type.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 pl-1 pr-1 mt-2">
-          <div class="box bg-white shadow-sm text-center p-3">
-            <div class="icon">
-              <h2 class="text-site">
-                <img src="assets/img/place.png" width="50px">
-              </h2>
-            </div>
-            <div class="content">
-              <h6 class="font-weight-bold my-2">Order Pickup or Delivery </h6>
-              <p class="mb-0">Easily choose your favorites and place your order online.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 pl-1 pr-1 mt-2 mx-auto">
-          <div class="box bg-white shadow-sm text-center p-3">
-            <div class="icon">
-              <h2 class="text-site">
-                <img src="assets/img/store.svg" width="70px">
-              </h2>
-            </div>
-            <div class="content">
-              <h6 class="font-weight-bold my-2">Choose an Organization</h6>
-              <p class="mb-0">
-                {{countryCode == 'AU'?'1':''}} % of your order is donated by the restaurant to an organization of your choice.</p>
-            </div>
-          </div>
-        </div>
-      
-      </div>
-    </div>
-  </section> -->
+  
   <section class="" id="ggg">
     <div class="container">
       <div class="row" id="botomdata" >
@@ -191,7 +80,7 @@
             <h6 class="mr-3">Most popular near you </h6> <span class="text-muted">1150 Restaurants</span>
           </div>
           <!-- Swiper -->
-          <div class="swiper-container categories">
+          <div class="categories">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="slide-item">
@@ -289,53 +178,7 @@
             <div class="swiper-button-prev"></div>
           </div>
         </div>
-        <!-- <div class="col-lg-3 border-right responsive-filter" *ngIf="FoodTypes.length > 0">
-          <div class="filter-box py-3" >
-            <div class="title mb-4 d-flex justify-content-between">
-              <h6 class="m-0">Filters</h6>
-             <a href="javascript:void(0)" (click)="clearALl()"> <p  class="mb-0 clearal">Clear All</p></a>
-            </div>
-            <form>
-              <div class="toggle webtoggle second">
-                <input type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
-                <label for="sizeWeight">Pickup</label>
-                <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
-                <label for="sizeDimensions">Delivery</label>
-                <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions1" [checked]="selectedservicetype == 'Curbside'" (click)="selectService('Curbside')"  />
-                <label for="sizeDimensions1">Curbside</label>
-              </div>
-              <div class="accordion" id="accordionExample">
-                <div class="card">
-                  <div class="card-header bg-transparent title" id="headingOne">
-                    <h6 class="mb-0">
-                      <a href="javascript:void(0)" class="text-dark d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#food-type" aria-expanded="true" aria-controls="collapseOne">
-                        Food Type
-                        <span class="rotating-arrow"><i class="fa fa-angle-down"></i></span>
-                      </a>
-                    </h6>
-                  </div>
-                  <div id="food-type" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body px-0">
-                      <div class="custom-control custom-checkbox" *ngFor="let val of FoodTypes;let i=index;">
-                        <input type="checkbox" class="custom-control-input" id="{{val.FoodTypeId}}w" (click)="FoodTypeF(val.FoodTypeId,$event.target.checked)" name="example1">
-                        <label class="custom-control-label" for="{{val.FoodTypeId}}w">{{val.Name}}</label>
-                      </div>
-                    
-                    </div>
-                    <button *ngIf="FoodTypes.length > 0"  class="btn btn-site" (click)="searchrRestaurantsBoth(servicetype)">Filter</button>
-                  </div>
-                </div>
-                <div class="card">
-                  <div id="delivery-time" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body px-0">
-                      <input type="text" class="js-range-slider" name="my_range" value="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div> -->
+        
         <div class=" web" [ngClass]="FoodTypes.length == 0?'col-lg-12':'col-lg-12'" >
           <div class="row border-bottom py-2 mb-3" *ngIf="foodtype.length > 1 || restaurantname">
             <div class="col-lg-12" >
@@ -357,7 +200,7 @@
               </div>
             </div>
           </div>
-          <div class=" border-right text-center" *ngIf="Locations.length == 0" ><!--comment-->
+          <div class=" w-100 text-center" *ngIf="Locations.length == 0" ><!--comment-->
             <div class="filter-box py-4">
               <img src="assets/images/nodata.png" width="180px">
               <div class="mt-4">
@@ -374,23 +217,23 @@
                   <div class="w-100 d-flex align-items-center">
 
                  
-                  <div class="img-show left">
+                  <div class="img-show left mr-3">
                     <img *ngIf="countryCode == 'US' && !val.LogoImg" src="assets/img/imageAU.png" class="img-fluid" width="100px">
                     <img *ngIf="countryCode == 'AU' && !val.LogoImg" src="assets/img/imageAU.png" class="img-fluid" width="100px">
                     <img *ngIf="val.LogoImg"  src="{{imageUrl}}{{val.LogoImg}}" class="img-fluid" width="100px">
                     <!-- <img *ngIf="!val.LogoImg && val.PortalBkImg"  src="{{imageUrl}}{{val.PortalBkImg}}" class="img-fluid" width="100px"> -->
                   </div>
                   <div class="right">
-                    <div class="row no-gutters">
+                    <div class="row no-gutters align-items-center">
                       <div class="col-lg-3">
                         
-                        <h5 class="restaurant-name mb-xs-0">{{val.Name}}</h5>
-                        <small class="text-secondary">{{val.Addr1}}, {{val.City}}, {{val.State}}</small>
+                        <h5 class="restaurant-name mb-0">{{val.Name}}</h5>
+                        <p class="text-secondary mb-0">{{val.Addr1}}, {{val.City}}, {{val.State}}</p>
                       </div>
                       <div class="col-lg-2 text-center col-xs-4">
                         <span class="p-2 badge " [ngClass]="val.IsOpen == 1?'badge-success':'badge-danger'">{{val.IsOpen == 1?'OPEN':'CLOSED'}}</span>
                       </div>
-                      <div class="col-lg-2 text-center col-xs-4 ">
+                      <div class="col-lg-3 text-center col-xs-4 ">
                         <p class="text-secondary m-0">
                           <img src="assets/img/help.svg" width="25px">
                         </p>
@@ -537,15 +380,7 @@
             
           </div>
           <div class="row w-100 m-0 p-0 mob" *ngIf="Locations.length == 0" >
-            <!-- <div class="col-lg-12  text-center">
-              <div class="filter-box py-4">
-                <img src="assets/images/nodata.png" width="200px">
-                <div class="mt-4">
-                  <h3 class="text-dark">We are not at this Location. Please enter a New Address.
-                  </h3>
-                  </div>
-              </div>
-            </div> -->
+            
           </div>
       
       </div>

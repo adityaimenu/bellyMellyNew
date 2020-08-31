@@ -176,8 +176,8 @@ export var categorySwiper = function(){
         spaceBetween: 10,
         },
         1024: {
-        slidesPerView: 8,
-        spaceBetween: 10,
+        slidesPerView: 7,
+        spaceBetween: 5,
         },
     }
   });
