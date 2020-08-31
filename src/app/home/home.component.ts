@@ -43,14 +43,14 @@ export class HomeComponent implements OnInit {
   showRestaurant: number = 0;
   showService: number = 0;
   showFoodtype: number = 0;
-  config: any = {
+/*  config: any = {
     slidesPerView: 1,
     spaceBetween: 10,
-   /* pagination: {
+   /!* pagination: {
       el: '.swiper-pagination',
       clickable: true,
       dynamicBullets: true,
-    },*/
+    },*!/
     breakpoints: {
       640: {
         slidesPerView: 1,
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
         spaceBetween: 50,
       },
     }
-  };
+  };*/
 
 
   constructor( private localStorage: LocalStorageService,
