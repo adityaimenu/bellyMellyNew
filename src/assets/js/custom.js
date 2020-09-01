@@ -159,28 +159,33 @@ export var swipper = function () {
   });
 };
 export var categorySwiper = function(){
-  var swiper = new Swiper('.categories', {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-        640: {
-        slidesPerView: 4,
-        spaceBetween: 10,
-        },
-        768: {
-        slidesPerView: 5,
-        spaceBetween: 10,
-        },
-        1024: {
-        slidesPerView: 7,
-        spaceBetween: 5,
-        },
-    }
-  });
+  setTimeout(()=>{
+    var swiper = new Swiper('.categories', {
+      slidesPerView: 3,
+      spaceBetween: 5,
+      observer: true,
+      observeParents: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+          640: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+          },
+          768: {
+          slidesPerView: 5,
+          spaceBetween: 10,
+          },
+          1024: {
+          slidesPerView: 7,
+          spaceBetween: 5,
+          },
+      }
+    });
+  },3000)
+  
 }
 /******* Show Sidemenu *******/
 export var sideNav = function () {
