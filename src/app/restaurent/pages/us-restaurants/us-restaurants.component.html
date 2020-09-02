@@ -64,7 +64,7 @@
           <div class="d-flex justify-content-center align-items-start">
             <div class="">
               <div class="toggle webtoggle second">
-                <input type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
+                <input  type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
                 <label for="sizeWeight">Pickup</label>
                 <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
                 <label for="sizeDimensions">Delivery</label>
@@ -77,16 +77,16 @@
         </div>
         <div class="col-lg-12 py-3 category-view">
           <div class="title d-flex">
-            <h6 class="mr-3">Most popular near you </h6> <span class="text-muted">1150 Restaurants</span>
+            <h6 class="mr-3">Food Categories </h6>
           </div>
           <!-- Swiper -->
           <div class="categories">
             <div class="swiper-wrapper">
               <div class="swiper-slide" *ngFor="let val of FoodTypes;let i=index;">
-                <div class="slide-item p-3 rounded-lg selected">
+                <div class="slide-item p-3 rounded-lg " [id]="'foodtype' + val.FoodTypeId"  >
                   <div class="item-img">
                     <figure>
-                      <img  style="cursor: pointer" [src]="val.FoodTypeImg">
+                     <a (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId); searchrRestaurantsBoth(servicetype)"> <img id="{{val.FoodTypeId}}w"   style="cursor: pointer" [src]="val.FoodTypeImg"> </a>
                     </figure>
                   </div>
                     <div class="text-center">{{val.Name}}</div>
@@ -558,7 +558,17 @@
                           <div id="food-type" class="" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body p-0 text-left">
                               <div class="row no-gutters">
-                                <div class="col-3 text-center mb-2 px-1">
+                                <div  *ngFor="let val of FoodTypes;let i=index;"  class="col-3 text-center mb-2 px-1">
+                                  <div  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId);"  [id]="'foodtypem' + val.FoodTypeId" class="slide-item p-3 rounded-lg ">
+                                    <div class="item-img">
+                                      <figure class="text-center">
+                                          <a > <img id="{{val.FoodTypeId}}m"   style="cursor: pointer" [src]="val.FoodTypeImg"> </a>
+                                      </figure>
+                                    </div>
+                                    <div class="text-center">{{val.Name}}</div>
+                                  </div>
+                                </div>
+                               <!-- <div class="col-3 text-center mb-2 px-1">
                                   <div class="slide-item p-3 rounded-lg">
                                     <div class="item-img">
                                       <figure class="text-center">
@@ -637,17 +647,7 @@
                                     </div>
                                     <div class="text-center">Asian</div>
                                   </div>
-                                </div>
-                                <div class="col-3 text-center mb-2 px-1">
-                                  <div class="slide-item p-3 rounded-lg">
-                                    <div class="item-img">
-                                      <figure class="text-center">
-                                        <img src="https://s3.amazonaws.com/v1.0/images/FoodType/IMG-2.png">
-                                      </figure>
-                                    </div>
-                                    <div class="text-center">Asian</div>
-                                  </div>
-                                </div>
+                                </div>-->
                               </div>
                               <!-- <div class="custom-control custom-checkbox" *ngFor="let val of FoodTypes;let i=index;">
                                 <input type="checkbox" class="custom-control-input" id="{{val.FoodTypeId}}m" (click)="FoodTypeF(val.FoodTypeId,$event.target.checked)" name="example1">

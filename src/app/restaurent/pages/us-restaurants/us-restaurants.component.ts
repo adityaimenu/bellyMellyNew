@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UrlService } from 'src/app/services/url/url.service';
 import * as _ from 'lodash';
 import {HttpClient} from "@angular/common/http";
+import {NgxSpinnerService} from "ngx-spinner";
 @Component({
   selector: 'app-us-restaurants',
   templateUrl: './us-restaurants.component.html',
@@ -31,6 +32,7 @@ export class UsRestaurantsComponent implements OnInit {
   imageUrl: string;
   foodtype = ['0'];
   searchAddress: string;
+  selectedFood: any;
   currentAddr: string;
   showBoundaryLinks = true;
   totalCount: number;
@@ -59,7 +61,8 @@ export class UsRestaurantsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private url: UrlService
+    private url: UrlService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {
@@ -83,6 +86,7 @@ export class UsRestaurantsComponent implements OnInit {
       componentRestrictions: { country: this.countryCode }
     }
     this.comingLatLong();
+
     /*if(localStorage.getItem('adr_address')) {
       this.selectedAddr = localStorage.getItem('adr_address');
     } else {
@@ -101,11 +105,13 @@ export class UsRestaurantsComponent implements OnInit {
       this.longitude = Number(longitude);
       if (this.latitude == 0 && this.restaurantname != '') {
         this.searchrRestaurants(this.servicetype)
+        document.getElementById('sizeWeight').click();
       } else {
         this.currentAddr = ' ';
         this.addAddressString = this.currentAddr;
         this.searchAddressMobile = this.addAddressString;
         this.searchrRestaurantsWithAddress(this.servicetype);
+        document.getElementById('sizeWeight').click();
       }
     } else {
       if (this.country == 'us') {
@@ -205,6 +211,7 @@ export class UsRestaurantsComponent implements OnInit {
       var data = `getLocation&type=imenu&latitude=0&longitude=0&country=${this.countryAsign}&restaurantname=${this.restaurantname}&foodtype=${this.foodtype}&servicetype=&skipRows=${this.skipRows}`
     }
     this.api.searchrRestaurants(data).subscribe((response: any) => {
+      this.spinner.show();
       console.log(response, '1');
       this.showRestaurant = 0
       if (!response) {
@@ -220,6 +227,7 @@ export class UsRestaurantsComponent implements OnInit {
       }
       this.selectedservicetype = this.servicetype;
       this.searchAddressMobile = this.searchAddress;
+      this.spinner.hide();
       $('.addAddressString').val('')
       $('#addmdl').modal('hide')
       $('#srchmdl').modal('hide')
@@ -241,6 +249,7 @@ export class UsRestaurantsComponent implements OnInit {
       var data = `getLocation&type=imenu&latitude=${this.latitude}&longitude=${this.longitude}&country=${this.countryAsign}&restaurantname=&foodtype=${this.foodtype}&servicetype=&skipRows=${this.skipRows}`
     }
     this.api.searchrRestaurants(data).subscribe((response: any) => {
+      this.spinner.show();
       console.log(response, '2');
       this.showRestaurant = 1;
       if (!response) {
@@ -259,6 +268,7 @@ export class UsRestaurantsComponent implements OnInit {
       }
       this.selectedservicetype = this.servicetype;
       this.searchAddressMobile = this.searchAddress;
+      this.spinner.hide();
       $('.addAddressString').val('')
       $('#addmdl').modal('hide')
       $('#srchmdl').modal('hide')
@@ -288,6 +298,7 @@ export class UsRestaurantsComponent implements OnInit {
       }
     }
     this.api.searchrRestaurants(data).subscribe((response: any) => {
+      this.spinner.show();
       this.showFoodtype = 1;
       this.showService = 0
       if (!response) {
@@ -305,9 +316,10 @@ export class UsRestaurantsComponent implements OnInit {
         });
       }
 
-      this.selectedservicetype = this.servicetype;
+    //  this.selectedservicetype = this.servicetype;
 
       this.searchAddressMobile = this.searchAddress;
+      this.spinner.hide();
       $('.addAddressString').val('')
       $('#addmdl').modal('hide')
       $('#srchmdl').modal('hide')
@@ -338,24 +350,38 @@ export class UsRestaurantsComponent implements OnInit {
 
 
 
-  FoodTypeF(val, check) {
+  FoodTypeF(val, id) {
     const data = _.find(this.FoodTypes, function(o) { return o.FoodTypeId == val; })
     const a = data.FoodTypeId
+    console.log('hello', val);
+    let check: any;
+    if (this.foodtype.indexOf(a) == -1) {
+      check = true;
+    } else {
+      check = false;
+    }
     if (check) {
+      console.log('1');
       this.foodtype.push(a)
       this.FoodTypes.forEach(element => {
         if(element.FoodTypeId == a){
-          element.status = true
+
+          element.status = true;
+          document.getElementById('foodtype' + a).classList.add('selected');
+          document.getElementById('foodtypem' + a).classList.add('selected');
         }
       });
     } else {
+      console.log('2');
       this.FoodTypes.forEach(element => {
         if(element.FoodTypeId == a){
           element.status = false
         }
       });
       var index = this.foodtype.findIndex(x => x === val);
-      this.foodtype.splice(index, 1)
+      document.getElementById('foodtype' + a).classList.remove('selected');
+      document.getElementById('foodtypem' + a).classList.remove('selected');
+      this.foodtype.splice(index, 1);
     }
   }
   foodtypeVal(val) {
@@ -377,12 +403,23 @@ export class UsRestaurantsComponent implements OnInit {
     // this.servicetype = null
     this.skipRows = 0;
     this.Locations = [];
+
     this.foodtype = ['0'];
-    $('.custom-control-input').prop('checked', false)
+    $('.custom-control-input').prop('checked', false);
+
     this.FoodTypes.forEach(element => {
       element.status = false
     });
-    this.searchrRestaurantsBoth(this.servicetype)
+
+    this.searchrRestaurantsBoth(this.servicetype);
+    for (let i = 0; i < 30 ; i++) {
+      if (document.getElementById('foodtype' + i)) {
+
+        document.getElementById('foodtype' + i).classList.remove('selected');
+        document.getElementById('foodtypem' + i).classList.remove('selected');
+      }
+    }
+
   }
 
   selectService(val) {
@@ -460,6 +497,13 @@ export class UsRestaurantsComponent implements OnInit {
       this.showService = 1;
       this.selectedservicetype = '';
       this.searchAddressMobile = this.searchAddress;
+      for (let i = 0; i < 30 ; i++) {
+        if (document.getElementById('foodtype' + i)) {
+
+          document.getElementById('foodtype' + i).classList.remove('selected');
+          document.getElementById('foodtypem' + i).classList.remove('selected');
+        }
+      }
       $('.addAddressString').val('')
       $('#addmdl').modal('hide')
       $('#srchmdl').modal('hide')
