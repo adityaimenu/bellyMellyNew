@@ -60,7 +60,7 @@
   <section class="" id="ggg">
     <div class="container">
       <div class="row" id="botomdata" >
-        <div class="col-lg-12 py-3">
+        <div class="col-lg-12 pt-3">
           <div class="d-flex justify-content-center align-items-start">
             <div class="">
               <div class="toggle webtoggle second">
@@ -75,7 +75,7 @@
             
           </div>
         </div>
-        <div class="col-lg-12 py-3 category-view">
+        <div class="col-lg-12 category-view">
           <div class="title d-flex">
             <h6 class="mr-3">Food Categories </h6>
           </div>
@@ -99,86 +99,6 @@
                     <!--<div class="text-center"><input  type="checkbox"  style="display: block !important;" id="{{val.FoodTypeId}}w" (click)="FoodTypeF(val.FoodTypeId,$event.target.checked)" name="example1">{{val.Name}}</div>-->
                 </div>
               </div>
-             <!-- <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="slide-item">
-                  <div class="item-img">
-                    <figure>
-                      <img src="https://s3.amazonaws.com/v1.0/images/restlocimg/112_ad2_032520124206.png">
-                    </figure>
-                  </div>
-                  <div class="text-center">American</div>
-                </div>
-              </div>-->
             </div>
             <!-- Add Arrows -->
             <div class="swiper-button-next"></div>
@@ -187,20 +107,14 @@
         </div>
         
         <div class=" web" [ngClass]="FoodTypes.length == 0?'col-lg-12':'col-lg-12'" >
-          <div class="row border-bottom py-2 mb-3" *ngIf="foodtype.length > 1 || restaurantname">
+          <div class="row border-bottom py-2" *ngIf="foodtype.length > 1 || restaurantname">
             <div class="col-lg-12" >
               <div class="btnlist">
-                <ul class="m-0 p-0">
-                  <li *ngIf="restaurantname && showRestaurant == 0">
+                <ul class="list-inline">
+                  <li class="list-inline-item" *ngIf="restaurantname && showRestaurant == 0">
                     <button class="btn">{{restaurantname}} <span class="ml-2" ><i class="fa fa-times" (click)="cleaResto()"></i></span></button>
                   </li>
-                  <li >
-                    <!--<button *ngIf="selectedAddr && !restaurantname" class="btn">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}} <span class="ml-2" ><i class="fa fa-times" (click)="cleaResto()"></i></span><</button>-->
-                  </li>
-                  <!-- <li *ngIf="selectedservicetype  && showService == 0">
-                    <button class="btn">{{selectedservicetype}} <span class="ml-2" ><i class="fa fa-times" (click)="clearService()"></i></span></button>
-                  </li> -->
-                  <li *ngFor="let val of FoodTypes;let i =index">
+                  <li class="list-inline-item" *ngFor="let val of FoodTypes;let i =index">
                     <button   *ngIf="showFoodtype == 1 && val.status == true"  class="btn">{{val.Name}} <span class="ml-2" ><i class="fa fa-times" (click)="clearFoodtype(val)"></i></span></button>
                   </li>
                 </ul>
@@ -270,7 +184,7 @@
             [totalItems]="totalCount"   [maxSize]="maxSize" 
             (pageChanged)="pageChanged($event)"></pagination>
           </div>
-          <div class=" border-right text-center web" [ngClass]="FoodTypes.length == 0?'col-lg-12':''" *ngIf="Locations.length == 0" id="section2"><!--comment-->
+          <div class=" text-center web" [ngClass]="FoodTypes.length == 0?'col-lg-12':''" *ngIf="Locations.length == 0" id="section2"><!--comment-->
             <!-- <div class="filter-box py-4">
               <img src="assets/images/nodata.png" width="180px">
               <div class="mt-4">
@@ -283,7 +197,8 @@
         
         
         <div class="col-lg-9 mob" > <!--comment-->
-            <div class="row py-1 my-3 fltrrow align-items-center border">
+          <div class="col-lg-12">
+            <div class="row px-0 py-1 mb-2 fltrrow align-items-center border">
               <div class="col-sm-6">
                  
                     <div class="addr">
@@ -292,31 +207,32 @@
                        
               </div>
               <div class="col-sm-6 text-right d-flex" style="justify-content: flex-end;">
-                  <button class="btn btn-link mr-4" id="filter-menu" (click)="changeSearchType(1)"  data-toggle="modal" data-target="#srchmdl"><i  class="fa fa-search"></i> <p class="mb-0">Search</p></button>
-                    <button *ngIf="FoodTypes.length > 0" class="btn btn-link" id="filter-menu" data-toggle="modal" data-target="#filtermdl"><i  class="fa fa-filter"></i> <p class="mb-0">Filter</p></button>
+                  <button class="btn btn-link text-dark mr-1" id="filter-menu" (click)="changeSearchType(1)"  data-toggle="modal" data-target="#srchmdl"><i  class="fa fa-search"></i> <p class="mb-0">Search</p></button>
+                    <button *ngIf="FoodTypes.length > 0" class="btn btn-link text-dark" id="filter-menu" data-toggle="modal" data-target="#filtermdl"><i  class="fa fa-filter"></i> <p class="mb-0">Filter</p></button>
               </div>
             </div>
+          </div>
          
 
               <div class="row" *ngIf="FoodTypes.length > 0">
                
-                  <div class="btnlist" >
-                    <ul class="m-0 p-0">
-                      <li *ngIf="selectedservicetype  && showService == 0">
-                        <button class="btn">{{selectedservicetype}} </button>
+                  <div class="col-sm-12 btnlist" >
+                    <ul class="list-inline m-0">
+                      <li class="list-inline-item" *ngIf="selectedservicetype  && showService == 0">
+                        <button class="btn mb-2">{{selectedservicetype}} </button>
                       </li>
-                      <li *ngIf="restaurantname && showRestaurant == 0">
-                        <button class="btn">{{restaurantname}} <span class="ml-2" ><i class="fa fa-times" (click)="cleaResto()"></i></span></button>
+                      <li class="list-inline-item" *ngIf="restaurantname && showRestaurant == 0">
+                        <button class="btn mb-2">{{restaurantname}} <span class="ml-2" ><i class="fa fa-times" (click)="cleaResto()"></i></span></button>
                       </li>
         
-                      <li *ngFor="let val of FoodTypes;let i =index">
-                        <button   *ngIf="showFoodtype == 1 && val.status == true"  class="btn">{{val.Name}} <span class="ml-2" ><i class="fa fa-times" (click)="clearFoodtype(val)"></i></span></button>
+                      <li class="list-inline-item" *ngFor="let val of FoodTypes;let i =index">
+                        <button   *ngIf="showFoodtype == 1 && val.status == true"  class="btn mb-2">{{val.Name}} <span class="ml-2" ><i class="fa fa-times" (click)="clearFoodtype(val)"></i></span></button>
                       </li>
                     </ul>
                   </div>
                 
               </div>
-              <div class=" border-right text-center" *ngIf="Locations.length == 0" ><!--comment-->
+              <div class=" text-center" *ngIf="Locations.length == 0" ><!--comment-->
                 <div class="filter-box py-4">
                   <img src="assets/images/nodata.png" width="180px">
                   <div class="mt-4">
@@ -327,10 +243,10 @@
               </div>
 
             <div class="row list-view" *ngIf="Locations.length > 0">
-              <ul class="restaurant-list-view my-2">
+              <ul class="restaurant-list-view my-0">
                 <li *ngFor="let val of Locations;let i=index;">
-                  <div class="list-item border-0 p-2 col-lg-12">
-                      <a href="{{val.OrderLink}}{{val.urlname}}" target="_blank" class="btn btn-outline-primary-site btn-xs-block shadow-sm w-100">
+                  <div class="list-item col-lg-12">
+                      <a href="{{val.OrderLink}}{{val.urlname}}" target="_blank" class="border p-1 text-dark mb-1">
                         <div class="w-100 d-flex align-items-center">
 
                    
@@ -558,8 +474,8 @@
                           <div id="food-type" class="" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body p-0 text-left">
                               <div class="row no-gutters">
-                                <div  *ngFor="let val of FoodTypes;let i=index;"  class="col-3 text-center mb-2 px-1">
-                                  <div  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId);"  [id]="'foodtypem' + val.FoodTypeId" class="slide-item p-3 rounded-lg ">
+                                <div  *ngFor="let val of FoodTypes;let i=index;"  class="col-xs-4 text-center mb-2 px-1">
+                                  <div  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId);"  [id]="'foodtypem' + val.FoodTypeId" class="slide-item w-100 p-3 rounded-lg ">
                                     <div class="item-img">
                                       <figure class="text-center">
                                           <a > <img id="{{val.FoodTypeId}}m"   style="cursor: pointer" [src]="val.FoodTypeImg"> </a>

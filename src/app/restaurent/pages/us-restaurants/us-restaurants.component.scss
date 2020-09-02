@@ -524,12 +524,6 @@ display: none;
     margin: auto;
   }
 }
-.btnlist ul li{
-  list-style: none;
-  display: inline-block;
-  margin: 5px;
-
-}
 .mob .btnlist ul li .btn{
   color: #5a5959;
   background: rgba(0, 0, 0, 0.05);
@@ -860,11 +854,7 @@ hr.white-line{
   }
   #botomdata{
     .title{
-      h6{
-        @media (max-width: 767px){
-          margin-bottom: 0;
-        }
-      }
+      
       @media (max-width: 767px){
         flex-direction: column;
       }
@@ -957,24 +947,24 @@ hr.white-line{
     margin: 0;
     padding: 0;
     @media (max-width: 767px){
-      top: 18px;
+      top: 0px;
     }
   }
   .swiper-button-prev:after, .swiper-button-next:after{
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 20px;
     width: 30px;
     text-transform: none !important;
     font-variant: initial;
     background: #FE6B61;
-    border-radius: 30px;
+    border-radius: 4px;
   }
   .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
       left: auto;
-      right: 50px;
+      right: 45px;
   }
   .swiper-pagination-bullet-active{
     background: #FE6B61;
