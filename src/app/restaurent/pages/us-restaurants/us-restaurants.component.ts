@@ -106,12 +106,14 @@ export class UsRestaurantsComponent implements OnInit {
       if (this.latitude == 0 && this.restaurantname != '') {
         this.searchrRestaurants(this.servicetype)
         document.getElementById('sizeWeight').click();
+        document.getElementById('sizeWeightm').click();
       } else {
         this.currentAddr = ' ';
         this.addAddressString = this.currentAddr;
         this.searchAddressMobile = this.addAddressString;
         this.searchrRestaurantsWithAddress(this.servicetype);
         document.getElementById('sizeWeight').click();
+        document.getElementById('sizeWeightm').click();
       }
     } else {
       if (this.country == 'us') {
@@ -226,6 +228,8 @@ export class UsRestaurantsComponent implements OnInit {
         });
       }
       this.selectedservicetype = this.servicetype;
+      document.getElementById('sizeWeight').click();
+      document.getElementById('sizeWeightm').click();
       this.searchAddressMobile = this.searchAddress;
       this.spinner.hide();
       $('.addAddressString').val('')
@@ -267,6 +271,9 @@ export class UsRestaurantsComponent implements OnInit {
         });
       }
       this.selectedservicetype = this.servicetype;
+      document.getElementById('sizeWeight').click();
+      document.getElementById('sizeWeightm').click();
+
       this.searchAddressMobile = this.searchAddress;
       this.spinner.hide();
       $('.addAddressString').val('')
@@ -316,7 +323,8 @@ export class UsRestaurantsComponent implements OnInit {
         });
       }
 
-    //  this.selectedservicetype = this.servicetype;
+      this.selectedservicetype = this.servicetype;
+     // document.getElementById('sizeWeight').click();
 
       this.searchAddressMobile = this.searchAddress;
       this.spinner.hide();
@@ -328,7 +336,9 @@ export class UsRestaurantsComponent implements OnInit {
     })
 
   }
-
+openFilters() {
+    document.getElementById('filter-menu2').click();
+}
 
 
   changeSearchType(val) {
@@ -513,9 +523,11 @@ export class UsRestaurantsComponent implements OnInit {
   }
 
   clearFoodtype(val) {
+    document.getElementById('foodtype' + val.FoodTypeId).classList.remove('selected');
+    document.getElementById('foodtypem' + val.FoodTypeId).classList.remove('selected');
 
     var index = this.foodtype.findIndex(x => x === val);
-    this.foodtype.splice(index, 1)
+    this.foodtype.splice(index, 1);
 
     this.Locations = []
     this.skipRows = 0

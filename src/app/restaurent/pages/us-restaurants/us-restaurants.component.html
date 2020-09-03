@@ -64,8 +64,9 @@
           <div class="d-flex justify-content-center align-items-start">
             <div class="">
               <div class="toggle webtoggle second">
-                <input  type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'" (click)="selectService('Pickup')" />
-                <label for="sizeWeight">Pickup</label>
+
+                <input  type="radio" name="sizeBy" value="weight" id="sizeWeight"  [checked]="selectedservicetype == 'Pickup'|| selectedservicetype == undefined " (click)="selectService('Pickup')" />
+                <label for="sizeWeight">Pickup  </label>
                 <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
                 <label for="sizeDimensions">Delivery</label>
                   <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions1" [checked]="selectedservicetype == 'Curbside'" (click)="selectService('Curbside')"  />
@@ -208,7 +209,7 @@
               </div>
               <div class="col-sm-6 text-right d-flex" style="justify-content: flex-end;">
                   <button class="btn btn-link text-dark mr-1" id="filter-menu" (click)="changeSearchType(1)"  data-toggle="modal" data-target="#srchmdl"><i  class="fa fa-search"></i> <p class="mb-0">Search</p></button>
-                    <button *ngIf="FoodTypes.length > 0" class="btn btn-link text-dark" id="filter-menu" data-toggle="modal" data-target="#filtermdl"><i  class="fa fa-filter"></i> <p class="mb-0">Filter</p></button>
+                    <button *ngIf="FoodTypes.length > 0" class="btn btn-link text-dark" id="filter-menu2" data-toggle="modal" data-target="#filtermdl"><i  class="fa fa-filter"></i> <p class="mb-0">Filter</p></button>
               </div>
             </div>
           </div>
@@ -219,7 +220,7 @@
                   <div class="col-sm-12 btnlist" >
                     <ul class="list-inline m-0">
                       <li class="list-inline-item" *ngIf="selectedservicetype  && showService == 0">
-                        <button class="btn mb-2">{{selectedservicetype}} </button>
+                        <button (click)="openFilters()" class="btn mb-2">{{selectedservicetype}} </button>
                       </li>
                       <li class="list-inline-item" *ngIf="restaurantname && showRestaurant == 0">
                         <button class="btn mb-2">{{restaurantname}} <span class="ml-2" ><i class="fa fa-times" (click)="cleaResto()"></i></span></button>
