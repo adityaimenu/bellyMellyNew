@@ -261,7 +261,9 @@ export class UsRestaurantsComponent implements OnInit {
       }
       this.Locations = response.Locations;
       console.log(this.Locations[0]);
-      this.selectedAddr = this.Locations[0].City;
+      if (this.Locations[0]) {
+        this.selectedAddr = this.Locations[0].City;
+      }
       console.log(this.selectedAddr);
       this.totalCount = response.TotalLocationCnt;
       if (this.FoodTypes.length == 0) {
@@ -313,7 +315,9 @@ export class UsRestaurantsComponent implements OnInit {
       }
       this.Locations = response.Locations;
       console.log(this.Locations[0]);
-      this.selectedAddr = this.Locations[0].City;
+      if (this.Locations[0]) {
+        this.selectedAddr = this.Locations[0].City;
+      }
       console.log(this.selectedAddr, '2');
       this.totalCount = response.TotalLocationCnt;
       if (this.FoodTypes.length == 0) {
