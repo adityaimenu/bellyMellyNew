@@ -191,18 +191,15 @@
                                     <div class="code mb-2">
                                       <p  [ngClass]="placeOrderBody.data.orderData.NGOId == list.RecId?'active':'unactive'" class="">{{list.DonateCode}}</p>
                                     </div>
-
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-
-
                         </div>
                         <div class="slide-btn">
-                          <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
-                          <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+                          <div class="swiper-button-next"></div>
+                          <div class="swiper-button-prev"></div>
                         </div>
                       </div>
                     </div>
@@ -481,8 +478,8 @@
                     </div>
 
                     <div class="piza-slide">
-                      <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
-                      <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
                     </div>
 
 
@@ -564,7 +561,7 @@
     </div> <!-- End of Web View-->
     <div class="mobile-view" fxShow.sm fxShow.xs fxHide.lg fxHide.md fxHide.xl>
       <div class="brand-info">
-        <div class="restaurant-info">
+        <!-- <div class="restaurant-info">
           <div class="container">
             <div class="row">
               <div class="col-sm-12" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
@@ -596,15 +593,76 @@
               </div>
             </div>
           </div>
+        </div> -->
+        <div class="food-added-item py-2">
+          <div class="container">
+            <div class="row">
+              <div *ngFor="let item of itemList; let i = index" class="col-sm-12 item-view"
+              style="padding-bottom: 0 !important;">
+                <div class="added-item" fxLayout="row wrap" fxLayoutGap="10" fxLayoutAlign="start between">
+                  <div class="item-cart" fxFlex="50">
+                    <p class="text-dark mb-0">{{item.Name}}</p>
+                  </div>
+                  <div class="right inr-dec"  fxFlex="25">
+                    <figure class="m-0 setunit" fxLayout="row" fxLayoutAlign="space-around center">
+                      <a class="unit decrement" href="javascript:void(0);" (click)="onUpdateQty(i, false)"
+                        style="cursor: pointer;">
+                        <i class="fa fa-minus-square"></i>
+                      </a>
+                      <span>{{item.Qty}}</span>
+                      <a class="unit increment" href="javascript:void(0);" (click)="onUpdateQty(i, true)"
+                        style="cursor:pointer;">
+                        <i class="fa fa-plus-square"></i>
+                      </a>
+                    </figure>
+                  </div>
+                  <div class="" fxFlex="25"> 
+                    <div  class="text-right text-muted item-cart">{{currency}} <span *ngIf="item.UnitPrice != '-99'"> {{(item.UnitPrice*item.Qty).toFixed(2)}}</span> <span *ngIf="item.UnitPrice == '-99'">0</span>  </div>
+                  </div>
+                </div>
+                <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0">
+                  <li class="list-bullet"><strong>{{addItems.Name}}</strong></li>
+
+                  <li *ngFor="let addOptions of addItems.AddOnOptions;" class="">
+                    <div class="row">
+                      <div class="col-md-6 w-50">
+                        <p class="mb-1 text-dark mobiotnlis">{{addOptions.Name}}</p>
+                      </div>
+                      <div class="col-md-6 w-50 text-right">
+                        {{currency}}{{(Number(addOptions.Amt*item.Qty)).toFixed(2)}}</div>
+                    </div>
+                  </li>
+
+                </ul>
+                <div class="separator"></div>
+              </div>
+              <div class="item-view suggestion-box col-md-12">
+                <div class="item-total" fxLayout="row" fxLayoutAlign="space-between center">
+                  <div class="d-flex align-items-center w-100">
+                    <span class="mr-2"><nb-icon icon="file-text-outline"></nb-icon></span>
+                    <textarea class="form-control mob-text" name="SpecialInstructions"
+                    placeholder="Write suggestions to restaurants..." autocomplete="off"
+                    (keyup)="SpecialInstructionsF($event.target.value)" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
+            <!-- <div class="col-sm-12 item-view py-3" style="padding-top: 0 !important;">
+              <div class="item-total" fxLayout="row" fxLayoutAlign="space-between center">
+                <span>Item Total</span>
+                <span>{{currency}}{{(itemTotal()).toFixed(2)}}</span>
+              </div>
+            </div> -->
+            </div>
+          </div>
         </div>
-        <div class="scheduled-food" *ngIf="placeOrderBody.data.orderData.ServiceId != 5">
+        <div class="scheduled-food py-1" *ngIf="placeOrderBody.data.orderData.ServiceId != 5">
           <div class="container">
             <div class="row">
               <div class="col-sm-12" >
                 <div id="accordion">
                   <div class="card border-0 py-1">
                     <div class="card-header p-0" id="headingOne1">
-                      <h6 class="mb-0 dlvrytym pl-2" (click)="shecdule()">
+                      <h6 class="mb-0 dlvrytym" (click)="shecdule()">
                           <a class="text-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             
                           
@@ -714,70 +772,8 @@
             </div>
           </div>
         </div>
-        <div class="food-added-item py-2">
-          <div class="container">
-            <div class="row">
-              <div *ngFor="let item of itemList; let i = index" class="col-sm-12 item-view"
-              style="padding-bottom: 0 !important;">
-                <div class="added-item" fxLayout="row wrap" fxLayoutGap="10" fxLayoutAlign="start between">
-                  <div class="item-cart" fxFlex="50">
-                    <div class="title">
-                      <h6 class="text-dark mb-0">{{item.Name}}</h6>
-                    </div>
-                  </div>
-                  <div class="right inr-dec"  fxFlex="25">
-                    <figure class="m-0 setunit" fxLayout="row" fxLayoutAlign="space-around center">
-                      <a class="unit decrement" href="javascript:void(0);" (click)="onUpdateQty(i, false)"
-                        style="cursor: pointer;">
-                        <i class="fa fa-minus-square"></i>
-                      </a>
-                      <span>{{item.Qty}}</span>
-                      <a class="unit increment" href="javascript:void(0);" (click)="onUpdateQty(i, true)"
-                        style="cursor:pointer;">
-                        <i class="fa fa-plus-square"></i>
-                      </a>
-                    </figure>
-                  </div>
-                  <div class="" fxFlex="25"> 
-                    <div  class="text-right text-muted item-cart">{{currency}} <span *ngIf="item.UnitPrice != '-99'"> {{(item.UnitPrice*item.Qty).toFixed(2)}}</span> <span *ngIf="item.UnitPrice == '-99'">0</span>  </div>
-                  </div>
-                </div>
-                <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0">
-                  <li class="list-bullet"><strong>{{addItems.Name}}</strong></li>
-
-                  <li *ngFor="let addOptions of addItems.AddOnOptions;" class="">
-                    <div class="row">
-                      <div class="col-md-6 w-50">
-                        <p class="mb-1 text-dark mobiotnlis">{{addOptions.Name}}</p>
-                      </div>
-                      <div class="col-md-6 w-50 text-right">
-                        {{currency}}{{(Number(addOptions.Amt*item.Qty)).toFixed(2)}}</div>
-                    </div>
-                  </li>
-
-                </ul>
-                <div class="separator"></div>
-              </div>
-              <div class="item-view suggestion-box col-md-12">
-                <div class="item-total" fxLayout="row" fxLayoutAlign="space-between center">
-                  <div class="d-flex align-items-center w-100">
-                    <span class="mr-2"><nb-icon icon="file-text-outline"></nb-icon></span>
-                    <textarea class="form-control mob-text" name="SpecialInstructions"
-                    placeholder="Write suggestions to restaurants..." autocomplete="off"
-                    (keyup)="SpecialInstructionsF($event.target.value)" rows="1"></textarea>
-                  </div>
-                </div>
-              </div>
-            <!-- <div class="col-sm-12 item-view py-3" style="padding-top: 0 !important;">
-              <div class="item-total" fxLayout="row" fxLayoutAlign="space-between center">
-                <span>Item Total</span>
-                <span>{{currency}}{{(itemTotal()).toFixed(2)}}</span>
-              </div>
-            </div> -->
-            </div>
-          </div>
-        </div>
-        <div class="similar-items">
+        
+        <div class="similar-items py-2">
           <div class="container">
             <div class="row">
               <div class="similar-items col-md-12" *ngIf="locationDetails.likePrdoucts.length > 0">
@@ -797,7 +793,7 @@
                               alt="{{variation.Img}}" class="img-fluid" width="100%">
                           </div>
       
-                        <div class="dish-info text-center">
+                        <div class="dish-info text-dark">
                           <p class="px-1 m-0 text-truncate">{{variation.Name}}</p>
                           <div>
                             <p *ngIf="variation.data.P1 && variation.P1 > 0" class="text-success mb-0 price">{{currency}}
@@ -831,10 +827,8 @@
       
                   <div class="piza-slide">
                     <div class="swiper-button-next">
-                      <i class="fa fa-chevron-right"></i>
                     </div>
                     <div class="swiper-button-prev">
-                      <i class="fa fa-chevron-left"></i>
                     </div>
                   </div>
                 </div>

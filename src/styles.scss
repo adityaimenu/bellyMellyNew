@@ -10,9 +10,9 @@
 @import "assets/css/variables";
 body {
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   color: $black;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   height: 200%;
   scroll-behavior: smooth;
@@ -25,6 +25,19 @@ body {
     outline: none;
   }
 }
+h6, .h6{
+  font-size: 1rem !important;
+  line-height: 1rem !important;
+}
+@media (max-width: 767px){
+  .nb-theme-corporate nb-layout-header nav{
+    height: 3.75rem;
+  }
+  .nb-theme-corporate nb-layout-header.fixed ~ .layout-container{
+    padding-top: 3.8rem;;
+  }
+}
+
 //.container{
 //  max-width: 1200px;
 //}
@@ -172,11 +185,11 @@ header {
 
 /****** Title Styling ******/
 .title {
-  h6{
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 15px;
-  }
+  // h6{
+  //   font-weight: 600;
+  //   text-transform: uppercase;
+  //   font-size: 15px;
+  // }
   p{
     margin-bottom: 0;
     color: $gray;
