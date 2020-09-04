@@ -165,11 +165,13 @@ export class LoginComponent implements OnInit {
     })
   }
   socialGoogleSignIn(val) {
+    console.log('1');
     this.socialType = val;
     let socialProvider;
     socialProvider = GoogleLoginProvider.PROVIDER_ID;
+    console.log('2');
     this.authService.signIn(socialProvider).then((user: SocialUser) => {
-
+      console.log('3');
       this.socialUser = user;
       const data = { tId: this.localStorage.get('BM_tId'), data: { isBMPortal: 1, customerfbdata: { fbemail: this.socialUser.email, FName: this.socialUser.firstName, LName: this.socialUser.lastName, FId: this.socialUser.id } } };
       this.localStorage.set('BM_SocialLoginBody', { status: true, google: true, body: data });

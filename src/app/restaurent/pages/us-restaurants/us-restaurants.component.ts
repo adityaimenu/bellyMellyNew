@@ -364,7 +364,7 @@ openFilters() {
 
 
 
-  FoodTypeF(val, id) {
+  FoodTypeF(val, id, val2?: any) {
     const data = _.find(this.FoodTypes, function(o) { return o.FoodTypeId == val; })
     const a = data.FoodTypeId
     console.log('hello', val);
@@ -381,6 +381,7 @@ openFilters() {
         if(element.FoodTypeId == a){
 
           element.status = true;
+          this.sortCategory(val2);
           document.getElementById('foodtype' + a).classList.add('selected');
           document.getElementById('foodtypem' + a).classList.add('selected');
         }
@@ -524,6 +525,17 @@ openFilters() {
       $('#filtermdl').modal('hide')
       $('.responsive-filter').removeClass('active')
     })
+  }
+
+
+  sortCategory(val) {
+
+    var first = val;
+    this.FoodTypes.sort(function(x,y){ return x == first ? -1 : y == first ? 1 : 0; });
+
+    console.log(this.FoodTypes);
+
+
   }
 
   clearFoodtype(val) {

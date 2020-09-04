@@ -85,7 +85,7 @@
           <div class="categories">
             <div class="swiper-wrapper">
               <div class="swiper-slide" *ngFor="let val of FoodTypes;let i=index;">
-                <div class="slide-item p-3 rounded-lg " [id]="'foodtype' + val.FoodTypeId" style="cursor: pointer"  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId); searchrRestaurantsBoth(servicetype)">
+                <div class="slide-item p-3 rounded-lg " [id]="'foodtype' + val.FoodTypeId" style="cursor: pointer"  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId, val); searchrRestaurantsBoth(servicetype); ">
                   <div class="item-img">
                     <figure>
                      <a > <img id="{{val.FoodTypeId}}w"   style="cursor: pointer" [src]="val.FoodTypeImg"> </a>
@@ -477,7 +477,7 @@
                             <div class="card-body p-0 text-left">
                               <div class="row no-gutters">
                                 <div  *ngFor="let val of FoodTypes;let i=index;"  class="col-xs-4 text-center mb-2 px-1">
-                                  <div  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId);"  [id]="'foodtypem' + val.FoodTypeId" class="slide-item w-100 p-3 rounded-lg ">
+                                  <div  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId, val);"  [id]="'foodtypem' + val.FoodTypeId" class="slide-item w-100 p-3 rounded-lg ">
                                     <div class="item-img">
                                       <figure class="text-center">
                                           <a > <img id="{{val.FoodTypeId}}m"   style="cursor: pointer" [src]="val.FoodTypeImg"> </a>
