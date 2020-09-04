@@ -860,6 +860,11 @@ export class CheckoutComponent implements OnInit {
 
     delete this.placeOrderBody.data.orderData.NGOName;
     delete this.placeOrderBody.data.orderData.donateValueWithPrcent;
+    if (this.SpecialInstructions) {
+      this.placeOrderBody.data.orderData.specialInstructions = this.SpecialInstructions
+    } else {
+      this.placeOrderBody.data.orderData.specialInstructions = "";
+    }
 
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {

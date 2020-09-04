@@ -237,6 +237,11 @@ export class PaymentComponent implements OnInit {
       })
       if(!this.placeOrderBody.data.orderData.DineInTableNum) return this.error('Please enter table number');
     }
+    if (this.SpecialInstructions) {
+      this.placeOrderBody.data.orderData.specialInstructions = this.SpecialInstructions
+    } else {
+      this.placeOrderBody.data.orderData.specialInstructions = "";
+    }
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {
       this.flags.isOrderPlaced = false;
