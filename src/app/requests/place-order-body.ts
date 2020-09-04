@@ -17,6 +17,7 @@ export class OrderDataDetail {
   Status: number;
   CustId: number;
   CreatedOn: string;
+  specialInstructions: any;
   PreTaxAmt: number;
   DiscountAmt: any = null;
   DiscountType: any = null;
