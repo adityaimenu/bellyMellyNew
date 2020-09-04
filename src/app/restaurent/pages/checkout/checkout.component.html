@@ -599,7 +599,7 @@
             <div class="row">
               <div *ngFor="let item of itemList; let i = index" class="col-sm-12 item-view"
               style="padding-bottom: 0 !important;">
-                <div class="added-item" fxLayout="row wrap" fxLayoutGap="10" fxLayoutAlign="start between">
+                <div class="added-item d-flex align-items-center" fxLayout="row wrap" fxLayoutGap="10" fxLayoutAlign="center between">
                   <div class="item-cart" fxFlex="50">
                     <p class="text-dark mb-0">{{item.Name}}</p>
                   </div>
@@ -776,7 +776,7 @@
         <div class="similar-items py-2">
           <div class="container">
             <div class="row">
-              <div class="similar-items col-md-12" *ngIf="locationDetails.likePrdoucts.length > 0">
+              <div class="col-md-12" *ngIf="locationDetails.likePrdoucts.length > 0">
                 <h6 class="mb-3">You may also like</h6>
                 <div class="swiper-container charity-swiperMobile">
                   <div class="swiper-wrapper">
@@ -794,32 +794,32 @@
                           </div>
       
                         <div class="dish-info text-dark">
-                          <p class="px-1 m-0 text-truncate">{{variation.Name}}</p>
-                          <div>
-                            <p *ngIf="variation.data.P1 && variation.P1 > 0" class="text-success mb-0 price">{{currency}}
-                              {{(variation.P1).toFixed(2)}}</p>
+                          <h6 class="my-1 text-truncate text-dark">{{variation.Name}}</h6>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <p *ngIf="variation.data.P1 && variation.P1 > 0" class="text-success mb-0 price">{{currency}}{{(variation.P1).toFixed(2)}}</p>
                             <p *ngIf="variation.data.P2 && (variation.P2 > 0 && (!variation.P1 || variation.P1 <= 0))"
-                              class="text-success mb-0 price">{{currency}} {{(variation.P2).toFixed(2)}}</p>
+                              class="text-success mb-0 price">{{currency}}{{(variation.P2).toFixed(2)}}</p>
                             <p *ngIf="variation.data.P3 && (variation.P3 > 0 && ((!variation.P1 || variation.P1 <= 0) && (!variation.P2 || variation.P2 <= 0)))"
-                              class="text-success mb-0 price">{{currency}} {{(variation.P3).toFixed(2)}}</p>
+                              class="text-success mb-0 price">{{currency}}{{(variation.P3).toFixed(2)}}</p>
                             <p *ngIf="variation.data.P4 && (variation.P4 > 0 && ((!variation.P1 || variation.P1 <= 0) && (!variation.P2 || variation.P2 <= 0) && (!variation.P3 || variation.P3 <= 0)))"
-                              class="text-success mb-0 price">{{currency}} {{(variation.P4).toFixed(2)}}</p>
+                              class="text-success mb-0 price">{{currency}}{{(variation.P4).toFixed(2)}}</p>
                             <p *ngIf="variation.data.P5 && (variation.P5 > 0 && ((!variation.P1 || variation.P1 <= 0) && (!variation.P2 || variation.P2 <= 0) && (!variation.P3 || variation.P3 <= 0) && (!variation.P4 || variation.P4 <= 0)))"
-                              class="text-success mb-0 price">{{currency}} {{(variation.P5).toFixed(2)}}</p>
+                              class="text-success mb-0 price">{{currency}}{{(variation.P5).toFixed(2)}}</p>
                             <p *ngIf="variation.data.P6 && (variation.P6 > 0 && ((!variation.P1 || variation.P1 <= 0) && (!variation.P2 || variation.P2 <= 0) && (!variation.P3 || variation.P3 <= 0) && (!variation.P4 || variation.P4 <= 0) && (!variation.P5 || variation.P5 <= 0)))"
-                              class="text-success mb-0 price">{{currency}} {{(variation.P6).toFixed(2)}}</p>
+                              class="text-success mb-0 price">{{currency}}{{(variation.P6).toFixed(2)}}</p>
+                            <button
+                              *ngIf="variation.AddOnList.length || (variation.data.P2 || variation.data.P3 || variation.data.P4 || variation.data.P5 || variation.data.P6)"
+                              class="add-item-btn" (click)="openAddOnPopup(variation, variation.data)">
+                              add item
+                            </button>
+                            <button
+                              *ngIf="!variation.AddOnList.length && !variation.data.P2 && !variation.data.P3 && !variation.data.P4 && !variation.data.P5 && !variation.data.P6"
+                              class="btn btn-block btn-site rounded-0 swipbtn"
+                              (click)="addVariationToCart(variation, variation.data)">
+                              add item
+                            </button>
                           </div>
-                          <button
-                            *ngIf="variation.AddOnList.length || (variation.data.P2 || variation.data.P3 || variation.data.P4 || variation.data.P5 || variation.data.P6)"
-                            class="btn btn-block btn-site rounded-0 swipbtn" (click)="openAddOnPopup(variation, variation.data)">
-                            add item
-                          </button>
-                          <button
-                            *ngIf="!variation.AddOnList.length && !variation.data.P2 && !variation.data.P3 && !variation.data.P4 && !variation.data.P5 && !variation.data.P6"
-                            class="btn btn-block btn-site rounded-0 swipbtn"
-                            (click)="addVariationToCart(variation, variation.data)">
-                            add item
-                          </button>
+                          
                         </div>
                       </div>
                     </div>
@@ -836,10 +836,10 @@
             </div>
           </div>
         </div>
-        <div class="give-tip">
+        <div class="give-tip" *ngIf="placeOrderBody.data.orderData.ServiceId == 2 || placeOrderBody.data.orderData.ServiceId == 5">
           <div class="container">
             <div class="row">
-              <div class="add-tip col-md-12" *ngIf="placeOrderBody.data.orderData.ServiceId == 2 || placeOrderBody.data.orderData.ServiceId == 5">
+              <div class="add-tip col-md-12" >
                 <div class="title">
                   <h6 class="m-0" >Add The Tip</h6>
         
@@ -877,11 +877,11 @@
             </div>
           </div>
         </div>
-        <div class="apply-coupon">
-          <div class="container">
+        <div class="apply-coupon"  *ngIf="!flags.isPromoApplied" >
+          <div class="container" *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)">
             <div class="row">
-              <div  *ngIf="!flags.isPromoApplied"  class="w-100">
-              <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)"  class="coupon" role="button" data-toggle="modal" data-target="#coupon">
+              <div   class="w-100">
+              <div   class="coupon" role="button" data-toggle="modal" data-target="#coupon">
                 <div fxLayout fxLayoutAlign="space-between center" fxFlex>
                   <span *ngIf="country.toUpperCase()  == 'AU' || country.toUpperCase()  == 'US' || country.toUpperCase()  == 'IN'">
                     <nb-icon icon="gift-outline" class="mr-3"></nb-icon>
@@ -970,22 +970,23 @@
           <div class="row">
             <div class=" col-md-12">
               <div class="">
-                <p *ngIf="placeOrderBody.data.orderData.ServiceId != 5"><i class="material-icons text-success">
-                    near_me
-                  </i>
-                  <!-- {{placeOrderBody.data.orderData.ServiceId==2?'Delivering food to':'Pickup food from'}} -->
-                  <span *ngIf="placeOrderBody.data.orderData.ServiceId == 1">Pickup food from</span>
-                  <span *ngIf="placeOrderBody.data.orderData.ServiceId == 2">Delivering food to</span>
-                  <span *ngIf="placeOrderBody.data.orderData.ServiceId == 3">Curbside</span>
-                  <!-- <span *ngIf="placeOrderBody.data.orderData.ServiceId == 5">Dine In</span> -->
-                </p>
+                <div class="d-flex align-items-center">
+                  <h6 *ngIf="placeOrderBody.data.orderData.ServiceId != 5" class="d-flex mr-2 mb-0"><i class="material-icons text-success">
+                    location_on
+                    </i>
+                    <!-- {{placeOrderBody.data.orderData.ServiceId==2?'Delivering food to':'Pickup food from'}} -->
+                    <span *ngIf="placeOrderBody.data.orderData.ServiceId == 1">Pickup food from</span>
+                    <span *ngIf="placeOrderBody.data.orderData.ServiceId == 2">Delivering food to</span>
+                    <span *ngIf="placeOrderBody.data.orderData.ServiceId == 3">Curbside</span>
+                    
+                    <!-- <span *ngIf="placeOrderBody.data.orderData.ServiceId == 5">Dine In</span> -->
+                  </h6>
+                  <a href="#"><small>(Change Address)</small></a>
+                </div>
                 <div fxLayout="row" fxLayoutAlign="space-between start">
-                  <div class="d-flex align-items-start" *ngIf="placeOrderBody.data.orderData.ServiceId == 1">
-                    <span class="mr-1 text-orange">
-                      <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
-                    </span>
+                  <p class="d-flex align-items-start mb-0" *ngIf="placeOrderBody.data.orderData.ServiceId == 1">
                     {{locationDetails.Address.AddressLine1}}, {{locationDetails.Address.City}}
-                  </div>
+                  </p>
                   <div class="d-flex align-items-start" *ngIf="placeOrderBody.data.orderData.ServiceId == 2">
                     <span *ngIf="selectedAddress && selectedAddress.Addr1" class="mr-1 text-orange">
                       <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
@@ -1047,7 +1048,7 @@
               <div class="item">
                 <div class="section-title">
                   <div class="head container">
-                    <div class="row mb-3 donatehead-row align-items-center">
+                    <div class="row mb-2 donatehead-row align-items-center">
 
                       <div class="col-sm-12 title1">
                         <div class="openmobiledonation">
@@ -1055,17 +1056,17 @@
                         </div>
 
                         <h6 class="mb-0">Choose Your Organization:</h6>
-                      
+                        <p class="mb-0 cost">It Cost you Nothing</p>
                       </div>
-                      <div class="col-sm-12 col-xs-12 mt-1  d-flex align-items-center" style="justify-content: space-between;">
+                      <!-- <div class="col-sm-12 col-xs-12 mt-1  d-flex align-items-center" style="justify-content: space-between;">
 
-                          <p class="mb-0 cost">It Cost you Nothing</p>
+                          
                         <input type="text" class="mobsearch" name="searchM" [(ngModel)]="queryStringM"
                           placeholder="Enter Organzations Code" (click)="openmobiledonate()"
                           (keyup)="queryStringF($event.target.value)">
 
 
-                      </div>
+                      </div> -->
 
                       <div class="col-sm-12 mt-1">
                         <p class="my-2 congo" *ngIf="placeOrderBody.data.orderData.DonateCode">Thank you for choosing <b
@@ -1112,28 +1113,36 @@
                 <div class="title">
                   <h6>Add Payment Method</h6>
                 </div>
-              <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true" > <input  type="radio" name="paymentRadio" class="unchekRadioPayment mb-2 creditMobileClick" (click)="onSelectCcPayment()" > <span (click)="creditMobile()"> Debit/Credit Card </span></span> 
+
+                <ul class="list-unstyled payment-option">
+                  <li class="py-2 border-bottom">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="left d-flex align-items-center">
+                        <div class="icon">
+                          <span class="mr-2"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
+                        </div>
+                        Debit/Credit Card
+                      </div>
+                      <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                  </li>
+                  <li class="py-2">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="left d-flex align-items-center">
+                        <div class="icon">
+                          <span class="mr-2"><i class="fa fa-money" aria-hidden="true"></i></span>
+                        </div>
+                        Cash
+                      </div>
+                      <!-- <span><i class="fa fa-angle-right" aria-hidden="true"></i></span> -->
+                    </div>
+                  </li>
+                </ul>
+              <!-- <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true" > <input  type="radio" name="paymentRadio" class="unchekRadioPayment mb-2 creditMobileClick" (click)="onSelectCcPayment()" > <span (click)="creditMobile()"> Debit/Credit Card </span></span> 
               <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'US' && PaymentTypes == true" >   <input  type="radio" name="paymentRadio" class="unchekRadioPayment mb-2 creditMobileClick" (click)="onSelectCcPayment()" > <span (click)="creditMobile()"> Debit/Credit Card </span></span>
                 <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'">   <input  type="radio" name="paymentRadio" class="unchekRadioPayment" (click)="placeOrderBody.data.orderData.PaymentTypeId = 4"> PAYTM</span>
-                  <span class="col-md-12 d-block" *ngIf="PaymentTypesCOD == true" >   <input  type="radio" name="paymentRadio" class="unchekRadioPayment cashMobileClick" (click)="onSelectCODPayment()" ><span (click)="cashMobile()"> Cash</span>  </span>
+                  <span class="col-md-12 d-block" *ngIf="PaymentTypesCOD == true" >   <input  type="radio" name="paymentRadio" class="unchekRadioPayment cashMobileClick" (click)="onSelectCODPayment()" ><span (click)="cashMobile()"> Cash</span>  </span> -->
 
-                <!-- <nb-radio-group>
-                  <nb-radio *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true"
-                    [checked]="placeOrderBody.data.orderData.PaymentTypeId == 4" class="unchekRadioPayment" (click)="onSelectCcPayment()">Debit
-                    Card/Credit Card</nb-radio>
-                
-
-                  <nb-radio *ngIf="country.toUpperCase()  == 'US'  && PaymentTypes == true"
-                    [checked]="placeOrderBody.data.orderData.PaymentTypeId == 4" class="unchekRadioPayment"  (click)="onSelectCcPayment()">Debit
-                    Card/Credit Card</nb-radio>
-                  <nb-radio *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'"
-                    [checked]="placeOrderBody.data.orderData.PaymentTypeId == 4" class="unchekRadioPayment" 
-                    (click)="placeOrderBody.data.orderData.PaymentTypeId = 4">PAYTM</nb-radio>
-
-                  <nb-radio *ngIf="PaymentTypesCOD == true" [checked]="placeOrderBody.data.orderData.PaymentTypeId == 3"
-                    (click)="onSelectCODPayment()">Cash
-                  </nb-radio>
-                </nb-radio-group> -->
                 <div class="separator"></div>
                 <div class="submit-order" fxLayout="row" fxLayoutAlign="space-between center">
                   <div class="left">
