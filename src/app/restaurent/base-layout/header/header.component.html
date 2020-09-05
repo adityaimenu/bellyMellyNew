@@ -6,12 +6,22 @@
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <span fxLayout fxLayoutAlign="start center" fxLayoutGap="10px">
               <nb-icon icon="arrow-back-outline" fxHide.lg="" (click)="history.back()"></nb-icon>
-              <a class="navbar-brand" href="{{host}}">
-                <!-- <img *ngIf="country == 'au'" src="assets/img/logoAU.png" height="28px" alt="Logo" class="brand-logo" > -->
-                <img  src="assets/images/logo.png" alt="Logo" class="brand-logo" >
-                <img *ngIf="logoImage" src="{{logoImage}}" alt="Restaurant Logo" height="60px" class="restaurant-logo" >
-                <img *ngIf="!logoImage" src="assets/images/restaurent-logo.png" alt="Restaurant Logo" height="28px" class="restaurant-logo" >
-              </a>
+              <div fxHide.xs>
+                <a class="navbar-brand hide-xs" href="{{host}}">
+                  <img *ngIf="country == 'au'" src="assets/img/logoAU.png" height="28px" alt="Logo" class="brand-logo" >
+                  <img  src="assets/images/logo.png" alt="Logo" class="brand-logo" >
+                  <img *ngIf="logoImage" src="{{logoImage}}" alt="Restaurant Logo" height="60px" class="restaurant-logo" >
+                  <img *ngIf="!logoImage" src="assets/images/restaurent-logo.png" alt="Restaurant Logo" height="28px" class="restaurant-logo" >
+                </a>
+              </div>
+              <div class="show-xs">
+                <div class="d-flex align-item-center ">
+                  <div>
+                    <h6 class="mb-0">Funny Cow Fast Food</h6>
+                  <small class="text-secondary">Chinese Restaurant</small>
+                  </div>
+                </div>
+              </div>
             </span>
             <span *ngIf="currentAddr" fxHide.xs>
               <small class="text-gray">Your Current Location</small>
@@ -28,7 +38,7 @@
           <div class="Login-user">
             <div *ngIf="isLogin" class="dropdown">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span><img src="assets/images/default-user.jpg" class="user-pic" width="18px" alt="user-pic"></span><aside class="mt-1 ml-1">Hi <b class="usermob">{{user.FName}}</b></aside> 
+                <span><img src="assets/images/default-user.jpg" class="user-pic" width="18px" alt="user-pic"></span><aside class="mt-1 ml-1">Hi {{user.FName}}</aside> 
               </button>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="javascript:void(0);" routerLink="/{{mobUrl}}/profile"><span><nb-icon icon="person-outline"></nb-icon></span> Profile</a> 

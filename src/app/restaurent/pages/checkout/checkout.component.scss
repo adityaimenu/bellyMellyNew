@@ -368,6 +368,7 @@
       }
     }
     .mobile-view{
+      font-size: 13px;
       font-weight: 500;
       .brand-info{
         p{
@@ -377,10 +378,6 @@
       }
 
       .item-view{
-        p{
-          font-size: 11px;
-          font-weight: 500;
-        }
         .added-item{
           .left{
             span{
@@ -388,7 +385,6 @@
               &.badge-outline-warning{
                 border: 1px solid #F9CC5D;
                 color: $gray;
-                font-size: 11px;
                 padding: 6px 10px;
                 border-radius: 14px;
               }
@@ -447,7 +443,6 @@
               cursor: pointer;
               width: 100%;
               text-align: center;
-              font-size: 12px;
               padding: 0px 8px;
               &::before {
                 display: inline-block;
@@ -457,7 +452,6 @@
                 -webkit-font-smoothing: antialiased;
                 font-family: "FontAwesome";
                 font-weight: 900;
-                font-size: 11px;
                 padding: 2px 4px 2px 1px;
                 content: "\f067";
                 transition: transform .3s ease-in-out;
@@ -551,7 +545,6 @@
             p{
               margin-bottom: 0;
               color: $gray;
-              font-size: 12px;
             }
             // &:nth-child(6){
             //   border-top: 1px solid $border-color;
@@ -569,8 +562,6 @@
               padding-top: 10px;
               p{
                 color: $dark-black;
-                font-weight: 600;
-                font-size: 1rem;
               }
             }
           }
@@ -581,7 +572,6 @@
           button{
             height: auto;
             width: auto;
-            font-size: 12px;
             background: #f03f37;
             border: none;
             box-shadow: 0px 5px 23px rgba(0, 0, 0, 0.25);
@@ -623,7 +613,6 @@
   border: 1px solid #f03f37;
   color: #f03f37;
   min-height: 1px;
-  font-size: 11px;
 }
 .added-items{
   border-bottom: 1px solid #efebeb;
@@ -639,7 +628,6 @@
 }
 .title-description{
   p{
-    font-size: 12px;
     font-weight: 600;
   }
 }
@@ -695,7 +683,6 @@ button:disabled, button:disabled:hover {
   background: #e1e1e1;
   border: 0;
   height: 37px;
-  font-size: 13px;
   padding: 10px;
   min-width: 177px;
   display: none;
@@ -715,7 +702,6 @@ button:disabled, button:disabled:hover {
     height: 37px;
     width: 114px;
     text-align: center;
-    font-size: 13px;
 }
 .submit-btn{
   background: #f03f37;
@@ -734,16 +720,14 @@ button:disabled, button:disabled:hover {
   display: block;
 }
 .code p{
-  padding: 8px 9px;
-  border: 1px dashed #f03f37;
+    padding: 8px 9px;
+    border: 1px dashed #f03f37;
     text-align: center;
     color: #f03f37 !important;
-    font-size: 13px;
     font-weight: 600;
     margin-bottom: 0
 }
 .code1 p{
-  font-size: 13px;
   color: #f03f37 !important;
   font-weight: 600;
   margin-bottom: 0;
@@ -769,7 +753,6 @@ button:disabled, button:disabled:hover {
   text-align: center;
   border-radius: 0;
   color: white;
-  font-size: 14px;
   font-weight: 600;
   margin: 0;
   padding: 11px;
@@ -839,8 +822,8 @@ button:disabled, button:disabled:hover {
   }
   
   .title1 h6{
-    font-weight: 600 !important;
-    text-transform: uppercase;
+    // font-weight: 600 !important;
+    // text-transform: uppercase;
     font-size: 15px;
   }
   .mobile-view{
@@ -850,7 +833,6 @@ button:disabled, button:disabled:hover {
       text-align: center;
       border-radius: 0;
       color: white;
-      font-size: 14px;
       font-weight: 600;
       margin: 0;
       padding: 11px;
@@ -868,7 +850,6 @@ button:disabled, button:disabled:hover {
     max-height: 140px;
   }
   .mobile-view  .code1 p{
-    font-size: 12px;
     color: #f03f37 !important;
     font-weight: 600;
     margin-bottom: 0;
@@ -885,7 +866,7 @@ button:disabled, button:disabled:hover {
       background: #e1e1e1;
     border: 0;
     height: 37px;
-    font-size: 13px;
+
   }
   @media (max-width:575px){
  
@@ -914,7 +895,7 @@ button:disabled, button:disabled:hover {
   }
   .mobile-view .skip{
     color: #595959;
-    font-size: 13px;
+    
     border: 1px solid;
     padding: 2px 13px;
     border-radius: 20px;
@@ -935,7 +916,7 @@ button:disabled, button:disabled:hover {
     text-align: center;
     border-radius: 0;
     color: white;
-    font-size: 12px;
+    
     font-weight: 600;
     margin: 0;
     padding: 11px;
@@ -943,7 +924,7 @@ button:disabled, button:disabled:hover {
 }
 .mobile-view .skip{
   color: #595959;
-  font-size: 12px;
+  
   border: 1px solid;
   padding: 2px 13px;
   border-radius: 20px;
@@ -956,13 +937,11 @@ button:disabled, button:disabled:hover {
   margin-bottom: 5px;
 }
 .web-donate .ngo-name{
-  font-size: 13px;
   line-height: 1.4;
   min-height: 40px;
   font-weight: 600;
 }
 .mobile-donation .ngo-name{
-  font-size: 12px;
   line-height: 1.4;
   margin-bottom: 11px;
   min-height: 30px;
@@ -1548,7 +1527,7 @@ overflow: auto;
     }
     .asap{
       font-weight: 500;
-      font-size: 13px;
+      font-size: 12px;
     }
     .dlvrytym{
       font-size: 15px;
@@ -1661,15 +1640,7 @@ overflow: auto;
 .crdform{
   margin-bottom: 11px !important;
 }
-.mobile-view{
-  .title{
-    h6{
-      font-size: 13px;
-      font-weight: 800;
-      line-height: normal;  
-    }
-  }
-}
+
 
 @media (max-width: 767px){
   .restaurant-info,
@@ -1681,12 +1652,13 @@ overflow: auto;
   .delivery-address,
   .table-book,
   .choose-organization,
-  .payment-method{
+  .payment-method,
+  .similar-items{
     background: #fff;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
   .similar-items{
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
   .suggestion-box, .table-book{
     textarea, .form-control{
@@ -1704,4 +1676,35 @@ overflow: auto;
       position: relative;
     }
   }
+}
+
+.swiper-button-prev:after, .swiper-button-next:after{
+    font-size: 13px;
+    color: #fff;
+}
+.add-item-btn{
+    border: 1px solid #d4d5d9;
+    background: transparent;
+    width: 85px;
+    height: 28px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.payment-option{
+    li{
+        &.active{
+            background: #27a745;
+            color: #fff;
+            padding-left: 10px;
+        }
+    }
+}
+
+@media (max-width: 767px){
+    p {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+    }
 }
