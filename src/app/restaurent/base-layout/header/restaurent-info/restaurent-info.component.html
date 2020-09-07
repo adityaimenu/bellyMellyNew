@@ -74,13 +74,13 @@
     </div> -->
     <div class="brandinfo">
       <div class="top-details" fxFlex="row" fxLayoutAlign="start start" fxLayoutGap="15px">
-        <div class="brand" *ngIf="country == 'us'">
+        <!--<div class="brand" *ngIf="country == 'us'">
 
           <img *ngIf="locationDetails && locationDetails.LogoImg" src="{{imageUrl}}{{locationDetails.LogoImg}}"
             alt="Brand Logo" width="80px">
           <img *ngIf="locationDetails && !locationDetails.LogoImg" src="assets/images/defaultRest.png" alt="Brand Logo"
             width="80px">
-        </div>
+        </div>-->
         <div class="brand" *ngIf="country == 'au'">
 
           <img *ngIf="locationDetails && locationDetails.LogoImg" src="{{imageUrl}}{{locationDetails.LogoImg}}"
@@ -88,7 +88,7 @@
           <img *ngIf="locationDetails && !locationDetails.LogoImg" src="assets/img/imageAU.png" alt="Brand Logo"
             width="80px">
         </div>
-        <div class="brand-detail">
+        <!--<div class="brand-detail">
           <h6  class="m-0 text-purple">{{locationDetails?locationDetails.Name:''}} 
             <span *ngIf="locationDetails.Rating > 0" class="badge badge-warning">{{locationDetails?locationDetails.Rating?locationDetails.Rating:'0':'0'}} <i
                 class="fa fa-star"></i></span></h6>
@@ -102,7 +102,7 @@
           <p class="m-0">
             <small *ngIf="locationDetails">{{locationDetails.Cuisines}}</small>
           </p>
-        </div>
+        </div>-->
       </div>
       <div class="btm-details" >
         <ul class="m-0 p-0 row" fxFlex="row" fxLayoutAlign="center center">

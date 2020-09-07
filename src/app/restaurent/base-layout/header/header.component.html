@@ -6,22 +6,26 @@
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <span fxLayout fxLayoutAlign="start center" fxLayoutGap="10px">
               <nb-icon icon="arrow-back-outline" fxHide.lg="" (click)="history.back()"></nb-icon>
-              <div >
+             <!-- <div >
                 <a class="navbar-brand " href="{{host}}">
                   <img *ngIf="country == 'au'" src="assets/img/logoAU.png" height="28px" alt="Logo" class="brand-logo" >
                   <img  src="assets/images/logo.png" alt="Logo" class="brand-logo" >
                   <img *ngIf="logoImage" src="{{logoImage}}" alt="Restaurant Logo" height="60px" class="restaurant-logo" >
                   <img *ngIf="!logoImage" src="assets/images/restaurent-logo.png" alt="Restaurant Logo" height="28px" class="restaurant-logo" >
                 </a>
-              </div>
-             <!-- <div class="show-xs">
+              </div>-->
+              <div class="show-xs">
                 <div class="d-flex align-item-center ">
                   <div>
-                    <h6 class="mb-0">Funny Cow Fast Food</h6>
-                  <small class="text-secondary">Chinese Restaurant</small>
+                    <h6 class="mb-0">{{locationDetails?locationDetails.Name:''}}</h6>
+                 <!--<span class="web-icon"><i class="fa fa-clock-o mr-1 text-white"
+                                           aria-hidden="true"></i>Open Time
+                </span>-->
+                   <span style="font-size: 14px;" *ngIf="locationDetails && locationDetails.Menus.length && !openCloseTime" [innerHTML]="locationDetails.OpenCloseTime" class="web-icon"></span>
+                   <span style="font-size: 14px;" *ngIf="locationDetails && locationDetails.Menus.length && openCloseTime" class="web-icon">{{openCloseTime}}</span>
                   </div>
                 </div>
-              </div>-->
+              </div>
             </span>
             <span *ngIf="currentAddr" fxHide.xs>
               <small class="text-gray">Your Current Location</small>

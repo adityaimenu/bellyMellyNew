@@ -222,6 +222,7 @@ export class ModalComponent implements OnInit {
     });
   }
   onSelectAddOn(item, option, flag) {
+    console.log(item);
  
     if (!this.prices.p1 && !this.prices.p2 && !this.prices.p3 && !this.prices.p4 && !this.prices.p5 && !this.prices.p6) return this.error('Please select a size first.');
     for (const key in this.prices) {
@@ -241,7 +242,7 @@ export class ModalComponent implements OnInit {
           this.flags.validateArray.push(item.ItemAddOnId);
         }
       }
-      let modifierOne = null, modifierTwo = null;
+      let modifierOne: any = null, modifierTwo:any = null;
       if (item.AddOnOptionModifier1 && item.AddOnOptionModifier1.Id == 10) modifierOne = item.AddOnOptionModifier1;
       else modifierTwo = item.AddOnOptionModifier1;
       if (item.AddOnOptionModifier2 && item.AddOnOptionModifier2.Id == 11) modifierTwo = item.AddOnOptionModifier2;
@@ -288,6 +289,7 @@ export class ModalComponent implements OnInit {
           ]
         });
       }
+      this.onChangeModifier(item, option, item.AddOnOptionModifier1.Label1, item.AddOnOptionModifier1.Id, item.AddOnOptionModifier1.Factor1, item.AddOnOptionModifier1.Id == 10?'true':'false');
     }
      else {
       option.isSelected = false;
@@ -322,7 +324,9 @@ export class ModalComponent implements OnInit {
     }
   }
   onChangeModifier(item, option, label, id, factor, type) {
+    console.log('hello');
     const index = _.findIndex(this.addOnItemList, { ItemAddOnId: item.ItemAddOnId });
+    console.log(index);
     if (type) {
       if (index > -1) {
         const optionIndex = _.findIndex(this.addOnItemList[index].AddOnOptions, { Id: option.Id });

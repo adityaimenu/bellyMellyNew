@@ -219,7 +219,9 @@ this.options= {
 
 
   error = (message: string) => {
-    this.toaster.errorToastr(message);
+    this.toaster.errorToastr(message, 'Error', {
+      maxShown: 1
+    });
   }
 
 }

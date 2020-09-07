@@ -564,7 +564,7 @@
          <div class="restaurant-info">
           <div class="container">
             <div class="row">
-              <div class="col-sm-12" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+             <!-- <div class="col-sm-12" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
                 <figure class="mb-0">
                   <img *ngIf="locationDetails && locationDetails.LogoImg" src="{{imageUrl}}{{locationDetails.LogoImg}}"
                     alt="Brand Logo" width="80px">
@@ -584,7 +584,7 @@
                     <small *ngIf="locationDetails">{{locationDetails.Cuisines}}</small>
                   </p>
                 </div>
-              </div>
+              </div>-->
 
               <div *ngIf="!itemList.length" class="added-items py-4">
                 <div class="text-center">
@@ -841,7 +841,8 @@
             <div class="row">
               <div class="add-tip col-md-12" >
                 <div class="title">
-                  <h6 class="m-0" >Add The Tip</h6>
+                  <h6 class="m-0" *ngIf="placeOrderBody.data.orderData.ServiceId == 2" >Add A Tip For Your Rider</h6>
+                  <h6 class="m-0" *ngIf="placeOrderBody.data.orderData.ServiceId == 2">Add A Tip For Your Server </h6>
         
                   <ul class="ks-cboxtags mb-0">
         
@@ -991,7 +992,7 @@
                     <span *ngIf="selectedAddress && selectedAddress.Addr1" class="mr-1 text-orange">
                       <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
                     </span>
-                    {{selectedAddress?selectedAddress.Addr1?selectedAddress.Addr1:'No address selected.':'No address selected.'}}
+                    {{selectedAddress?selectedAddress.Addr1?selectedAddress.Addr1:'No Address Selected.':'No Address Selected.'}}
                   </div>
                   <!--<span *ngIf="placeOrderBody.data.orderData.ServiceId == 2">
                     <a href="javascript:void(0);" class="text-orange" data-toggle="modal"
@@ -1161,7 +1162,7 @@
                     </div>
                   </li>
                 </ul>
-              <!-- <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true" > <input  type="radio" name="paymentRadio" class="unchekRadioPayment mb-2 creditMobileClick" (click)="onSelectCcPayment()" > <span (click)="creditMobile()"> Debit/Credit Card </span></span> 
+              <!-- <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true" > <input  type="radio" name="paymentRadio" class="unchekRadioPayment mb-2 creditMobileClick" (click)="onSelectCcPayment()" > <span (click)="creditMobile()"> Debit/Credit Card </span></span>
               <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'US' && PaymentTypes == true" >   <input  type="radio" name="paymentRadio" class="unchekRadioPayment mb-2 creditMobileClick" (click)="onSelectCcPayment()" > <span (click)="creditMobile()"> Debit/Credit Card </span></span>
                 <span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'">   <input  type="radio" name="paymentRadio" class="unchekRadioPayment" (click)="placeOrderBody.data.orderData.PaymentTypeId = 4"> PAYTM</span>
                   <span class="col-md-12 d-block" *ngIf="PaymentTypesCOD == true" >   <input  type="radio" name="paymentRadio" class="unchekRadioPayment cashMobileClick" (click)="onSelectCODPayment()" ><span (click)="cashMobile()"> Cash</span>  </span> -->

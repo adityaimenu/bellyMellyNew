@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   mobUrl: any;
   locationDetails: any;
   logoImage: string;
+  openCloseTime: any;
   imageUrl: string;
   country: string;
   mobUrlNew: string;
@@ -61,9 +62,22 @@ export class HeaderComponent implements OnInit {
     js.sideNav();
     this.observable.getLocationDetails().subscribe((response: any) => {
       this.locationDetails = response;
+      if (this.locationDetails && this.locationDetails.Address) {
+        localStorage.setItem('locDetail', JSON.stringify(this.locationDetails));
+      }
+      console.log(this.locationDetails);
       if (this.locationDetails && this.locationDetails.LogoImg) this.logoImage = this.imageUrl + this.locationDetails.LogoImg;
       else this.logoImage = 'assets/images/defaultRest.png';
     });
+    if (this.locationDetails && this.locationDetails.Address) {
+      console.log(this.locationDetails);
+      this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails)
+    } else {
+      console.log('hello');
+      this.locationDetails = JSON.parse(localStorage.getItem('locDetail'));
+      this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails);
+      console.log(this.openCloseTime);
+    }
     this.activatedRoute.params.subscribe((param: any) => {
 
       this.mobUrl = window.location.pathname.replace('/', '').split('/')[1]; //Without hashing
