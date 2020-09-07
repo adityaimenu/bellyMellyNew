@@ -6,8 +6,16 @@
   </nb-layout-header>
   <nb-layout-column class="p-0 bg-white">
     <router-outlet></router-outlet>
-    <div class="card">
+    <div class="card app-open-option">
       <style>
+        .app-open-option{
+          display: none;
+        }
+        @media (max-width: 480px){
+          .app-open-option{
+            display: block;
+          }
+        }
         .btn.btn-rounded {
           min-width: 100px;
           border-radius: 100px;
