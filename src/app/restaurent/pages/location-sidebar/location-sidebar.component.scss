@@ -5,7 +5,7 @@
     margin: auto;
     width: 400px;
     height: 100%;
-    background: #030e1b;
+    background: $white;
     border-radius: 0;
     -webkit-transform: translate3d(0%, 0, 0);
     -ms-transform: translate3d(0%, 0, 0);
@@ -19,9 +19,15 @@
       overflow-y: auto;
       overflow-x: hidden;
       background: transparent;
+      border: none;
+      border-right: 1px solid #dee2e6!important;
+      border-radius: 0;
       .modal-header{
         border: none;
         padding: 0;
+        .close{
+          margin: 0;
+        }
       }
       .modal-body{
         padding: 0;
@@ -43,70 +49,39 @@
       left: 0;
     }
   }
-  .dismiss{
-    font-size: 42px;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
+  
   .form-group{
     .form-control{
       background: transparent;
       border-radius: 0;
-      font-size: 12px;
       min-height: 50px;
-      font-weight: 500;
-      color: #fff;
-      &::placeholder{
-        color: #fff;
-      }
     }
   }
   .current-location{
-    border: 1px solid $white;
-    padding: .5rem;
-    i{
-      font-size: 24px;
-      color: rgba($white, .5);
-    }
-    h6{
-      color: $white;
-    }
+    border: 1px solid #ced4da;
+    padding: 12px 10px;
     p{
-      color: rgba($white, .5);
-      font-size: 13px;
-      font-weight: 400;
       margin-bottom: 0;
     }
   }
-  .title{
-    h6{
-      color: rgba($white, .5);
-      font-size: 13px;
-      font-weight: 500;
-    }
-  }
+  
   ul{
     list-style: none;
-    color: $white;
+    color: $black;
     padding: 0;
     li{
       margin-bottom: 10px;
-      border-bottom: 1px solid $border-color;
-      &:last-child{
-        border-bottom: none;
-      }
+      border: 1px solid #ced4da;
+      padding: 10px;
       .have-details{
-        //border: 1px solid $border-color;
-        //padding: 1rem;
-        margin-bottom: 10px;
         flex: 1;
         transition: all ease-in-out .3s;
 
         span{
-          color: $white;
+          color: $black;
           h6{
             a{
-              color: $white;
+              color: $black;
               font-weight: 400;
             }
           }
@@ -147,22 +122,13 @@
             }
           }
         }
-        span{
-          h6{
-            font-size: .9rem;
-          }
-        }
+        
         nb-icon{
           font-size: 28px;
         }
         p{
           margin-bottom: 0;
           color: $gray;
-          font-size: 12px;
-          .heading{
-            font-weight: 600;
-            font-size: 1rem;
-          }
         }
       }
     }

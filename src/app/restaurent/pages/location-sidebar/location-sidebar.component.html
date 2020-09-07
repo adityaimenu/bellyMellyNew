@@ -1,9 +1,9 @@
 <!-- Modal -->
-<div class="modal left fade" id="changelocation" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal left fade" id="changelocation" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="changelocation">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" id="closeSideLocationModal" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close pb-0" id="closeSideLocationModal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="dismiss">
             <i class="material-icons">
               close
@@ -15,7 +15,7 @@
         <div class="col-sm-12 py-3">
           <div class="form-group">
 
-            <input ngx-google-places-autocomplete class="form-control shadow-sm" [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
+            <input ngx-google-places-autocomplete class="form-control" [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
           </div>
           <div class="current-location mb-4">
             <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
@@ -32,7 +32,6 @@
           </div>
           <div class="title">
             <h6>Saved Address</h6>
-            <hr style="background: #fff;">
           </div>
           <ul class="saved-addresses">
             <li *ngFor="let item of addressList; let i = index" (click)="changeYourLoc(item)">
@@ -56,7 +55,6 @@
                   <p>{{item.Addr}}</p>
                 </span>
               </div>
-              <hr>
             </li>
        
           </ul>
@@ -66,7 +64,7 @@
   </div><!-- modal-dialog -->
 </div><!-- modal -->
 <!-- Modal -->
-<div class="modal left fade" id="mobilechangelocation" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal left fade" id="mobilechangelocation" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
