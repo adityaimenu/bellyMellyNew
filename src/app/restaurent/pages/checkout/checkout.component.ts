@@ -1661,7 +1661,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   error = (message: string) => {
-    this.toaster.errorToastr(message);
+    this.toaster.errorToastr(message, '', {
+      maxShown: 1,
+      preventDuplicates: true
+    });
   }
 
   success = (message: string) => {

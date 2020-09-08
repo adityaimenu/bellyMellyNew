@@ -6,14 +6,14 @@
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <span fxLayout fxLayoutAlign="start center" fxLayoutGap="10px">
               <nb-icon icon="arrow-back-outline" fxHide.lg="" (click)="history.back()"></nb-icon>
-             <!-- <div >
+              <div fxHide.sm fxHide.xs>
                 <a class="navbar-brand " href="{{host}}">
                   <img *ngIf="country == 'au'" src="assets/img/logoAU.png" height="28px" alt="Logo" class="brand-logo" >
                   <img  src="assets/images/logo.png" alt="Logo" class="brand-logo" >
                   <img *ngIf="logoImage" src="{{logoImage}}" alt="Restaurant Logo" height="60px" class="restaurant-logo" >
                   <img *ngIf="!logoImage" src="assets/images/restaurent-logo.png" alt="Restaurant Logo" height="28px" class="restaurant-logo" >
                 </a>
-              </div>-->
+              </div>
               <div class="show-xs">
                 <div class="d-flex align-item-center ">
                   <div>
@@ -27,15 +27,15 @@
                 </div>
               </div>
             </span>
-          <!--  <span *ngIf="currentAddr" >
+            <span *ngIf="currentAddr" fxHide.sm fxHide.xs>
               <small class="text-gray">Your Current Location</small>
               <div fxLayout="row" fxLayoutAlign="start center">
                 <div class="address">
                   <a class="" href="javascript:void(0)" data-toggle="tooltip" data-html="true" title="{{currentAddr}}">{{currentAddr}}</a>
                 </div>
-                <span class="ml-2"><a href="javascript:void(0);" data-toggle="modal" data-target="#changelocation"> (Change)</a></span>
+                <span class="ml-2"><a href="javascript:void(0);" data-toggle="modal" data-target="#changelocation" style="color: #0f6674"> (Change)</a></span>
               </div>
-            </span>-->
+            </span>
           </div>
         </div>
         <div class="right">

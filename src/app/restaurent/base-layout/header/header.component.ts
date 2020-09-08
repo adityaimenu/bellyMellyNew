@@ -64,6 +64,7 @@ export class HeaderComponent implements OnInit {
       this.locationDetails = response;
       if (this.locationDetails && this.locationDetails.Address) {
         localStorage.setItem('locDetail', JSON.stringify(this.locationDetails));
+        this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails);
       }
       console.log(this.locationDetails);
       if (this.locationDetails && this.locationDetails.LogoImg) this.logoImage = this.imageUrl + this.locationDetails.LogoImg;

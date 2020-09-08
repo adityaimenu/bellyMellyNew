@@ -219,8 +219,10 @@ this.options= {
 
 
   error = (message: string) => {
+  console.log('helloooo');
     this.toaster.errorToastr(message, 'Error', {
-      maxShown: 1
+      maxShown: 1,
+      preventDuplicates: true
     });
   }
 
