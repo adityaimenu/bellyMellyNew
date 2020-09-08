@@ -55,11 +55,13 @@ export class AppComponent implements OnInit{
         return "Windows Phone";
       }*/
 
-      if (/android/i.test(userAgent)) {
+    setTimeout(() => {if (/android/i.test(userAgent)) {
+      if (this.router.url.indexOf('/checkout') == -1) {
         this.showPopUp = true;
-      } else {
-        this.showPopUp = false;
       }
+    } else {
+      this.showPopUp = false;
+    }}, 1000)  ;
 
       // iOS detection from: http://stackoverflow.com/a/9039885/177710
       /*if (/iPad|iPhone|iPod/.test(userAgent) ) {
