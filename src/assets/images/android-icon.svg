@@ -3,7 +3,7 @@
     <rect id="Rectangle_19" data-name="Rectangle 19" width="210" height="63" rx="31.5" transform="translate(1868 1727)" fill="#fff"/>
     <g id="Group_106" data-name="Group 106" transform="translate(-7.574 -7)">
       <text id="Available_on_Android_Store" data-name="Available on
-Android Store" transform="translate(1938 1757)" fill="#191a1b" font-size="10" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">AVAILABLE ON</tspan><tspan font-size="16" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="0" y="22">ANDROID STORE</tspan></tspan></text>
+Android Store" transform="translate(1938 1757)" fill="#191a1b" font-size="10" font-family="Open Sans-Regular, Open Sans"><tspan x="0" y="0">AVAILABLE ON</tspan><tspan font-size="16" font-family="Open Sans-Bold, Open Sans" font-weight="700"><tspan x="0" y="22">ANDROID STORE</tspan></tspan></text>
       <path id="Icon_material-android" data-name="Icon material-android" d="M9,27a1.5,1.5,0,0,0,1.5,1.5H12v5.25a2.25,2.25,0,0,0,4.5,0V28.5h3v5.25a2.25,2.25,0,0,0,4.5,0V28.5h1.5A1.5,1.5,0,0,0,27,27V12H9ZM5.25,12A2.247,2.247,0,0,0,3,14.25v10.5a2.25,2.25,0,0,0,4.5,0V14.25A2.247,2.247,0,0,0,5.25,12Zm25.5,0a2.247,2.247,0,0,0-2.25,2.25v10.5a2.25,2.25,0,0,0,4.5,0V14.25A2.247,2.247,0,0,0,30.75,12ZM23.3,3.24l1.95-1.95a.743.743,0,0,0,0-1.065.743.743,0,0,0-1.065,0l-2.22,2.22A8.759,8.759,0,0,0,18,1.5a8.886,8.886,0,0,0-3.99.945L11.775.225a.743.743,0,0,0-1.065,0,.743.743,0,0,0,0,1.065l1.965,1.965A8.975,8.975,0,0,0,9,10.5H27A8.948,8.948,0,0,0,23.3,3.24ZM15,7.5H13.5V6H15Zm7.5,0H21V6h1.5Z" transform="translate(1898.246 1748)" fill="#191a1b"/>
     </g>
   </g>
