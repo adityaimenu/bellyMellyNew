@@ -18,6 +18,7 @@ import {HomeComponent} from "./home/home.component";
 import {DineInComponent} from "./StaticPages/dine-in/dine-in.component";
 import {JoinUsComponent} from "./StaticPages/join-us/join-us.component";
 import {AboutUsComponent} from "./StaticPages/about-us/about-us.component";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 
 
@@ -60,6 +61,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [DeviceDetectorService]
 })
 export class AppRoutingModule { }

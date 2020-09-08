@@ -1,3 +1,6 @@
+
+
+
 <main class="sticker">
   <router-outlet></router-outlet>
 </main>
@@ -11,3 +14,63 @@
 >
   <p style="color: white" > Loading... </p>
 </ngx-spinner>
+
+<div *ngIf="showPopUp || (showPopUp == true)" style="z-index: 9999" class="card app-open-option">
+  <style>
+    .app-open-option{
+      display: none;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    @media (max-width: 480px){
+      .app-open-option{
+        display: block;
+      }
+    }
+    .btn.btn-rounded {
+      min-width: 100px;
+      border-radius: 100px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      min-height: 40px;
+      font-size: 13px;
+    }
+    .brand-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      background: aliceblue;
+      border-radius: 4px;
+    }
+  </style>
+  <div  class="card-header bg-white">Open BellyMelly in...</div>
+  <div class="card-body">
+    <div class="card-content">
+      <div class="d-flex align-items-center justify-content-between app-list-item mb-3">
+        <div class="left d-flex align-items-center">
+          <div (click)="accept()" class="brand-icon mr-3">
+            <img  src="assets/images/favicon.png" height="38px" width="38px">
+          </div> BellyMelly App
+        </div>
+        <div class="right">
+          <button class="btn btn-primary btn-rounded" (click)="accept()">Open</button>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between app-list-item">
+        <div class="left d-flex align-items-center">
+          <div *ngIf="browserName == 'Safari'" class="brand-icon mr-3"><img  src="assets/images/safari.svg" height="38px" width="38px"></div>
+          <div *ngIf="browserName == 'Chrome'" class="brand-icon mr-3"><img src="assets/images/google-chrome.png" height="38px" width="38px"></div>
+          <div *ngIf="browserName == 'Firefox'" class="brand-icon mr-3"><img src="assets/images/firefox.png" height="38px" width="38px"></div>
+          <div *ngIf="browserName != 'Firefox' && browserName != 'Chrome' && browserName != 'Safari'" class="brand-icon mr-3"><img src="assets/images/search.png" height="38px" width="38px"></div>
+          Browser
+        </div>
+        <div class="right">
+          <button class="btn btn-light btn-rounded" (click)="closePopUp()">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

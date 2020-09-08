@@ -38,6 +38,7 @@
     "moment-timezone": "^0.5.31",
     "ng6-toastr-notifications": "^1.0.4",
     "ngx-bootstrap": "^5.5.0",
+    "ngx-device-detector": "^2.0.0",
     "ngx-google-places-autocomplete": "^2.0.4",
     "ngx-spinner": "^8.0.3",
     "ngx-stripe": "^9.0.1",
