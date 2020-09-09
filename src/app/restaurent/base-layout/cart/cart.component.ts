@@ -328,6 +328,9 @@ return
     if (this.TimeSelection == 2 && !this.DueOn) return this.error('Select time');
     $('#shecdule').modal('hide')
     $("div").removeClass("modal-backdrop")
+    if (this.selectedService) {
+      this.checkout();
+    }
   }
 
   timesection1(val) {
