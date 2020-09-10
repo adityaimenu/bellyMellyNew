@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
   public min: Date = new Date();
   maxDate: Date;
   laterDate: string;
+  specialOfferDataExist: boolean = false;
   TimeSelection: number = 0;
   todayDate: string;
   DueOn: string;
@@ -104,6 +105,20 @@ export class CartComponent implements OnInit {
     return _.sumBy(this.cartList, 'addQuantity');
   }
   addQuantity(product, i) {
+    console.log(product);
+    console.log(product.price);
+    console.log(product.specialOffer);
+    if (product.specialOffer) {
+      console.log(product.specialOffer)
+      this.observable.getSpecialOffer().subscribe((response: any) => {
+        if (response == true) {
+          return this.specialOfferDataExist = true;
+        } else {
+          return this.specialOfferDataExist = false;
+        }
+      })
+      if (product.specialOffer) return this.error('Only one Item allowed from this category.');
+    }
 
 
     if (product.addQuantity >= product.max) return;
@@ -242,6 +257,7 @@ return
         SpecialInstructions: ele.instr,
         NameOfThePerson: '',
         categoryId: ele.catId,
+        specialOffer: ele.specialOffer,
         catName:ele.catName,
         ItemAddOnList: ele.ItemAddOnList,
         isShowforSuggestion: ele.isShowforSuggestion,
