@@ -620,7 +620,7 @@
                     <div  class="text-right text-muted item-cart">{{currency}} <span *ngIf="item.UnitPrice != '-99'"> {{(item.UnitPrice*item.Qty).toFixed(2)}}</span> <span *ngIf="item.UnitPrice == '-99'">0</span>  </div>
                   </div>
                 </div>
-                <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0">
+                <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0 pt-2">
                   <li class="list-bullet"><strong>{{addItems.Name}}</strong></li>
 
                   <li *ngFor="let addOptions of addItems.AddOnOptions;" class="">
@@ -972,22 +972,25 @@
             <div class=" col-md-12">
               <div class="">
                 <div class="d-flex align-items-center">
-                  <h6 *ngIf="placeOrderBody.data.orderData.ServiceId != 5" class="d-flex mr-2 mb-0"><i class="material-icons text-success">
-                    location_on
-                    </i>
+                  <h6 *ngIf="placeOrderBody.data.orderData.ServiceId != 5" class="d-flex mr-2 mb-0"><i class="fa fa-map-marker text-success" style="padding: 5px 5px 5px 0;"></i>
+                    
+                    <div>
+                      <span *ngIf="placeOrderBody.data.orderData.ServiceId == 1">Pickup Food From</span>
+                      <span *ngIf="placeOrderBody.data.orderData.ServiceId == 2">Delivering Food To</span>
+                      <span *ngIf="placeOrderBody.data.orderData.ServiceId == 3">Curbside</span>
+                      <p class="d-flex align-items-start mb-0" *ngIf="placeOrderBody.data.orderData.ServiceId == 1">
+                        {{locationDetails.Address.AddressLine1}}, {{locationDetails.Address.City}}
+                      </p>
+                    </div>
                     <!-- {{placeOrderBody.data.orderData.ServiceId==2?'Delivering food to':'Pickup food from'}} -->
-                    <span *ngIf="placeOrderBody.data.orderData.ServiceId == 1">Pickup Food From</span>
-                    <span *ngIf="placeOrderBody.data.orderData.ServiceId == 2">Delivering Food To</span>
-                    <span *ngIf="placeOrderBody.data.orderData.ServiceId == 3">Curbside</span>
+                    
                     
                     <!-- <span *ngIf="placeOrderBody.data.orderData.ServiceId == 5">Dine In</span> -->
                   </h6>
                   <a *ngIf="placeOrderBody.data.orderData.ServiceId == 2" data-target="#mobilechangelocation" data-toggle="modal"><small>(Change Address)</small></a>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between start">
-                  <p class="d-flex align-items-start mb-0" *ngIf="placeOrderBody.data.orderData.ServiceId == 1">
-                    {{locationDetails.Address.AddressLine1}}, {{locationDetails.Address.City}}
-                  </p>
+                  
                   <div class="d-flex align-items-start" *ngIf="placeOrderBody.data.orderData.ServiceId == 2">
                     <span *ngIf="selectedAddress && selectedAddress.Addr1" class="mr-1 text-orange">
                       <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
@@ -1070,7 +1073,7 @@
                       </div> -->
 
                       <div class="col-sm-12 mt-1">
-                        <p class="my-2 congo" *ngIf="placeOrderBody.data.orderData.DonateCode">Thank you for choosing <b
+                        <p class="alert alert-success" *ngIf="placeOrderBody.data.orderData.DonateCode">Thank you for choosing <b
                             class="text-dark">{{placeOrderBody.data.orderData.NGOName}}</b>.
                           <!-- {{this.placeOrderBody.data.orderData.ngoSelectedVal}}$ of the net sales of this order will be sent
                           to {{placeOrderBody.data.orderData.NGOName}} from {{locationDetails.Name}}  -->

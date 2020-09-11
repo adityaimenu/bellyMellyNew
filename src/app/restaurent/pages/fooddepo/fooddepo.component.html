@@ -125,9 +125,9 @@
                 <div class="col-md-4 my-2" *ngFor="let val of Locationlist;let i = index;">
                   <div class="card">
                     <div class="restaurantImageDiv">
-                    <img *ngIf="val.LogoImg"  src="{{imageUrl}}{{val.LogoImg}}" class="restaurantImage" alt="Card image" >
-                  </div>
-                    <img *ngIf="!val.LogoImg" class="card-img-top" src="assets/images/usa-2.jpg" alt="Card image" style="width:100%">
+                      <img *ngIf="val.LogoImg"  src="{{imageUrl}}{{val.LogoImg}}" class="restaurantImage" alt="Card image" >
+                      <img *ngIf="!val.LogoImg" class="card-img-top" src="assets/images/usa-2.jpg" alt="Card image" style="width:100%">
+                    </div>
                     <div class="card-body p-0">
                       <div class="col-md-12 py-2">
                         <div class="addressData">

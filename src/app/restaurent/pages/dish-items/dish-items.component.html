@@ -1,7 +1,7 @@
   <div class="all-dish-items">
   <div *ngFor="let item of itemList; let i = index" class="dish-items" id="{{item.customId}}">
     <div class="title d-flex align-items-center justify-content-between">
-      <h5 class="title-heading">{{item.CatName}}</h5>
+      <div class="card-title">{{item.CatName}}</div>
       <a class="view-description text-dark" href="javascript:void(0);" [nbPopover]="itemDescription" nbPopoverPlacement="left">
         <nb-icon icon="info"></nb-icon>
       </a>
@@ -75,7 +75,7 @@
               <div>
                 <div class="dish-title">{{data.Name}}</div>
                 <p class="text-gray assign-width">{{correctDesc(data.Desc)}}</p>
-                <p *ngIf="item.P1 && data.P1 > 0" class="text-success mb-0 price">{{currency}} {{(data.P1).toFixed(2)}}</p>
+                <p *ngIf="item.P1 && data.P1 > 0" class="text-success mb-0">{{currency}} {{(data.P1).toFixed(2)}}</p>
                 <p *ngIf="item.P2 && (data.P2 > 0 && (!data.P1 || data.P1 <= 0))" class="text-success mb-0 price">{{currency}} {{(data.P2).toFixed(2)}}</p>
                 <p *ngIf="item.P3 && (data.P3 > 0 && ((!data.P1 || data.P1 <= 0) && (!data.P2 || data.P2 <= 0)))" class="text-success mb-0 price">{{currency}} {{(data.P3).toFixed(2)}}</p>
                 <p *ngIf="item.P4 && (data.P4 > 0 && ((!data.P1 || data.P1 <= 0) && (!data.P2 || data.P2 <= 0) && (!data.P3 || data.P3 <= 0)))" class="text-success mb-0 price">{{currency}} {{(data.P4).toFixed(2)}}</p>

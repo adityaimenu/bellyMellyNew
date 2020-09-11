@@ -167,7 +167,7 @@ button {
 /****** Header Styling ******/
 header {
   .left {
-    .restaurant-logo {
+    .show-xs {
       display: none;
     }
   }
@@ -182,11 +182,11 @@ header {
     }
 
     .left {
-      .restaurant-logo {
+      .show-xs {
         display: block;
       }
 
-      .brand-logo {
+      .navbar-brand {
         display: none;
       }
     }
@@ -877,7 +877,13 @@ nb-checkbox {
 .material-icons{
   font-size: 1.5rem;
 }
+.card-title{
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif !important;
+}
 .dish-title {
   font-weight: 500;
-  font-size: .9rem;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif !important;
 }
