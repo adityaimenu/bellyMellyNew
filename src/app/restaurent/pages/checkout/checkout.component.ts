@@ -556,6 +556,18 @@ export class CheckoutComponent implements OnInit {
   }
 
   onUpdateQty(index, type) {
+    console.log(this.itemList[index], 'hello');
+    if (this.itemList[index].specialOffer && type == true) {
+      console.log(this.itemList[index].specialOffer)
+    /*  this.observable.getSpecialOffer().subscribe((response: any) => {
+        if (response == true) {
+          return this.specialOfferDataExist = true;
+        } else {
+          return this.specialOfferDataExist = false;
+        }
+      })*/
+      if (this.itemList[index].specialOffer) { return this.error('Only one Item allowed from this category.'); }
+    }
 
     if (type) {
       if (this.itemList[index].Qty >= this.itemList[index].max) return;
@@ -928,6 +940,28 @@ export class CheckoutComponent implements OnInit {
   }
 
   openAddOnPopup(item, data) {
+    console.log(this.itemList);
+    console.log(item);
+    let itemExist: any = false;
+    for(let i=0; i< this.itemList.length; i++){
+      if(this.itemList[i].Id == item.Id) {
+        itemExist = true;
+      }
+    }
+    console.log(itemExist);
+    if (itemExist == true && item.SpecialOffer ) {
+      console.log(item.SpecialOffer)
+      /*  this.observable.getSpecialOffer().subscribe((response: any) => {
+          if (response == true) {
+            return this.specialOfferDataExist = true;
+          } else {
+            return this.specialOfferDataExist = false;
+          }
+        })*/
+      if (item.SpecialOffer) return this.error('Only one Item allowed from this category.');
+    }
+
+
 
     this.addOnList = item.AddOnList;
     this.fullItem = item;
@@ -996,6 +1030,25 @@ export class CheckoutComponent implements OnInit {
   }
 
   addVariationToCart(item, data) {
+    let itemExist: any = false;
+    for(let i=0; i< this.itemList.length; i++){
+      if(this.itemList[i].Id == item.Id) {
+        itemExist = true;
+      }
+    }
+    console.log(itemExist);
+    console.log(item)
+    if (itemExist == true && item.SpecialOffer ) {
+      console.log(item.SpecialOffer)
+      /*  this.observable.getSpecialOffer().subscribe((response: any) => {
+          if (response == true) {
+            return this.specialOfferDataExist = true;
+          } else {
+            return this.specialOfferDataExist = false;
+          }
+        })*/
+      if (item.SpecialOffer) return this.error('Only one Item allowed from this category.');
+    }
     this.placeOrderBody = this.localStorage.get('placeOrderData')
     this.itemList.push({
       Amt: item.P1,
@@ -1005,6 +1058,7 @@ export class CheckoutComponent implements OnInit {
       Name: item.Name,
       PortionId: data.P1.Id,
       Qty: 1,
+      specialOffer: item.SpecialOffer,
       catId: data.catId,
       SpecialInstructions: "",
       NameOfThePerson: '',
