@@ -16,7 +16,7 @@
           <div class="dropdown border rounded" >
              
             <a href="javascript:void(0);" type="button" class="btn btn-link dropdown-toggle text-dark addrss " data-toggle="dropdown">
-            <i class="fas fa-map-marker-alt"></i> <span *ngIf="!restaurantname">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span>
+            <i class="fas fa-map-marker-alt"></i> <span *ngIf="!restaurantname && Locations[0]">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span>
             </a>
             <div class="dropdown-menu p-0">
               <span class="locationSpan" >
@@ -204,7 +204,7 @@
               <div class="col-sm-6">
                  
                     <div class="addr">
-                       <h6  data-toggle="modal" (click)="changeSearchType(1)" data-target="#addmdl"> <span *ngIf="!restaurantname">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span></h6>
+                       <h6  data-toggle="modal" (click)="changeSearchType(1)" data-target="#addmdl"> <span *ngIf="!restaurantname && Locations[0]">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span></h6>
                        </div>
                        
               </div>
