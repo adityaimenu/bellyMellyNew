@@ -284,6 +284,7 @@ return
   }
 
   openMobService() {
+    console.log('hellloo');
     if (this.localStorage.get('specialOfferData')) {
       const specialOff = this.localStorage.get('specialOfferData');
       if (specialOff.length > 0) {

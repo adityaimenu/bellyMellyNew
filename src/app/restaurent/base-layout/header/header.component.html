@@ -9,7 +9,7 @@
               <div fxHide.sm fxHide.xs>
                 <a class="navbar-brand " href="{{host}}">
                   <img *ngIf="country == 'au'" src="assets/img/logoAU.png" height="28px" alt="Logo" class="brand-logo" >
-                  <img  src="assets/images/logo.png" alt="Logo" class="brand-logo" >
+                  <img *ngIf="country == 'us'"  src="assets/images/logo.png" alt="Logo" class="brand-logo" >
                   <img *ngIf="logoImage" src="{{logoImage}}" alt="Restaurant Logo" height="60px" class="restaurant-logo" >
                   <img *ngIf="!logoImage" src="assets/images/restaurent-logo.png" alt="Restaurant Logo" height="28px" class="restaurant-logo" >
                 </a>
