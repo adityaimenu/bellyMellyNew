@@ -10,15 +10,15 @@ import { PaytmComponent } from './restaurent/pages/payment/paytm/paytm.component
 import { ProfileComponent } from './restaurent/pages/profile/profile.component';
 import { BodyComponent } from './restaurent/base-layout/body/body.component';
 import { MainStructureComponent } from './restaurent/pages/home/main-structure/main-structure.component';
-import { AuthGuard } from "./guards/auth.guard";
+import { AuthGuard } from './guards/auth.guard';
 import { UsRestaurantsComponent } from './restaurent/pages/us-restaurants/us-restaurants.component';
 import { FooddepoComponent } from './restaurent/pages/fooddepo/fooddepo.component';
 import { ThankyouComponent } from './restaurent/pages/thankyou/thankyou.component';
-import {HomeComponent} from "./home/home.component";
-import {DineInComponent} from "./StaticPages/dine-in/dine-in.component";
-import {JoinUsComponent} from "./StaticPages/join-us/join-us.component";
-import {AboutUsComponent} from "./StaticPages/about-us/about-us.component";
-import {DeviceDetectorService} from "ngx-device-detector";
+import {HomeComponent} from './home/home.component';
+import {DineInComponent} from './StaticPages/dine-in/dine-in.component';
+import {JoinUsComponent} from './StaticPages/join-us/join-us.component';
+import {AboutUsComponent} from './StaticPages/about-us/about-us.component';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 
 
@@ -30,18 +30,18 @@ const routes: Routes = [
     component: HomeComponent
   },
   { path: 'au/restaurants', component: UsRestaurantsComponent }, //testing
-  { path: 'us/restaurants', component: UsRestaurantsComponent }, //testing
-  //  { path: 'restaurants',  component: UsRestaurantsComponent }, //live
+  { path: 'us/restaurants', component: UsRestaurantsComponent }, // testing
+  //  { path: 'restaurants',  component: UsRestaurantsComponent }, // live
 
   { path: 'au/org/:org', component: FooddepoComponent }, //testing
-  { path: 'us/org/:org', component: FooddepoComponent }, //testing
-  {path:'dinein', component: DineInComponent},
-  {path:'joinUs', component: JoinUsComponent},
-  {path:'aboutUs', component: AboutUsComponent},
-  //  { path: 'org/:org',  component: FooddepoComponent }, //live
+  { path: 'us/org/:org', component: FooddepoComponent }, // testing
+  {path: 'dinein', component: DineInComponent},
+  {path: 'joinUs', component: JoinUsComponent},
+  {path: 'aboutUs', component: AboutUsComponent},
+//    { path: 'org/:org',  component: FooddepoComponent }, // live
   {
     path: ':country/:mobUrl', //testing
-    //  path: ':mobUrl', //live
+  //    path: ':mobUrl', // live
     component: BodyComponent,
     children: [
       { path: '', component: MainStructureComponent },

@@ -1335,6 +1335,10 @@ export class CheckoutComponent implements OnInit {
   
   }
   closewebdonation() {
+    if (!this.placeOrderBody.data.orderData.DonateCode) {
+      this.selectNgoError();
+      return;
+    }
     $('.donate-content').hide()
     $('.openwebdonation').css("display", "block")
     $('.closewebdonation').css("display", "none")
@@ -1369,6 +1373,10 @@ export class CheckoutComponent implements OnInit {
     $('.closewebpayment').css("display", "block")
   }
   openwebpayment() {
+    if (!this.placeOrderBody.data.orderData.DonateCode) {
+      this.selectNgoError();
+      this.openwebdonation();
+    }
     $('.add-tip').css("display", "none")
     $('li .add-tip').removeClass("active")
     $('.payment-sec .item').css("display", "block")
@@ -1461,6 +1469,11 @@ export class CheckoutComponent implements OnInit {
     $('.donate').css("display", "none")
   }
   openwebdtip() {
+    if (!this.placeOrderBody.data.orderData.DonateCode) {
+      this.selectNgoError();
+      this.openwebdonation();
+      return;
+    }
     $('.add-tip').css("display", "block")
     $('.tip-part').addClass("active")
     // $('.payment-sec .item').css("display" , "none")
@@ -1701,6 +1714,10 @@ export class CheckoutComponent implements OnInit {
     
    
    
+  }
+
+  selectNgoError() {
+    return this.error('Please choose an Organization First and help Bellymelly donate a dollar to your community. ');
   }
 
   SendAddToCartEvent() {

@@ -198,7 +198,7 @@
                           </div>
                         </div>
                         <div class="slide-btn">
-                          <div class="swiper-button-next"></div>
+                          <div  class="swiper-button-next"></div>
                           <div class="swiper-button-prev"></div>
                         </div>
                       </div>
@@ -306,7 +306,10 @@
                       <h4>Payment</h4>
                       <p>Please choose a payment option</p>
                     </div>
-                    <div class="openwebpayment" (click)="openwebpayment()">
+                    <div *ngIf="!placeOrderBody.data.orderData.DonateCode" class="openwebpayment" (click)="selectNgoError()">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </div>
+                    <div *ngIf="placeOrderBody.data.orderData.DonateCode" class="openwebpayment" (click)="openwebpayment()">
                       <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </div>
                     <div class="closewebpayment" (click)="closewebpayment()">
@@ -493,7 +496,7 @@
                 Apply Coupon
               </div>
               </div>
-               
+
                 <div *ngIf="flags.isPromoApplied">
                   <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="coupon mb-3" role="button">
                     <nb-icon icon="gift-outline" class="mr-3"></nb-icon>
@@ -894,7 +897,7 @@
                 </div>
               </div>
             </div>
-            <div  *ngIf="flags.isPromoApplied" class="w-100">
+            <!--<div  *ngIf="flags.isPromoApplied" class="w-100">
               <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="coupon" role="button">
                 <div fxLayout fxLayoutAlign="space-between center" fxFlex>
                   <span>
@@ -904,7 +907,19 @@
                   </span>
                 </div>
               </div>
-              </div>
+              </div>-->
+            </div>
+          </div>
+
+        </div>
+        <div  *ngIf="flags.isPromoApplied" class="w-100">
+          <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="coupon" role="button">
+            <div fxLayout fxLayoutAlign="space-between center" fxFlex>
+                  <span>
+                    <nb-icon icon="gift-outline" class="mr-3"></nb-icon>
+                    {{appliedPromoCode?appliedPromoCode.finalName:''}} ({{currency}}{{appliedPromoCode?appliedPromoCode.finalDiscount:''}} OFF) &nbsp;<span
+                          class="fa fa-close" (click)="removePromo()" style="cursor: pointer;"></span>
+                  </span>
             </div>
           </div>
         </div>

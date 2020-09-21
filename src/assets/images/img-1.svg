@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_6" data-name="Rectangle 6" width="42" height="42" transform="translate(90 734)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="img-1" transform="translate(-90 -734)" clip-path="url(#clip-path)">
+    <g id="form" transform="translate(89.323 733.323)">
+      <g id="Group_12" data-name="Group 12">
+        <path id="Path_14" data-name="Path 14" d="M30.484,3.387h9.484v8.806H30.484Z" fill="#fe6b61"/>
+      </g>
+      <g id="Group_13" data-name="Group 13">
+        <path id="Path_15" data-name="Path 15" d="M19.645,36.581h6.774v3.387H19.645Z" fill="#fe6b61"/>
+      </g>
+      <g id="Group_14" data-name="Group 14">
+        <path id="Path_16" data-name="Path 16" d="M30.484,14.226h9.484V23.71H30.484Z" fill="#fe6b61"/>
+      </g>
+      <g id="Group_15" data-name="Group 15">
+        <path id="Path_17" data-name="Path 17" d="M17.613,25.742V18.968H10.161V30.484h9.484V25.742Z" fill="#fe6b61"/>
+      </g>
+      <g id="Group_16" data-name="Group 16">
+        <path id="Path_18" data-name="Path 18" d="M22.355,38.613H23.71v1.355H22.355Z"/>
+        <path id="Path_19" data-name="Path 19" d="M19.645,38.613H21v1.355H19.645Z"/>
+        <path id="Path_20" data-name="Path 20" d="M25.065,38.613h1.355v1.355H25.065Z"/>
+        <path id="Path_21" data-name="Path 21" d="M19.645,35.9h6.774v1.355H19.645Z"/>
+        <path id="Path_22" data-name="Path 22" d="M29.129,14.226H19.645V23.71h9.484Zm-1.355,8.129H21V15.581h6.774Z"/>
+        <path id="Path_23" data-name="Path 23" d="M27.576,17.414l-.958-.958L23.71,19.365l-.876-.876-.958.958L23.71,21.28Z"/>
+        <path id="Path_24" data-name="Path 24" d="M29.129,3.387H19.645v9.484h9.484Zm-1.355,8.129H21V4.742h6.774Z"/>
+        <path id="Path_25" data-name="Path 25" d="M27.576,6.576l-.958-.958L23.71,8.526l-.876-.876-.958.958,1.834,1.834Z"/>
+        <path id="Path_26" data-name="Path 26" d="M30.484,3.387h1.355V4.742H30.484Z"/>
+        <path id="Path_27" data-name="Path 27" d="M33.194,3.387h6.774V4.742H33.194Z"/>
+        <path id="Path_28" data-name="Path 28" d="M30.484,14.226h1.355v1.355H30.484Z"/>
+        <path id="Path_29" data-name="Path 29" d="M33.194,14.226h6.774v1.355H33.194Z"/>
+        <path id="Path_30" data-name="Path 30" d="M30.484,16.935h1.355V18.29H30.484Z"/>
+        <path id="Path_31" data-name="Path 31" d="M33.194,16.935h6.774V18.29H33.194Z"/>
+        <path id="Path_32" data-name="Path 32" d="M30.484,19.645h1.355V21H30.484Z"/>
+        <path id="Path_33" data-name="Path 33" d="M33.194,19.645h6.774V21H33.194Z"/>
+        <path id="Path_34" data-name="Path 34" d="M30.484,22.355h1.355V23.71H30.484Z"/>
+        <path id="Path_35" data-name="Path 35" d="M33.194,22.355h6.774V23.71H33.194Z"/>
+        <path id="Path_36" data-name="Path 36" d="M30.484,6.1h9.484V7.452H30.484Z"/>
+        <path id="Path_37" data-name="Path 37" d="M30.484,8.806h9.484v1.355H30.484Z"/>
+        <path id="Path_38" data-name="Path 38" d="M30.484,11.516h9.484v1.355H30.484Z"/>
+        <path id="Path_39" data-name="Path 39" d="M42.677.677H16.935V18.29H2.71A2.035,2.035,0,0,0,.677,20.323V40.645A2.035,2.035,0,0,0,2.71,42.677H27.1a2.035,2.035,0,0,0,2.032-2.032V26.419H42.677Zm-14.9,39.968a.679.679,0,0,1-.677.677H2.71a.679.679,0,0,1-.677-.677V20.323a.679.679,0,0,1,.677-.677H16.935v6.774H27.774ZM41.323,25.065H18.29V2.032H41.323Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

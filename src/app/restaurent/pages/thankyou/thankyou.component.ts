@@ -42,6 +42,7 @@ export class ThankyouComponent implements OnInit {
         this.orderId = response.orderId;
         this.orderData = response.data;
         this.locationDetails = response.locationDetails;
+        console.log(response);
         response.data.ItemList.forEach(element => {
           element.id = element.Id;
           element.name = element.Name;
