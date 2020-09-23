@@ -38,7 +38,7 @@ const routes: Routes = [
   {path: 'dinein', component: DineInComponent},
   {path: 'joinUs', component: JoinUsComponent},
   {path: 'aboutUs', component: AboutUsComponent},
-//    { path: 'org/:org',  component: FooddepoComponent }, // live
+ //   { path: 'org/:org',  component: FooddepoComponent }, // live
   {
     path: ':country/:mobUrl', //testing
   //    path: ':mobUrl', // live

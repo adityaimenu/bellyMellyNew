@@ -25,14 +25,19 @@
     "@nebular/eva-icons": "^4.2.1",
     "@nebular/theme": "^4.5.0",
     "@nomadreservations/ngx-stripe": "^1.2.2",
+    "angular-socialshare": "^2.1.6",
     "angular-web-storage": "^7.0.0-beta.1",
     "angularx-social-login": "^2.2.1",
+    "base64-to-image": "^1.0.2",
     "bootstrap": "^4.5.0",
+    "buffer": "^5.6.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "^3.6.4",
     "eva-icons": "^1.1.1",
+    "fs": "0.0.1-security",
     "geodist": "^0.2.1",
     "geolib": "^3.0.4",
+    "html2canvas": "^1.0.0-rc.7",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.31",
@@ -73,5 +78,14 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "browser": {
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "stream": false,
+    "tls": false
   }
 }

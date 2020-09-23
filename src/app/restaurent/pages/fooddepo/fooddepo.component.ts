@@ -93,12 +93,17 @@ export class FooddepoComponent implements OnInit {
       const enddate = response.NgoGoalDetails.EndDate.split(' ')[0];
       var time1 = moment().format('DD/MM/YYYY');
       var time2 = moment(enddate).format('DD/MM/YYYY');
-      if (time1 > time2) {
+      console.log(time1);
+      console.log(time2);
+      console.log(new Date (time1) > new Date (time2));
+      if (new Date (time1) > new Date (time2)) {
         this.daysLeft = 0;
       } else {
+        console.log('entered');
         var a = moment(enddate);
         var b = moment();
        const c=  a.diff(b, 'days')
+        console.log(c);
        if(c >= 0){
         this.daysLeft = c
        }else{

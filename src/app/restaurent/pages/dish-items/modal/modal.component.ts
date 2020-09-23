@@ -223,6 +223,8 @@ export class ModalComponent implements OnInit {
   }
   onSelectAddOn(item, option, flag) {
     console.log(item);
+    console.log(option);
+    console.log(flag);
  
     if (!this.prices.p1 && !this.prices.p2 && !this.prices.p3 && !this.prices.p4 && !this.prices.p5 && !this.prices.p6) return this.error('Please select a size first.');
     for (const key in this.prices) {
@@ -248,7 +250,10 @@ export class ModalComponent implements OnInit {
       if (item.AddOnOptionModifier2 && item.AddOnOptionModifier2.Id == 11) modifierTwo = item.AddOnOptionModifier2;
       else modifierOne = item.AddOnOptionModifier2;
       const amount = this.country.toUpperCase() == 'US' || 'AU' ? modifierOne ? modifierOne.Factor1 : this.unitPrice : this.unitPrice;
+     console.log(this.displayAmount);
       this.displayAmount += amount;
+      console.log(this.displayAmount);
+      console.log(this.unitPrice);
       const index = _.findIndex(this.addOnItemList, { ItemAddOnId: item.ItemAddOnId });
       if (index > -1) {
         this.addOnItemList[index].AddOnOptions.push({
@@ -290,6 +295,7 @@ export class ModalComponent implements OnInit {
         });
       }
       this.onChangeModifier(item, option, item.AddOnOptionModifier1.Label1, item.AddOnOptionModifier1.Id, item.AddOnOptionModifier1.Factor1, item.AddOnOptionModifier1.Id == 10?'true':'false');
+      console.log(this.displayAmount);
     }
      else {
       option.isSelected = false;
@@ -306,7 +312,7 @@ export class ModalComponent implements OnInit {
             ele.AddOnOptions.forEach((element, i) => {
               if (Number(element.Id) == Number(option.Id)) {
                 finalIndex = i;
-                amount += element.Amt;
+                amount += element.UnitPrice;
               }
             })
           }
@@ -326,19 +332,22 @@ export class ModalComponent implements OnInit {
   onChangeModifier(item, option, label, id, factor, type) {
     console.log('hello');
     const index = _.findIndex(this.addOnItemList, { ItemAddOnId: item.ItemAddOnId });
-    console.log(index);
+    console.log(this.addOnItemList[index]);
     if (type) {
       if (index > -1) {
+        console.log('in first');
         const optionIndex = _.findIndex(this.addOnItemList[index].AddOnOptions, { Id: option.Id });
         this.displayAmount = Number(this.displayAmount) - (Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt) * Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt * this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2 ? this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2.Factor : 1));
         this.addOnItemList[index].AddOnOptions[optionIndex].Amt = Number(factor) * Number(option.P1);
         this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier1 = { Label: label, Text: id, Factor: factor };
-        this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt);
+        console.log(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice)
+        this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice);
       }
     } else {
       if (index > -1) {
+        console.log('in second');
         const optionIndex = _.findIndex(this.addOnItemList[index].AddOnOptions, { Id: option.Id });
-        this.displayAmount = Number(this.displayAmount) - Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt) * Number(option.P1);
+        this.displayAmount = Number(this.displayAmount) - Number(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice) * Number(option.P1);
         this.addOnItemList[index].AddOnOptions[optionIndex].Amt = Number(this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier1.Factor) * Number(factor);
         this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt);
         this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2 = { Label: label, Text: id, Factor: factor };

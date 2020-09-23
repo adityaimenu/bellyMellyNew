@@ -70,7 +70,7 @@
 					<div class="row w-100 d-flex align-items-center no-gutters mb-3">
 						<div class="col-xs-4"></div>
 						<div class="col-xs-4"><div class="text-center h6 text-white mb-0">Track Order</div></div>
-						<div class="col-xs-4 align-items-end"><a routerLink="/" data-dismiss="modal"><img src="assets/images/cross.svg"></a></div>
+						<div class="col-xs-4 align-items-end"></div>
 					</div>
 					<div class="row w-100 d-flex align-items-center justify-content-between no-gutters text-center">
 						
@@ -91,14 +91,17 @@
 				</div>
 			</div>
 
-			<div class="modal-body text-center">
-				<div *ngFor="let ngo of locationDetails.ngo">
+			<div id="capture" class="modal-body text-center">
+				<div  *ngFor="let ngo of locationDetails.ngo">
 				<img *ngIf="ngo.RecId == orderData.NGOId" [src]="ngo.Photo" class="img-fluid">
 				<p *ngIf="ngo.RecId == orderData.NGOId" class="text-center">
-					With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing Organization {{orderData.NGOName}}. {{locationDetails.Name}} will contribute $1 towards Organization {{orderData.NGOName}}.
+					With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing  {{ngo.Name}}. BellyMelly with {{locationDetails.Name}} will contribute $1 towards  {{ngo.Name}}.
 				</p>
+					<!--<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="save()" >Share & Join our Community</button>-->
+					<div id="output"></div>
+					<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="share(ngo.Photo, '      With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing Organization' + orderData.NGOName + '.' +  locationDetails.Name +' will contribute $1 towards Organization' + orderData.NGOName + '.')" >Share & Join our Community</button>
 				</div>
-				<button class="btn btn-site">Share & Join our Community</button>
+
 				<div class="timeline py-4">
 					<ul>
 						<li>
@@ -131,9 +134,17 @@
 						<li>
 							<div class="d-flex align-items-center text-left">
 								<div class="icon mr-2"><img src="assets/images/img-4.svg"></div>
-								<div class="content">
+								<div *ngIf="orderData.ServiceId == 1 || orderData.ServiceId == 3 " class="content">
 									<div class="h6 mb-0">Ready to pickup</div>
 									<p class="mb-0">Your order is ready for pickup</p>
+								</div>
+								<div *ngIf="orderData.ServiceId == 2  " class="content">
+									<div class="h6 mb-0">Ready to Deliver</div>
+									<p class="mb-0">Your order is ready for Deliver</p>
+								</div>
+								<div *ngIf="orderData.ServiceId == 5 " class="content">
+									<div class="h6 mb-0">Ready to Dine in</div>
+									<p class="mb-0">Your order is ready for Dine in</p>
 								</div>
 							</div>
 						</li>
@@ -142,10 +153,11 @@
 				<div class="row w-100 d-flex align-items-center justify-content-between mx-0 text-center">
 						
 					<div class="col-xs-6">
-						<button class="btn btn-site">Contact Restaurant</button>
+						<button class="btn btn-site">Contact Restaurant on {{locationDetails.Tel}}</button>
 					</div>
 					<div class="col-xs-6">
-						<button class="btn btn-site">Start New Order</button>
+						<button class="btn btn-site" *ngIf="orderData.ServiceId != 5" style="color: white"><a href="{{host}}" style="color: white">Start New Order</a></button>
+						<button class="btn btn-site" *ngIf="orderData.ServiceId == 5" ><a href="{{host}}/{{country}}/{{mobUrl}}#dinein" style="color: white">Start New Order</a></button>
 					</div>
 					
 				</div>
