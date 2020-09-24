@@ -12,6 +12,7 @@ import {CommonService} from "../../../services/common/common.service";
 import {UrlService} from "../../../services/url/url.service";
 import { GetCouponListBody } from 'src/app/requests/get-coupon-list-body';
 import * as _ from 'lodash';
+import {ObservableService} from "../../../services/observable-service/observable.service";
 
 @Component({
   selector: 'app-profile',
@@ -49,6 +50,7 @@ export class ProfileComponent implements OnInit {
   locationDetails: any;
   constructor(
     private api: ApiService,
+    private observable: ObservableService,
     private localStorage: LocalStorageService,
     private toaster: ToastrManager,
     private loginService: LoginService,
@@ -185,6 +187,9 @@ export class ProfileComponent implements OnInit {
   }
   onSelectAddress(address) {
     this.selectedAddress = address;
+    console.log(this.selectedAddress);
+   /* localStorage.setItem('selectedAddress', JSON.stringify(this.selectedAddress));*/
+    this.observable.setEditAddress(this.selectedAddress);
   }
   logout() {
     this.loginService.setVal(false);

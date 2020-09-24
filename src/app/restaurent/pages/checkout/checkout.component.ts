@@ -549,10 +549,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   onEditAddress(obj, i) {
+    console.log(obj);
     this.selectedAddressEdit = obj;
     this.selectedIndex = i;
+    if (localStorage.getItem('selectedAddress')) {
+      localStorage.removeItem('selectedAddress');
+    }
+
     const data = { selectedAddressEdit: obj, selectedIndex: i }
-    this.observable.setEditAddress(data)
+    this.observable.setEditAddress(data.selectedAddressEdit)
   }
 
   onUpdateQty(index, type) {

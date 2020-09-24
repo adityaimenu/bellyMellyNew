@@ -63,6 +63,7 @@ export class AddAddressComponent implements OnInit {
   map: google.maps.Map;
   countryNew:string;
   findCountry:boolean;
+  selectedAddress: any;
   constructor(
     private localStorage: LocalStorageService,
     private api: ApiService,
@@ -79,7 +80,9 @@ export class AddAddressComponent implements OnInit {
     this.myStyle = this.common.mapStyle;
     this.addAddressBody.data = {customerAddress: {}};
     this.addDetails.isPrimary = 0;
-    // this.editTimer(); 
+    console.log('hello');
+    this.selectedAddress = JSON.parse(localStorage.getItem('selectedAddress'));
+  //   this.editTimer(this.selectedAddress);
     this.getCurrentPosition(true);
 
     this.activatedRoute.params.subscribe((response: any) => {
@@ -109,7 +112,9 @@ export class AddAddressComponent implements OnInit {
     });
     this.observable.getEditAddress().subscribe((response: any) => {
       if (response) {
-        this.editTimer(response);
+
+          this.editTimer(response);
+
       }
     })
   }
@@ -118,7 +123,8 @@ export class AddAddressComponent implements OnInit {
     // this.editTimer();
   }
   editTimer(editDetail) {
-    this.editDetail = editDetail.selectedAddressEdit;
+    console.log(editDetail);
+    this.editDetail = editDetail;
         this.updateAddDetails.Addr1 = this.editDetail.Addr1;
         this.updateAddDetails.selectedIndex = editDetail.selectedIndex;
     // this.interval = setInterval(() => {

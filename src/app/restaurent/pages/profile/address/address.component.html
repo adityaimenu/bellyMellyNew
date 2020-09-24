@@ -22,7 +22,7 @@
     <span>
       <p>{{item.Addr2}}</p>
       <div class="separator"></div>
-      <h6 class="title-heading m-0">Special Instruction <a href="javascript:void(0)" data-toggle="modal" data-target="#editLocation" (click)="selectedAddress.emit(item)" class="font-weight-bold" style="color:#f03f37;">Edit</a></h6>
+      <h6 class="title-heading m-0">Special Instruction <a href="javascript:void(0)" data-toggle="modal" (click)="selectedAddress.emit(item)" data-target="#editLocation"  class="font-weight-bold" style="color:#f03f37;">Edit</a></h6>
       <p>{{item.Instructions}}</p>
     </span>
   </div>
