@@ -17,7 +17,7 @@ import * as fs from "fs";
   styleUrls: ['./thankyou.component.scss'],
 })
 export class ThankyouComponent implements OnInit {
-
+  
   currency: string;
   timeInterval: any;
   mobUrl: string;
@@ -44,6 +44,7 @@ export class ThankyouComponent implements OnInit {
   }
 
   ngOnInit() {
+    js.PopOver();
     this.country = window.location.pathname.replace('/', '').split('/')[0]; 
     if(this.country == 'au'){
       this.host = 'https://bellymelly.com.au';

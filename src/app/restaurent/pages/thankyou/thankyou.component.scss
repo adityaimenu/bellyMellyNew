@@ -171,3 +171,25 @@
   border: 3px solid #2ACB6F;
   margin-right: 22px;
 }
+.social-icons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #37393b;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  &:hover{
+    color: #fff;
+  }
+  &.fb:hover{
+    background: #4267B2;
+  }
+  &.twitter:hover{
+    background: #1DA1F2;
+  }
+  &.linkedin:hover{
+    background: #2867B2;
+  }
+}

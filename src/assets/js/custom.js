@@ -187,6 +187,16 @@ export var categorySwiper = function(){
   },3000)
   
 }
+
+export var PopOver = function (){
+  $('[data-toggle="popover"]').popover({
+    html: true,
+    content: function () {
+      var content = $(this).attr("data-popover-content");
+      return $(content).find(".popover-body").clone();
+    }
+  })
+}
 /******* Show Sidemenu *******/
 export var sideNav = function () {
   $('#sidenav').click(function () {
@@ -641,4 +651,7 @@ export var removeFromCart = function (name, id, price, brand, category, variant,
     }
   }
 });
+
+
+
 }

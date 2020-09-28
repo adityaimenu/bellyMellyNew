@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="247" height="65" viewBox="0 0 247 65">
+  <g id="email" transform="translate(-707 -599)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="247" height="65" rx="32.5" transform="translate(707 599)" fill="#3697f4"/>
+    <g id="Group_1" data-name="Group 1" transform="translate(-0.235 -1)">
+      <g id="Group_4" data-name="Group 4">
+        <text id="Login_with_Email" data-name="Login with Email" transform="translate(849.029 638)" fill="#fff" font-size="14" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="-56.049" y="0">Login with Email</tspan></text>
+        <path id="Icon_material-email" data-name="Icon material-email" d="M20.9,6H4.989A1.986,1.986,0,0,0,3.01,7.989L3,19.921A2,2,0,0,0,4.989,21.91H20.9a2,2,0,0,0,1.989-1.989V7.989A2,2,0,0,0,20.9,6Zm0,3.977-7.955,4.972L4.989,9.977V7.989l7.955,4.972L20.9,7.989Z" transform="translate(740.825 619)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -68,21 +68,21 @@
 			<div class="modal-header px-0">
 				<div class="col-12">
 					<div class="row w-100 d-flex align-items-center no-gutters mb-3">
-						<div class="col-xs-4"></div>
-						<div class="col-xs-4"><div class="text-center h6 text-white mb-0">Track Order</div></div>
-						<div class="col-xs-4 align-items-end"></div>
+						<div class="col-4"></div>
+						<div class="col-4"><div class="text-center h6 text-white mb-0">Track Order</div></div>
+						<div class="col-4 text-right"><a href="javascript:void(0);" data-dismiss="modal"><img src="assets/images/cross.svg"></a></div>
 					</div>
 					<div class="row w-100 d-flex align-items-center justify-content-between no-gutters text-center">
 						
-						<div class="col-xs-6">
+						<div class="col-6">
 							<p>Estimated Time</p>
-							<h4 class="text-white" *ngIf="orderData.ServiceId == 1">{{locationDetails.Services[0].ReadyIn}}</h4>
-							<h4 class="text-white" *ngIf="orderData.ServiceId == 2">{{locationDetails.Services[1].ReadyIn}}</h4>
-							<h4 class="text-white" *ngIf="orderData.ServiceId == 3">{{locationDetails.Services[2].ReadyIn}}</h4>
-							<h4 class="text-white" *ngIf="orderData.ServiceId == 5">{{locationDetails.Services[3].ReadyIn}}</h4>
+							<h5 class="text-white" *ngIf="orderData.ServiceId == 1">{{locationDetails.Services[0].ReadyIn}}</h5>
+							<h5 class="text-white" *ngIf="orderData.ServiceId == 2">{{locationDetails.Services[1].ReadyIn}}</h5>
+							<h5 class="text-white" *ngIf="orderData.ServiceId == 3">{{locationDetails.Services[2].ReadyIn}}</h5>
+							<h5 class="text-white" *ngIf="orderData.ServiceId == 5">{{locationDetails.Services[3].ReadyIn}}</h5>
 
 						</div>
-						<div class="col-xs-6">
+						<div class="col-6">
 							<p>Order Number</p>
 							<h4 class="text-white">{{orderId}}</h4>
 						</div>
@@ -97,9 +97,11 @@
 				<p *ngIf="ngo.RecId == orderData.NGOId" class="text-center">
 					With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing  {{ngo.Name}}. BellyMelly with {{locationDetails.Name}} will contribute $1 towards  {{ngo.Name}}.
 				</p>
-					<!--<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="save()" >Share & Join our Community</button>-->
-					<!--<div id="output"></div>-->
-					<!--<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="share(ngo.Photo, '      With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing Organization' + orderData.NGOName + '.' +  locationDetails.Name +' will contribute $1 towards Organization' + orderData.NGOName + '.')" >Share & Join our Community</button>-->
+					<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" data-toggle="modal" data-target="#share-widgets" data-dismiss="modal">Share & Join our Community</button>
+					<!-- <button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="save()" >Share & Join our Community</button> -->
+					<div id="output"></div>
+					<!-- <button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="share(ngo.Photo, '      With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing Organization' + orderData.NGOName + '.' +  locationDetails.Name +' will contribute $1 towards Organization' + orderData.NGOName + '.')" >Share & Join our Community</button> -->
+					
 				</div>
 
 				<div class="timeline py-4">
@@ -150,19 +152,52 @@
 						</li>
 					</ul>
 				</div>
+				
+			</div>
+			<div class="modal-footer p-0">
 				<div class="row w-100 d-flex align-items-center justify-content-between mx-0 text-center">
 						
-					<div class="col-xs-6">
+					<div class="col-6 px-1">
 						<button class="btn btn-site">Contact Restaurant on {{locationDetails.Tel}}</button>
 					</div>
-					<div class="col-xs-6">
+					<div class="col-6 px-1">
 						<button class="btn btn-site" *ngIf="orderData.ServiceId != 5" style="color: white"><a href="{{host}}" style="color: white">Start New Order</a></button>
 						<button class="btn btn-site" *ngIf="orderData.ServiceId == 5" ><a href="{{host}}/{{country}}/{{mobUrl}}#dinein" style="color: white">Start New Order</a></button>
 					</div>
 					
 				</div>
 			</div>
-			
 		</div>
 	</div>
 </div><!-- modal -->
+<div id="share-widgets" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Share & Join our Community</h5>
+		</div>
+		<div class="modal-body text-center">
+		  <ul class="list-inline m-0 p-0">
+			  <li class="list-inline-item">
+				  <a href="https://www.facebook.com/BellyMellyUS" class="fb social-icons" target="_blank"><i class="fa fa-facebook"></i></a>
+			  </li>
+			  <li class="list-inline-item">
+				  <a href="https://twitter.com/BellyMelly_" class="twitter social-icons" target="_blank"><i class="fa fa-twitter"></i></a>
+			  </li>
+			  <li class="list-inline-item">
+				  <a href="https://www.instagram.com/bellymelly_/" class="insta social-icons" target="_blank"><i class="fa fa-instagram"></i></a>
+			  </li>
+			  <li class="list-inline-item">
+				  <a href="https://www.linkedin.com/company/bellymelly" class="linkedin social-icons" target="_blank"><i class="fa fa-linkedin"></i></a>
+			  </li>
+		  </ul>
+		</div>
+		<div class="modal-footer py-0">
+		  <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+  
+	</div>
+  </div>

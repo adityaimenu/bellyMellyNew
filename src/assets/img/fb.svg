@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="247" height="65" viewBox="0 0 247 65">
+  <g id="fb" transform="translate(-707 -599)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="247" height="65" rx="32.5" transform="translate(707 599)" fill="#3b5998"/>
+    <g id="Group_1" data-name="Group 1" transform="translate(-0.235 -1)">
+      <text id="Login_with_Facebook" data-name="Login with Facebook" transform="translate(849.029 638)" fill="#fff" font-size="14" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="-71.379" y="0">Login with Facebook</tspan></text>
+      <path id="Icon_feather-facebook" data-name="Icon feather-facebook" d="M19.25,3H16.864a3.977,3.977,0,0,0-3.977,3.977V9.364H10.5v3.182h2.386V18.91h3.182V12.546h2.386l.8-3.182H16.068V6.977a.8.8,0,0,1,.8-.8H19.25Z" transform="translate(731.735 622.179)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

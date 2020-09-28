@@ -1,50 +1,66 @@
 <div style="display: none;" id="loginModal" class="animated-modal">
   <div class="modal-customization">
     <div class="login-box" fxLayout="row" fxLayoutAlign="start center">
-        <div class="left text-center">
+        <div class="left text-center col-md-5">
           <!-- <img *ngIf="countryNew == 'au'" src="assets/img/imageAU.png" class="img-fluid" width="100px"> -->
             <img  src="assets/images/logo.png" class="img-fluid" width="160px">
           <!-- <h2 class="text-center my-2">BellyMelly</h2> -->
 
-          <p *ngIf="countryNew == 'au'" class="mb-0 msg">Keep yourself & Your Hunger Saviour safe with social distancing.</p>
-          <p *ngIf="countryNew == 'us'" class="mb-0 msg">Your existing username and password will work if you have ordered from the restaurant's website before.</p>
+          <p *ngIf="countryNew == 'au'" class="msg">Keep yourself & Your Hunger Saviour safe with social distancing.</p>
+          <p *ngIf="countryNew == 'us'" class="msg">Your existing username and password will work if you have ordered from the restaurant's website before.</p>
  
           <img *ngIf="countryNew == 'au'" src="assets/images/safe.gif" class="img-fluid" width="220px">
           <img *ngIf="countryNew == 'us'" src="assets/images/usa-2.jpg" class="img-fluid" width="250px">
           
         </div>
-      <div class="right">
+      <div class="right col-md-7">
         <div class="login-form-box">
           <div class="title">
             <h6 class="title-heading">
               Sign In
             </h6>
           </div>
-
-          <form #loginForm="ngForm" *ngIf="!loginUserData">
-            <div class="form-group">
-              <label class="text-dark">Enter Email</label>
-              <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <a href="javascript:void(0)" (click)="socialFbSignIn(1)"><img  src="assets/img/fb.svg" class="img-fluid"></a>
             </div>
-            <div class="form-group">
-              <label class="text-dark">Enter Password</label>
-              <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
-              <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
+            <div class="col-md-6">
+              <a href="javascript:void(0)" (click)="socialGoogleSignIn(2)"><img  src="assets/img/google.svg" class="img-fluid"></a>  
             </div>
-            <a href="javascript:void(0)" (click)="sendOtpForgotModalOpen()">Forgot Password?</a>
-            <button class="btn btn-default btn-block rounded-0 mt-3" [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit">{{flags.isLogin?'Hold On...':'Sign In'}}</button>
-          </form>
-          <p  class="mt-2">Don't have an account, <a href="javascript:void(0)" (click)="signUp()">CREATE NOW</a></p>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <ul class="nav nav-pills d-flex align-items-center justify-content-center">
+                <li><a data-toggle="pill" href="#menu3"><img  src="assets/img/email.svg" class="img-fluid"></a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="tab-content">
+            <div id="menu3" class="tab-pane fade">
+              <form #loginForm="ngForm" *ngIf="!loginUserData">
+                <div class="form-group">
+                  <label class="text-dark">Enter Email</label>
+                  <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
+                </div>
+                <div class="form-group">
+                  <label class="text-dark">Enter Password</label>
+                  <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
+                  <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
+                </div>
+                <a href="javascript:void(0)" (click)="sendOtpForgotModalOpen()">Forgot Password?</a>
+                <button class="btn btn-default btn-block rounded-0 mt-3" [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit">{{flags.isLogin?'Hold On...':'Sign In'}}</button>
+              </form>
+            </div>
+          </div>
+          
+          <p class="mt-2 text-center">Don't have an account, <a href="javascript:void(0)" (click)="signUp()">CREATE NOW</a></p>
         </div>
-        <p class="text-center my-3   or-separator">New & Old Users Please Login With</p>
-        <ul class="social-login">
-          <li>
-            <a href="javascript:void(0)" (click)="socialFbSignIn(1)"><img  src="assets/img/fb.png" width="55px"></a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" (click)="socialGoogleSignIn(2)"><img  src="assets/img/google.png" width="55px"></a>  
-          </li>
-        </ul>
+        <!-- <p class="text-center my-3   or-separator">New & Old Users Please Login With</p> -->
+        <!-- <ul class="social-login">
+          
+        </ul> -->
         <!-- <ul class="social-login">
           <li (click)="socialFbSignIn(1)">
             <a href="javascript:void(0);" >
