@@ -205,9 +205,13 @@
         <div class="modal-body pt-0">
           <div class="">
             <div class="row">
-              <div class="col-sm-12 text-center">
+              <div *ngIf="LTFOOnOff == 'F'" class="col-sm-12 text-center">
                 <h2>Schedule My Order</h2>
                 <p>Select a time up to 7 days in advance.</p>
+              </div>
+              <div *ngIf="LTFOOnOff == 'T'" class="col-sm-12 text-center">
+                <h2>Restaurant is Closed</h2>
+                <p>No Future Order Available</p>
               </div>
               <div class="col-sm-12">
                   <div class="row">
@@ -257,6 +261,27 @@
                                       </div>
                                     </div>
                               </div>
+                            <div  *ngIf="LTFOOnOff == 'T'" class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                              <div class="content">
+
+                                <div class="row">
+                                  <div class="col-sm-12 text-center">
+                                    <!--<bs-datepicker-inline [bsConfig]="{showWeekNumbers:false, dateInputFormat: 'DD/MM/YYYY'}"  [minDate]="min" [maxDate]="maxDate"    (bsValueChange)="laterDateDate($event)"></bs-datepicker-inline>-->
+                                    <p class="pt-3"><a href="javascript:void(0);" class="text-dark font-weight-bold">
+                                      Restaurant is Closed
+                                    </a></p>
+                                  </div>
+                                 <!-- <div class="col-sm-12 form-group">
+                                    <div class="slctbtn">
+                                      <select class="shecdule-control" (change)="selectTime($event.target.value)">
+                                        <option class="selectOptionSelected" selected disabled>Select Time</option>
+                                        <option class="selectOption"  *ngFor="let val of timeData1;let i=index;" value="{{laterDate}} {{val}}"> {{dateTime(laterDate,val)}}  </option>
+                                      </select><i class="fa fa-angle-down downi"></i></div>
+                                    <button type="button" class="asap-btn btn mt-4" (click)="timesection(2)">Selected Date and Time {{laterDate | date:'dd MMM'}},  {{selectedTime?selectedTimeF(selectedTime):''}}</button>
+                                  </div>-->
+                                </div>
+                              </div>
+                            </div>
                              
                             </div>
                         </div>

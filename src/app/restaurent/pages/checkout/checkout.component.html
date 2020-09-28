@@ -206,7 +206,7 @@
                   </div>
                 </li>
 
-                <li class="onNext tip-part" disabled="" *ngIf="placeOrderBody.data.orderData.ServiceId == 2 || placeOrderBody.data.orderData.ServiceId == 5">
+                <li class="onNext tip-part" disabled="" *ngIf="placeOrderBody.data.orderData.ServiceId == 2 || placeOrderBody.data.orderData.ServiceId == 5 || placeOrderBody.data.orderData.ServiceId == 1 || placeOrderBody.data.orderData.ServiceId == 3">
                   <div class="item tipweb">
                     <div class="section-title">
                       <div class="row mb-4 w-100 head">
@@ -216,8 +216,8 @@
                         <div class="web-skip">
                           <p (click)="skiptip()" class="text-primary">(Skip)</p>
                         </div>
-                        <div class="openwebtip">
-                          <i class="fa fa-angle-down" aria-hidden="true" (click)="openwebdtip()"></i>
+                        <div  class="openwebtip">
+                          <i id="openTip" class="fa fa-angle-down" aria-hidden="true" (click)="openwebdtip()"></i>
                         </div>
                         <div class="col-sm-12">
                           <p class="my-2 congo1" *ngIf="placeOrderBody.data.orderData.TipAmt">Tip Added
@@ -306,9 +306,13 @@
                       <h4>Payment</h4>
                       <p>Please choose a payment option</p>
                     </div>
-                    <div *ngIf="!placeOrderBody.data.orderData.DonateCode" class="openwebpayment" (click)="selectNgoError()">
+                    <div *ngIf="!placeOrderBody.data.orderData.DonateCode && ngoData.length > 0" class="openwebpayment" (click)="selectNgoError()">
                       <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </div>
+                    <div *ngIf="!placeOrderBody.data.orderData.DonateCode && ngoData.length == 0" class="openwebpayment" (click)="openwebpayment()" >
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </div>
+
                     <div *ngIf="placeOrderBody.data.orderData.DonateCode" class="openwebpayment" (click)="openwebpayment()">
                       <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </div>

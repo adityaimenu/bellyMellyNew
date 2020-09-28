@@ -277,8 +277,17 @@ export class CheckoutComponent implements OnInit {
     this.orderData = this.placeOrderBody.data.orderData;
     if (this.placeOrderBody.data.orderData.ServiceId == 1) {
       $('.onNext').removeClass('active');
-      $('.ngoSection').addClass('active');
-      this.opendonate();
+
+      console.log('safds');
+      if (this.ngoData.length > 0) {
+        $('.ngoSection').addClass('active');
+        this.opendonate();
+      }
+        else {
+          console.log('open it')
+       setTimeout(() => {document.getElementById('openTip').click()}, 500) ;
+     //   this.openwebdtip();
+      }
       this.closeAddress();
       // $('.payment-sec').addClass('active');
     }
@@ -291,6 +300,10 @@ export class CheckoutComponent implements OnInit {
     this.addressList = loginIUser1.AddressBook;
     if (this.placeOrderBody.data.orderData.ServiceId == 2 || this.placeOrderBody.data.orderData.ServiceId == 5) {
       this.onChangeTip(20, true);
+    }
+    console.log(this.placeOrderBody.data.orderData.ServiceId);
+    if (this.placeOrderBody.data.orderData.ServiceId == 1 || this.placeOrderBody.data.orderData.ServiceId == 3) {
+      this.onChangeTip(0, true);
     }
     this.todayDate = moment().format("YYYY-MM-DD");
     this.laterDate = moment().add(1, 'day').format('YYYY-MM-DD');
@@ -491,7 +504,16 @@ export class CheckoutComponent implements OnInit {
               this.localStorage.set('BM_Is_Delivery', true);
               this.placeOrderBody.data.orderData.SrvcFee = this.deliveryCharges;
               this.localStorage.set('placeOrderData', this.placeOrderBody);
-              this.opendonate();
+              console.log('safds2');
+              if (this.ngoData.length > 0) {
+                $('.ngoSection').addClass('active');
+                this.opendonate();
+              }
+              else {
+                console.log('open it')
+                setTimeout(() => {document.getElementById('openTip').click()}, 500) ;
+                //   this.openwebdtip();
+              }
               this.closeAddress();
             }
           } else {
@@ -504,7 +526,16 @@ export class CheckoutComponent implements OnInit {
             this.localStorage.set('BM_Is_Delivery', true);
             this.placeOrderBody.data.orderData.SrvcFee = this.deliveryCharges;
             this.localStorage.set('placeOrderData', this.placeOrderBody);
-            this.opendonate();
+            console.log('safds3');
+            if (this.ngoData.length > 0) {
+              $('.ngoSection').addClass('active');
+              this.opendonate();
+            }
+            else {
+              console.log('open it')
+              setTimeout(() => {document.getElementById('openTip').click()}, 500) ;
+              //   this.openwebdtip();
+            }
             this.closeAddress();
           }
         });
@@ -530,7 +561,16 @@ export class CheckoutComponent implements OnInit {
             // this.localStorage.set('BM_Is_Delivery', false);
           }
           this.localStorage.set('placeOrderData', this.placeOrderBody);
-          this.opendonate();
+          console.log('safds4');
+          if (this.ngoData.length > 0) {
+            $('.ngoSection').addClass('active');
+            this.opendonate();
+          }
+          else {
+            console.log('open it')
+            setTimeout(() => {document.getElementById('openTip').click()}, 500) ;
+            //   this.openwebdtip();
+          }
           this.closeAddress();
         }
       }
@@ -543,7 +583,16 @@ export class CheckoutComponent implements OnInit {
       this.localStorage.set('BM_Is_Delivery', true);
       this.placeOrderBody.data.orderData.SrvcFee = this.deliveryCharges;
       this.localStorage.set('placeOrderData', this.placeOrderBody);
-      this.opendonate();
+      console.log('safds5');
+      if (this.ngoData.length > 0) {
+        $('.ngoSection').addClass('active');
+        this.opendonate();
+      }
+      else {
+        console.log('open it')
+        setTimeout(() => {document.getElementById('openTip').click()}, 500) ;
+        //   this.openwebdtip();
+      }
       this.closeAddress();
     }
   }
@@ -1258,9 +1307,9 @@ export class CheckoutComponent implements OnInit {
     this.placeOrderBody.data.orderData.DonateValue = 1
     this.localStorage.set('placeOrderData', this.placeOrderBody);
     this.closedonate();
-    if (this.placeOrderBody.data.orderData.ServiceId != 2) {
+   /* if (this.placeOrderBody.data.orderData.ServiceId != 2) {
       this.skiptip()
-    }
+    }*/
   }
 
 
@@ -1299,6 +1348,8 @@ export class CheckoutComponent implements OnInit {
     $('.openwebtip i').css("display", "none")
     $('.openwebdonation').css("display", "block")
     $('.closewebdonation').css("display", "none")
+
+
   }
   skiptip() {
 
@@ -1340,7 +1391,7 @@ export class CheckoutComponent implements OnInit {
   
   }
   closewebdonation() {
-    if (!this.placeOrderBody.data.orderData.DonateCode) {
+    if (!this.placeOrderBody.data.orderData.DonateCode && this.ngoData.length > 0) {
       this.selectNgoError();
       return;
     }
@@ -1348,7 +1399,8 @@ export class CheckoutComponent implements OnInit {
     $('.openwebdonation').css("display", "block")
     $('.closewebdonation').css("display", "none")
     $('.donate').css("display", "none")
-    $('.add-newadrbtn').hide()
+    $('.add-newadrbtn').hide();
+    this.openwebdtip();
   }
   openAddressclick() {
     $('.section-content1').css("display", "block")
@@ -1378,7 +1430,7 @@ export class CheckoutComponent implements OnInit {
     $('.closewebpayment').css("display", "block")
   }
   openwebpayment() {
-    if (!this.placeOrderBody.data.orderData.DonateCode) {
+    if (!this.placeOrderBody.data.orderData.DonateCode && this.ngoData.length > 0) {
       this.selectNgoError();
       this.openwebdonation();
     }
@@ -1474,7 +1526,7 @@ export class CheckoutComponent implements OnInit {
     $('.donate').css("display", "none")
   }
   openwebdtip() {
-    if (!this.placeOrderBody.data.orderData.DonateCode) {
+    if (!this.placeOrderBody.data.orderData.DonateCode && this.ngoData.length > 0) {
       this.selectNgoError();
       this.openwebdonation();
       return;

@@ -49,6 +49,7 @@ export class CartComponent implements OnInit {
   ASAPOnOFf:string='F';
   LTOnOff:string='F';
   FOOnOff:string='F';
+  LTFOOnOff: string = 'F';
   dineinExist:boolean=false;
   mobUrl:string;
   todayOpenClose:boolean;
@@ -450,6 +451,11 @@ return
      if (this.locationDetail.Menus[0].FO == 'T') {
       this.FOOnOff = 'T';
     }
+     console.log('dvsvs');
+     if (this.locationDetail. Menus[0].LT == 'F' && this.locationDetail.Menus[0].FO == 'F') {
+       console.log('fdsfs');
+       this.LTFOOnOff = 'T'
+     }
     this.timeData=[]
     this.getLocationDetail = this.localStorage.get('BM_LocationDetail');
     this.timeData = this.common.checkRestaurentTimeSchedule(this.getLocationDetail);
