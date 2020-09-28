@@ -87,6 +87,7 @@ export class CheckoutComponent implements OnInit {
   timeData = [];
   timeData1 = [];
   selectedTime: string;
+  LTFOOnOff: string = 'F';
   getLocationDetail: any;
   @ViewChild(CouponsComponent, { static: false }) couponComp: CouponsComponent;
   cardBody = new CardDetailBody();
@@ -303,7 +304,7 @@ export class CheckoutComponent implements OnInit {
     }
     console.log(this.placeOrderBody.data.orderData.ServiceId);
     if (this.placeOrderBody.data.orderData.ServiceId == 1 || this.placeOrderBody.data.orderData.ServiceId == 3) {
-      this.onChangeTip(0, true);
+      this.onChangeTip(20, true);
     }
     this.todayDate = moment().format("YYYY-MM-DD");
     this.laterDate = moment().add(1, 'day').format('YYYY-MM-DD');
@@ -1569,8 +1570,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   timesection(val) {
+    console.log('hello');
     if (val == 2) {
-      if (!this.selectedTime) return this.error('Select time');;
+      if (!this.selectedTime) return this.error('Select time');
     }
     var ReadyInMin = this.locationDetails.Services.find(x => x.Id === this.placeOrderBody.data.orderData.ServiceId);
 
@@ -1590,7 +1592,11 @@ export class CheckoutComponent implements OnInit {
 
     this.placeOrderBody.data.orderData.DueOn = this.DueOn;
     $('.dlvrytym').click()
-    $('#shecdule1').modal('hide')
+    $('#shecdule1').modal('hide');
+    $('#collapseExample').click();
+    console.log(document.getElementById('collapseExample'));
+
+    document.getElementById('collapseExample').style.display ='none'
     $("div").removeClass("modal-backdrop")
   }
 
@@ -1619,11 +1625,23 @@ export class CheckoutComponent implements OnInit {
     if (this.locationDetails.Menus[0].FO == 'T') {
       this.FOOnOff = 'T';
     }
+    if (this.locationDetails. Menus[0].LT == 'F' && this.locationDetails.Menus[0].FO == 'F') {
+      console.log('fdsfs');
+      this.LTFOOnOff = 'T'
+    }
     this.timeData = this.common.checkRestaurentTimeSchedule(this.locationDetails);
     $('#shecdule1').modal('show');
   }
 
   shecdule2() {
+    console.log('sch2');
+    if ($('collapseExample').css('display') === 'none' ){
+      // do the stuff
+      document.getElementById('collapseExample').style.display = 'block'
+    }
+   /* if (document.getElementById('collapseExample').style.display == 'none') {
+      document.getElementById('collapseExample').style.display = 'block'
+    }*/
     this.timeData = this.common.checkRestaurentTimeSchedule(this.locationDetails);
   }
 
@@ -1731,6 +1749,10 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  hide() {
+    document.getElementById('collapseExample').style.display = 'none'
+  }
+
   shecdule() {
     if (this.locationDetails.Menus[0].ASAP == 'T') {
       this.ASAPOnOFf = 'T';
@@ -1740,6 +1762,12 @@ export class CheckoutComponent implements OnInit {
     }
     if (this.locationDetails.Menus[0].FO == 'T') {
       this.FOOnOff = 'T';
+    }
+
+    console.log('sch2');
+    if (document.getElementById('collapseExample').style.display = 'none' ){
+      // do the stuff
+      document.getElementById('collapseExample').style.display = 'block'
     }
 
     // $('#collapseOne').trigger('click')
