@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
     this.loginUserData = this.localStorage.get('BM_USER');
     if (this.loginUserData) {
       if (this.localStorage.get('BM_LoginBody')) {
-        this.loginRest();
+       // this.loginRest();
       }
     }
     this.baseUrl = window.location.pathname.replace('/', '').split('/')[0];
@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log('login');
 
     this.loginBody.tId = this.common.loginToken;
     this.flags.isLogin = true;
@@ -109,6 +110,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginRest() {
+    console.log('login2   ')
     this.loginBody = this.localStorage.get('BM_LoginBody');
     this.restLoginBody.tId = this.localStorage.get('BM_tId');
     this.restLoginBody.data = { username: this.loginBody.data.username, password: this.loginBody.data.password, isBMPortal: 1 };
@@ -127,7 +129,9 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl(`/${this.mobUrl}/checkout`); //live 
         }
       }
+      location.reload();
       $.fancybox.close();
+
     })
   }
   signUp() {
@@ -160,7 +164,9 @@ export class LoginComponent implements OnInit {
           $('#sendOtpSignupModal').modal('show');
           $("div").removeClass("modal-backdrop")
         }
+        location.reload();
         $.fancybox.close();
+
       });
     })
   }
@@ -197,7 +203,9 @@ export class LoginComponent implements OnInit {
           $('#sendOtpSignupModal').modal('show');
           $("div").removeClass("modal-backdrop")
         }
+        location.reload();
         $.fancybox.close();
+       // location.reload();
       });
     })
   }

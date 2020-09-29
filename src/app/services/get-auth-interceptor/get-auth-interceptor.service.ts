@@ -82,8 +82,8 @@ export class GetAuthInterceptorService {
         if (error.status === 403) {
           this.toaster.errorToastr('Your session is expired, please sign in.');
           this.router.navigateByUrl('/');
-          this.loginService.setVal(false);
-          this.localStorage.clear();
+        //  this.loginService.setVal(false);
+        //  this.localStorage.clear();
           document.getElementById('openLoginModalBtn').click();
         } else if (error.status !== 200) {
           // document.getElementById('connectionError').click();

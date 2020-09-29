@@ -93,9 +93,9 @@ export class HeaderComponent implements OnInit {
       if (this.localStorage.get('BM_Country') != this.country) {
         this.localStorage.remove('placeOrderData');
         this.localStorage.remove('cartItem');
-        this.localStorage.clear();
+        /*this.localStorage.clear();
         this.loginService.setUser(null);
-        this.loginService.setVal(false);
+        this.loginService.setVal(false);*/
         this.observable.setSpecialOffer(false)
         this.localStorage.set('specialOfferData', null)
 
