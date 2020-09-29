@@ -70,7 +70,7 @@
 					<div class="row w-100 d-flex align-items-center no-gutters mb-3">
 						<div class="col-4"></div>
 						<div class="col-4"><div class="text-center h6 text-white mb-0">Track Order</div></div>
-						<div class="col-4 text-right"><a href="javascript:void(0);" data-dismiss="modal"><img src="assets/images/cross.svg"></a></div>
+						<div class="col-4 text-right"><a [routerLink]="'/' + country + '/' + mobUrl" data-dismiss="modal"><img  src="assets/images/cross.svg"></a></div>
 					</div>
 					<div class="row w-100 d-flex align-items-center justify-content-between no-gutters text-center">
 						
@@ -97,7 +97,7 @@
 				<p *ngIf="ngo.RecId == orderData.NGOId" class="text-center">
 					With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing  {{ngo.Name}}. BellyMelly with {{locationDetails.Name}} will contribute $1 towards  {{ngo.Name}}.
 				</p>
-					<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" data-toggle="modal" data-target="#share-widgets" data-dismiss="modal">Share & Join our Community</button>
+					<!--<button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" data-toggle="modal" data-target="#share-widgets" data-dismiss="modal">Share & Join our Community</button>-->
 					<!-- <button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="save()" >Share & Join our Community</button> -->
 					<div id="output"></div>
 					<!-- <button *ngIf="ngo.RecId == orderData.NGOId" class="btn btn-site" (click)="share(ngo.Photo, '      With your help our platform improves the well being of your community. You can enjoy ordering food online and help the community as well. Thank you for choosing Organization' + orderData.NGOName + '.' +  locationDetails.Name +' will contribute $1 towards Organization' + orderData.NGOName + '.')" >Share & Join our Community</button> -->
