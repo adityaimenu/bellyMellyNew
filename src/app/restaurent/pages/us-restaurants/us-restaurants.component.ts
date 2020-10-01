@@ -25,7 +25,7 @@ export class UsRestaurantsComponent implements OnInit {
   country: string;
   countryAsign: string;
   restaurantname: string;
-  servicetype: string = 'Pickup';
+  servicetype: string = 'Delivery';
   FoodTypes = [];
   FoodTypesId = []
   Locations = [];
@@ -41,7 +41,7 @@ export class UsRestaurantsComponent implements OnInit {
   skipRows: number = 0;
   limit: number = 20;
   searchAddressMobile: string;
-  selectedservicetype: string;
+  selectedservicetype: string = 'Delivery';
   countryCode: string;
   showRestaurant: number = 0;
   showService: number = 0;
@@ -86,6 +86,7 @@ export class UsRestaurantsComponent implements OnInit {
       componentRestrictions: { country: this.countryCode }
     }
     this.comingLatLong();
+    this.initMap();
 
     /*if(localStorage.getItem('adr_address')) {
       this.selectedAddr = localStorage.getItem('adr_address');
@@ -105,15 +106,16 @@ export class UsRestaurantsComponent implements OnInit {
       this.longitude = Number(longitude);
       if (this.latitude == 0 && this.restaurantname != '') {
         this.searchrRestaurants(this.servicetype)
-        document.getElementById('sizeWeight').click();
-        document.getElementById('sizeWeightm').click();
+        document.getElementById('sizeDimensions').click();
+        document.getElementById('sizeDimensionsm').click();
       } else {
         this.currentAddr = ' ';
         this.addAddressString = this.currentAddr;
         this.searchAddressMobile = this.addAddressString;
+        console.log(this.servicetype);
         this.searchrRestaurantsWithAddress(this.servicetype);
-        document.getElementById('sizeWeight').click();
-        document.getElementById('sizeWeightm').click();
+        document.getElementById('sizeDimensions').click();
+        document.getElementById('sizeDimensionsm').click();
       }
     } else {
       if (this.country == 'us') {
@@ -201,6 +203,7 @@ export class UsRestaurantsComponent implements OnInit {
   }
 
   searchrRestaurants(val) {
+
     this.addAddressString = null;
     this.skipRows = 0;
     this.Locations = [];
@@ -228,8 +231,8 @@ export class UsRestaurantsComponent implements OnInit {
         });
       }
       this.selectedservicetype = this.servicetype;
-      document.getElementById('sizeWeight').click();
-      document.getElementById('sizeWeightm').click();
+      document.getElementById('sizeDimensions').click();
+      document.getElementById('sizeDimensionsm').click();
       this.searchAddressMobile = this.searchAddress;
       this.spinner.hide();
       $('.addAddressString').val('')
@@ -242,6 +245,7 @@ export class UsRestaurantsComponent implements OnInit {
   }
 
   searchrRestaurantsWithAddress(val) {
+    console.log('hello', val);
     this.restaurantname = null
     this.Locations = [];
     this.totalCount = 0;
@@ -263,6 +267,10 @@ export class UsRestaurantsComponent implements OnInit {
       console.log(this.Locations[0]);
       if (this.Locations[0]) {
         this.selectedAddr = this.Locations[0].City;
+      } else {
+        let latlng = this.latitude + ',' + this.longitude;
+        (document.getElementById("latlng") as HTMLInputElement).value = latlng ;
+        (document.getElementById('submitt') as HTMLButtonElement).click();
       }
       console.log(this.selectedAddr);
       this.totalCount = response.TotalLocationCnt;
@@ -273,8 +281,8 @@ export class UsRestaurantsComponent implements OnInit {
         });
       }
       this.selectedservicetype = this.servicetype;
-      document.getElementById('sizeWeight').click();
-      document.getElementById('sizeWeightm').click();
+      document.getElementById('sizeDimensions').click();
+      document.getElementById('sizeDimensionsm').click();
 
       this.searchAddressMobile = this.searchAddress;
       this.spinner.hide();
@@ -288,6 +296,7 @@ export class UsRestaurantsComponent implements OnInit {
   }
 
   searchrRestaurantsBoth(val) {
+
     // this.Locations =[];
     // this.totalCount= 0;
     // this.skipRows = 0
@@ -317,6 +326,10 @@ export class UsRestaurantsComponent implements OnInit {
       console.log(this.Locations[0]);
       if (this.Locations[0]) {
         this.selectedAddr = this.Locations[0].City;
+      } else {
+        let latlng = this.latitude + ',' + this.longitude;
+        (document.getElementById("latlng") as HTMLInputElement).value = latlng ;
+        (document.getElementById('submitt') as HTMLButtonElement).click();
       }
       console.log(this.selectedAddr, '2');
       this.totalCount = response.TotalLocationCnt;
@@ -343,6 +356,69 @@ export class UsRestaurantsComponent implements OnInit {
 openFilters() {
     document.getElementById('filter-menu2').click();
 }
+
+ initMap(): void {
+    const map = new google.maps.Map(
+        document.getElementById("map") as HTMLElement,
+        {
+          zoom: 8,
+          center: { lat: 41.8781136, lng: -87.6297982 },
+        }
+    );
+    const geocoder = new google.maps.Geocoder();
+    const infowindow = new google.maps.InfoWindow();
+
+    (document.getElementById("submitt") as HTMLElement).addEventListener(
+        "click",
+        () => {
+          this.geocodeLatLng(geocoder, map, infowindow);
+        }
+    );
+  }
+
+  geocodeLatLng(
+      geocoder: google.maps.Geocoder,
+      map: google.maps.Map,
+      infowindow: google.maps.InfoWindow
+  ) {
+    const input = (document.getElementById("latlng") as HTMLInputElement).value;
+    const latlngStr = input.split(",", 2);
+    const latlng = {
+      lat: parseFloat(latlngStr[0]),
+      lng: parseFloat(latlngStr[1]),
+    };
+    geocoder.geocode(
+        { location: latlng },
+        (
+            results: google.maps.GeocoderResult[],
+            status: google.maps.GeocoderStatus
+        ) => {
+          if (status === "OK") {
+            console.log(results[0].address_components);
+
+            for( let i = 0; i< results[0].address_components.length; i++) {
+             if (results[0].address_components[i].types[0] == "locality") {
+               this.selectedAddr = results[0].address_components[i].long_name;
+               console.log(this.selectedAddr);
+             }
+            }
+            if (results[0]) {
+              map.setZoom(11);
+              const marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+              });
+              infowindow.setContent(results[0].formatted_address);
+              infowindow.open(map, marker);
+            } else {
+              window.alert("No results found");
+            }
+          } else {
+            window.alert("Geocoder failed due to: " + status);
+          }
+        }
+    );
+  }
 
 
   changeSearchType(val) {
@@ -438,6 +514,7 @@ openFilters() {
   }
 
   selectService(val) {
+    console.log(val);
     this.skipRows = 0;
     this.servicetype = val
     this.Locations = []

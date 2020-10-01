@@ -304,7 +304,7 @@ export class CheckoutComponent implements OnInit {
     }
     console.log(this.placeOrderBody.data.orderData.ServiceId);
     if (this.placeOrderBody.data.orderData.ServiceId == 1 || this.placeOrderBody.data.orderData.ServiceId == 3) {
-      this.onChangeTip(20, true);
+      this.onChangeTip(0, true);
     }
     this.todayDate = moment().format("YYYY-MM-DD");
     this.laterDate = moment().add(1, 'day').format('YYYY-MM-DD');
@@ -1596,7 +1596,7 @@ export class CheckoutComponent implements OnInit {
     $('#collapseExample').click();
     console.log(document.getElementById('collapseExample'));
 
-    document.getElementById('collapseExample').style.display ='none'
+    document.getElementById('drop').click();
     $("div").removeClass("modal-backdrop")
   }
 
@@ -1635,10 +1635,7 @@ export class CheckoutComponent implements OnInit {
 
   shecdule2() {
     console.log('sch2');
-    if ($('collapseExample').css('display') === 'none' ){
-      // do the stuff
-      document.getElementById('collapseExample').style.display = 'block'
-    }
+
    /* if (document.getElementById('collapseExample').style.display == 'none') {
       document.getElementById('collapseExample').style.display = 'block'
     }*/
@@ -1750,7 +1747,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   hide() {
-    document.getElementById('collapseExample').style.display = 'none'
+    console.log('xczx');
+    document.getElementById('drop').click();
   }
 
   shecdule() {
@@ -1765,10 +1763,11 @@ export class CheckoutComponent implements OnInit {
     }
 
     console.log('sch2');
-    if (document.getElementById('collapseExample').style.display = 'none' ){
+    document.getElementById('drop').click();
+   /* if (document.getElementById('collapseExample').style.display = 'none' ){
       // do the stuff
       document.getElementById('collapseExample').style.display = 'block'
-    }
+    }*/
 
     // $('#collapseOne').trigger('click')
     // $('#collapseOne').modal('show');
