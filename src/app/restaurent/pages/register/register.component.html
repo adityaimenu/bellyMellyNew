@@ -1,3 +1,66 @@
+<div id="registerModal" class="modal fade authenticate" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 999999">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2>Welcome Back! Please Register Here</h2>
+        <h6>Already on BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link">Login here</a></h6>
+      </div>
+      <div class="modal-body">
+        <div class="modal-inner">
+          <!-- Form -->
+          <form *ngIf="!flags.isOtpSent" #userRegisterForm="ngForm" class="text-center" style="color: #757575;" action="#!">
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Enter First Name</mat-label>
+                  <input matInput  type="text" [(ngModel)]="signUpBody.data.customerData.fName" required>
+                  <mat-hint *ngIf="!signUpBody.data.customerData.fName">{{fnameError}}</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Enter Last Name</mat-label>
+                  <input matInput  type="text" [(ngModel)]="signUpBody.data.customerData.lName" required>
+                  <mat-hint *ngIf="!signUpBody.data.customerData.lName">{{fnameError}}</mat-hint>
+                </mat-form-field>
+
+              </div>
+            </div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter Email</mat-label>
+              <input matInput  type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" [(ngModel)]="signUpBody.data.customerData.eMail" required>
+              <mat-hint *ngIf="!signUpBody.data.customerData.eMail">{{emailError}}</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter Mobile No.</mat-label>
+              <input matInput   name="phoneNumbers"  type="text" appOnlyNumber [(ngModel)]="signUpBody.data.customerData.tel"  maxlength="10" required>
+              <mat-hint *ngIf="!signUpBody.data.customerData.tel">{{tellError}}</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter Password</mat-label>
+              <input matInput name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required >
+              <button class="bg-transparent border-0" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-hint *ngIf="!password">{{passwordError}}</mat-hint>
+            </mat-form-field>
+
+            <button *ngIf="!flags.isOtpSent" matRipple class="btn btn-success btn-block mt-3"  (click)="sendOtp()">{{flags.isRegister?'Hold On...':'Sign Up'}}</button>
+
+            
+          </form>
+          <!-- Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 
 <div style="display: none;" id="registerModal" class="animated-modal">
   <div class="modal-customization">
     <div class="login-box" fxLayout="row" fxLayoutAlign="start center">
@@ -48,7 +111,7 @@
               <input type="password" class="form-control" name="password" autocomplete="off" maxlength="20" [(ngModel)]="password" required />
               <span class="errormsg" *ngIf="!password">{{passwordError}}</span>
             </div>
-            <button *ngIf="!flags.isOtpSent" class="btn btn-default btn-block rounded-0 mt-3"  (click)="sendOtp()">{{flags.isRegister?'Hold On...':'Sign Up'}}</button>
+            
           </form>
         </div>
         <p>Already have account, <a href="javascript:void(0)" (click)="signIn()">Sign in</a></p>
@@ -56,4 +119,4 @@
     </div>
   </div>
 </div>
-<button class="btn btn-site rounded-0 d-none" data-fancybox data-animation-duration="700" id="openSignUpModal" data-src="#registerModal">New User?<br><b>Sign Up</b></button>
+<button class="btn btn-site rounded-0 d-none" data-fancybox data-animation-duration="700" id="openSignUpModal" data-src="#registerModal">New User?<br><b>Sign Up</b></button> -->

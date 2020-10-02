@@ -15,6 +15,9 @@ import { LocationSidebarComponent } from './restaurent/pages/location-sidebar/lo
 import { ModalComponent } from './restaurent/pages/dish-items/modal/modal.component';
 import { CheckoutComponent } from './restaurent/pages/checkout/checkout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
+import {MatRippleModule} from '@angular/material/core';
 import {
   NbThemeModule,
   NbLayoutModule,
@@ -146,6 +149,7 @@ export function provideConfig() {
     NbButtonModule,
     NbRadioModule,
     NbInputModule,
+    MatRippleModule,
     NbDatepickerModule.forRoot(),
   //  NgxUsefulSwiperModule,
    // SwiperModule,
@@ -153,6 +157,9 @@ export function provideConfig() {
     NbTabsetModule,
     NbTabsetModule,
     NgxSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
     ToastrModule.forRoot(),
     PaginationModule.forRoot(),
     GooglePlaceModule,

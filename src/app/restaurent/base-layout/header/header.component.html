@@ -40,7 +40,8 @@
           <div class="Login-user">
             <div *ngIf="isLogin" class="dropdown">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span><img src="assets/images/default-user.jpg" class="user-pic" width="18px" alt="user-pic"></span><aside class="mt-1 ml-1">Hi {{user.FName}}</aside> 
+                <!-- <span><img src="assets/images/default-user.jpg" class="user-pic" width="18px" alt="user-pic"></span><aside class="mt-1 ml-1">Hi {{user.FName}}</aside>  -->
+                <aside class="mt-1 ml-1">Hi {{user.FName}}</aside> 
               </button>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="javascript:void(0);" routerLink="/{{mobUrl}}/profile"><span><nb-icon icon="person-outline"></nb-icon></span> Profile</a>
@@ -50,7 +51,8 @@
             </div>
             <div *ngIf="!isLogin">
               <button type="button" class="btn btn-primary dropdown-toggle">
-                <aside data-fancybox data-src="#loginModal" id="openLoginModalBtn"><b class="ml-1">Login</b></aside>
+                <!-- <aside data-fancybox data-src="#loginModal" id="openLoginModalBtn"><b class="ml-1">Login</b></aside> -->
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal">Login</a>
               </button>
             </div>
           </div>

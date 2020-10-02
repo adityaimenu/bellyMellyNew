@@ -1,93 +1,180 @@
-<div style="display: none;" id="loginModal" class="animated-modal">
-  <div class="modal-customization">
-    <div class="login-box" fxLayout="row" fxLayoutAlign="start center">
-        <div class="left text-center col-md-5">
-          <!-- <img *ngIf="countryNew == 'au'" src="assets/img/imageAU.png" class="img-fluid" width="100px"> -->
-            <img  src="assets/images/logo.png" class="img-fluid" width="160px">
-          <!-- <h2 class="text-center my-2">BellyMelly</h2> -->
 
-          <p *ngIf="countryNew == 'au'" class="msg">Keep yourself & Your Hunger Saviour safe with social distancing.</p>
-          <p *ngIf="countryNew == 'us'" class="msg">Your existing username and password will work if you have ordered from the restaurant's website before.</p>
- 
-          <img *ngIf="countryNew == 'au'" src="assets/images/safe.gif" class="img-fluid" width="220px">
-          <img *ngIf="countryNew == 'us'" src="assets/images/usa-2.jpg" class="img-fluid" width="250px">
-          
+
+
+<div id="loginModal" class="modal fade authenticate" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 999999">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2>Welcome Back! Please Sign In</h2>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+      </div>
+      <div class="modal-body">
+        <div class="modal-inner">
+          <!-- Form -->
+          <form #sendForm="ngForm" class="text-center" style="color: #757575;" action="#!">
+            <ul class="social-widgets mt-3 mb-5 list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="javascript:void(0);">
+                  <img src="assets/img/facebook.svg" class="img-fluid" alt="Facebook" width="20px" (click)="socialFbSignIn(1)"> Login with Facebook
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="javascript:void(0);">
+                  <img src="assets/img/google.svg" class="img-fluid" alt="Google" width="20px" (click)="socialGoogleSignIn(2)"> Login with Google
+                </a>
+              </li>
+            </ul>
+            <p class="text-center"><a href="javascript:void(0);" class="font-weight-bold text-muted" data-toggle="modal" data-dismiss="modal" data-target="#loginEmail"><small>Login with Email</small></a></p>
+          </form>
+          <!-- Form -->
         </div>
-      <div class="right col-md-7">
-        <div class="login-form-box">
-          <div class="title">
-            <h6 class="title-heading">
-              Sign In
-            </h6>
-          </div>
-          <div class="row">
-            <div class="col-md-6 text-center mb-2">
-              <a href="javascript:void(0)" (click)="socialFbSignIn(1)"><img  src="assets/img/fb.svg" class="img-fluid"></a>
-            </div>
-            <div class="col-md-6 text-center mb-2">
-              <a href="javascript:void(0)" (click)="socialGoogleSignIn(2)"><img  src="assets/img/google.svg" class="img-fluid"></a>  
-            </div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-              <ul class="nav nav-pills d-flex align-items-center justify-content-center">
-                <li><a data-toggle="pill" href="#menu3"><img  src="assets/img/email.svg" class="img-fluid"></a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="tab-content">
-            <div id="menu3" class="tab-pane fade">
-              <form #loginForm="ngForm" *ngIf="!loginUserData">
-                <div class="form-group">
-                  <label class="text-dark">Enter Email</label>
-                  <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
-                </div>
-                <div class="form-group">
-                  <label class="text-dark">Enter Password</label>
-                  <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
-                  <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
-                </div>
-                <a href="javascript:void(0)" (click)="sendOtpForgotModalOpen()">Forgot Password?</a>
-                <button class="btn btn-default btn-block rounded-0 mt-3" [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit">{{flags.isLogin?'Hold On...':'Sign In'}}</button>
-              </form>
-            </div>
-          </div>
-          
-          <p class="mt-2 text-center">Don't have an account, <a href="javascript:void(0)" (click)="signUp()">CREATE NOW</a></p>
-        </div>
-        <!-- <p class="text-center my-3   or-separator">New & Old Users Please Login With</p> -->
-        <!-- <ul class="social-login">
-          
-        </ul> -->
-        <!-- <ul class="social-login">
-          <li (click)="socialFbSignIn(1)">
-            <a href="javascript:void(0);" >
-              <span class="fb">
-                <nb-icon icon="facebook"></nb-icon>
-              </span>
-            </a>
-          </li>
-          <li (click)="socialGoogleSignIn(2)">
-            <a href="javascript:void(0);"  >
-              <span class="google">
-                <nb-icon icon="google"></nb-icon>
-              </span>
-            </a>
-          </li>
-        </ul> -->
       </div>
     </div>
   </div>
 </div>
 
 
+<div id="loginEmail" class="modal fade authenticate" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 999999">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2>Welcome Back! Please Sign In</h2>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+      </div>
+      <div class="modal-body">
+        <div class="modal-inner">
+          <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
+          <!-- Form -->
+          <form #loginForm="ngForm" *ngIf="!loginUserData">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter Email</mat-label>
+              <input matInput  type="email" placeholder="e.g:- example@mail.com" [(ngModel)]="loginBody.data.username" required>
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="loginBody.data.password">
+              <button class="bg-transparent border-0" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <!-- <div class="form-group">
+              <label class="text-dark">Enter Email</label>
+              <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
+            </div> -->
+            <!-- <div class="form-group">
+              <label class="text-dark">Enter Password</label>
+              <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
+              <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
+            </div> -->
+            <p class="text-right"><a href="javascript:void(0)" data-toggle="modal" data-target="#sendOtpForgotModal">Forgot Password?</a></p>
+            <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit">{{flags.isLogin?'Hold On...':'Sign In'}}</button>
+          </form>
+          <!-- Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<div id="sendOtpForgotModal" class="modal fade authenticate" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 999999">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2>Reset Your Password</h2>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+      </div>
+      <div class="modal-body">
+        <div class="modal-inner">
+          <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
+          <!-- Form -->
+          <form #forgotSendForm="ngForm">
 
+            <mat-form-field appearance="outline">
+              <mat-label>Outline form field</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Hint</mat-hint>
+            </mat-form-field>
 
-<div class="modal" id="sendOtpForgotModal">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>
+                <span *ngIf="findCountry">Phone Number</span>
+                <span *ngIf="!findCountry">Email </span>
+              </mat-label>
+              <input matInput *ngIf="findCountry"  name="email" [(ngModel)]="usernameForgot" required placeholder="Enter Phone Number">
+              <input matInput *ngIf="!findCountry"  name="email" [(ngModel)]="usernameForgot" required placeholder="Enter Email">
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            
+            <!-- <div class="form-group">
+              <label class="text-dark">Enter Email</label>
+              <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
+            </div> -->
+            <!-- <div class="form-group">
+              <label class="text-dark">Enter Password</label>
+              <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
+              <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
+            </div> -->
+            <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!forgotSendForm.valid || flags.isLogin" (click)="sendOtpForgot()">Send OTP</button>
+          </form>
+          <!-- Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="enterOtpForgotModal" class="modal fade authenticate" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 999999">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2>Reset Your Password</h2>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+      </div>
+      <div class="modal-body">
+        <div class="modal-inner">
+          <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
+          <!-- Form -->
+          <form #forgotSendForm="ngForm">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label><span *ngIf="findCountry">Phone Number</span><span *ngIf="!findCountry">Email </span></mat-label>
+              <input matInput *ngIf="findCountry"  name="email" [(ngModel)]="usernameForgot" disabled required >
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter one time password sent to {{usernameForgot}}</mat-label>
+              <input matInput type="text" class="form-control" name="OTP" [(ngModel)]="OTP" placeholder="One Time Password" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Enter Password</mat-label>
+              <input matInput name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required >
+              <button class="bg-transparent border-0" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-hint *ngIf="!password">{{passwordError}}</mat-hint>
+            </mat-form-field>
+            <div class="row">
+              <div class="col-lg-6">
+                <button class="btn btn-success btn-block mb-3" matRipple [disabled]="!EnterforgotSendForm.valid || flags.isLogin" (click)="resetPassword()">Reset Password</button>
+              </div>
+              <div class="col-lg-6">
+                <button class="btn btn-success btn-block" matRipple (click)="ResendsendOtp()">Resend Otp</button>
+              </div>
+            </div>
+          </form>
+          <!-- Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal" id="sendOtpForgotModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -107,9 +194,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="modal" id="enterOtpForgotModal">
+<!-- <div class="modal" id="enterOtpForgotModal">
   <div class="modal-dialog">
     <div class="modal-content">
     
@@ -120,7 +207,6 @@
       </div>
       
       <div class="modal-body">
-        <!-- <h6>Enter OTP sent to your phone and Enter New Password.</h6> -->
         <form #EnterforgotSendForm="ngForm">
           <div class="form-group">
             <label class="text-dark" *ngIf="findCountry" >Phone Number</label>
@@ -141,7 +227,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
