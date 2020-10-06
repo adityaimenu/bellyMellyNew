@@ -126,6 +126,7 @@ export class RegisterComponent implements OnInit {
       this.loginBody.data = { username: this.signUpBody.data.customerData.eMail, password: this.signUpBody.data.password, isBMPortal: 1 };
       this.signUpBody = new RegisterBody();
       this.login();
+      this.loginRest();
     })
   }
   login() {
@@ -139,10 +140,36 @@ export class RegisterComponent implements OnInit {
       this.loginService.setVal(true);
       this.loginService.setUser(response.data);
       if (this.isCheckoutWithoutLogin) {
-        this.router.navigateByUrl(`/${this.baseUrl}/checkout`);
+      //  this.router.navigateByUrl(`/${this.baseUrl}/checkout`);
       }
-      $.fancybox.close();
+     /* $.fancybox.close();
+      location.reload();*/
+    })
+  }
+
+  loginRest() {
+    console.log('login2   ')
+   // this.loginBody = this.localStorage.get('BM_LoginBody');
+    this.loginBody.tId = this.localStorage.get('BM_tId');
+    this.loginBody.data = { username: this.loginBody.data.username, password: this.loginBody.data.password, isBMPortal: 1 };
+
+    this.api.loginRest(this.loginBody).subscribe((response: any) => {
+
+      if (response.serviceStatus != 'S') return ;
+      this.localStorage.set('BM_USER', response.data);
+      this.loginService.setVal(true);
+      this.loginService.setUser(response.data);
+
+      if (this.isCheckoutWithoutLogin) {
+        if(window.location.hostname == 'localhost'){
+       //   this.router.navigateByUrl(`/${this.countryNew}/${this.mobUrl}/checkout`); //testing
+        }else{
+          this.router.navigateByUrl(`/${this.baseUrl}/checkout`); //live
+        }
+      }
       location.reload();
+      $.fancybox.close();
+
     })
   }
   confirmEmail(email) {
