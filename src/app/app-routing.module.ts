@@ -31,14 +31,14 @@ const routes: Routes = [
   },
   { path: 'au/restaurants', component: UsRestaurantsComponent }, //testing
   { path: 'us/restaurants', component: UsRestaurantsComponent }, // testing
-  //  { path: 'restaurants',  component: UsRestaurantsComponent }, // live
+ //   { path: 'restaurants',  component: UsRestaurantsComponent }, // live
 
   { path: 'au/org/:org', component: FooddepoComponent }, //testing
   { path: 'us/org/:org', component: FooddepoComponent }, // testing
   {path: 'dinein', component: DineInComponent},
   {path: 'joinUs', component: JoinUsComponent},
   {path: 'aboutUs', component: AboutUsComponent},
-  //  { path: 'org/:org',  component: FooddepoComponent }, // live
+ //   { path: 'org/:org',  component: FooddepoComponent }, // live
   {
     path: ':country/:mobUrl', //testing
   //    path: ':mobUrl', // live
