@@ -48,18 +48,29 @@
           <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
           <!-- Form -->
           <form #loginForm="ngForm" *ngIf="!loginUserData">
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Enter Email</mat-label>
-              <input matInput  type="email" placeholder="e.g:- example@mail.com" [(ngModel)]="loginBody.data.username" required>
-              <!-- <mat-hint>Hint</mat-hint> -->
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="w-100">
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100">
+                <input placeholder=" " [(ngModel)]="loginBody.data.username" required>
+                <span>Enter Email</span>
+              </label>
+            </div>
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100 password-view">
+                <input placeholder=" " [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="loginBody.data.password">
+                <span>Enter your password</span>
+                <div class="icon">
+                  <span class="visible"><mat-icon>visibility</mat-icon></span>
+                  <span class="not-visible"><mat-icon>visibility_off</mat-icon></span>
+                </div>
+              </label>
+            </div>
+            <!-- <mat-form-field appearance="outline" class="w-100">
               <mat-label>Enter your password</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="loginBody.data.password">
               <button class="bg-transparent border-0" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
-            </mat-form-field>
+            </mat-form-field> -->
             <!-- <div class="form-group">
               <label class="text-dark">Enter Email</label>
               <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
@@ -69,7 +80,7 @@
               <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
               <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
             </div> -->
-            <p class="text-right"><a href="javascript:void(0)" data-toggle="modal" data-target="#sendOtpForgotModal">Forgot Password?</a></p>
+            <p class="text-right"><a href="javascript:void(0)" data-toggle="modal" data-dismiss="modal" data-target="#sendOtpForgotModal">Forgot Password?</a></p>
             <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit">{{flags.isLogin?'Hold On...':'Sign In'}}</button>
           </form>
           <!-- Form -->
@@ -93,33 +104,14 @@
           <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
           <!-- Form -->
           <form #forgotSendForm="ngForm">
-
-            <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input matInput placeholder="Placeholder">
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100">
+                <input placeholder=" " *ngIf="findCountry" [(ngModel)]="usernameForgot" required>
+                <input placeholder=" " *ngIf="!findCountry" [(ngModel)]="usernameForgot" required>
                 <span *ngIf="findCountry">Phone Number</span>
                 <span *ngIf="!findCountry">Email </span>
-              </mat-label>
-              <input matInput *ngIf="findCountry"  name="email" [(ngModel)]="usernameForgot" required placeholder="Enter Phone Number">
-              <input matInput *ngIf="!findCountry"  name="email" [(ngModel)]="usernameForgot" required placeholder="Enter Email">
-              <!-- <mat-hint>Hint</mat-hint> -->
-            </mat-form-field>
-            
-            <!-- <div class="form-group">
-              <label class="text-dark">Enter Email</label>
-              <input type="email" class="form-control" name="email" autocomplete="off" [(ngModel)]="loginBody.data.username" required />
-            </div> -->
-            <!-- <div class="form-group">
-              <label class="text-dark">Enter Password</label>
-              <input type="password" class="form-control" name="password" id="typepass" [(ngModel)]="loginBody.data.password" required />
-              <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
-            </div> -->
+              </label>
+            </div>
             <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!forgotSendForm.valid || flags.isLogin" (click)="sendOtpForgot()">Send OTP</button>
           </form>
           <!-- Form -->
@@ -142,22 +134,30 @@
           <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
           <!-- Form -->
           <form #forgotSendForm="ngForm">
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label><span *ngIf="findCountry">Phone Number</span><span *ngIf="!findCountry">Email </span></mat-label>
-              <input matInput *ngIf="findCountry"  name="email" [(ngModel)]="usernameForgot" disabled required >
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Enter one time password sent to {{usernameForgot}}</mat-label>
-              <input matInput type="text" class="form-control" name="OTP" [(ngModel)]="OTP" placeholder="One Time Password" required />
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Enter Password</mat-label>
-              <input matInput name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required >
-              <button class="bg-transparent border-0" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-              <mat-hint *ngIf="!password">{{passwordError}}</mat-hint>
-            </mat-form-field>
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100">
+                <input placeholder=" " *ngIf="findCountry" [(ngModel)]="usernameForgot" disabled required>
+                <span *ngIf="findCountry">Phone Number</span>
+                <span *ngIf="!findCountry">Email </span>
+              </label>
+            </div>
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100">
+                <input type="text" placeholder=" " name="OTP" [(ngModel)]="OTP" required>
+                <span>Enter one time password sent to {{usernameForgot}}</span>
+              
+              </label>
+            </div>
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100 password-view">
+                <input placeholder=" " name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required>
+                <span>Enter Password</span>
+                <div class="icon">
+                  <span class="visible"><mat-icon>visibility</mat-icon></span>
+                  <span class="not-visible"><mat-icon>visibility_off</mat-icon></span>
+                </div>
+              </label>
+            </div>
             <div class="row">
               <div class="col-lg-6">
                 <button class="btn btn-success btn-block mb-3" matRipple [disabled]="!EnterforgotSendForm.valid || flags.isLogin" (click)="resetPassword()">Reset Password</button>
@@ -250,10 +250,12 @@
                   <p>Please enter mobile no. to confirm</p>
                 </div>
                 <form #forgotSendFormSignup="ngForm">
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="tel" maxlength="10" [(ngModel)]="tel" placeholder="Enter Phone" required />
+                  <div class="form-group mb-0">
+                    <label class="pure-material-textfield-outlined w-100">
+                      <input placeholder=" " name="tel" maxlength="10" [(ngModel)]="tel" required>
+                      <span>Enter Phone</span>
+                    </label>
                   </div>
-      
                   <button *ngIf="findCountry"  class="btn btn-site btn-block rounded-0" [disabled]="!forgotSendFormSignup.valid || flags.isLogin" (click)="signupSocial()">Send OTP</button>
                   <button *ngIf="!findCountry"  class="btn btn-site btn-block rounded-0" [disabled]="!forgotSendFormSignup.valid || flags.isLogin" (click)="signupSocial()">Confirm</button>
                 </form>
@@ -282,28 +284,44 @@
             <h6 *ngIf="findCountry" >Enter OTP sent to your phone.</h6>
             <h6 *ngIf="!findCountry" >Enter OTP sent to your Email.</h6>
             <form #EnterforgotSendForm="ngForm">
-                <div class="form-group">
-                    <label class="text-dark">First Name</label>
-                    <input type="text" class="form-control" name="FName" [(ngModel)]="FName" disabled  required />
-                  </div>
-                  <div class="form-group">
-                      <label class="text-dark">Last Name</label>
-                      <input type="text" class="form-control" name="LName" [(ngModel)]="LName" disabled  required />
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group mb-0">
+                      <label class="pure-material-textfield-outlined w-100">
+                        <input placeholder=" " name="FName" [(ngModel)]="FName" disabled required>
+                        <span>First Name</span>
+                      </label>
                     </div>
-                    <div class="form-group">
-                        <label class="text-dark">Email</label>
-                        <input type="text" class="form-control" name="fbemail" [(ngModel)]="fbemail" disabled  required />
-                      </div>
-                <div class="form-group">
-                  <label class="text-dark">Phone Number</label>
-                  <input type="text" class="form-control" name="tel" [(ngModel)]="tel" disabled  required />
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group mb-0">
+                      <label class="pure-material-textfield-outlined w-100">
+                        <input placeholder=" " name="LName" [(ngModel)]="LName" disabled  required>
+                        <span>Last Name</span>
+                      </label>
+                    </div>
+                  </div>
                 </div>
-              <div class="form-group">
-                <label class="text-dark">Enter 4 digit Password Sent to your email {{fbemail}}</label>
-                <input type="text" class="form-control" name="OTP" [(ngModel)]="OTP" placeholder="One Time Password" required />
-              </div>
-              <button class="btn btn-site mr-2" [disabled]="!EnterforgotSendForm.valid || flags.isLogin" (click)="signupSocial()">Signup</button>
-              <button   class="btn btn-site"  (click)="sendOtpSignup()">Resend OTP</button>
+                <div class="form-group mb-0">
+                  <label class="pure-material-textfield-outlined w-100">
+                    <input placeholder=" " name="fbemail" [(ngModel)]="fbemail" disabled  required>
+                    <span>Email</span>
+                  </label>
+                </div>
+                <div class="form-group mb-0">
+                  <label class="pure-material-textfield-outlined w-100">
+                    <input placeholder=" " name="tel" [(ngModel)]="tel" disabled  required>
+                    <span>Phone Number</span>
+                  </label>
+                </div>    
+                <div class="form-group mb-0">
+                  <label class="pure-material-textfield-outlined w-100">
+                    <input placeholder=" " name="OTP" [(ngModel)]="OTP"  required>
+                    <span>Enter 4 digit Password Sent to your email {{fbemail}}</span>
+                  </label>
+                </div> 
+                <button class="btn btn-site mr-2" [disabled]="!EnterforgotSendForm.valid || flags.isLogin" (click)="signupSocial()">Signup</button>
+                <button   class="btn btn-site"  (click)="sendOtpSignup()">Resend OTP</button>
             </form>
           </div>
         </div>
