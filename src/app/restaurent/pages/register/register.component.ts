@@ -19,6 +19,7 @@ import * as js from 'src/assets/js/app';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  hide = true;
   registerBody = new UserRegisterBody();
   loginBody = new LoginBody();
   signUpBody = new RegisterBody();

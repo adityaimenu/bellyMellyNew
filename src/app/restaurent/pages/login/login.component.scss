@@ -126,13 +126,13 @@
   background-color: #0000008c;
 }
 
-.modal-dialog {
-  min-height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: auto;
-}
+// .modal-dialog {
+//   min-height: calc(100vh - 60px);
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   overflow: auto;
+// }
 
 .msg{
   font-size: 13px;
@@ -189,4 +189,90 @@
       }
     }
   }
+}
+
+
+
+
+.authenticate{
+  .modal-dialog{
+    .modal-header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 11rem;
+      padding: 1.5rem;
+      overflow: hidden;
+      text-align: center;
+      background-color: #e91e6324;
+      background-image: url(../../../../assets/images/peach-top-right-small.png),url(../../../../assets/images/purple-bottom-left-small.png);
+      background-position: 100% 0,0 100%;
+      background-repeat: no-repeat,no-repeat;
+      .close{
+        position: absolute;
+        right: 7px;
+        top: 3px;
+      }
+    }
+    .modal-inner{
+      width: 450px;
+      margin: 0 auto;
+      @media (max-width: 767px){
+        width: 95%;
+      }
+      .social-widgets{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        li{
+          @media (max-width: 767px){
+            float: left;
+            width: 50%;
+          }
+          a{
+            background: #ededed;
+            font-size: 14px;
+            width: 212px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 0.75rem;
+            color: #3f414c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            @media (max-width: 767px){
+              width: 100%;
+            }
+            img{
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+    .nav{
+        li{
+            float: left;
+            width: 50%;
+        }
+    }
+}
+@media (max-width: 767px){
+  .modal-body .card .nav-tabs .nav-item.active {
+    margin-bottom: 0px;
+  }
+}
+.modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+li{
+  line-height: 15px;
+}
+::ng-deep .mat-form-field-wrapper{
+  padding-bottom: 5px;
 }

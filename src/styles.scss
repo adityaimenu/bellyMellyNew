@@ -1,6 +1,7 @@
 @import 'themes';
 @import '~@nebular/theme/styles/globals';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @include nb-install() {
   @include nb-theme-global();
 }
