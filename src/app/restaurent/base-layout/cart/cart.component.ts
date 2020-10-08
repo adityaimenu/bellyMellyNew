@@ -97,6 +97,21 @@ export class CartComponent implements OnInit {
     this.getLocationDetail = this.localStorage.get('BM_LocationDetail');
     this.timesection1(0)
   this.todayOpenClose =  this.common.onlyCheckRestaurentOpenClose(this.getLocationDetail)
+
+    if (this.locationDetail.Menus[0].ASAP == 'T') {
+      this.ASAPOnOFf = 'T';
+    }
+    if (this.locationDetail.Menus[0].LT == 'T') {
+      this.LTOnOff = 'T';
+    }
+    if (this.locationDetail.Menus[0].FO == 'T') {
+      this.FOOnOff = 'T';
+    }
+    console.log('dvsvs');
+    if (this.locationDetail. Menus[0].LT == 'F' && this.locationDetail.Menus[0].FO == 'F') {
+      console.log('fdsfs');
+      this.LTFOOnOff = 'T'
+    }
   }
   calculateTotal() {
     this.cartTotalCount.emit(_.sumBy(this.cartList, 'P1'))

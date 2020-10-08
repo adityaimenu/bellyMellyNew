@@ -2,11 +2,11 @@
   <div *ngFor="let item of itemList; let i = index" class="dish-items" id="{{item.customId}}">
     <div class="title d-flex align-items-center justify-content-between">
       <div class="card-title">{{item.CatName}}</div>
-      <a class="view-description text-dark" href="javascript:void(0);" [nbPopover]="itemDescription" nbPopoverPlacement="left">
-        <nb-icon icon="info"></nb-icon>
+      <a *ngIf="itemDescription" class="view-description text-dark" href="javascript:void(0);" [nbPopover]="itemDescription" nbPopoverPlacement="left">
+        <nb-icon icon="info" *ngIf="item.Desc "></nb-icon>
       </a>
-      <ng-template #itemDescription>
-        <span class="pop-description">{{item.Desc}}</span>
+      <ng-template   #itemDescription>
+         <span  class="pop-description">{{item.Desc}}</span>
       </ng-template>
     </div>
     <ul class="list-item">

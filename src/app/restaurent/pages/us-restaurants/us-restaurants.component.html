@@ -17,6 +17,7 @@
              
             <a href="javascript:void(0);" type="button" class="btn btn-link dropdown-toggle text-dark addrss " data-toggle="dropdown">
             <i class="fas fa-map-marker-alt"></i> <span *ngIf="!restaurantname && Locations[0]">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span>
+                <span *ngIf="!restaurantname && !Locations[0] && selectedAddr">{{selectedAddr}}</span>
             </a>
             <div class="dropdown-menu p-0">
               <span class="locationSpan" >
@@ -27,6 +28,26 @@
             </div>
           </div>
         </div>
+
+          <html>
+          <head>
+              <title>Reverse Geocoding</title>
+              <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+              <script
+                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4onu-y-_thwzwRNFQKiTzhLgf63dIJo0&callback=initMap&libraries=&v=weekly"
+                      defer
+              ></script>
+             <!-- <link rel="stylesheet" type="text/css" href="./style.css" />-->
+
+          </head>
+          <body>
+          <div style="display: none" id="floating-panel">
+              <input id="latlng" type="text" value="41.8781,-87.6298" />
+              <input id="submitt" type="button" value="Reverse Geocode" />
+          </div>
+          <div id="map"></div>
+          </body>
+          </html>
 
 
     
@@ -65,10 +86,11 @@
             <div class="">
                 <div class="toggle webtoggle second">
 
-                    <input  type="radio" name="sizeBy" value="weight" id="sizeWeight"   [checked]="selectedservicetype == 'Pickup'|| selectedservicetype == undefined " (click)="selectService('Pickup')" />
-                    <label for="sizeWeight" [ngClass]="selectedservicetype == 'Pickup'? 'toggle2': ''">Pickup   </label>
 
-                    <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery'" (click)="selectService('Delivery')"  />
+                    <input  type="radio" name="sizeBy" value="weight" id="sizeWeight"   [checked]="selectedservicetype == 'Pickup' " (click)="selectService('Pickup')" />
+                    <label for="sizeWeight" [ngClass]="selectedservicetype == 'Pickup'? 'toggle2': ''">Pickup    </label>
+
+                    <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions" [checked]="selectedservicetype == 'Delivery' || selectedservicetype == undefined" (click)="selectService('Delivery')"  />
                     <label for="sizeDimensions" [ngClass]="selectedservicetype == 'Delivery'? 'toggle2': ''">Delivery</label>
                     <input type="radio" name="sizeBy" value="dimensions" id="sizeDimensions1" [checked]="selectedservicetype == 'Curbside'" (click)="selectService('Curbside')"  />
                     <label for="sizeDimensions1"  [ngClass]="selectedservicetype == 'Curbside'? 'toggle2': ''">Curbside</label>
@@ -163,7 +185,7 @@
                         <span>{{val.Featured}}</span>
                       </div>
                       <div class="col-lg-2 text-center col-xs-4">
-                        <span *ngIf="selectedservicetype != 'Pickup' && selectedservicetype != 'Delivery' && selectedservicetype != 'Curbside'" class=""><img src="assets/img/pickup.png" class="img-fluid" width="18px"></span>
+                        <span *ngIf="selectedservicetype != 'Pickup' && selectedservicetype != 'Delivery' && selectedservicetype != 'Curbside'" class=""><img src="assets/img/del.png" class="img-fluid" width="18px"></span>
                         <span *ngIf="selectedservicetype == 'Pickup'" class=""><img src="assets/img/pickup.png" class="img-fluid" width="18px"></span>
                         <span *ngIf="selectedservicetype == 'Delivery'" class=""><img src="assets/images/del.png" class="img-fluid" width="20px"></span>
                         <span *ngIf="selectedservicetype == 'Curbside'" class=""><img src="assets/img/car.png" class="img-fluid" width="24px"></span>
@@ -204,7 +226,8 @@
               <div class="col-sm-6">
                  
                     <div class="addr">
-                       <h6  data-toggle="modal" (click)="changeSearchType(1)" data-target="#addmdl"> <span *ngIf="!restaurantname && Locations[0]">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span></h6>
+                       <h6  data-toggle="modal" (click)="changeSearchType(1)" data-target="#addmdl"> <span *ngIf="!restaurantname && Locations[0]">{{selectedAddr}}, {{Locations[0].State}}, {{Locations[0].Country}}</span>
+                           <span *ngIf="!restaurantname && !Locations[0] && selectedAddr">{{selectedAddr}}</span></h6>
                        </div>
                        
               </div>
@@ -276,7 +299,7 @@
                         </div>
                         <div class="col-lg-2 text-center col-xs-4">
                           <div class="text-center">
-                            <span *ngIf="selectedservicetype != 'Pickup' && selectedservicetype != 'Delivery' && selectedservicetype != 'Curbside'" class=""><img src="assets/img/pickup.png" class="img-fluid" width="18px"></span>
+                            <span *ngIf="selectedservicetype != 'Pickup' && selectedservicetype != 'Delivery' && selectedservicetype != 'Curbside'" class=""><img src="assets/img/del.png" class="img-fluid" width="18px"></span>
                               <span *ngIf="selectedservicetype == 'Pickup'" class=""><img src="assets/img/pickup.png" class="img-fluid" width="18px"></span>
                               <span *ngIf="selectedservicetype == 'Delivery'" class=""><img src="assets/images/del.png" class="img-fluid" width="20px"></span>
                               <span *ngIf="selectedservicetype == 'Curbside'" class=""><img src="assets/img/car.png" class="img-fluid" width="24px"></span>

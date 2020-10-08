@@ -222,8 +222,8 @@ button:disabled{
         }
       }
       input[type="radio"]:checked + label {
-        border: 2px dashed $orange;
-        background-color: $orange;
+       // border: 2px dashed $orange;
+        // background-color: $orange;
         color: #fff;
         transition: all .2s;
       }

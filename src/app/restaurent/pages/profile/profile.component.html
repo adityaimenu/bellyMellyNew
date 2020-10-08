@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-12 main-col" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between stretch" fxLayoutGap="15px">
               <div class="">
-                  <nb-icon icon="arrow-back-outline" fxHide.lg="" class="web-back" (click)="history.back()"></nb-icon>
+                  <nb-icon  *ngIf="history.length > 1" icon="arrow-back-outline" fxHide.lg="" class="web-back" (click)="history.back()"></nb-icon>
               </div>
              
 

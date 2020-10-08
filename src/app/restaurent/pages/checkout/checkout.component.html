@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-sm-12" fxLayout fxLayoutAlign="start start" fxLayoutGap="15px">
             <div class="">
-              <nb-icon icon="arrow-back-outline" fxHide.lg="" class="web-back" (click)="history.back()"></nb-icon>
+              <nb-icon  *ngIf="history.length > 1" icon="arrow-back-outline" fxHide.lg="" class="web-back" (click)="history.back()"></nb-icon>
             </div>
             <div class="main-view" fxFlex="65" fxLayout.md="65">
 
@@ -160,9 +160,9 @@
                         <div class="col-sm-6 text-right m-0 p-0 d-flex align-items-center codesubmit"
                           style="justify-content: flex-end;">
 
-                          <input type="text" class="donate websearch mr-3" name="search" (click)="opendonate()"
+                          <!--<input type="text" class="donate websearch mr-3" name="search" (click)="opendonate()"
                             [(ngModel)]="queryString" (keyup)="queryStringF($event.target.value)"
-                            placeholder="Enter Organzations Code">
+                            placeholder="Enter Organzations Code">-->
 
                         </div>
                         <div class="col-sm-12">
@@ -669,8 +669,8 @@
                 <div id="accordion">
                   <div class="card border-0 py-1">
                     <div class="card-header p-0" id="headingOne1">
-                      <h6 class="mb-0 dlvrytym" (click)="shecdule()">
-                          <a class="text-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <h6  class="mb-0 dlvrytym" (click)="shecdule()">
+                          <a id="drop" class="text-dark" data-toggle="collapse" data-target="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             
                           
                         <span *ngIf="orderData.ServiceId == 1">Schedule My Food</span>
@@ -690,7 +690,7 @@
                     </div>
   
                     <div id="collapseExample" class="collapse border-top"   
-                      data-parent="#accordion" (click)="shecdule2()">
+                      data-parent="#accordion" >
                       <div class="card-body">
                         <div class="row">
                           <div *ngIf="LTFOOnOff == 'F'" class="col-sm-12 text-center">
@@ -705,7 +705,7 @@
                             <div class="row">
                               <div class="col-sm-12 ">
                                 <nav>
-                                  <div class="nav nav-tabs nav-fill mb-3" id="nav-tab" role="tablist">
+                                  <div (click)="shecdule2()" class="nav nav-tabs nav-fill mb-3" id="nav-tab" role="tablist">
                                     <a *ngIf="ASAPOnOFf == 'T'  && todayOpenClose == false" [ngClass]="todayOpenClose == false?'active':''" class="nav-item nav-link"  id="nav-home-tab" data-toggle="tab"
                                       href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ASAP</a>
                                     <a *ngIf="LTOnOff == 'T'"  [ngClass]="todayOpenClose == true?'active':''" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
@@ -724,7 +724,7 @@
                                 <div class="tab-content px-sm-0" id="nav-tabContent">
                                   <div class="tab-pane fade"  [ngClass]="todayOpenClose == false?'show active':''" *ngIf="ASAPOnOFf == 'T'  && todayOpenClose == false" id="nav-home" role="tabpanel"
                                     aria-labelledby="nav-home-tab">
-                                    <button type="button" (click)="hide()" class="asap-btn btn">Deliver ASAP</button>
+                                    <button type="button" (click)="hide(); timesection(0)" class="asap-btn btn">Deliver ASAP</button>
                                   </div>
                                   <div class="tab-pane fade" *ngIf="LTOnOff == 'T'" [ngClass]="todayOpenClose == true?'show active':''" id="nav-profile" role="tabpanel"
                                     aria-labelledby="nav-profile-tab">
