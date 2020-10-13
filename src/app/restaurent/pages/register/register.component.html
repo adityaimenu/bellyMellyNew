@@ -8,8 +8,21 @@
       </div>
       <div class="modal-body">
         <div class="modal-inner">
+          <form *ngIf="flags.isOtpSent">
+            <div class="form-group mb-0">
+              <label class="pure-material-textfield-outlined w-100">
+                <input type="text" placeholder=" " name="otp" autocomplete="off" [(ngModel)]="signUpBody.data.customerData.otp" appOnlyNumber maxlength="6" #otp="ngModel" required>
+                <span>Enter OTP</span>
+                <p class="text-danger mb-0">One Time Password Sent to {{signUpBody.data.customerData.eMail}}</p>
+              </label>
+            </div>
+            <button class="btn btn-success btn-block mt-3" [disabled]="otp.invalid || flags.isOtpVerified" (click)="verify()">{{flags.isOtpVerified?'Hold On...':'Verify Otp'}}</button>
+            <button class="btn btn-success btn-block mt-3"  (click)="goback()">Go Back</button>
+            <button class="btn btn-success btn-block mt-3"  (click)="ResendsendOtp()">Resend Otp</button>
+           
+          </form>
           <!-- Form -->
-          <form class="text-center" style="color: #757575;" action="#!">
+          <form class="text-center" style="color: #757575;" *ngIf="!flags.isOtpSent" #userRegisterForm="ngForm">
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group mb-0">
