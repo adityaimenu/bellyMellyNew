@@ -82,19 +82,27 @@ export class DishItemsComponent implements OnInit {
   }
   addQuantity(product, i) {
     js.addToCart(product.Name, product.Id, product.P1, this.mobUrl, this.itemList[i].CatName, [], 1);
+    console.log('1');
     if (product.P1 == '-99') {
+      console.log('2');
       this.prodictPrice = 0;
     } else {
+      console.log('3');
       this.prodictPrice = product.P1;
     }
     if (product.SpecialOffer) {
+      console.log('4');
       this.observable.getSpecialOffer().subscribe((response: any) => {
+
         if (response == true) {
+          console.log('5');
           return this.specialOfferDataExist = true;
         } else {
+          console.log('6');
           return this.specialOfferDataExist = false;
         }
       })
+      console.log('7');
       if (this.specialOfferDataExist == true) return this.error('Only one Item allowed from this category.');
     }
 
@@ -193,14 +201,17 @@ export class DishItemsComponent implements OnInit {
   testRun() {
   }
   onAddItem(item, data) {
+    console.log('1');
     this.addOnList = item.AddOnList;
 
     this.itemName = item;
     if (item.SpecialOffer) {
       this.observable.getSpecialOffer().subscribe((response: any) => {
         if (response == true) {
+          console.log('2')
           return this.specialOfferDataExist = true;
         } else {
+          console.log('3')
           return this.specialOfferDataExist = false;
         }
       })
@@ -208,12 +219,14 @@ export class DishItemsComponent implements OnInit {
     }
 
     this.itemName = [this.itemName]
+    console.log('4')
     // if(item.SpecialOffer){
 
     // }
     this.itemName.forEach(element => {
       if (element.SpecialOffer) {
         element.P1 = 0;
+        console.log('5')
       }
 
     });
@@ -221,7 +234,9 @@ export class DishItemsComponent implements OnInit {
     this.type = 0;
     this.selectedItem = data;
     this.addOnItemList = [];
+    console.log('6')
     this.observable.setAddOn(item);
+    console.log('7')
     setTimeout(() => {
       this.modal.onCloseAddOnModal();
       js.openFancyBox();

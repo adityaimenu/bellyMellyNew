@@ -50,9 +50,10 @@
                     <span *ngIf="item.P6 && (data.P6 > 0 && ((!data.P1 || data.P1 <= 0) && (!data.P2 || data.P2 <= 0) && (!data.P3 || data.P3 <= 0) && (!data.P4 || data.P4 <= 0) && (!data.P5 || data.P5 <= 0)))" class="text-success">{{currency}} {{(data.P6).toFixed(2)}}</span>
                   </p>
                   <span class="customize">
-                    <button *ngIf="data.addQuantity <= 0 && (data.AddOnList.length || (item.P2 || item.P3 || item.P4 || item.P5 || item.P6))" class="setunit"  (click)="onAddItem(data, item)">Add Item</button>
-                    <button *ngIf="data.addQuantity > 0 && (data.AddOnList.length || (item.P2 || item.P3 || item.P4 || item.P5 || item.P6)) " class="setunit"  (click)="onAddItem(data, item)">{{data.addedItems}} Added <i class="fa fa-plus" aria-hidden="true"></i></button>
-                    <button *ngIf="data.addQuantity <= 0 && (!data.AddOnList.length && !item.P2 && !item.P3 && !item.P4 && !item.P5 && !item.P6) " class="setunit" (click)="addQuantity(data, i)">Add Item</button>
+                    <button *ngIf="data.addQuantity <= 0 " class="setunit"  (click)="onAddItem(data, item)">Add Item</button>
+
+                    <button *ngIf="data.addQuantity > 0  " class="setunit"  (click)="onAddItem(data, item)">{{data.addedItems}} Added <i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <!--<button *ngIf="data.addQuantity <= 0 && (!data.AddOnList.length && !item.P2 && !item.P3 && !item.P4 && !item.P5 && !item.P6) " class="setunit" (click)="addQuantity(data, i)">Add Item</button>-->
                     <figure *ngIf="data.addQuantity > 0 && (!data.AddOnList.length && data.addedItems < 1)" class="m-0 setunit" fxLayout="row" fxLayoutAlign="space-around center">
                       <a href="javascript:void(0);" (click)="removeQuantity(data,i)" class="unit decrement">
                         <i class="fa fa-minus-square"></i>
@@ -85,17 +86,17 @@
               </div>
             </div>
           </div>
-          <div fxflex.xs="50" *ngIf="data.addQuantity <= 0 && (data.AddOnList.length || (item.P2 || item.P3 || item.P4 || item.P5 || item.P6))" class="right">
+          <div fxflex.xs="50" *ngIf="data.addQuantity <= 0 " class="right">
                 <button  class="setunit fancyboxModal"  (click)="onAddItem(data, item)">Add Item</button>
           </div>
-          <div *ngIf="data.addQuantity > 0 && (data.AddOnList.length || (item.P2 || item.P3 || item.P4 || item.P5 || item.P6))" class="right">
-            <button class="setunit"  (click)="onAddItem(data, item)">{{data.addedItems}} Added <i class="fa fa-plus" aria-hidden="true"></i></button>
+          <div *ngIf="data.addQuantity > 0 " class="right">
+            <button class="setunit"  (click)="onAddItem(data, item)">{{data.addQuantity}} Added <i class="fa fa-plus" aria-hidden="true"></i></button>
           </div>
-          <div *ngIf="data.addQuantity <= 0 && (!data.AddOnList.length && !item.P2 && !item.P3 && !item.P4 && !item.P5 && !item.P6)" class="right">
+         <!-- <div *ngIf="data.addQuantity <= 0 && (!data.AddOnList.length && !item.P2 && !item.P3 && !item.P4 && !item.P5 && !item.P6)" class="right">
                 <button  class="setunit" (click)="addQuantity(data, i)">Add Item</button>
 
-          </div>
-          <div *ngIf="data.addQuantity > 0 && (!data.AddOnList.length && data.addedItems < 1)">
+          </div>-->
+      <!--    <div *ngIf="data.addQuantity > 0 && (!data.AddOnList.length && data.addedItems < 1)">
             <figure class="m-0 setunit" fxLayout="row" fxLayoutAlign="space-around center">
               <a href="javascript:void(0);" (click)="removeQuantity(data,i)" class="unit decrement">
                 <i class="fa fa-minus-square"></i>
@@ -105,7 +106,7 @@
                 <i class="fa fa-plus-square"></i>
               </a>
             </figure>
-          </div>
+          </div>-->
         </div>
       </li>
     </ul>
