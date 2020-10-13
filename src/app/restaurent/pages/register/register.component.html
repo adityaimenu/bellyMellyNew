@@ -14,7 +14,7 @@
               <div class="col-lg-6">
                 <div class="form-group mb-0">
                   <label class="pure-material-textfield-outlined w-100">
-                    <input placeholder=" " type="text" [(ngModel)]="signUpBody.data.customerData.fName" required>
+                    <input placeholder=" " name="fname" type="text" [(ngModel)]="signUpBody.data.customerData.fName" required>
                     <span>First Name</span>
                     <p class="text-danger mb-0" *ngIf="!signUpBody.data.customerData.fName">{{fnameError}}</p>
                   </label>
@@ -23,7 +23,7 @@
               <div class="col-lg-6">
                 <div class="form-group mb-0">
                   <label class="pure-material-textfield-outlined w-100">
-                    <input placeholder=" " type="text" [(ngModel)]="signUpBody.data.customerData.lName" required>
+                    <input placeholder=" " name="lname" type="text" [(ngModel)]="signUpBody.data.customerData.lName" required>
                     <span>Last Name</span>
                     <p class="text-danger mb-0" *ngIf="!signUpBody.data.customerData.lName">{{fnameError}}</p>
                   </label>
@@ -32,21 +32,21 @@
             </div>
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100">
-                <input placeholder=" " type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" [(ngModel)]="signUpBody.data.customerData.eMail" required>
+                <input placeholder=" " type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" [(ngModel)]="signUpBody.data.customerData.eMail" required>
                 <span>Enter Email</span>
                 <p class="text-danger mb-0" *ngIf="!signUpBody.data.customerData.eMail">{{emailError}}</p>
               </label>
             </div>
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100">
-                <input placeholder=" " type="text" appOnlyNumber [(ngModel)]="signUpBody.data.customerData.tel"  maxlength="10" required>
+                <input placeholder=" " name="mobile" type="text" appOnlyNumber [(ngModel)]="signUpBody.data.customerData.tel"  maxlength="10" required>
                 <span>Enter Mobile No.</span>
                 <p class="text-danger mb-0" *ngIf="!signUpBody.data.customerData.tel">{{tellError}}</p>
               </label>
             </div>
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100 password-view">
-                <input placeholder=" " maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required>
+                <input placeholder=" " name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required>
                 <span>Enter Password</span>
                 <div class="icon">
                   <span class="visible"><mat-icon>visibility</mat-icon></span>

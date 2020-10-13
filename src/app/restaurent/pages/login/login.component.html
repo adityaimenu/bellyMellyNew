@@ -50,13 +50,13 @@
           <form #loginForm="ngForm" *ngIf="!loginUserData">
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100">
-                <input placeholder=" " [(ngModel)]="loginBody.data.username" required>
+                <input placeholder=" " name="email" [(ngModel)]="loginBody.data.username" required>
                 <span>Enter Email</span>
               </label>
             </div>
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100 password-view">
-                <input placeholder=" " [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="loginBody.data.password">
+                <input placeholder=" " [type]="hide ? 'password' : 'text'" id="typepass" name="password" [(ngModel)]="loginBody.data.password">
                 <span>Enter your password</span>
                 <div class="icon">
                   <span class="visible"><mat-icon>visibility</mat-icon></span>
@@ -106,13 +106,13 @@
           <form #forgotSendForm="ngForm">
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100">
-                <input placeholder=" " *ngIf="findCountry" [(ngModel)]="usernameForgot" required>
-                <input placeholder=" " *ngIf="!findCountry" [(ngModel)]="usernameForgot" required>
+                <input placeholder=" " *ngIf="findCountry" name="forgotEmail" [(ngModel)]="usernameForgot" required>
+                <input placeholder=" " *ngIf="!findCountry" name="forgotEmail" [(ngModel)]="usernameForgot" required>
                 <span *ngIf="findCountry">Phone Number</span>
-                <span *ngIf="!findCountry">Email </span>
+                <span *ngIf="!findCountry">Emails </span>
               </label>
             </div>
-            <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!forgotSendForm.valid || flags.isLogin" (click)="sendOtpForgot()">Send OTP</button>
+            <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!usernameForgot|| flags.isLogin" (click)="sendOtpForgot()">Send OTP</button>
           </form>
           <!-- Form -->
         </div>
