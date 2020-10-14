@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   socialLoginBody: any;
   isCheckoutWithoutLogin = false;
   usernameForgot: string;
+  visiblePass: any = false;
   chainId: number = -1;
   OTP: string;
   password: string;
@@ -286,6 +287,29 @@ export class LoginComponent implements OnInit {
       this.success('OTP has been resent.');
 
     });
+  }
+
+
+  myFunction() {
+    var x = document.getElementById("typepass") as HTMLInputElement;
+    if (x.type === "password") {
+      x.type = "text";
+      this.visiblePass = true;
+    } else {
+      x.type = "password";
+      this.visiblePass = false;
+    }
+  }
+
+  myFunction2() {
+    var x = document.getElementById("typepass2") as HTMLInputElement;
+    if (x.type === "password") {
+      x.type = "text";
+      this.visiblePass = true;
+    } else {
+      x.type = "password";
+      this.visiblePass = false;
+    }
   }
 
 

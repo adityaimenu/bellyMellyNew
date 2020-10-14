@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   isCheckoutWithoutLogin = false;
   password: string;
   baseUrl: string;
+  visiblePass: any = false;
   flags = {
     isRegister: false,
     isOtpSent: false,
@@ -147,6 +148,31 @@ export class RegisterComponent implements OnInit {
       location.reload();*/
     })
   }
+
+  myFunction() {
+
+    var x = document.getElementById("typepass3") as HTMLInputElement;
+
+    if (x.type === "password") {
+
+      x.type = "text";
+      this.visiblePass = true;
+    } else {
+      x.type = "password";
+      this.visiblePass = false;
+    }
+  }
+
+  /*myFunction2() {
+    var x = document.getElementById("typepass2") as HTMLInputElement;
+    if (x.type === "password") {
+      x.type = "text";
+      this.visiblePass = true;
+    } else {
+      x.type = "password";
+      this.visiblePass = false;
+    }
+  }*/
 
   loginRest() {
     console.log('login2   ')

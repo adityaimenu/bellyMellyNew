@@ -58,9 +58,9 @@
               <label class="pure-material-textfield-outlined w-100 password-view">
                 <input placeholder=" " [type]="hide ? 'password' : 'text'" id="typepass" name="password" [(ngModel)]="loginBody.data.password">
                 <span>Enter your password</span>
-                <div class="icon">
-                  <span class="visible"><mat-icon>visibility</mat-icon></span>
-                  <span class="not-visible"><mat-icon>visibility_off</mat-icon></span>
+                <div  class="icon">
+                  <span *ngIf="!visiblePass"  style="cursor: pointer" title="Show Password" (click)="myFunction()" class="visible"><mat-icon>visibility</mat-icon></span>
+                  <span *ngIf="visiblePass" style="cursor: pointer" title="Hide Password" class="not-visible" (click)="myFunction()"><mat-icon>visibility_off</mat-icon></span>
                 </div>
               </label>
             </div>
@@ -150,11 +150,11 @@
             </div>
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100 password-view">
-                <input placeholder=" " name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass" [(ngModel)]="password" required>
+                <input placeholder=" " name="password"  maxlength="20" [type]="hide ? 'password' : 'text'" id="typepass2" [(ngModel)]="password" required>
                 <span>Enter Password</span>
-                <div class="icon">
-                  <span class="visible"><mat-icon>visibility</mat-icon></span>
-                  <span class="not-visible"><mat-icon>visibility_off</mat-icon></span>
+                <div  class="icon">
+                  <span *ngIf="!visiblePass"  style="cursor: pointer" title="Show Password" (click)="myFunction2()" class="visible"><mat-icon>visibility</mat-icon></span>
+                  <span *ngIf="visiblePass" style="cursor: pointer" title="Hide Password" class="not-visible" (click)="myFunction2()"><mat-icon>visibility_off</mat-icon></span>
                 </div>
               </label>
             </div>

@@ -179,7 +179,7 @@ export class AddAddressComponent implements OnInit {
     var request = new XMLHttpRequest();
 
     var method = 'GET';
-    var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.lat},${this.lng}&key=AIzaSyBT4Ll-DEXGLSemUGlDPgqH9UADeIzQq3Y`;
+    var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.lat},${this.lng}&key=AIzaSyC4onu-y-_thwzwRNFQKiTzhLgf63dIJo0`;
 
     var async = true;
     const self = this;
@@ -276,7 +276,7 @@ export class AddAddressComponent implements OnInit {
 
     var request = new XMLHttpRequest();
     var method = 'GET';
-    var url = `https://maps.googleapis.com/maps/api/geocode/json?address=${val}&key=AIzaSyBT4Ll-DEXGLSemUGlDPgqH9UADeIzQq3Y`;
+    var url = `https://maps.googleapis.com/maps/api/geocode/json?address=${val}&key=AIzaSyC4onu-y-_thwzwRNFQKiTzhLgf63dIJo0`;
 
     var async = true;
     request.open(method, url, async);
@@ -339,7 +339,7 @@ export class AddAddressComponent implements OnInit {
       this.lng = position.coords.longitude;
       var request = new XMLHttpRequest();
       var method = 'GET';
-      var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.lat},${this.lng}&key=AIzaSyBT4Ll-DEXGLSemUGlDPgqH9UADeIzQq3Y`;
+      var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.lat},${this.lng}&key=AIzaSyC4onu-y-_thwzwRNFQKiTzhLgf63dIJo0`;
 
       var async = true;
       const self = this;
