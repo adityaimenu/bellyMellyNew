@@ -4,7 +4,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2>Welcome Back! Please Register Here</h2>
-        <h6>Already on BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link">Login here</a></h6>
+        <h6>Already on BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link" style="color: #0d95e8">Login here</a></h6>
       </div>
       <div class="modal-body">
         <div class="modal-inner">
@@ -65,7 +65,7 @@
                   <span *ngIf="!visiblePass"  style="cursor: pointer" title="Show Password" (click)="myFunction()" class="visible"><mat-icon>visibility</mat-icon></span>
                   <span *ngIf="visiblePass" style="cursor: pointer" title="Hide Password" class="not-visible" (click)="myFunction()"><mat-icon>visibility_off</mat-icon></span>
                 </div>
-                <p class="text-danger mb-0" *ngIf="!password">{{visibility_off}}</p>
+                <!--<p class="text-danger mb-0" *ngIf="!password">visibility_off</p>-->
               </label>
             </div>
             

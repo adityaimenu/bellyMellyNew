@@ -7,19 +7,19 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2>Welcome Back! Please Sign In</h2>
-        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link" style="color: #0d95e8">Register here</a></h6>
       </div>
       <div class="modal-body">
         <div class="modal-inner">
           <!-- Form -->
           <form #sendForm="ngForm" class="text-center" style="color: #757575;" action="#!">
             <ul class="social-widgets mt-3 mb-5 list-unstyled list-inline">
-              <li class="list-inline-item">
+              <li (click)="socialFbSignIn(1)" class="list-inline-item">
                 <a href="javascript:void(0);">
                   <img src="assets/img/facebook.svg" class="img-fluid" alt="Facebook" width="20px" (click)="socialFbSignIn(1)"> Login with Facebook
                 </a>
               </li>
-              <li class="list-inline-item">
+              <li (click)="socialGoogleSignIn(2)" class="list-inline-item">
                 <a href="javascript:void(0);">
                   <img src="assets/img/google.svg" class="img-fluid" alt="Google" width="20px" (click)="socialGoogleSignIn(2)"> Login with Google
                 </a>
@@ -41,11 +41,11 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2>Welcome Back! Please Sign In</h2>
-        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link" style="color: #0d95e8">Register here</a></h6>
       </div>
       <div class="modal-body">
         <div class="modal-inner">
-          <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
+          <h6 class="font-weight-normal text-muted text-center">Go Back to <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark" style="color: #0d95e8 !important;">Social Login</a></h6>
           <!-- Form -->
           <form #loginForm="ngForm" *ngIf="!loginUserData">
             <div class="form-group mb-0">
@@ -57,7 +57,7 @@
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100 password-view">
                 <input placeholder=" " [type]="hide ? 'password' : 'text'" id="typepass" name="password" [(ngModel)]="loginBody.data.password">
-                <span>Enter your password</span>
+                <span>Enter  password</span>
                 <div  class="icon">
                   <span *ngIf="!visiblePass"  style="cursor: pointer" title="Show Password" (click)="myFunction()" class="visible"><mat-icon>visibility</mat-icon></span>
                   <span *ngIf="visiblePass" style="cursor: pointer" title="Hide Password" class="not-visible" (click)="myFunction()"><mat-icon>visibility_off</mat-icon></span>
@@ -97,11 +97,11 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2>Reset Your Password</h2>
-        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link" style="color: #0d95e8">Register here</a></h6>
       </div>
       <div class="modal-body">
         <div class="modal-inner">
-          <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
+          <h6 class="font-weight-normal text-muted text-center">Go Back to <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark" style="color: #0d95e8 !important;">Social Login</a></h6>
           <!-- Form -->
           <form #forgotSendForm="ngForm">
             <div class="form-group mb-0">
@@ -109,7 +109,7 @@
                 <input placeholder=" " *ngIf="findCountry" name="forgotEmail" [(ngModel)]="usernameForgot" required>
                 <input placeholder=" " *ngIf="!findCountry" name="forgotEmail" [(ngModel)]="usernameForgot" required>
                 <span *ngIf="findCountry">Phone Number</span>
-                <span *ngIf="!findCountry">Emails </span>
+                <span *ngIf="!findCountry">Email </span>
               </label>
             </div>
             <button class="btn btn-success btn-block mt-3" matRipple [disabled]="!usernameForgot|| flags.isLogin" (click)="sendOtpForgot()">Send OTP</button>
@@ -127,18 +127,18 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2>Reset Your Password</h2>
-        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link">Register here</a></h6>
+        <h6>New to BellyMelly? <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="text-link" style="color: #0d95e8">  Register here </a></h6>
       </div>
       <div class="modal-body">
         <div class="modal-inner">
-          <h6 class="font-weight-normal text-muted text-center">Go Back to? <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark">Social Login</a></h6>
+          <h6 class="font-weight-normal text-muted text-center">Go Back to <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" class="text-link font-weight-bold text-dark" style="color: #0d95e8 !important;">Social Login</a></h6>
           <!-- Form -->
           <form #forgotSendForm="ngForm">
             <div class="form-group mb-0">
               <label class="pure-material-textfield-outlined w-100">
                 <input placeholder=" " *ngIf="findCountry" [(ngModel)]="usernameForgot" disabled required>
                 <span *ngIf="findCountry">Phone Number</span>
-                <span *ngIf="!findCountry">Email </span>
+                <span *ngIf="!findCountry"> </span>
               </label>
             </div>
             <div class="form-group mb-0">
