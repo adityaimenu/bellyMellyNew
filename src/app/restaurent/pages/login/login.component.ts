@@ -125,12 +125,18 @@ export class LoginComponent implements OnInit {
 
       if (this.isCheckoutWithoutLogin) {
         if(window.location.hostname == 'localhost'){
-          this.router.navigateByUrl(`/${this.countryNew}/${this.mobUrl}/checkout`); //testing
+          this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
+       //   alert('login');
+          /*location.reload();*/
+          setTimeout(() => {location.reload();},2000);
         }else{
-          this.router.navigateByUrl(`/${this.mobUrl}/checkout`); //live 
+          this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
+          /*setTimeout(() => {location.reload();},2000);*/
         }
+      } else {
+        location.reload();
       }
-      location.reload();
+     // location.reload();
       $.fancybox.close();
 
     })
@@ -156,7 +162,17 @@ export class LoginComponent implements OnInit {
           this.loginService.setVal(true);
           this.loginService.setUser(response.data);
           if (this.isCheckoutWithoutLogin) {
-            this.router.navigateByUrl(`/${this.mobUrl}/checkout`);
+            if(window.location.hostname == 'localhost'){
+              this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
+             // alert('login');
+              /*location.reload();*/
+              setTimeout(() => {location.reload();},2000);
+            }else{
+              this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
+              /*setTimeout(() => {location.reload();},2000);*/
+            }
+          } else {
+            location.reload();
           }
         } else {
           this.fbemail = this.socialUser.email;
@@ -165,7 +181,7 @@ export class LoginComponent implements OnInit {
           $('#sendOtpSignupModal').modal('show');
           $("div").removeClass("modal-backdrop")
         }
-        location.reload();
+
         $.fancybox.close();
 
       });
@@ -192,10 +208,16 @@ export class LoginComponent implements OnInit {
           this.loginService.setUser(response.data);
           if (this.isCheckoutWithoutLogin) {
             if(window.location.hostname == 'localhost'){
-              this.router.navigateByUrl(`/${this.baseUrl}/${this.mobUrl}/checkout`); //testing
+              this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
+            //  alert('login');
+              /*location.reload();*/
+             setTimeout(() => {location.reload();},2000);
             }else{
               this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
+              /*setTimeout(() => {location.reload();},2000);*/
             }
+          } else {
+            location.reload();
           }
         } else {
           this.fbemail = this.socialUser.email;
@@ -204,7 +226,7 @@ export class LoginComponent implements OnInit {
           $('#sendOtpSignupModal').modal('show');
           $("div").removeClass("modal-backdrop")
         }
-        location.reload();
+            // location.reload();
         $.fancybox.close();
        // location.reload();
       });
@@ -226,7 +248,17 @@ export class LoginComponent implements OnInit {
         $('#sendOtpSignupModal').modal('hide');
         // $('#enterOtpSigupModal').modal('hide');
         if (this.isCheckoutWithoutLogin) {
-          this.router.navigateByUrl(`/${this.mobUrl}/checkout`);
+          if(window.location.hostname == 'localhost'){
+            this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
+            //  alert('login');
+            /*location.reload();*/
+            setTimeout(() => {location.reload();},2000);
+          }else{
+            this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
+            /*setTimeout(() => {location.reload();},2000);*/
+          }
+        } else {
+          location.reload();
         }
         // location.reload()
       });

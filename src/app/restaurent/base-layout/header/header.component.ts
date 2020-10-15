@@ -80,29 +80,34 @@ export class HeaderComponent implements OnInit {
       console.log(this.openCloseTime);
     }
     this.activatedRoute.params.subscribe((param: any) => {
+      console.log(param);
 
       this.mobUrl = window.location.pathname.replace('/', '').split('/')[1]; //Without hashing
       this.country = window.location.pathname.replace('/', '').split('/')[0]; //Without hashing
       this.mobUrlNew = window.location.pathname;
 
+      console.log(this.mobUrl);
+
       if (this.localStorage.get('BM_MobUrl') != this.mobUrl) {
+       /* console.log('not my url');
         this.localStorage.set('cartItem', []);
         this.observable.setSpecialOffer(false)
-        this.localStorage.set('specialOfferData', null)
+        this.localStorage.set('specialOfferData', null)*/
       }
       if (this.localStorage.get('BM_Country') != this.country) {
-        this.localStorage.remove('placeOrderData');
+       /* this.localStorage.remove('placeOrderData');
         this.localStorage.remove('cartItem');
-        /*this.localStorage.clear();
+        /!*this.localStorage.clear();
         this.loginService.setUser(null);
-        this.loginService.setVal(false);*/
+        this.loginService.setVal(false);*!/
         this.observable.setSpecialOffer(false)
-        this.localStorage.set('specialOfferData', null)
+        this.localStorage.set('specialOfferData', null)*/
 
       }
       this.localStorage.set('BM_MobUrl', this.mobUrl);
       this.localStorage.set('BM_Country', this.country);
       this.loginService.isLoggedIn().subscribe((login: boolean) => {
+
         this.isLogin = login;
         this.user = this.localStorage.get('BM_USER');
         this.loginService.onUpdateProfile().subscribe((user: any) => {
