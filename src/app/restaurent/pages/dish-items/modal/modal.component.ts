@@ -27,6 +27,8 @@ export class ModalComponent implements OnInit {
   Math = Math;
   selectedObj: any;
   addOnBody: any;
+  storedLabel: any;
+  storedId: any;
   quantity = 1;
   prices = {
     p1: false,
@@ -36,7 +38,7 @@ export class ModalComponent implements OnInit {
     p5: false,
     p6: false
   };
-  displayAmount = 0;
+  displayAmount: any = 0;
   unitPrice: number;
   portionId: number;
   specialInstr = '';
@@ -330,18 +332,42 @@ export class ModalComponent implements OnInit {
     }
   }
   onChangeModifier(item, option, label, id, factor, type) {
-    console.log('hello');
+    console.log(item, option, label, id, factor, type);
+
     const index = _.findIndex(this.addOnItemList, { ItemAddOnId: item.ItemAddOnId });
-    console.log(this.addOnItemList[index]);
+    console.log(type);
+    if (this.storedId == item.ItemAddOnId) {
+      localStorage.removeItem('storedDisplayAmount');
+      localStorage.setItem('storedDisplayAmount', JSON.stringify(this.displayAmount));
+      console.log(this.displayAmount);
+    } else {
+      console.log(this.displayAmount);
+    }
     if (type) {
       if (index > -1) {
         console.log('in first');
+
+
         const optionIndex = _.findIndex(this.addOnItemList[index].AddOnOptions, { Id: option.Id });
+
         this.displayAmount = Number(this.displayAmount) - (Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt) * Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt * this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2 ? this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2.Factor : 1));
+
+
         this.addOnItemList[index].AddOnOptions[optionIndex].Amt = Number(factor) * Number(option.P1);
         this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier1 = { Label: label, Text: id, Factor: factor };
-        console.log(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice)
-        this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice);
+        console.log(this.addOnItemList[index].AddOnOptions[optionIndex].Amt)
+        console.log(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice);
+
+
+        if (label == 'Left Half' || label == 'Right Half') {
+          console.log(label);
+        this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt);
+        } else {
+          this.storedId = item.ItemAddOnId;
+
+          console.log(localStorage.getItem('storedDisplayAmount'));
+          this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice);
+        }
       }
     } else {
       if (index > -1) {

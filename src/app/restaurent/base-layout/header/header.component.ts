@@ -86,16 +86,18 @@ export class HeaderComponent implements OnInit {
       this.country = window.location.pathname.replace('/', '').split('/')[0]; //Without hashing
       this.mobUrlNew = window.location.pathname;
 
-      console.log(this.mobUrl);
+      var segment = (window.location.href).split('/').length - 1 - ((window.location.href).indexOf('https://') == -1 ? 0 : 2);
+      console.log(segment);
 
-      if (this.localStorage.get('BM_MobUrl') != this.mobUrl) {
-       /* console.log('not my url');
+
+      if ((this.localStorage.get('BM_MobUrl') != this.mobUrl) && (segment != 3)) {
+
         this.localStorage.set('cartItem', []);
         this.observable.setSpecialOffer(false)
-        this.localStorage.set('specialOfferData', null)*/
+        this.localStorage.set('specialOfferData', null)
       }
       if (this.localStorage.get('BM_Country') != this.country) {
-       /* this.localStorage.remove('placeOrderData');
+      /*  this.localStorage.remove('placeOrderData');
         this.localStorage.remove('cartItem');
         /!*this.localStorage.clear();
         this.loginService.setUser(null);
@@ -128,7 +130,8 @@ export class HeaderComponent implements OnInit {
     this.localStorage.clear();
     this.loginService.setUser(null);
     this.loginService.setVal(false);
-    window.location.href = `${this.host}`;
+   // this.router.navigate([this.mobUrl]);
+    window.location.href = `${this.host}` + `/us/` + this.mobUrl;
     // this.router.navigateByUrl(`/${this.country}/${this.mobUrl}`);
     // if (window.location.hash.replace('#/', '').split('/').length > 2) {
     // if (window.location.pathname.replace('/', '').split('/').length > 2) {

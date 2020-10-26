@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit {
           setTimeout(() => {location.reload();},2000);
         }else{
           this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-          /*setTimeout(() => {location.reload();},2000);*/
+          setTimeout(() => {location.reload();},2000);
         }
       } else {
         location.reload();
@@ -169,7 +169,7 @@ export class LoginComponent implements OnInit {
               setTimeout(() => {location.reload();},2000);
             }else{
               this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-              /*setTimeout(() => {location.reload();},2000);*/
+              setTimeout(() => {location.reload();},2000);
             }
           } else {
             location.reload();
@@ -214,7 +214,7 @@ export class LoginComponent implements OnInit {
              setTimeout(() => {location.reload();},2000);
             }else{
               this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-              /*setTimeout(() => {location.reload();},2000);*/
+              setTimeout(() => {location.reload();},2000);
             }
           } else {
             location.reload();
@@ -255,7 +255,7 @@ export class LoginComponent implements OnInit {
             setTimeout(() => {location.reload();},2000);
           }else{
             this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-            /*setTimeout(() => {location.reload();},2000);*/
+            setTimeout(() => {location.reload();},2000);
           }
         } else {
           location.reload();
@@ -349,6 +349,13 @@ export class LoginComponent implements OnInit {
 
 
   resetPassword() {
+    if (!this.password) {
+      return this.toaster.errorToastr('Enter New Password');
+    }
+
+    if (!this.OTP) {
+      return this.toaster.errorToastr('Enter OTP');
+    }
 
     const data = { tId: this.localStorage.get('BM_tId'), data: { username: this.usernameForgot, customerData: { tel: this.usernameForgot, OTP: this.OTP }, password: this.password } }
 

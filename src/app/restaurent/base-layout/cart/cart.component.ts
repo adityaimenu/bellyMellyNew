@@ -359,10 +359,15 @@ return
     if (this.TimeSelection == 1 && !this.DueOn) return this.error('Select time');
     if (this.TimeSelection == 2 && !this.laterDate) return this.error('Select date');
     if (this.TimeSelection == 2 && !this.DueOn) return this.error('Select time');
-    $('#shecdule').modal('hide')
-    $("div").removeClass("modal-backdrop")
+
     if (this.selectedService) {
-      this.checkout();
+      if (!this.selectedTime) {
+        this.toaster.errorToastr('Select time');
+      } else {
+        $('#shecdule').modal('hide')
+        $("div").removeClass("modal-backdrop")
+        this.checkout();
+      }
     }
   }
 

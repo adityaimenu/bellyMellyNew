@@ -990,8 +990,10 @@ export class CheckoutComponent implements OnInit {
       dangerMode: true
     })
       .then((willDelete) => {
+        this.flags.isOrderPlaced = false;
         swal.close();
       });
+
   }
 
   openAddOnPopup(item, data) {
@@ -1611,6 +1613,12 @@ export class CheckoutComponent implements OnInit {
     this.selectedTime = null
     $(".selectOption").prop("selected", false)
     $(".selectOptionSelected").prop("selected", true)
+  }
+
+  closePopuop() {
+    if (!this.selectedTime) {
+      this.flags.isOrderPlaced = false;
+    }
   }
 
 

@@ -40,8 +40,8 @@ const routes: Routes = [
   {path: 'aboutUs', component: AboutUsComponent},
     // { path: 'org/:org',  component: FooddepoComponent }, // live
   {
-   path: ':country/:mobUrl', //testing
-      // path: ':mobUrl', // live
+    path: ':country/:mobUrl', //testing
+   //    path: ':mobUrl', // live
     component: BodyComponent,
     children: [
       { path: '', component: MainStructureComponent },

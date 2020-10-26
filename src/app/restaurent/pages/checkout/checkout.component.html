@@ -350,7 +350,7 @@
                 <div *ngFor="let item of itemList; let i = index" class="added-items" style="border-bottom: none;">
                   <div class="item" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
                     <span style="width: 45%;" class="cart-item">
-                      <p class="mb-0 ">{{item.Name}} {{'name'}}</p>
+                      <p class="mb-0 ">{{item.Name}} </p>
                       <!--<p class="mb-0">Pizza</p>-->
                     </span>
                     <span fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px"
@@ -1216,7 +1216,7 @@
                   </div>
                   <div *ngIf="placeOrderBody.data.orderData.PaymentTypeId == 4" class="right">
                     <button class="submit-btn" (click)="placeOrderByPaytm()"
-                      [disabled]="flags.isOrderByPaytm">{{flags.isOrderPlaced?'Please Wait...':'Pay & Place Order'}}</button>
+                      [disabled]="flags.isOrderByPaytm">{{flags.isOrderPlaced?'Please Wait....':'Pay & Place Order'}}</button>
                   </div>
                   <div *ngIf="placeOrderBody.data.orderData.PaymentTypeId == 3" class="right">
                     <button class="submit-btn" (click)="placeOrderResp(placeOrderBody.data.orderData.PaymentTypeId)"
@@ -1557,7 +1557,7 @@
       <!-- Modal Header -->
       <div class="modal-header border-0">
         <div class="close-btn">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" (click)="closePopuop()" class="close" data-dismiss="modal">&times;</button>
         </div>
       </div>
       <!-- Modal body -->

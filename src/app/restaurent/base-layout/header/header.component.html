@@ -31,7 +31,7 @@
                 <div class="address">
                   <a class="" href="javascript:void(0)" data-toggle="tooltip" data-html="true" title="{{currentAddr}}">{{currentAddr}}</a>
                 </div>
-                <span class="ml-2"><a href="javascript:void(0);" data-toggle="modal" data-target="#changelocation" style="color: #0f6674"> (Change)</a></span>
+                <span class="ml-2"><a data-toggle="modal" data-target="#changelocation" style="color: #0f6674"> (Change)</a></span>
               </div>
             </span>
           </div>
@@ -44,9 +44,9 @@
                 <aside class="mt-1 ml-1">Hi {{user.FName}}</aside> 
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="javascript:void(0);" routerLink="/{{mobUrl}}/profile"><span><nb-icon icon="person-outline"></nb-icon></span> Profile</a>
+                <a class="dropdown-item" routerLink="/{{mobUrl}}/profile"><span><nb-icon icon="person-outline"></nb-icon></span> Profile</a>
                 <!-- <a class="dropdown-item" href="javascript:void(0);" routerLink="/{{country}}/{{mobUrl}}/profile"><span><nb-icon icon="person-outline"></nb-icon></span> Profile</a>-->
-                <a class="dropdown-item" href="javascript:void(0);" (click)="logout()"><span><nb-icon icon="log-out-outline"></nb-icon></span> Logout</a>
+                <a class="dropdown-item"  (click)="logout()"><span><nb-icon icon="log-out-outline"></nb-icon></span> Logout</a>
               </div>
             </div>
             <div *ngIf="!isLogin">
