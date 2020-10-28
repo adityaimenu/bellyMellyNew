@@ -132,7 +132,7 @@
                               <input type="text" class="form-control" name="table" [(ngModel)]="DineInTableNum">
                             </div>
                             <div class="col-md-6">
-                              <button class="btn btn-success" (click)="dineinsend()">Submit</button>
+                              <button class="btn btn-success" id="dinesub" (click)="dineinsend()">Submit</button>
                             </div>
                           </div>
                         </div>
@@ -155,7 +155,7 @@
                         <div class="col-sm-6">
 
                           <h4>Choose Your Organization</h4>
-                          <p class="mb-3 cost text-dark">It Cost you Nothing</p>
+                          <p class="mb-3 cost text-dark">It Costs you Nothing</p>
                         </div>
                         <div class="col-sm-6 text-right m-0 p-0 d-flex align-items-center codesubmit"
                           style="justify-content: flex-end;">
@@ -522,7 +522,7 @@
                       <p>{{currency}} {{(itemList.length?placeOrderBody.data.orderData.TaxAmt:0).toFixed(2)}}</p>
                     </li>
                 
-                    <li *ngIf="placeOrderBody.data.orderData.ServiceId == 2 || placeOrderBody.data.orderData.ServiceId == 5"> 
+                    <li *ngIf="placeOrderBody.data.orderData.ServiceId == 2 || placeOrderBody.data.orderData.ServiceId == 5 || placeOrderBody.data.orderData.ServiceId == 1 || placeOrderBody.data.orderData.ServiceId == 3">
                       <p>Tip Added</p>
                       <p>{{currency}} {{(placeOrderBody.data.orderData.TipAmt.toFixed(2))}}</p>
                     </li>
@@ -1083,7 +1083,7 @@
                         </div>
 
                         <h6 class="mb-0">Choose Your Organization</h6>
-                        <p class="mb-0 cost">It Cost you Nothing</p>
+                        <p class="mb-0 cost">It Costs you Nothing</p>
                       </div>
                       <!-- <div class="col-sm-12 col-xs-12 mt-1  d-flex align-items-center" style="justify-content: space-between;">
 

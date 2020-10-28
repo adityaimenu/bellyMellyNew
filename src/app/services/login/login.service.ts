@@ -8,6 +8,8 @@ import {LocalStorageService} from 'angular-web-storage';
 export class LoginService {
   isLogin: BehaviorSubject<boolean>;
   user: BehaviorSubject<any>;
+  private isSignedIn = new BehaviorSubject(false);
+  signedStatus = this.isSignedIn.asObservable();
   constructor(
     private localStorage: LocalStorageService
   ) {
@@ -18,6 +20,11 @@ export class LoginService {
       this.isLogin = new BehaviorSubject<boolean>(false);
       this.user = new BehaviorSubject<any>(null);
     }
+  }
+
+  updateSignedStatus(val: any) {
+    console.log('in signed');
+    this.isSignedIn.next(val);
   }
   isLoggedIn(): Observable<boolean> {
     return this.isLogin.asObservable();

@@ -70,6 +70,22 @@ export class HeaderComponent implements OnInit {
       if (this.locationDetails && this.locationDetails.LogoImg) this.logoImage = this.imageUrl + this.locationDetails.LogoImg;
       else this.logoImage = 'assets/images/defaultRest.png';
     });
+
+    this.loginService.isLoggedIn().subscribe((login: boolean) => {
+
+      this.isLogin = login;
+      this.user = this.localStorage.get('BM_USER');
+      this.loginService.onUpdateProfile().subscribe((user: any) => {
+        if (user) {
+          if (this.user) user.token = this.user.token;
+          this.user = user;
+          if (this.user) this.localStorage.set('BM_USER', this.user);
+        }
+      })
+      this.mobUrl = window.location.pathname.replace('/', '').split('/')[1]; //Without hashing
+      this.country = window.location.pathname.replace('/', '').split('/')[0]; //Without hashing
+      this.mobUrlNew = window.location.pathname;
+    });
     if (this.locationDetails && this.locationDetails.Address) {
       console.log(this.locationDetails);
       this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails)

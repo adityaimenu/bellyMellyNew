@@ -340,35 +340,39 @@ return
   }
   timesection(val) {
     if(val == 2){
-      if(!this.selectedTime) return this.error('Select time');; 
+      if(!this.selectedTime)  {console.log('asca');  return this.error('Select time');}
     }
     this.TimeSelection = val;
     if(this.TimeSelection == 0){
-      if (this.getLocationDetail.Menus[0].ASAP == 'F') return this.error('Restaurant is currently not accepting orders, but you can place orders for later today and tomorrow.');
+      if (this.getLocationDetail.Menus[0].ASAP == 'F') {console.log('sdsd'); return alert('Restaurant is currently not accepting orders, but you can place orders for later today and tomorrow.'); }
     }
      if(this.TimeSelection == 1){
-      if (this.getLocationDetail.Menus[0].LT == 'F') return this.error('Restaurant is currently not accepting orders, but you can place orders for tomorrow.');
+      if (this.getLocationDetail.Menus[0].LT == 'F') {  console.log('sdsd');
+      alert('Restaurant is currently not accepting orders, but you can place orders for tomorrow.');
+      return ;}
     }
      if(this.TimeSelection == 2){
-      if (this.getLocationDetail.Menus[0].FO == 'F') return this.error('Restaurant is currently not accepting Future Orders. Please try again after some time.');
+      if (this.getLocationDetail.Menus[0].FO == 'F') {console.log('asca'); return alert('Restaurant is currently not accepting Future Orders. Please try again after some time.'); }
     }
 
     if (this.TimeSelection == 0) {
       this.DueOn = moment().format('YYYY-MM-DD HH:mm:ss');
     }
-    if (this.TimeSelection == 1 && !this.DueOn) return this.error('Select time');
-    if (this.TimeSelection == 2 && !this.laterDate) return this.error('Select date');
-    if (this.TimeSelection == 2 && !this.DueOn) return this.error('Select time');
+    if (this.TimeSelection == 1 && !this.DueOn)  {console.log('asca');  return this.error('Select time');}
+    if (this.TimeSelection == 2 && !this.laterDate) { console.log('asca');  return this.error('Select date');}
+    if (this.TimeSelection == 2 && !this.DueOn)  {console.log('asca');  return this.error('Select time');}
 
     if (this.selectedService) {
       if (!this.selectedTime) {
-        this.toaster.errorToastr('Select time');
+        console.log('dacfsd');
+        this.error('Select time');
       } else {
         $('#shecdule').modal('hide')
         $("div").removeClass("modal-backdrop")
         this.checkout();
       }
     }
+    document.getElementById('closee').click();
   }
 
   timesection1(val) {

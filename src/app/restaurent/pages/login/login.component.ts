@@ -134,9 +134,10 @@ export class LoginComponent implements OnInit {
           setTimeout(() => {location.reload();},2000);
         }
       } else {
-        location.reload();
+      //  location.reload();
       }
      // location.reload();
+      document.getElementById('close2').click();
       $.fancybox.close();
 
     })
@@ -172,7 +173,7 @@ export class LoginComponent implements OnInit {
               setTimeout(() => {location.reload();},2000);
             }
           } else {
-            location.reload();
+          //  location.reload();
           }
         } else {
           this.fbemail = this.socialUser.email;
@@ -181,6 +182,7 @@ export class LoginComponent implements OnInit {
           $('#sendOtpSignupModal').modal('show');
           $("div").removeClass("modal-backdrop")
         }
+        document.getElementById('close').click();
 
         $.fancybox.close();
 
@@ -217,7 +219,7 @@ export class LoginComponent implements OnInit {
               setTimeout(() => {location.reload();},2000);
             }
           } else {
-            location.reload();
+         //   location.reload();
           }
         } else {
           this.fbemail = this.socialUser.email;
@@ -227,6 +229,7 @@ export class LoginComponent implements OnInit {
           $("div").removeClass("modal-backdrop")
         }
             // location.reload();
+        document.getElementById('close').click();
         $.fancybox.close();
        // location.reload();
       });
@@ -258,7 +261,7 @@ export class LoginComponent implements OnInit {
             setTimeout(() => {location.reload();},2000);
           }
         } else {
-          location.reload();
+         /* location.reload();*/
         }
         // location.reload()
       });
@@ -352,6 +355,8 @@ export class LoginComponent implements OnInit {
     if (!this.password) {
       return this.toaster.errorToastr('Enter New Password');
     }
+
+    if (this.password.length <= 7) {return this.toaster.errorToastr('Enter password minimum 8 digit')}
 
     if (!this.OTP) {
       return this.toaster.errorToastr('Enter OTP');

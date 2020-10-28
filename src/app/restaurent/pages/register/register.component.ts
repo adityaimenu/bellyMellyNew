@@ -74,6 +74,8 @@ export class RegisterComponent implements OnInit {
     if (!this.signUpBody.data.customerData.lName) return this.fnameError = 'Enter Your Last Name';
     if (!this.signUpBody.data.customerData.eMail) return this.emailError = 'Enter Your Email';
     if (!this.signUpBody.data.customerData.tel) return this.tellError = 'Enter Your Mobile No';
+    if (!this.password) {return this.toaster.errorToastr('Enter Password')}
+    if (this.password.length <= 7) {return this.toaster.errorToastr('Enter password minimum 8 digit')}
     if (Number(this.signUpBody.data.customerData.tel.length) < 10) return this.toaster.errorToastr('Enter Mobile No Minmum 10 Digits');
     if (!this.password) return this.passwordError = 'Enter Password';
     if (this.password.length <= 7) return this.error('Enter password minimum 8 digit')

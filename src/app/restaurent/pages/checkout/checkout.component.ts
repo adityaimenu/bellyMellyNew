@@ -1372,6 +1372,14 @@ export class CheckoutComponent implements OnInit {
     $('.closewebpayment').css("display", "block")
   }
   openwebdonation() {
+    console.log('kkk');
+    if (this.placeOrderBody.data.orderData.ServiceId == 5 && !this.DineInTableNum) {
+      return this.error('Please enter table number');
+    } else {
+      if (this.placeOrderBody.data.orderData.ServiceId == 5 && this.DineInTableNum) {
+       document.getElementById('dinesub').click();
+      }
+    }
     $('.donate-content').css("display", "block")
     // $('.openwebdonation i').css("display" , "none")
     $('.donate').css("display", "block")
@@ -1809,7 +1817,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   selectNgoError() {
-    return this.error('Please choose an Organization First and help Bellymelly donate a dollar to your community. ');
+    if (this.placeOrderBody.data.orderData.ServiceId != 5) {
+      return this.error('Please choose an Organization First and help Bellymelly donate a dollar to your community. ');
+    }
+
+    if (this.placeOrderBody.data.orderData.ServiceId == 5) {
+      if(!this.DineInTableNum) {
+        return this.error('Please enter table number');
+      }
+    }
   }
 
   SendAddToCartEvent() {
