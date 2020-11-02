@@ -91,6 +91,8 @@ export class ModalComponent implements OnInit {
   }
   addToBag() {
 
+    console.log('addItem');
+
     if (this.addOnBody.price.id <= 0) return this.error('Please choose a size first.');
     const tempArray = [];
     if (this.itemName.AddOnList.length) {
@@ -135,6 +137,7 @@ export class ModalComponent implements OnInit {
         this.addOnBody.isShowforSuggestion = this.itemName.isShowforSuggestion;
         this.addOnBody.catId = this.item.CatId;
         this.addOnBody.qty = this.quantity;
+        console.log(this.addOnBody);
   
         this.getAddOnItems.emit(this.addOnBody);
  
@@ -382,6 +385,15 @@ export class ModalComponent implements OnInit {
   }
   getIdForChk() {
     return `chk-${this.idCount + 1}`;
+  }
+
+  checkifInt(num) {
+    if (num % 1 != 0) {
+      return num;
+    } else {
+      return num + '.00';
+    }
+
   }
   onCloseAddOnModal() {
     const flag = this;

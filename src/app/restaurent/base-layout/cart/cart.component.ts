@@ -67,6 +67,12 @@ export class CartComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7); }
 
   ngOnInit() {
+   /* if (this.localStorage.get('placeOrderData')) {
+      console.log('dfzxzcvxf');
+      this.cartList = this.localStorage.get('placeOrderData');
+      console.log(this.cartList);
+    }*/
+
     this.country = window.location.pathname.replace('/', '').split('/')[0]; 
     this.mobUrl = window.location.pathname.replace('/', '').split('/')[1]; // Without hasing
     if(this.country == 'us'){
@@ -74,6 +80,11 @@ export class CartComponent implements OnInit {
     }else if(this.country == 'au'){
       moment.tz.setDefault("Australia/Sydney");
     }
+
+  /*  if (this.localStorage.get('placeOrderData')) {
+      this.cartList = this.localStorage.get('placeOrderData');
+    }*/
+    console.log(this.cartList);
     if(window.location.href.substring(window.location.href.indexOf('#')+1) == 'dinein'){
       this.dineinExist = true;
      
@@ -98,28 +109,65 @@ export class CartComponent implements OnInit {
     this.timesection1(0)
   this.todayOpenClose =  this.common.onlyCheckRestaurentOpenClose(this.getLocationDetail)
 
-    if (this.locationDetail.Menus[0].ASAP == 'T') {
+    if (this.locationDetail && this.locationDetail.Menus[0].ASAP == 'T') {
       this.ASAPOnOFf = 'T';
     }
-    if (this.locationDetail.Menus[0].LT == 'T') {
+    if (this.locationDetail && this.locationDetail.Menus[0].LT == 'T') {
       this.LTOnOff = 'T';
     }
-    if (this.locationDetail.Menus[0].FO == 'T') {
+    if (this.locationDetail && this.locationDetail.Menus[0].FO == 'T') {
       this.FOOnOff = 'T';
     }
     console.log('dvsvs');
-    if (this.locationDetail. Menus[0].LT == 'F' && this.locationDetail.Menus[0].FO == 'F') {
+    if (this.locationDetail && (this.locationDetail. Menus[0].LT == 'F' && this.locationDetail.Menus[0].FO == 'F')) {
       console.log('fdsfs');
       this.LTFOOnOff = 'T'
     }
+    console.log(this.cartList);
+
+   /* if (this.localStorage.get('placeOrderData')) {
+      console.log('dfzxzcvxf');
+   setTimeout(() => {this.cartList = this.localStorage.get('placeOrderData');},5000);
+    }*/
+    console.log(this.cartList);
   }
   calculateTotal() {
     this.cartTotalCount.emit(_.sumBy(this.cartList, 'P1'))
     return _.sumBy(this.cartList, 'P1');
   }
   getCartItem() {
+    let cartList = this.cartList;
+    if (this.localStorage.get('placeOrderData')) {
+      let bckup = (this.localStorage.get('placeOrderData')).data.orderData.ItemList;
+      for (var i = 0; i < bckup.length; i++) {
+       // this.cartList[i].P1 = bckup[i].P1;
+        this.cartList[i].addQuantity = bckup[i].Qty;
+        this.localStorage.remove('placeOrderData');
+ this.localStorage.set('cartItem', this.cartList);
+
+      }
+    }
+
+
+   /* console.log('Id: 35164\n' +
+        'ItemAddOnList: []\n' +
+        'Name: "Chicken (1/4 Plate)"\n' +
+        'P1: 31.96\n' +
+        'addQuantity: 4\n' +
+        'addedItems: 1\n' +
+        'catId: 4173\n' +
+        'catName: "Plates"\n' +
+        'instr: ""\n' +
+        'isAdded: true\n' +
+        'isShowforSuggestion: "False"\n' +
+        'max: 99\n' +
+        'portionId: 1\n' +
+        'price: 7.99\n' +
+        'specialOffer:')*/
     return _.sumBy(this.cartList, 'addQuantity');
   }
+
+
   addQuantity(product, i) {
     console.log(product);
     console.log(product.price);
@@ -140,6 +188,7 @@ export class CartComponent implements OnInit {
     if (product.addQuantity >= product.max) return;
 
     product.addQuantity = product.addQuantity + 1;
+    console.log(product.addQuantity);
     product.isAdded = true;
     const index = _.findIndex(this.cartList, { Id: product.Id });
     this.cartList[i].P1 = product.price * product.addQuantity;
@@ -155,10 +204,14 @@ export class CartComponent implements OnInit {
     this.localStorage.set('setTotalCountData', this.calculateTotal());
     this.observable.setTotalCount(this.calculateTotal())
     this.observable.setCartTotalA(this.calculateTotal())
+    console.log(this.cartList);
 
     this.updateCartList.emit({ Id: product.Id, addQuantity: product.addQuantity, addedItems: product.addedItems });
 
   }
+
+
+
   removeQuantity(product, i) {
 
     if (product.specialOffer) {
@@ -487,7 +540,10 @@ return
   }
 
   error = (message: string) => {
-    this.toaster.errorToastr(message);
+    this.toaster.errorToastr(message, '', {
+      maxShown: 1,
+      preventDuplicates: true
+    });
   }
 
 }

@@ -47,7 +47,9 @@ export class DishItemsComponent implements OnInit {
     private common: CommonService,
     private activatedRoute: ActivatedRoute,
     private toaster: ToastrManager,
-  ) { }
+  ) {
+    console.log(this.itemList);
+  }
 
   ngOnInit() {
     this.mobUrl = window.location.pathname.replace('/', '').split('/')[1]; // Without hasing
@@ -79,8 +81,11 @@ export class DishItemsComponent implements OnInit {
       this.specialOfferData = [];
     }
 
+
+
   }
   addQuantity(product, i) {
+    console.log(this.itemList);
     js.addToCart(product.Name, product.Id, product.P1, this.mobUrl, this.itemList[i].CatName, [], 1);
     console.log('1');
     if (product.P1 == '-99') {
@@ -197,6 +202,7 @@ export class DishItemsComponent implements OnInit {
     js.addToCart(datacart.Name, datacart.Id, datacart.price, this.mobUrl, catName.CatName, variant.length > 0 ? variant:[], datacart.addQuantity);
     this.cartList.push({ Id: this.itemName.Id, isShowforSuggestion: data.isShowforSuggestion, P1: (this.itemName[data.price.key.toUpperCase()] + amt) * data.qty, portionId: id, catId: data.catId,catName:catName.CatName, addQuantity: data.qty, Name: this.itemName.Name, price: this.itemName[data.price.key.toUpperCase()], ItemAddOnList: list, instr: data.instr, specialOffer: data.specialOffer, addedItems: this.itemName.addedItems, max: data.max });
     this.getCartList.emit(this.cartList);
+    console.log('xxxxxx', this.cartList);
   }
   testRun() {
   }

@@ -19,7 +19,8 @@
                 <a *ngIf="data.Desc" href="javascript:void(0);" class="view-description text-light" [nbPopover]="description" nbPopoverPlacement="left">
                   <nb-icon icon="info"></nb-icon>
                 </a>
-                <img src="{{imageUrl}}images/menuitemimages/{{data.Img}}" alt="Card image">
+               <!-- <img src="{{imageUrl}}images/menuitemimages/{{data.Img}}" alt="Card image">-->
+                <img   [defaultImage]="'../../../../assets/images/dummy.png'" lazyLoad="{{imageUrl}}images/menuitemimages/{{data.Img}}" onError="this.src='../../../../assets/images/dummy.png'">
               </div>
               <div class="card-body">
                 <div class="">

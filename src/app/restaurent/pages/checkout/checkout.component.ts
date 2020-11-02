@@ -54,6 +54,8 @@ export class CheckoutComponent implements OnInit {
   placeOrderBody = new PlaceOrderBody();
   restLoginBody = new RestLoginBody();
   restSignUpBody = new RestSignUpBody();
+  @Output() updateCartList = new EventEmitter();
+  @Output() cartTotalCount = new EventEmitter();
   selectedIndex: number;
   selectedAddress: any;
   selectedAddressEdit: any;
@@ -702,6 +704,9 @@ export class CheckoutComponent implements OnInit {
         this.placeOrderBody.data.orderData.SrvcFee = 0;
         this.selectedTip = 0;
         this.placeOrderBody.data.orderData.tipvalueSelected = 0;
+        this.updateCartList.emit({ Id: this.itemList[index].Id, addQuantity: this.itemList[index].addQuantity, addedItems: this.itemList[index].addedItems });
+        this.localStorage.set('placeOrderData', this.placeOrderBody);
+
         this.localStorage.set('placeOrderData', this.placeOrderBody);
         if (this.localStorage.get('selectedCouponBM')) this.couponComp.applyCoupon(this.localStorage.get('selectedCouponBM'), this.appliedPromoCode.discountType);
       }

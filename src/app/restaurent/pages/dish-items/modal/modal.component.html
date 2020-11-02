@@ -110,12 +110,12 @@
                 <input type="checkbox" class="custom-control-input" [disabled]="prices.p1 == false && prices.p2 == false && prices.p3 == false && prices.p4 == false && prices.p5 == false && prices.p6 == false" (change)="onSelectAddOn(item, option, $event.target.checked)" id="{{option.Id}}-{{i}}" name="example1">
                 <label class="custom-control-label" for="{{option.Id}}-{{i}}">
                   {{option.Name}}
-                  <span *ngIf="prices.p1 && option.P1 > 0">{{currency}}{{option.P1}}</span>
-                  <span *ngIf="prices.p2 && option.P2 > 0">{{currency}}{{option.P2}}</span>
-                  <span *ngIf="prices.p3 && option.P3 > 0">{{currency}}{{option.P3}}</span>
-                  <span *ngIf="prices.p4 && option.P4 > 0">{{currency}}{{option.P4}}</span>
-                  <span *ngIf="prices.p5 && option.P5 > 0">{{currency}}{{option.P5}}</span>
-                  <span *ngIf="prices.p5 && option.P6 > 0">{{currency}}{{option.P6}}</span>
+                  <span *ngIf="prices.p1 && option.P1 > 0"> {{currency}}{{checkifInt(option.P1)}}</span>
+                  <span *ngIf="prices.p2 && option.P2 > 0"> {{currency}}{{checkifInt(option.P2)}}</span>
+                  <span *ngIf="prices.p3 && option.P3 > 0"> {{currency}}{{checkifInt(option.P3)}}</span>
+                  <span *ngIf="prices.p4 && option.P4 > 0"> {{currency}}{{checkifInt(option.P4)}}</span>
+                  <span *ngIf="prices.p5 && option.P5 > 0"> {{currency}}{{checkifInt(option.P5)}}</span>
+                  <span *ngIf="prices.p5 && option.P6 > 0">{{currency}}{{checkifInt(option.P6)}}</span>
                 </label>
 
                 <!-- <div *ngIf="(country.toUpperCase()  == 'US' || country.toUpperCase()  == 'AU') && option.isSelected && (item.AddOnOptionModifier1 || item.AddOnOptionModifier2) && (option.P1 > 0 || option.P2 > 0 || option.P3 > 0 || option.P4 > 0 || option.P5 > 0 || option.P6 > 0)" class="extra-options"> -->
@@ -151,7 +151,7 @@
       </div>
    <!-- {{flags.isSizeSelected}}, {{requiredAddOn.length}}, {{flags.validateArray.length}} -->
         <button class="btn btn-site btn-block rounded-0" [ngClass]="flags.isSizeSelected == false || requiredAddOn.length != flags.validateArray.length ? 'noSelected':''"   (click)="addToBag()">
-        <p class="m-0 btn-txt">{{currency}}{{Math.round((displayAmount*quantity) * 100) / 100}}</p>
+        <p class="m-0 btn-txt">{{currency}}{{checkifInt(Math.round((displayAmount*quantity) * 100) / 100)}}</p>
         <p class="m-0 btn-txt">Add Item</p>
       </button>
     </div>

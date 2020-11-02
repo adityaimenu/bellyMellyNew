@@ -74,6 +74,7 @@ import { JoinUsComponent } from './StaticPages/join-us/join-us.component';
 // import {NgxUsefulSwiperModule} from "ngx-useful-swiper";
 
 import { AboutUsComponent } from './StaticPages/about-us/about-us.component';
+import {LazyLoadImageModule} from "ng-lazyload-image";
 
 let config = new AuthServiceConfig([
   {
@@ -146,6 +147,7 @@ export function provideConfig() {
     NbCardModule,
     NbIconModule,
     NbPopoverModule,
+    LazyLoadImageModule,
     NbButtonModule,
     NbRadioModule,
     NbInputModule,

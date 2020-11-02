@@ -98,7 +98,9 @@ options= {
     this.observable.getLocationDetails().subscribe((data: any) => {
       this.locationDetails = data;
     });
-    this.getCurrentPosition();
+    if (location.href.indexOf('#dinein') == -1) {
+      this.getCurrentPosition();
+    }
     this.country = window.location.pathname.replace('/', '').split('/')[0]; 
     if(this.country == 'au'){
       this.countryCode = 'AU'

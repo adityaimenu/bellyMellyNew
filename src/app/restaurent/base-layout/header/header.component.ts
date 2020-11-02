@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   imageUrl: string;
   country: string;
   mobUrlNew: string;
+  showlocation: any = true;
   host: string;
   constructor(
     private loginService: LoginService,
@@ -37,6 +38,9 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (location.href.indexOf('#dinein') != -1) {
+      this.showlocation = false;
+    }
 
     this.country = window.location.pathname.replace('/', '').split('/')[0]; 
     if(this.country == 'us'){
@@ -140,7 +144,9 @@ export class HeaderComponent implements OnInit {
     console.log('15',moment().format('MMMM DD, YYYY HH:mm:ss'))
   }
   getCurrentAddr(addr) {
-    this.currentAddr = addr;
+    if (this.showlocation) {
+      this.currentAddr = addr;
+    }
   }
   logout() {
     this.localStorage.clear();

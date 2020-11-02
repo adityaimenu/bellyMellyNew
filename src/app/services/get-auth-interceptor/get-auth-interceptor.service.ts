@@ -87,7 +87,7 @@ export class GetAuthInterceptorService {
           document.getElementById('openLoginModalBtn').click();
         } else if (error.status !== 200) {
           // document.getElementById('connectionError').click();
-          return alert('Connection Error: Please check your internet connection and try again.');
+          /*return alert('Connection Error: Please check your internet connection and try again.');*/
         }
       }
     }));
