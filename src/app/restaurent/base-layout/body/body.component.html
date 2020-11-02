@@ -1,5 +1,67 @@
 <nb-layout>
   <nb-layout-header fixed>
+    <button data-toggle="modal" data-backdrop="false" data-target="#thankyou">show</button>
+<!-- Modal -->
+<div class="modal fade thankyou show" id="thankyou">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			
+
+			<div class="modal-body text-center">
+				
+        <div class="row">
+          <div class="col-lg-12 text-left text-dark mb-0 h2 font-weight-boldest">Track Order</div>
+          <div class="col-lg-12 text-dark d-flex align-items-center justify-content-between mb-4">
+            <p class="mb-0"><span class="text-muted">Order ID:</span> 123456789</p>
+            <p class="mb-0"><small>Amount:</small><span class="font-weight-bold">345</span><small>.00</small></p>
+          </div>
+          <div class="col-lg-12 font-weight-bold text-left">ETA: 15 MIN</div>
+        </div>
+				<div class="timeline py-4">
+					<ul>
+						<li class="active">
+							<div class="d-flex align-items-center text-left">
+								<div class="icon mr-2"><img src="assets/images/img-1.svg"></div>
+								<div class="content">
+									<div class="h6 mb-0">Order Placed</div>
+									<p class="mb-0">Your order placed successfully</p>
+								</div>
+							</div>
+						</li>
+						<li class="active">
+							<div class="d-flex align-items-center text-left">
+								<div class="icon mr-2"><img src="assets/images/img-2.svg"></div>
+								<div class="content">
+									<div class="h6 mb-0">Order Processed</div>
+									<p class="mb-0">We are preparing your order.</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex align-items-center text-left">
+								<div class="icon mr-2"><img src="assets/images/img-3.svg"></div>
+								<div class="content">
+									<div class="h6 mb-0">Order Ready</div>
+									<p class="mb-0">We will call your Name/Table number or bring it to you when ready</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="text-center col-lg-12 py-3">
+					<div class="icon">
+						<img src="assets/img/smile.svg" class="img-fluid">
+					</div>
+          <div class="h3 text-dark">Thank You</div>
+          
+        </div>
+        <button class="btn btn-dark btn-block rounded-0">Start New Order</button>
+			</div>
+			
+		</div>
+	</div>
+</div><!-- modal -->
     <header class="sticker">
       <app-header></app-header>
     </header>
