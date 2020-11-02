@@ -75,6 +75,7 @@ import { JoinUsComponent } from './StaticPages/join-us/join-us.component';
 
 import { AboutUsComponent } from './StaticPages/about-us/about-us.component';
 import {LazyLoadImageModule} from "ng-lazyload-image";
+import {LottieModule} from "ngx-lottie";
 
 let config = new AuthServiceConfig([
   {
@@ -148,6 +149,7 @@ export function provideConfig() {
     NbIconModule,
     NbPopoverModule,
     LazyLoadImageModule,
+    LottieModule,
     NbButtonModule,
     NbRadioModule,
     NbInputModule,

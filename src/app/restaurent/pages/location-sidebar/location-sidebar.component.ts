@@ -133,7 +133,7 @@ this.options= {
           var address = data.results[0];
           self.currentAddr = address.formatted_address;
             this.localStorage.set('selectedAddress',{lat: address.geometry.location.lat, long: address.geometry.location.lng,address:self.currentAddr})
-            this.observable.setSelectedAddrssData({lat: address.geometry.location.lat, long: address.geometry.location.lng,address:self.currentAddr}) 
+            this.observable.setSelectedAddrssData({lat: address.geometry.location.lat, long: address.geometry.location.lng,address:self.currentAddr})
           this.currentAddress.emit(self.currentAddr);
           document.getElementById('closeSideLocationModal').click();
         }

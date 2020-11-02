@@ -136,14 +136,14 @@ export class CartComponent implements OnInit {
     return _.sumBy(this.cartList, 'P1');
   }
   getCartItem() {
-    let cartList = this.cartList;
+    console.log(this.cartList);
     if (this.localStorage.get('placeOrderData')) {
       let bckup = (this.localStorage.get('placeOrderData')).data.orderData.ItemList;
       for (var i = 0; i < bckup.length; i++) {
        // this.cartList[i].P1 = bckup[i].P1;
         this.cartList[i].addQuantity = bckup[i].Qty;
-        this.localStorage.remove('placeOrderData');
- this.localStorage.set('cartItem', this.cartList);
+       // this.localStorage.remove('placeOrderData');
+ // this.localStorage.set('cartItem', this.cartList);
 
       }
     }
@@ -266,6 +266,7 @@ export class CartComponent implements OnInit {
     if (this.TimeSelection == 0) {
       this.DueOn = moment(this.DueOn, 'YYYY-MM-DD HH:mm:ss').add(this.selectedService.ReadyInMin, 'minutes').format('YYYY-MM-DD HH:mm');
     }
+
     // if (this.locationDetail.Menus[0].ASAP == 'F') return this.error('Restaurant is not accepting current orders.');
     if (this.TimeSelection == 0) {
       // if (this.common.checkRestaurentOpenClose(this.locationDetail)) return;

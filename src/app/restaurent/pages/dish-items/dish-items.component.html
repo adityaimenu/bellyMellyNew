@@ -1,4 +1,5 @@
   <div class="all-dish-items">
+    <!--<div *ngIf="!itemList.length"><img src="assets/img/menuanime.gif"></div>-->
   <div *ngFor="let item of itemList; let i = index" class="dish-items" id="{{item.customId}}">
     <div class="title d-flex align-items-center justify-content-between">
       <div class="card-title">{{item.CatName}}</div>
@@ -9,8 +10,10 @@
          <span  class="pop-description">{{item.Desc}}</span>
       </ng-template>
     </div>
+
     <ul class="list-item">
       <p *ngIf="!item.ItemList.length">No items available yet.</p>
+
       <li class="" *ngFor="let data of item.ItemList; let index = index">
 
           <div *ngIf="data.Img && data.showTOday" class="grid-view" fxLayout="row wrap" fxLayoutAlign="start stretch">
@@ -19,8 +22,8 @@
                 <a *ngIf="data.Desc" href="javascript:void(0);" class="view-description text-light" [nbPopover]="description" nbPopoverPlacement="left">
                   <nb-icon icon="info"></nb-icon>
                 </a>
-               <!-- <img src="{{imageUrl}}images/menuitemimages/{{data.Img}}" alt="Card image">-->
-                <img   [defaultImage]="'../../../../assets/images/dummy.png'" lazyLoad="{{imageUrl}}images/menuitemimages/{{data.Img}}" onError="this.src='../../../../assets/images/dummy.png'">
+                <!--<img src="assets/images/dummy.png" alt="Card image">-->
+                <img   [defaultImage]="'assets/images/dummy.png'" lazyLoad="{{imageUrl}}images/menuitemimages/{{data.Img}}" onError="this.src='assets/images/dummy.png'">
               </div>
               <div class="card-body">
                 <div class="">

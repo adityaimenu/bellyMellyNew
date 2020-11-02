@@ -128,10 +128,10 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
        //   alert('login');
           /*location.reload();*/
-          setTimeout(() => {location.reload();},2000);
+          /*setTimeout(() => {location.reload();},2000);*/
         }else{
           this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-          setTimeout(() => {location.reload();},2000);
+          /*setTimeout(() => {location.reload();},2000);*/
         }
       } else {
       //  location.reload();
@@ -167,10 +167,10 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
              // alert('login');
               /*location.reload();*/
-              setTimeout(() => {location.reload();},2000);
+              /*setTimeout(() => {location.reload();},2000);*/
             }else{
               this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-              setTimeout(() => {location.reload();},2000);
+              /*setTimeout(() => {location.reload();},2000);*/
             }
           } else {
           //  location.reload();
@@ -213,10 +213,10 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
             //  alert('login');
               /*location.reload();*/
-             setTimeout(() => {location.reload();},2000);
+             /*setTimeout(() => {location.reload();},2000);*/
             }else{
               this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-              setTimeout(() => {location.reload();},2000);
+              /*setTimeout(() => {location.reload();},2000);*/
             }
           } else {
          //   location.reload();
@@ -255,10 +255,10 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
             //  alert('login');
             /*location.reload();*/
-            setTimeout(() => {location.reload();},2000);
+            /*setTimeout(() => {location.reload();},2000);*/
           }else{
             this.router.navigateByUrl(`/${this.mobUrl}/checkout`);//live
-            setTimeout(() => {location.reload();},2000);
+            /*setTimeout(() => {location.reload();},2000);*/
           }
         } else {
          /* location.reload();*/
