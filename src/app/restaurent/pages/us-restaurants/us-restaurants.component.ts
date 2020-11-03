@@ -32,6 +32,7 @@ export class UsRestaurantsComponent implements OnInit {
   imageUrl: string;
   foodtype = ['0'];
   searchAddress: string;
+  gettingData: any = false;
   selectedFood: any;
   currentAddr: string;
   showBoundaryLinks = true;
@@ -209,6 +210,7 @@ export class UsRestaurantsComponent implements OnInit {
     this.Locations = [];
     this.totalCount = 0;
     this.servicetype = val;
+    this.gettingData = true;
     if (this.servicetype) {
       var data = `getLocation&type=imenu&latitude=0&longitude=0&country=${this.countryAsign}&restaurantname=${this.restaurantname}&foodtype=${this.foodtype}&servicetype=${this.servicetype}&skipRows=${this.skipRows}`
     }
@@ -223,6 +225,7 @@ export class UsRestaurantsComponent implements OnInit {
         return this.warning('No restaurants found for this location')
       }
       this.Locations = response.Locations;
+      this.gettingData = false;
       this.totalCount = response.TotalLocationCnt;
       if (this.FoodTypes.length == 0) {
         this.FoodTypes = response.FoodTypes;
@@ -251,6 +254,7 @@ export class UsRestaurantsComponent implements OnInit {
     this.totalCount = 0;
     this.skipRows = 0;
     this.servicetype = val;
+    this.gettingData = true;
     if (this.servicetype) {
       var data = `getLocation&type=imenu&latitude=${this.latitude}&longitude=${this.longitude}&country=${this.countryAsign}&restaurantname=&foodtype=${this.foodtype}&servicetype=${this.servicetype}&skipRows=${this.skipRows}`
     } else {
@@ -264,6 +268,7 @@ export class UsRestaurantsComponent implements OnInit {
         return this.warning('No restaurants found for this location')
       }
       this.Locations = response.Locations;
+      this.gettingData = false;
       console.log(this.Locations[0]);
       if (this.Locations[0]) {
         this.selectedAddr = this.Locations[0].City;
@@ -301,6 +306,7 @@ export class UsRestaurantsComponent implements OnInit {
     // this.totalCount= 0;
     // this.skipRows = 0
     this.servicetype = val;
+    this.gettingData = true;
     if (this.addAddressString) {
       if (this.servicetype) {
         var data = `getLocation&type=imenu&latitude=${this.latitude}&longitude=${this.longitude}&country=${this.countryAsign}&restaurantname=&foodtype=${this.foodtype}&servicetype=${this.servicetype}&skipRows=${this.skipRows}`
@@ -323,6 +329,7 @@ export class UsRestaurantsComponent implements OnInit {
         return this.warning('No restaurants found for this location')
       }
       this.Locations = response.Locations;
+      this.gettingData = false;
       console.log(this.Locations[0]);
       if (this.Locations[0]) {
         this.selectedAddr = this.Locations[0].City;
@@ -568,6 +575,7 @@ openFilters() {
 
   clearService() {
     this.skipRows = 0
+    this.gettingData = true;
     if (this.addAddressString) {
       var data = `getLocation&type=imenu&latitude=${this.latitude}&longitude=${this.longitude}&country=${this.countryAsign}&restaurantname=&foodtype=${this.foodtype}&servicetype=&skipRows=${this.skipRows}`
     }
@@ -579,6 +587,7 @@ openFilters() {
         return this.warning('No restaurants found for this location')
       }
       this.Locations = response.Locations;
+      this.gettingData = false;
       this.totalCount = response.TotalLocationCnt;
       if (this.FoodTypes.length == 0) {
         this.FoodTypes = response.FoodTypes;
@@ -623,6 +632,7 @@ openFilters() {
     this.foodtype.splice(index, 1);
 
     this.Locations = []
+    this.gettingData = true;
     this.skipRows = 0
     if (this.addAddressString) {
       var data = `getLocation&type=imenu&latitude=${this.latitude}&longitude=${this.longitude}&country=${this.countryAsign}&restaurantname=&foodtype=${this.foodtype}&servicetype=&skipRows=${this.skipRows}`
@@ -644,6 +654,7 @@ openFilters() {
         return this.warning('No restaurants found for this location')
       }
       this.Locations = response.Locations;
+      this.gettingData = false;
       this.totalCount = response.TotalLocationCnt;
       if (this.FoodTypes.length == 0) {
         this.FoodTypes = response.FoodTypes;

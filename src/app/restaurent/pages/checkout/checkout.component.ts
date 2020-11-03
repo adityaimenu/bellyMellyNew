@@ -481,7 +481,9 @@ export class CheckoutComponent implements OnInit {
 
   async onSelectAddress(obj, i) {
     this.placeOrderBody = this.localStorage.get('placeOrderData');
-    document.getElementById('closeChangeLocationResp').click();
+    if ( document.getElementById('closeChangeLocationResp')) {
+      document.getElementById('closeChangeLocationResp').click();
+    }
     const locationDetailsData = this.localStorage.get('BM_LocationDetail');
     if (this.placeOrderBody.data.orderData.ServiceId == 2) {
       this.localStorage.set('placeOrderData', this.placeOrderBody);

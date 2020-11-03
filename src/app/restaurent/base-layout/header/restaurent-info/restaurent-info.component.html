@@ -43,7 +43,7 @@
                       <span *ngIf="deliveryAmount > 0 && isDeliveryFree">{{currency}}{{deliveryAmount}} Delivery Charges </span>
                       <span *ngIf="deliveryAmount > 0 && !isDeliveryFree">{{currency}}{{deliveryAmount}} Delivery Charges </span>
                       <span *ngIf="deliveryAmount == 0 && deliveryExist == true"> 
-                        {{isDeliveryFree?'Free Delivery':withoutDliveryZone?'Delivery Available':''}}
+                        {{isDeliveryFree?'Free Delivery':withoutDliveryZone?'Delivery Not Available':''}}
                       </span>
                     </h6>
                     <!-- <p *ngIf="isDeliveryFree == false && deliveryAmount > 0">Delivery Charges</p> -->
@@ -129,6 +129,8 @@
               <img src="assets/images/distance.svg"> <p class="m-0">{{distance}}Miles</p>
             </div>
           </li>
+          <b class="text-center" style="    font-size: 25px !important; font-weight: 550; color: black;margin-right: 234px;
+}" *ngIf="dineinExist">Categories</b>
         </ul>
         
         

@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light py-2 border-bottom" id="mainNav">
     <div class="container-fluid">
       <a class="navbar-brand js-scroll-trigger" href="{{host}}" target="_blank">
-        <img *ngIf="countryCode == 'US'" src="assets/images/logo.png" class="img-fluid" width="150px">
+        <img  src="assets/images/logo.png" class="img-fluid" width="150px">
         <img *ngIf="countryCode == 'AU'" src="assets/img/logoAU.png" class="img-fluid" width="150px">
       </a>
       <span>
@@ -99,12 +99,12 @@
             
           </div>
         </div>
-        <div class="col-lg-12 category-view">
+        <div  class="col-lg-12 category-view">
           <div class="title d-flex">
             <h6 class="mr-3">Food Categories </h6>
           </div>
           <!-- Swiper -->
-          <div class="categories">
+          <div [ngClass]="FoodTypes.length == 0? 'bck': ''" class="categories">
             <div class="swiper-wrapper">
               <div class="swiper-slide" *ngFor="let val of FoodTypes;let i=index;">
                 <div class="slide-item p-3 rounded-lg " [id]="'foodtype' + val.FoodTypeId" style="cursor: pointer"  (click)="FoodTypeF(val.FoodTypeId, val.FoodTypeId, val); searchrRestaurantsBoth(servicetype); ">
@@ -145,11 +145,13 @@
               </div>
             </div>
           </div>
-          <div class=" w-100 text-center" *ngIf="Locations.length == 0" ><!--comment-->
+            <div class="  text-center"  *ngIf="gettingData"><img src="assets/img/menuanime.gif"></div>
+          <div class=" w-100 text-center" *ngIf="Locations.length == 0 && !gettingData" ><!--comment-->
             <div class="filter-box py-4">
               <img src="assets/images/nodata.png" width="180px">
               <div class="mt-4">
                 <h3 class="text-dark">
+                    No Restaurant Found
                 </h3>
                 </div>
             </div>
@@ -257,15 +259,19 @@
                   </div>
                 
               </div>
-              <div class=" text-center" *ngIf="Locations.length == 0" ><!--comment-->
+            <div class="  text-center"  *ngIf="gettingData"><img src="assets/img/menuanime.gif"></div>
+              <div class=" text-center" *ngIf="Locations.length == 0 && !gettingData" ><!--comment-->
                 <div class="filter-box py-4">
                   <img src="assets/images/nodata.png" width="180px">
                   <div class="mt-4">
                     <h3 class="text-dark">
+                        No Restaurant Found
                     </h3>
                     </div>
                 </div>
               </div>
+
+
 
             <div class="row list-view" *ngIf="Locations.length > 0">
               <ul class="restaurant-list-view my-0">
