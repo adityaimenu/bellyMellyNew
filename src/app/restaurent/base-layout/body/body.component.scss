@@ -22,3 +22,43 @@ header{
     }
   }
 }
+.timeline ul{
+  margin: 0;
+  list-style: none;
+  position: relative;
+  padding: 0;
+}
+
+.timeline ul li{
+  position: relative;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  opacity: .3;
+  min-height: 100px;
+}
+.timeline ul li::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: 10px;
+  height: 100%;
+  border-right: 3px dotted #222b45;
+}
+.timeline ul li.active{
+  opacity: 1;
+}
+.timeline ul li .icon{
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+  padding-left: 0;
+}
+.timeline ul li:last-child{
+  min-height: 1px;
+}
+.timeline ul li:last-child::before{
+  display: none;
+}
