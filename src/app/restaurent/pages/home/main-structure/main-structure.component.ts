@@ -343,6 +343,7 @@ export class MainStructureComponent implements OnInit {
     this.localStorage.set('cartItem', this.cartList);
   }
   updateCartList(product) {
+    console.log('hello');
     const list = this.catList;
     list.forEach(ele => {
       const index = _.findIndex(ele.ItemList, { Id: product.Id });

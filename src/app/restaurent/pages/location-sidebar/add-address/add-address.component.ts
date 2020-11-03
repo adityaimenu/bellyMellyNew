@@ -84,6 +84,7 @@ export class AddAddressComponent implements OnInit {
     this.selectedAddress = JSON.parse(localStorage.getItem('selectedAddress'));
   //   this.editTimer(this.selectedAddress);
     if (location.href.indexOf('#dinein') == -1) {
+
       this.getCurrentPosition(true);
     }
 

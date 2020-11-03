@@ -1,5 +1,5 @@
   <div class="all-dish-items">
-    <!--<div *ngIf="!itemList.length"><img src="assets/img/menuanime.gif"></div>-->
+    <div *ngIf="!itemList.length"><img src="assets/img/menuanime.gif"></div>
   <div *ngFor="let item of itemList; let i = index" class="dish-items" id="{{item.customId}}">
     <div class="title d-flex align-items-center justify-content-between">
       <div class="card-title">{{item.CatName}}</div>

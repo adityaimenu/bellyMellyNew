@@ -98,7 +98,10 @@ export class RestaurentInfoComponent implements OnInit {
 
       this.observable.getCartTotalA().subscribe((response: any) => {
         this.responseCartamount = response;
-        this.getDeliveryPrice(response);
+        if (location.href.indexOf('#dinein') == -1) {
+          console.log('thissssssssss');
+          this.getDeliveryPrice(response);
+        }
         const service = _.find(this.locationDetails.Services, { Id: 2 });
       })
     
