@@ -51,6 +51,7 @@ export class CartComponent implements OnInit {
   FOOnOff:string='F';
   LTFOOnOff: string = 'F';
   dineinExist:boolean=false;
+  getdataFromPlaceOrder: any = true;
   mobUrl:string;
   todayOpenClose:boolean;
   constructor(
@@ -136,13 +137,17 @@ export class CartComponent implements OnInit {
     return _.sumBy(this.cartList, 'P1');
   }
   getCartItem() {
-    console.log(this.cartList);
+
+    if (this.getdataFromPlaceOrder == true) {
+   
     if (this.localStorage.get('placeOrderData')) {
       let bckup = (this.localStorage.get('placeOrderData')).data.orderData.ItemList;
       for (var i = 0; i < bckup.length; i++) {
-       // this.cartList[i].P1 = bckup[i].P1;
+        // this.cartList[i].P1 = bckup[i].P1;
         this.cartList[i].addQuantity = bckup[i].Qty;
-       // this.localStorage.remove('placeOrderData');
+
+        this.getdataFromPlaceOrder = false;
+      }
  // this.localStorage.set('cartItem', this.cartList);
 
       }
@@ -204,9 +209,12 @@ export class CartComponent implements OnInit {
     this.localStorage.set('setTotalCountData', this.calculateTotal());
     this.observable.setTotalCount(this.calculateTotal())
     this.observable.setCartTotalA(this.calculateTotal())
-    console.log(this.cartList);
+    console.log(product.addQuantity);
+    console.log(this.cartList[i].addQuantity);
+    console.log(this.cartList[i]);
 
     this.updateCartList.emit({ Id: product.Id, addQuantity: product.addQuantity, addedItems: product.addedItems });
+    console.log(this.cartList);
 
   }
 
