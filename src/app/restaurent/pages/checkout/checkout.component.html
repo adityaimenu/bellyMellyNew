@@ -374,7 +374,7 @@
 
                   </div>
                   <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList">
-                    <li class="list-bullet"><strong>{{addItems.Name}}</strong></li>
+                    <li class="list-bullet">{{addItems.Name}}</li>
 
                     <li *ngFor="let addOptions of addItems.AddOnOptions;" class="iotnlist">
                       <div class="row">
@@ -593,7 +593,7 @@
                 </div>
               </div>-->
 
-              <div *ngIf="!itemList.length" class="added-items py-4">
+              <div *ngIf="!itemList.length" class="col-lg-12 added-items py-4">
                 <div class="text-center">
                   <img src="assets/images/empty-cart1-png.png" alt="" width="50%">
                 </div>
@@ -628,7 +628,7 @@
                   </div>
                 </div>
                 <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0 pt-2">
-                  <li class="list-bullet"><strong>{{addItems.Name}}</strong></li>
+                  <li class="list-bullet"><p class="mb-0">{{addItems.Name}}</p></li>
 
                   <li *ngFor="let addOptions of addItems.AddOnOptions;" class="">
                     <div class="row">
@@ -892,19 +892,19 @@
         <div class="apply-coupon"  *ngIf="!flags.isPromoApplied" >
           <div class="container" *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)">
             <div class="row">
-              <div   class="w-100">
-              <div   class="coupon" role="button" data-toggle="modal" data-target="#coupon">
-                <div fxLayout fxLayoutAlign="space-between center" fxFlex>
-                  <span *ngIf="country.toUpperCase()  == 'AU' || country.toUpperCase()  == 'US' || country.toUpperCase()  == 'IN'">
-                    <nb-icon icon="gift-outline" class="mr-3"></nb-icon>
-                    Apply Coupon
-                  </span>
-                  <span>
-                    <nb-icon icon="arrow-forward-outline"></nb-icon>
-                  </span>
+              <div class="col-lg-12">
+                <div class="py-3" role="button" data-toggle="modal" data-target="#coupon">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <p *ngIf="country.toUpperCase()  == 'AU' || country.toUpperCase()  == 'US' || country.toUpperCase()  == 'IN'" class="text-uppercase text-dark mb-0">
+                      <nb-icon icon="gift-outline" class="mr-2"></nb-icon>
+                      Apply Coupon
+                    </p>
+                    <span>
+                      <nb-icon icon="arrow-forward-outline"></nb-icon>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
             <!--<div  *ngIf="flags.isPromoApplied" class="w-100">
               <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="coupon" role="button">
                 <div fxLayout fxLayoutAlign="space-between center" fxFlex>
@@ -920,14 +920,17 @@
           </div>
 
         </div>
-        <div  *ngIf="flags.isPromoApplied" class="w-100">
-          <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="coupon" role="button">
-            <div fxLayout fxLayoutAlign="space-between center" fxFlex>
-                  <span>
-                    <nb-icon icon="gift-outline" class="mr-3"></nb-icon>
-                    {{appliedPromoCode?appliedPromoCode.finalName:''}} ({{currency}}{{appliedPromoCode?appliedPromoCode.finalDiscount:''}} OFF) &nbsp;<span
-                          class="fa fa-close" (click)="removePromo()" style="cursor: pointer;"></span>
-                  </span>
+        <div  *ngIf="flags.isPromoApplied" class="apply-coupon">
+          <div *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="container" role="button">
+            <div class="row py-3">
+              <div class="col-lg-12 d-flex align-items-center justify-content-between">
+                <p class="mb-0 text-dark text-uppercase">
+                  <nb-icon icon="gift-outline" class="mr-2"></nb-icon>
+                  {{appliedPromoCode?appliedPromoCode.finalName:''}} ({{currency}}{{appliedPromoCode?appliedPromoCode.finalDiscount:''}} OFF)
+                </p>
+                <nb-icon icon="close-circle" class="text-gray" (click)="removePromo()" style="cursor: pointer;"></nb-icon>
+              </div>
+                  
             </div>
           </div>
         </div>
