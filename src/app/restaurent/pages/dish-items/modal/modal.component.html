@@ -64,7 +64,7 @@
       <div *ngFor="let item of addOnList; let i = index" class="choose-crust">
         <div class="title">
           <!-- <h6 class="mb-0">{{item.Name}} <small *ngIf="item.Reqd == 'T'" class="text-danger" ><span style="text-transform: none; font-size: 14px;">Required - Choose (Minimum {{item.Min > 0?item.Min:1}} and Maximum {{item.Max > 0?item.Max:1}})</span> </small></h6> -->
-          <h6 class="mb-0">{{item.Name}} <small *ngIf="item.Reqd == 'T'" class="text-danger" ><span style="text-transform: none; font-size: 14px;">Required - Choose {{item.DispType == 'S'?'1':item.Max}}</span> </small></h6>
+          <h6 class="mb-0">{{item.Name}} <small *ngIf="item.Reqd == 'T'" class="text-danger" ><span style="text-transform: none; font-size: 14px;">Required - Choose {{item.DispType == 'S'?'1':'1'}}</span> </small></h6>
           <p>{{item.Desc}}</p>
         </div>
         <div *ngIf="item.DispType == 'S'" class="row btnrow">

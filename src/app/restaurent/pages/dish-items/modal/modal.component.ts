@@ -335,48 +335,21 @@ export class ModalComponent implements OnInit {
     }
   }
   onChangeModifier(item, option, label, id, factor, type) {
-    console.log(item, option, label, id, factor, type);
-
+   /* console.log(factor);*/
     const index = _.findIndex(this.addOnItemList, { ItemAddOnId: item.ItemAddOnId });
-    console.log(type);
-    if (this.storedId == item.ItemAddOnId) {
-      localStorage.removeItem('storedDisplayAmount');
-      localStorage.setItem('storedDisplayAmount', JSON.stringify(this.displayAmount));
-      console.log(this.displayAmount);
-    } else {
-      console.log(this.displayAmount);
-    }
     if (type) {
       if (index > -1) {
-        console.log('in first');
-
-
         const optionIndex = _.findIndex(this.addOnItemList[index].AddOnOptions, { Id: option.Id });
-
-        this.displayAmount = Number(this.displayAmount) - (Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt) * Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt * this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2 ? this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2.Factor : 1));
-
-
+        console.log(this.displayAmount);
+        this.displayAmount = Number(this.displayAmount) - ((Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt) * Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt * this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2 ? this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2.Factor : 1)));
         this.addOnItemList[index].AddOnOptions[optionIndex].Amt = Number(factor) * Number(option.P1);
         this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier1 = { Label: label, Text: id, Factor: factor };
-        console.log(this.addOnItemList[index].AddOnOptions[optionIndex].Amt)
-        console.log(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice);
-
-
-        if (label == 'Left Half' || label == 'Right Half') {
-          console.log(label);
         this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt);
-        } else {
-          this.storedId = item.ItemAddOnId;
-
-          console.log(localStorage.getItem('storedDisplayAmount'));
-          this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice);
-        }
       }
     } else {
       if (index > -1) {
-        console.log('in second');
         const optionIndex = _.findIndex(this.addOnItemList[index].AddOnOptions, { Id: option.Id });
-        this.displayAmount = Number(this.displayAmount) - Number(this.addOnItemList[index].AddOnOptions[optionIndex].UnitPrice) * Number(option.P1);
+        this.displayAmount = Number(this.displayAmount) - Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt) * Number(option.P1);
         this.addOnItemList[index].AddOnOptions[optionIndex].Amt = Number(this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier1.Factor) * Number(factor);
         this.displayAmount = Number(this.displayAmount) + Number(this.addOnItemList[index].AddOnOptions[optionIndex].Amt);
         this.addOnItemList[index].AddOnOptions[optionIndex].AddOnOptionModifier2 = { Label: label, Text: id, Factor: factor };
@@ -389,7 +362,11 @@ export class ModalComponent implements OnInit {
 
   checkifInt(num) {
     if (num % 1 != 0) {
+    if ( num.toString().split(".")[1].length == 2) {
       return num;
+    } else {
+      return num + '0';
+    }
     } else {
       return num + '.00';
     }
