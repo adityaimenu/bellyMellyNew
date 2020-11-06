@@ -268,6 +268,7 @@ export class CheckoutComponent implements OnInit {
     }
     if (this.locationDetails && this.locationDetails.Cuisines.length) this.locationDetails.Cuisines = _.map(this.locationDetails.Cuisines, 'name');
     this.placeOrderBody = this.localStorage.get('placeOrderData');
+    localStorage.setItem('currentService', JSON.stringify(this.placeOrderBody.data.orderData.ServiceId));
     const a = _.findIndex(this.placeOrderBody.data.orderData.ItemList, { isShowforSuggestion: 'True' });
     if (a != -1) {
       this.isShowforSuggestion = true;

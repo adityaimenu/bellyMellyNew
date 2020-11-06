@@ -71,54 +71,67 @@ export class HeaderComponent implements OnInit {
     this.imageUrl = this.url.imageUrl;
     js.tooltip();
     js.sideNav();
+
+
     this.observable.getLocationDetails().subscribe((response: any) => {
       this.locationDetails = response;
       if (this.locationDetails && this.locationDetails.Address) {
         localStorage.setItem('locDetail', JSON.stringify(this.locationDetails));
         this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails);
       }
-
-
       if (this.locationDetails && this.locationDetails.LogoImg) this.logoImage = this.imageUrl + this.locationDetails.LogoImg;
       else this.logoImage = 'assets/images/defaultRest.png';
 
-      if (location.href.indexOf('#dinein') != -1) {
 
+
+
+
+      if (location.href.indexOf('#dinein') != -1) {
         this.showLogin = false;
-        setTimeout (() => { let uname = 'guest' + this.locationDetails.RestChainId +'@bellymelly.com'
-          let pwd = 'guest' + this.locationDetails.RestChainId +'!@#'
+
+        if(this.localStorage.get('BM_tId')) {
+
+
+
+          let uname = 'guestuser@bellymelly.com'
+          let pwd = 'guestuser!@#'
           this.loginBody = this.localStorage.get('BM_LoginBody');
           this.restLoginBody.tId = this.localStorage.get('BM_tId');
-          this.restLoginBody.data = { username: uname, password: pwd, isBMPortal: 1, isguestcheckout: 1 };
+          this.restLoginBody.data = {username: uname, password: pwd, isBMPortal: 1, isguestcheckout: 1};
+
+          setTimeout(() => {
+
+            this.api.loginRest(this.restLoginBody).subscribe((response: any) => {
+              console.log('dsfsdfsdf');
+
+              if (response.serviceStatus != 'S') return;
+              this.localStorage.set('BM_USER', response.data);
+              this.localStorage.set('guest', true);
+              this.loginService.setVal(true);
+              this.loginService.setUser(response.data);
 
 
-          this.api.loginRest(this.restLoginBody).subscribe((response: any) => {
-            console.log('dsfsdfsdf');
+            })
+          }, 2000);
+        }
 
-            if (response.serviceStatus != 'S') return ;
-            this.localStorage.set('BM_USER', response.data);
-            this.localStorage.set('guest', true);
-            this.loginService.setVal(true);
-            this.loginService.setUser(response.data);
-
-
-
-          })}, 2000);
 
 
       } else {
+
+        if (this.localStorage.get('guest') == true) {
+          this.logout();
+        }
         this.showLogin = true;
-       if (this.localStorage.get('guest') == true) {
-        this.logout();
-       }
       }
+
+
 
     });
 
     this.loginService.isLoggedIn().subscribe((login: boolean) => {
 
       this.isLogin = login;
-
       this.user = this.localStorage.get('BM_USER');
       this.loginService.onUpdateProfile().subscribe((user: any) => {
         if (user) {
@@ -131,6 +144,7 @@ export class HeaderComponent implements OnInit {
       this.country = window.location.pathname.replace('/', '').split('/')[0]; //Without hashing
       this.mobUrlNew = window.location.pathname;
     });
+
     if (this.locationDetails && this.locationDetails.Address) {
       console.log(this.locationDetails);
       this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails)
@@ -194,7 +208,11 @@ export class HeaderComponent implements OnInit {
     this.loginService.setUser(null);
     this.loginService.setVal(false);
    // this.router.navigate([this.mobUrl]);
-    window.location.href = `${this.host}` + `/us/` + this.mobUrl;
+    if (this.host && this.mobUrl) {
+      window.location.href = `${this.host}` + `/us/` + this.mobUrl;
+    } else {
+      location.reload();
+    }
     // this.router.navigateByUrl(`/${this.country}/${this.mobUrl}`);
     // if (window.location.hash.replace('#/', '').split('/').length > 2) {
     // if (window.location.pathname.replace('/', '').split('/').length > 2) {

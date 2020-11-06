@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit {
     this.flags.isLogin = true;
     this.api.newRestLogin(this.loginBody).subscribe((response: any) => {
 
-      this.flags.isLogin = false;
+      /*this.flags.isLogin = false;*/
       if (response.serviceStatus != 'S') return ;
       this.localStorage.set('BM_LoginBody', this.loginBody);
       this.localStorage.remove('BM_SocialLoginBody');
@@ -123,6 +123,7 @@ export class LoginComponent implements OnInit {
       this.loginService.setVal(true);
       this.loginService.setUser(response.data);
       this.localStorage.set('guest', false);
+      this.flags.isLogin = false;
       if (this.isCheckoutWithoutLogin) {
         if(window.location.hostname == 'localhost'){
           this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing

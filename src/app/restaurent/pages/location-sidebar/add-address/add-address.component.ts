@@ -83,7 +83,7 @@ export class AddAddressComponent implements OnInit {
     console.log('hello');
     this.selectedAddress = JSON.parse(localStorage.getItem('selectedAddress'));
   //   this.editTimer(this.selectedAddress);
-    if (location.href.indexOf('#dinein') == -1) {
+    if (JSON.parse(localStorage.getItem('currentService')) != 5) {
 
       this.getCurrentPosition(true);
     }

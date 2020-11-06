@@ -88,6 +88,8 @@ export class CartComponent implements OnInit {
     console.log(this.cartList);
     if(window.location.href.substring(window.location.href.indexOf('#')+1) == 'dinein'){
       this.dineinExist = true;
+
+
      
       // document.getElementById('dineinModalButton').click();
     }
@@ -107,6 +109,13 @@ export class CartComponent implements OnInit {
     this.todayDate = moment().format("YYYY-MM-DD");
     this.laterDate = moment().add(1,'day').format('YYYY-MM-DD');
     this.getLocationDetail = this.localStorage.get('BM_LocationDetail');
+   setTimeout(() => {
+     if (this.dineinExist == true) {
+
+       this.onSelectService(this.getLocationDetail.Services[3])
+     }
+
+    })
     this.timesection1(0)
   this.todayOpenClose =  this.common.onlyCheckRestaurentOpenClose(this.getLocationDetail)
 
@@ -356,6 +365,7 @@ return
     this.observable.setIsCheckout(true);
   }
   onSelectService(service: any) {
+    console.log(service);
     this.flags.isServiceSelected = true;
     this.orderData.ServiceId = service.Id;
     this.selectedService = service;
@@ -394,6 +404,9 @@ return
 
 
   onSelectServiceResp(service) {
+    console.log(service);
+
+
     this.flags.isServiceSelected = true;
     this.orderData.ServiceId = service.Id;
     this.selectedService = service;
