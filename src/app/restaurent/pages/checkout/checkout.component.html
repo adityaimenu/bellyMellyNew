@@ -608,7 +608,7 @@
               style="padding-bottom: 0 !important;">
                 <div class="added-item d-flex align-items-center" fxLayout="row wrap" fxLayoutGap="10" fxLayoutAlign="center between">
                   <div class="item-cart" fxFlex="50">
-                    <p class="text-dark mb-0">{{item.Name}}</p>
+                    <span class="text-dark mb-0">{{item.Name}}</span>
                   </div>
                   <div class="right inr-dec"  fxFlex="25">
                     <figure class="m-0 setunit" fxLayout="row" fxLayoutAlign="space-around center">
@@ -624,19 +624,19 @@
                     </figure>
                   </div>
                   <div class="" fxFlex="25"> 
-                    <div  class="text-right text-muted item-cart">{{currency}} <span *ngIf="item.UnitPrice != '-99'"> {{(item.UnitPrice*item.Qty).toFixed(2)}}</span> <span *ngIf="item.UnitPrice == '-99'">0</span>  </div>
+                    <div  class="text-right text-dark item-cart">{{currency}} <span *ngIf="item.UnitPrice != '-99'"> {{(item.UnitPrice*item.Qty).toFixed(2)}}</span> <span *ngIf="item.UnitPrice == '-99'">0</span>  </div>
                   </div>
                 </div>
-                <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0 pt-2">
-                  <li class="list-bullet"><p class="mb-0">{{addItems.Name}}</p></li>
+                <ul *ngFor="let addItems of item.ItemAddOnList;" class="addOnList list-unstyled px-1 m-0 pt-0">
+                  <!-- <li class="list-bullet"><p class="mb-0">{{addItems.Name}}</p></li> -->
 
                   <li *ngFor="let addOptions of addItems.AddOnOptions;" class="">
                     <div class="row">
                       <div class="col-md-6 w-50">
-                        <p class="mb-1 text-dark mobiotnlis">{{addOptions.Name}}</p>
+                        <p class="mb-0 text-dark mobiotnlis">{{addOptions.Name}}</p>
                       </div>
                       <div class="col-md-6 w-50 text-right">
-                        {{currency}}{{(Number(addOptions.Amt*item.Qty)).toFixed(2)}}</div>
+                        <p class="mb-0 text-dark mobiotnlis">{{currency}}{{(Number(addOptions.Amt*item.Qty)).toFixed(2)}}</p></div>
                     </div>
                   </li>
 
@@ -1156,22 +1156,22 @@
                       <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                     </div>
                   </li>
-                  <li *ngIf="country.toUpperCase()  == 'US' && PaymentTypes == true" class="py-2 border-bottom">
+                  <li *ngIf="country.toUpperCase()  == 'US' && PaymentTypes == true" class="p-2 bg-light rounded mb-2">
                     <div (click)="onSelectCcPayment(); creditMobile()" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
-                          <span class="mr-2"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
+                          <span class="mr-2"><i class="fa fa-credit-card text-site" aria-hidden="true"></i></span>
                         </div>
                         Debit/Credit Card
                       </div>
-                      <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                      <!-- <span><i class="fa fa-angle-right" aria-hidden="true"></i></span> -->
                     </div>
                   </li>
-                  <li *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'" class="py-2 border-bottom">
+                  <li *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'" class="p-2 bg-light rounded ">
                     <div (click)="placeOrderBody.data.orderData.PaymentTypeId = 4" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
-                          <span class="mr-2"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
+                          <span class="mr-2"><i class="fa fa-credit-card  text-site" aria-hidden="true"></i></span>
                         </div>
                         PAYTM
                       </div>
@@ -1179,11 +1179,11 @@
                     </div>
                   </li>
                   <!--<span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'">   <input  type="radio" name="paymentRadio" class="unchekRadioPayment" (click)="placeOrderBody.data.orderData.PaymentTypeId = 4"> PAYTM</span>-->
-                  <li *ngIf="PaymentTypesCOD == true" class="py-2">
+                  <li *ngIf="PaymentTypesCOD == true" class="p-2 bg-light rounded ">
                     <div (click)="onSelectCODPayment(); cashMobile()" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
-                          <span class="mr-2"><i class="fa fa-money" aria-hidden="true"></i></span>
+                          <span class="mr-2"><i class="fa fa-money text-site" aria-hidden="true"></i></span>
                         </div>
                         Cash
                       </div>
