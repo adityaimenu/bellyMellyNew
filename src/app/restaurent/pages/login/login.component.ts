@@ -122,7 +122,7 @@ export class LoginComponent implements OnInit {
       this.localStorage.set('BM_USER', response.data);
       this.loginService.setVal(true);
       this.loginService.setUser(response.data);
-
+      this.localStorage.set('guest', false);
       if (this.isCheckoutWithoutLogin) {
         if(window.location.hostname == 'localhost'){
           this.router.navigateByUrl(`${this.country}/${this.mobUrl}/checkout`); //testing
@@ -161,6 +161,7 @@ export class LoginComponent implements OnInit {
         if (response.data.isExistsIMenuAccount == 2) {
           this.localStorage.set('BM_USER', response.data);
           this.loginService.setVal(true);
+          this.localStorage.set('guest', false);
           this.loginService.setUser(response.data);
           if (this.isCheckoutWithoutLogin) {
             if(window.location.hostname == 'localhost'){
@@ -207,6 +208,7 @@ export class LoginComponent implements OnInit {
         if (response.data.isExistsIMenuAccount == 2) {
           this.localStorage.set('BM_USER', response.data);
           this.loginService.setVal(true);
+          this.localStorage.set('guest', false);
           this.loginService.setUser(response.data);
           if (this.isCheckoutWithoutLogin) {
             if(window.location.hostname == 'localhost'){
@@ -248,6 +250,7 @@ export class LoginComponent implements OnInit {
         this.localStorage.set('BM_USER', response.data);
         this.loginService.setVal(true);
         this.loginService.setUser(response.data);
+        this.localStorage.set('guest', false);
         $('#sendOtpSignupModal').modal('hide');
         // $('#enterOtpSigupModal').modal('hide');
         if (this.isCheckoutWithoutLogin) {
@@ -269,6 +272,7 @@ export class LoginComponent implements OnInit {
       this.api.DoGoogleLogin(data).subscribe((response: any) => {
         if (response.serviceStatus != 'S') return;
         this.localStorage.set('BM_USER', response.data);
+        this.localStorage.set('guest', false);
         this.loginService.setVal(true);
         this.loginService.setUser(response.data);
         $('#sendOtpSignupModal').modal('hide');

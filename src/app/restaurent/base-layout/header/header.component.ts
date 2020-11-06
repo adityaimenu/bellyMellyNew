@@ -8,6 +8,9 @@ import { ObservableService } from "../../../services/observable-service/observab
 import { UrlService } from "../../../services/url/url.service";
 import { CommonService } from 'src/app/services/common/common.service';
 import * as moment from "moment-timezone";
+import {LoginBody} from "../../../requests/login-body";
+import {RestLoginBody} from "../../../requests/rest-login-body";
+import {ApiService} from "../../../services/api/api.service";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -25,8 +28,11 @@ export class HeaderComponent implements OnInit {
   imageUrl: string;
   country: string;
   mobUrlNew: string;
+  loginBody = new LoginBody();
+  restLoginBody = new RestLoginBody();
   showlocation: any = true;
   host: string;
+ showLogin: any = true;
   constructor(
     private loginService: LoginService,
     private localStorage: LocalStorageService,
@@ -35,6 +41,7 @@ export class HeaderComponent implements OnInit {
     private observable: ObservableService,
     private url: UrlService,
     private common: CommonService,
+    private api: ApiService,
   ) { }
 
   ngOnInit() {
@@ -70,14 +77,48 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('locDetail', JSON.stringify(this.locationDetails));
         this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails);
       }
-      console.log(this.locationDetails);
+
+
       if (this.locationDetails && this.locationDetails.LogoImg) this.logoImage = this.imageUrl + this.locationDetails.LogoImg;
       else this.logoImage = 'assets/images/defaultRest.png';
+
+      if (location.href.indexOf('#dinein') != -1) {
+
+        this.showLogin = false;
+        setTimeout (() => { let uname = 'guest' + this.locationDetails.RestChainId +'@bellymelly.com'
+          let pwd = 'guest' + this.locationDetails.RestChainId +'!@#'
+          this.loginBody = this.localStorage.get('BM_LoginBody');
+          this.restLoginBody.tId = this.localStorage.get('BM_tId');
+          this.restLoginBody.data = { username: uname, password: pwd, isBMPortal: 1, isguestcheckout: 1 };
+
+
+          this.api.loginRest(this.restLoginBody).subscribe((response: any) => {
+            console.log('dsfsdfsdf');
+
+            if (response.serviceStatus != 'S') return ;
+            this.localStorage.set('BM_USER', response.data);
+            this.localStorage.set('guest', true);
+            this.loginService.setVal(true);
+            this.loginService.setUser(response.data);
+
+
+
+          })}, 2000);
+
+
+      } else {
+        this.showLogin = true;
+       if (this.localStorage.get('guest') == true) {
+        this.logout();
+       }
+      }
+
     });
 
     this.loginService.isLoggedIn().subscribe((login: boolean) => {
 
       this.isLogin = login;
+
       this.user = this.localStorage.get('BM_USER');
       this.loginService.onUpdateProfile().subscribe((user: any) => {
         if (user) {
