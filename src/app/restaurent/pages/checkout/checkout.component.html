@@ -527,7 +527,7 @@
                       <p>{{currency}} {{(placeOrderBody.data.orderData.TipAmt.toFixed(2))}}</p>
                     </li>
                     <li >
-                      <p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>
+                      <!--<p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>-->
                       <p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success"><span
                           *ngIf="placeOrderBody.data.orderData.CouponAmt > 0 || placeOrderBody.data.orderData.DiscountAmt > 0">-
                         </span> {{currency}}
@@ -971,7 +971,7 @@
                     <p>{{currency}} {{(placeOrderBody.data.orderData.TipAmt).toFixed(2)}}</p>
                   </li>
                   <li >
-                    <p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>
+                    <!--<p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>-->
                     <p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success"><span
                         *ngIf="placeOrderBody.data.orderData.CouponAmt > 0 || placeOrderBody.data.orderData.DiscountAmt > 0">-
                       </span> {{currency}}
