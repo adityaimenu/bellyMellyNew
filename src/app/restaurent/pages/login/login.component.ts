@@ -97,6 +97,13 @@ export class LoginComponent implements OnInit {
 
     this.loginBody.tId = this.common.loginToken;
     this.flags.isLogin = true;
+    console.log(this.loginBody);
+    if (!this.loginBody.data.username.trim().length || !this.loginBody.data.password.trim().length) {
+      this.toaster.errorToastr('Please enter valid credentials');
+      this.flags.isLogin = false;
+      return;
+    }
+
     this.api.newRestLogin(this.loginBody).subscribe((response: any) => {
       if (response.data == null) {
         this.flags.isLogin = false;
@@ -303,6 +310,11 @@ export class LoginComponent implements OnInit {
   }
 
   sendOtpForgot() {
+
+    if (!this.usernameForgot.trim().length) {
+      this.toaster.errorToastr('Enter Valid Email');
+      return;
+    }
     const data = { tId: this.localStorage.get('BM_tId'), data: { customerData: {}, username: this.usernameForgot } }
     this.api.sendOtpForgot(data).subscribe((response: any) => {
 

@@ -126,7 +126,7 @@
                     <div *ngIf="placeOrderBody.data.orderData.ServiceId == 5" class="section-content1 ">
                       <div class="row">
                         <div class="col-md-12">
-                          <label>Please Enter Your Table Number OR Name </label>
+                          <label>Please Enter Your Table Number And Name </label>
                           <div class="row">
                             <div class="col-md-6">
                               <input type="text" class="form-control" name="table" [(ngModel)]="DineInTableNum">
@@ -526,14 +526,14 @@
                       <p>Tip Added</p>
                       <p>{{currency}} {{(placeOrderBody.data.orderData.TipAmt.toFixed(2))}}</p>
                     </li>
-                    <li >
-                      <!--<p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>-->
+                   <!-- <li >
+                      &lt;!&ndash;<p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>&ndash;&gt;
                       <p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success"><span
                           *ngIf="placeOrderBody.data.orderData.CouponAmt > 0 || placeOrderBody.data.orderData.DiscountAmt > 0">-
                         </span> {{currency}}
                         {{(placeOrderBody.data.orderData.CouponAmt || placeOrderBody.data.orderData.DiscountAmt || 0).toFixed(2)}}
                       </p>
-                    </li>
+                    </li>-->
                     <li *ngIf="!isDeliveryFree && placeOrderBody.data.orderData.ServiceId == 2" >
                       <p>Delivery Charges</p>
                       <p>{{currency}} {{(placeOrderBody.data.orderData.SrvcFee || 0).toFixed(2)}}</p>
@@ -854,7 +854,7 @@
                 <div class="section-content1 ">
                   <div class="d-flex align-items-center">
                     <span class="mr-2"><nb-icon icon="layers-outline"></nb-icon></span>
-                    <input type="text" class="form-control" name="table" (keyup)="tableF($event.target.value)" placeholder="Please Enter Your Table Number OR Name">
+                    <input type="text" class="form-control" name="table" (keyup)="tableF($event.target.value)" placeholder="Please Enter Your Table Number And Name">
                   </div>
                 </div>
               </div>
@@ -970,14 +970,14 @@
                     <p>Tip Added</p>
                     <p>{{currency}} {{(placeOrderBody.data.orderData.TipAmt).toFixed(2)}}</p>
                   </li>
-                  <li >
-                    <!--<p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>-->
+                  <!--<li >
+                    &lt;!&ndash;<p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success">Coupon Discount</p>&ndash;&gt;
                     <p *ngIf="country.toUpperCase()  == 'AU' || (country.toUpperCase()  == 'US' && placeOrderBody.data.orderData.ServiceId == 5)" class="text-success"><span
                         *ngIf="placeOrderBody.data.orderData.CouponAmt > 0 || placeOrderBody.data.orderData.DiscountAmt > 0">-
                       </span> {{currency}}
                       {{(placeOrderBody.data.orderData.CouponAmt || placeOrderBody.data.orderData.DiscountAmt || 0).toFixed(2)}}
                     </p>
-                  </li>
+                  </li>-->
                   <li *ngIf="!isDeliveryFree && placeOrderBody.data.orderData.ServiceId == 2">
                     <p>Delivery Charges</p>
                     <p>{{currency}} {{(placeOrderBody.data.orderData.SrvcFee || 0).toFixed(2)}}</p>
@@ -1224,7 +1224,7 @@
                   </div>
                   <div *ngIf="placeOrderBody.data.orderData.PaymentTypeId == 3" class="right">
                     <button class="submit-btn" (click)="placeOrderResp(placeOrderBody.data.orderData.PaymentTypeId)"
-                            [ngStyle]="{'opacity': flags.isOrderPlaced? '0.5' : '' }"  [disabled]="flags.isOrderPlaced">{{flags.isOrderPlaced?'Please Wait...':'Place Order'}}</button>
+                            [ngStyle]="{'opacity': flags.isOrderPlaced? '0.5' : '' }"  [disabled]="flags.isOrderPlaced">{{flags.isOrderPlaced?'Please Wait...':'Place Order '}}</button>
                   </div>
                 </div>
               </div>
@@ -1292,7 +1292,7 @@
 
           <div class="link pt-3">
             <button class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()"
-              [disabled]="!paymentFormUS.valid">Place Order</button>
+              [disabled]="!paymentFormUS.valid || validCCForm">Place Order </button>
           </div>
         </form>
 
@@ -1304,7 +1304,7 @@
           </div>
 
           <div class="link pt-3">
-            <button class="btn btn-primary btn-site btn-block rounded-0" (click)="getCardToken()"  [disabled]="flags.placeorderButton == true">Place Order</button>
+            <button class="btn btn-primary btn-site btn-block rounded-0" (click)="getCardToken()"  [disabled]="flags.placeorderButton == true || validCCForm">Place Order</button>
           </div>
         </form>
 
@@ -1387,7 +1387,7 @@
 
           <div class="link pt-2">
             <!-- <button  *ngIf="locationDetails.PaymentProviderStripe == 'T'" class="btn btn-primary btn-site btn-block rounded-0" (click)="getCardToken()" [disabled]="flags.placeorderButton == true">Place Order</button> -->
-            <button  *ngIf="locationDetails.PaymentProviderStripe == 'F'" class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()" [disabled]="!paymentFormAU.valid">Place Order</button>
+            <button  *ngIf="locationDetails.PaymentProviderStripe == 'F'" class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()" [disabled]="!paymentFormAU.valid">Place Order </button>
           </div>
         </form>
 
