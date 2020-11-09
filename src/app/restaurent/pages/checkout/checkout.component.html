@@ -825,7 +825,7 @@
                             </button>
                             <button
                               *ngIf="!variation.AddOnList.length && !variation.data.P2 && !variation.data.P3 && !variation.data.P4 && !variation.data.P5 && !variation.data.P6"
-                              class="btn btn-block btn-site rounded-0 swipbtn"
+                              class="add-item-btn"
                               (click)="addVariationToCart(variation, variation.data)">
                               add item
                             </button>
@@ -853,8 +853,11 @@
               <div  class="col-md-12">
                 <div class="section-content1 ">
                   <div class="d-flex align-items-center">
-                    <span class="mr-2"><nb-icon icon="layers-outline"></nb-icon></span>
-                    <input type="text" class="form-control" name="table" (keyup)="tableF($event.target.value)" placeholder="Please Enter Your Table Number OR Name">
+                    <div class="d-flex align-items-center border mr-2 col-lg-12 px-0">
+                      <span class="mr-2"><nb-icon icon="layers-outline"></nb-icon></span>
+                      <input type="text" class="form-control" name="table" (keyup)="tableF($event.target.value)" placeholder="Enter Your Table Number OR Name">
+                    </div>
+                    <button class="btn btn-success">Submit</button>
                   </div>
                 </div>
               </div>
@@ -1248,7 +1251,7 @@
 
     <div class="modal-content">
       <div class="modal-header " >
-        <div class="d-flex align-items-center justify-content-between p-3">
+        <div class="d-flex align-items-center justify-content-between p-0">
         <h6 class="modal-title">Card Payments</h6>
         <button type="button" class="btn btn-default clsbtn" data-dismiss="modal"
         (click)="onCloseCcPaymentModal()"><i class="fa fa-times"></i></button>
