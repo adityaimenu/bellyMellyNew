@@ -1224,7 +1224,7 @@
                   </div>
                   <div *ngIf="placeOrderBody.data.orderData.PaymentTypeId == 3" class="right">
                     <button class="submit-btn" (click)="placeOrderResp(placeOrderBody.data.orderData.PaymentTypeId)"
-                      [disabled]="flags.isOrderPlaced">{{flags.isOrderPlaced?'Please Wait...':'Place Order'}}</button>
+                            [ngStyle]="{'opacity': flags.isOrderPlaced? '0.5' : '' }"  [disabled]="flags.isOrderPlaced">{{flags.isOrderPlaced?'Please Wait...':'Place Order'}}</button>
                   </div>
                 </div>
               </div>

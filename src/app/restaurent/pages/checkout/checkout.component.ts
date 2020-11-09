@@ -791,6 +791,7 @@ export class CheckoutComponent implements OnInit {
   placeOrderResp(val) {
 
 
+
     this.locationDetails = this.localStorage.get('BM_LocationDetail');
 
     this.placeOrderBody = this.localStorage.get('placeOrderData');

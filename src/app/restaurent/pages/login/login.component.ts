@@ -98,6 +98,9 @@ export class LoginComponent implements OnInit {
     this.loginBody.tId = this.common.loginToken;
     this.flags.isLogin = true;
     this.api.newRestLogin(this.loginBody).subscribe((response: any) => {
+      if (response.data == null) {
+        this.flags.isLogin = false;
+      }
 
       /*this.flags.isLogin = false;*/
       if (response.serviceStatus != 'S') return ;
@@ -117,6 +120,9 @@ export class LoginComponent implements OnInit {
     this.restLoginBody.data = { username: this.loginBody.data.username, password: this.loginBody.data.password, isBMPortal: 1 };
 
     this.api.loginRest(this.restLoginBody).subscribe((response: any) => {
+      if (response.data == null) {
+        this.flags.isLogin = false;
+      }
 
       if (response.serviceStatus != 'S') return ;
       this.localStorage.set('BM_USER', response.data);
@@ -141,6 +147,8 @@ export class LoginComponent implements OnInit {
       document.getElementById('close2').click();
       $.fancybox.close();
 
+    }, error1 => {
+      this.flags.isLogin = false;
     })
   }
   signUp() {
