@@ -40,6 +40,7 @@ export class CheckoutComponent implements OnInit {
   mobUrl: string;
   paymentUrl = '';
   tId: string;
+  validCCForm: any = false;
   loginBody: any;
   history = window.history;
   selectedTip: number;
@@ -791,6 +792,7 @@ export class CheckoutComponent implements OnInit {
   placeOrderResp(val) {
 
 
+
     this.locationDetails = this.localStorage.get('BM_LocationDetail');
 
     this.placeOrderBody = this.localStorage.get('placeOrderData');
@@ -854,10 +856,17 @@ export class CheckoutComponent implements OnInit {
         }
       }
     }
-    if (!this.placeOrderBody.data.orderData.ItemList.length) return this.error('Sorry your cart is empty, Please select item first.');
-    if (this.placeOrderBody.data.orderData.ServiceId == 2 && !this.placeOrderBody.data.orderData.DeliveryInfo) return this.error('Please select delivery info first.');
-    if (this.placeOrderBody.data.orderData.ServiceId == 2 && !this.localStorage.get('BM_Is_Delivery')) return this.error('Your delivery address is outside our delivery zones. Currently we are not able to provide service to these areas. Please select the address or select another order type.');
-    if (!this.placeOrderBody.data.orderData.PaymentTypeId) return this.error('Please select payment type first.');
+    if (!this.placeOrderBody.data.orderData.ItemList.length) {
+      this.validCCForm = false;
+      return this.error('Sorry your cart is empty, Please select item first.');}
+    if (this.placeOrderBody.data.orderData.ServiceId == 2 && !this.placeOrderBody.data.orderData.DeliveryInfo) {
+      this.validCCForm = false;
+      return this.error('Please select delivery info first.'); }
+    if (this.placeOrderBody.data.orderData.ServiceId == 2 && !this.localStorage.get('BM_Is_Delivery')) {this.validCCForm = false;
+    return this.error('Your delivery address is outside our delivery zones. Currently we are not able to provide service to these areas. Please select the address or select another order type.'); }
+    if (!this.placeOrderBody.data.orderData.PaymentTypeId) {
+      this.validCCForm = false;
+      return this.error('Please select payment type first.');}
     if (this.placeOrderBody.data.orderData.ServiceId == 5) {
 
       if (!this.placeOrderBody.data.orderData.CustId) return
@@ -951,6 +960,16 @@ export class CheckoutComponent implements OnInit {
       this.placeOrderBody.data.orderData.specialInstructions = "";
     }
 
+    if (this.placeOrderBody.data.orderData.ServiceId == 5) {
+      console.log(this.placeOrderBody);
+      this.placeOrderBody.data.orderData.NGOId = '';
+      this.placeOrderBody.data.orderData.DonateCode = '';
+      this.placeOrderBody.data.orderData.DonateValue = 0;
+      this.placeOrderBody.data.orderData.donateValueWithPrcent = null;
+      this.placeOrderBody.data.orderData.ngoSelectedVal = '';
+      this.placeOrderBody.data.orderData.NGOName = '';
+    }
+
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {
       this.flags.isOrderPlaced = false;
@@ -959,6 +978,7 @@ export class CheckoutComponent implements OnInit {
         this.orderData = this.placeOrderBody.data.orderData;
         this.localStorage.remove('placeOrderData');
         this.localStorage.remove('cartItem');
+        this.validCCForm = false;
         this.observable.setSpecialOffer(false)
         this.localStorage.set('specialOfferData', null)
         $('#cc_payment_modal').modal('hide')
@@ -986,9 +1006,11 @@ export class CheckoutComponent implements OnInit {
         // js.eventEmitter('purchase', this.orderId, this.mobUrl, 'USD',this.orderData.TotalAmt,this.orderData.TaxAmt.toFixed(2),0,this.orderData.ItemList);
       } else {
         this.onOrderFailed(JSON.parse(atob(response.data)))
+        this.validCCForm = false;
       }
     }, error => {
       this.flags.isOrderPlaced = false;
+      this.validCCForm = false;
     });
   }
   onOrderSuccess(data) {
@@ -1290,6 +1312,7 @@ export class CheckoutComponent implements OnInit {
         this.cardBody.CCNumber = this.cardBody.CCNumber.replace("-", "");
       }
     }
+    this.validCCForm = true;
     this.cardBody.service = 1;
     this.cardBody.date = 'LT';
     this.cardBody.time = 'ASAP';

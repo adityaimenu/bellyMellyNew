@@ -160,7 +160,7 @@ token:string;
         this.flags.placeorderButton = true;
         setTimeout(() => {
           this.flags.placeorderButton = false;
-        }, 2000);
+        }, 6000);
        
         this.cardBody.StripeToken = result.paymentMethod.id;
         this.placeOrder()
