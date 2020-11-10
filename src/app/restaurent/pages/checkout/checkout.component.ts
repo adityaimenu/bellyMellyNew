@@ -960,6 +960,16 @@ export class CheckoutComponent implements OnInit {
       this.placeOrderBody.data.orderData.specialInstructions = "";
     }
 
+    if (this.placeOrderBody.data.orderData.ServiceId == 5) {
+      console.log(this.placeOrderBody);
+      this.placeOrderBody.data.orderData.NGOId = '';
+      this.placeOrderBody.data.orderData.DonateCode = '';
+      this.placeOrderBody.data.orderData.DonateValue = 0;
+      this.placeOrderBody.data.orderData.donateValueWithPrcent = null;
+      this.placeOrderBody.data.orderData.ngoSelectedVal = '';
+      this.placeOrderBody.data.orderData.NGOName = '';
+    }
+
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {
       this.flags.isOrderPlaced = false;
