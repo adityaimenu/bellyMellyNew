@@ -78,7 +78,7 @@
               <input type="checkbox" class="mt-2" (click)="toggle()"> <b class="ml-2 text-dark">Show Password</b> 
             </div> -->
             <p class="text-right"><a href="javascript:void(0)" data-toggle="modal" data-dismiss="modal" data-target="#sendOtpForgotModal">Forgot Password?</a></p>
-            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" matRipple [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit"><span class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.isLogin?'Please wait...':'Sign In'}}</button>
+            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" matRipple [disabled]="!loginForm.valid || flags.isLogin" (click)="login()" type="submit"><span *ngIf="flags.isLogin" class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.isLogin?'Please wait...':'Sign In'}}</button>
           </form>
           <!-- Form -->
         </div>
@@ -109,7 +109,7 @@
                 <span *ngIf="!findCountry">Email </span>
               </label>
             </div>
-            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" matRipple [disabled]="!usernameForgot|| flags.isLogin" (click)="sendOtpForgot()"><span class="spinner-border spinner-border-sm text-light mr-2"></span> Send OTP</button>
+            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" matRipple [disabled]="!usernameForgot|| flags.isLogin || forgotOtpPresent" (click)="sendOtpForgot()"><span *ngIf="forgotOtpPresent" class="spinner-border spinner-border-sm text-light mr-2"></span> {{forgotOtpPresent?'Please wait...':'Send OTP'}} </button>
           </form>
           <!-- Form -->
         </div>

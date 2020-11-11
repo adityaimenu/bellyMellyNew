@@ -145,6 +145,10 @@ export class HeaderComponent implements OnInit {
       this.mobUrlNew = window.location.pathname;
     });
 
+    if (location.href.indexOf('thankyou') != 1) {
+      this.router.navigateByUrl(this.host + '/' + this.country + '/' + this.mobUrl);
+    }
+
     if (this.locationDetails && this.locationDetails.Address) {
       console.log(this.locationDetails);
       this.openCloseTime = this.common.showOpenCloseTime(this.locationDetails)

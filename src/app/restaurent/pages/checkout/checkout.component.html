@@ -405,7 +405,7 @@
                     ng-reflect-fx-layout="row"
                     style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;"
                     ng-reflect-fx-layout-gap="10px" ng-reflect-fx-layout-align="space-between center">
-                    <textarea class="form-control" placeholder="Write suggestions to restaurants..." autocomplete="off"
+                    <textarea class="form-control" placeholder="Special Instructions" autocomplete="off"
                       (keyup)="SpecialInstructionsF($event.target.value)"></textarea>
                   </div>
                 </div>
@@ -648,7 +648,7 @@
                   <div class="d-flex align-items-center w-100">
                     <span class="mr-2"><nb-icon icon="file-text-outline"></nb-icon></span>
                     <textarea class="form-control mob-text" name="SpecialInstructions"
-                    placeholder="Write suggestions to restaurants..." autocomplete="off"
+                    placeholder="Special Instructions" autocomplete="off"
                     (keyup)="SpecialInstructionsF($event.target.value)" rows="1"></textarea>
                   </div>
                 </div>
@@ -855,9 +855,10 @@
                   <div class="d-flex align-items-center">
                     <div class="d-flex align-items-center col-lg-12 px-0">
                       <span class="mr-02"><nb-icon icon="layers-outline"></nb-icon></span>
-                      <input type="text" class="form-control form-control-sm" name="table" (keyup)="tableF($event.target.value)" placeholder="Enter Your Table Number OR Name">
+                      <input #tb type="text" [disabled]="tableNumberSubmitted == true" class="form-control form-control-sm" name="table"  placeholder="Enter Your Table Number And Name">
                     </div>
-                    <button class="btn btn-success btn-sm">Submit</button>
+                    <button  *ngIf="!tableNumberSubmitted" (click)="tableF(tb.value)" class="btn btn-success btn-sm">Submit</button>
+                    <button *ngIf="tableNumberSubmitted" (click)="changeTable()" class="btn btn-success btn-sm">Change</button>
                   </div>
                 </div>
               </div>
@@ -1149,7 +1150,7 @@
                 </div>
 
                 <ul class="list-unstyled payment-option">
-                  <li *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true" class="py-2 border-bottom">
+                  <li *ngIf="country.toUpperCase()  == 'AU' && PaymentTypes == true" [ngClass]="country.toUpperCase()  == 'AU' && PaymentTypes == true?'abc':''" class="py-2 border-bottom">
                     <div (click)="onSelectCcPayment(); creditMobile()" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
@@ -1160,7 +1161,7 @@
                       <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                     </div>
                   </li>
-                  <li *ngIf="country.toUpperCase()  == 'US' && PaymentTypes == true" class="p-2 bg-light rounded mb-2">
+                  <li *ngIf="country.toUpperCase()  == 'US' && PaymentTypes == true"  [ngClass]="country.toUpperCase()  == 'US' && PaymentTypes == true?'abc':''" class="p-2 bg-light rounded mb-2">
                     <div (click)="onSelectCcPayment(); creditMobile()" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
@@ -1171,7 +1172,7 @@
                       <!-- <span><i class="fa fa-angle-right" aria-hidden="true"></i></span> -->
                     </div>
                   </li>
-                  <li *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'" class="p-2 bg-light rounded ">
+                  <li *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'" [ngClass]="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'?'abc':''" class="p-2 bg-light rounded ">
                     <div (click)="placeOrderBody.data.orderData.PaymentTypeId = 4" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
@@ -1183,7 +1184,7 @@
                     </div>
                   </li>
                   <!--<span class="col-md-12 d-block" *ngIf="country.toUpperCase()  == 'IN' && locationDetails.PaymentProviderPaytm == 'T'">   <input  type="radio" name="paymentRadio" class="unchekRadioPayment" (click)="placeOrderBody.data.orderData.PaymentTypeId = 4"> PAYTM</span>-->
-                  <li *ngIf="PaymentTypesCOD == true" class="p-2 bg-light rounded ">
+                  <li *ngIf="PaymentTypesCOD == true" [ngClass]="PaymentTypesCOD == true?'abc':''" class="p-2 bg-light rounded ">
                     <div (click)="onSelectCODPayment(); cashMobile()" class="d-flex align-items-center justify-content-between">
                       <div class="left d-flex align-items-center">
                         <div class="icon">
@@ -1222,12 +1223,12 @@
                     </div>
                   </div>
                   <div *ngIf="placeOrderBody.data.orderData.PaymentTypeId == 4" class="right">
-                    <button class="submit-btn" (click)="placeOrderByPaytm()"
+                    <button style="background-color: #28a745; border-color: #28a745;" class="submit-btn" (click)="placeOrderByPaytm()"
                       [disabled]="flags.isOrderByPaytm">{{flags.isOrderPlaced?'Please Wait....':'Pay & Place Order'}}</button>
                   </div>
                   <div *ngIf="placeOrderBody.data.orderData.PaymentTypeId == 3" class="right">
-                    <button class="submit-btn" (click)="placeOrderResp(placeOrderBody.data.orderData.PaymentTypeId)"
-                            [ngStyle]="{'opacity': flags.isOrderPlaced? '0.5' : '' }"  [disabled]="flags.isOrderPlaced">{{flags.isOrderPlaced?'Please Wait...':'Place Order '}}</button>
+                    <button class="submit-btn" style="background-color: #28a745;border-color: #28a745; " (click)="placeOrderResp(placeOrderBody.data.orderData.PaymentTypeId)"
+                            [ngStyle]="{'opacity': flags.isOrderPlaced? '0.5' : '' }"  [disabled]="flags.isOrderPlaced"><span *ngIf="flags.isOrderPlaced" class="spinner-border spinner-border-sm text-light mr-2"></span>{{flags.isOrderPlaced?'Please Wait...':'Place Order'}}</button>
                   </div>
                 </div>
               </div>
@@ -1294,8 +1295,8 @@
           </div>
 
           <div class="link pt-3">
-            <button class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()"
-              [disabled]="!paymentFormUS.valid || validCCForm">Place Order </button>
+            <button style="background-color: #28a745; border-color: #28a745;" class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()"
+              [disabled]="!paymentFormUS.valid || validCCForm">Place Order</button>
           </div>
         </form>
 
@@ -1307,7 +1308,7 @@
           </div>
 
           <div class="link pt-3">
-            <button class="btn btn-primary btn-site btn-block rounded-0" (click)="getCardToken()"  [disabled]="flags.placeorderButton == true || validCCForm">Place Order</button>
+            <button style="background-color: #28a745; border-color: #28a745;" class="btn btn-primary btn-site btn-block rounded-0" (click)="getCardToken()"  [disabled]="flags.placeorderButton == true || validCCForm"><span *ngIf="flags.placeorderButton == true;"  class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.placeorderButton == true?'Please wait...':'Place Order'}} </button>
           </div>
         </form>
 
@@ -1390,7 +1391,7 @@
 
           <div class="link pt-2">
             <!-- <button  *ngIf="locationDetails.PaymentProviderStripe == 'T'" class="btn btn-primary btn-site btn-block rounded-0" (click)="getCardToken()" [disabled]="flags.placeorderButton == true">Place Order</button> -->
-            <button  *ngIf="locationDetails.PaymentProviderStripe == 'F'" class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()" [disabled]="!paymentFormAU.valid">Place Order </button>
+            <button style="background-color: #28a745; border-color: #28a745; " *ngIf="locationDetails.PaymentProviderStripe == 'F'" class="btn btn-primary btn-site btn-block rounded-0" (click)="placeOrderCC()" [disabled]="!paymentFormAU.valid">Place Order</button>
           </div>
         </form>
 

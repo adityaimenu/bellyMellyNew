@@ -62,7 +62,7 @@
 
    <!-- Modal -->
    <div class="modal fade thankyou" data-backdrop="static" id="orderSuccessModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-	<div class="modal-dialog" role="document">
+	<div *ngIf="orderData.ServiceId != 5" class="modal-dialog" role="document">
 		<div class="modal-content">
 
 			<div class="modal-header px-0">
@@ -172,6 +172,39 @@
 			</div>
 		</div>
 	</div>
+
+	   <div *ngIf="orderData.ServiceId == 5" class="modal-dialog" role="document">
+		   <div class="modal-content">
+
+
+
+			   <div class="modal-body text-center" style="min-height: 96vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;">
+
+				   <div class="row text-center">
+					   <div class="col-lg-12 text-center mt-3">
+						   <img src="assets/img/thankyou.gif" class="img-fluid mb-3">
+					   </div>
+					   <div class="col-lg-12 text-dark mb-0 h5 font-weight-bold mb-3">Thanks for your order!</div>
+					   <div class="col-lg-12">
+						   <p class="text-dark mb-0">Your total order amount is: <span class="font-weight-bold text-dark mb-0">${{orderData.TotalAmt}}</span></p>
+						   <p class="text-dark">Your order number is: <span class="font-weight-bold text-dark">{{orderId}}</span></p>
+						   <!-- <p class="text-success">We will bring food to your table <span class="font-weight-bold">#32</span> when ready.</p> -->
+					   </div>
+					   <div class="col-lg-12 d-flex aling-items-center bg-light p-3 mb-5">
+						   <input #email type="text" class="form-control mr-2" placeholder="Enter Email for Order Receipt">
+						   <button (click)="sendReceipt(email.value)" class="btn btn-dark px-3" [disabled]="receiptSent" type="submit"> <span *ngIf="receiptSent" class="spinner-border spinner-border-sm text-light mr-2"></span> {{receiptSent?'Please wait...':'Submit'}}</button>
+					   </div>
+
+				   </div>
+				   <button class="btn btn-dark btn-block rounded-0" ><a href="{{host}}/{{country}}/{{mobUrl}}#dinein" style="color: white">Start New Order</a></button>
+			   </div>
+
+		   </div>
+	   </div>
 </div><!-- modal -->
 <div id="share-widgets" class="modal fade" role="dialog">
 	<div class="modal-dialog">

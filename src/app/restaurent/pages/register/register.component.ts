@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   baseUrl: string;
   visiblePass: any = false;
+  resendOtpSent: any = false;
   flags = {
     isRegister: false,
     isOtpSent: false,
@@ -108,11 +109,13 @@ export class RegisterComponent implements OnInit {
   }
 
   ResendsendOtp() {
+    this.resendOtpSent = true;
 
 
     const data = { tId: this.localStorage.get('BM_tId'), data: { customerData: { fName: this.signUpBody.data.customerData.fName,lName: this.signUpBody.data.customerData.lName, cell: '', mName: '', email: this.signUpBody.data.customerData.eMail, tel: this.signUpBody.data.customerData.tel } } }
     this.api.sendSignUpOtp(data).subscribe((response: any) => {
       if (response.serviceStatus != 'S') return;
+      this.resendOtpSent = false;
       this.success('OTP has been resent.');
     })
   }

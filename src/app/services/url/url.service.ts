@@ -41,6 +41,7 @@ export class UrlService {
   addUserAddressUrl = `${this.bellyMellyUrl}/SetUserAddress.imsvc`;
   getCouponListUrl = `${this.bellyMellyUrl}/GetUserCoupons.imsvc`;
   getOrderInfoUrl = `${this.bellyMellyUrl}/GetOrderInfo.imsvc`;
+  SendOrderReceipt = `${this.bellyMellyUrl}/SendOrderReceipt.imsvc`;
   getCurrentLocationDetail = `https://ipapi.co/json/`;
   saveCreditCard = `${this.bellyMellyUrl}/SaveCreditCardInfo.imsvc`;
   getPaytmDetailUrl = `${this.bellyMellyUrl}/SetTempOrder.imsvc`;

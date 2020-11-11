@@ -16,9 +16,9 @@
                 <p class="text-danger mb-0">One Time Password Sent to {{signUpBody.data.customerData.eMail}}</p>
               </label>
             </div>
-            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" [disabled]="otp.invalid || flags.isOtpVerified" (click)="verify()"><span class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.isOtpVerified?'Hold On...':'Verify Otp'}}</button>
+            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" [disabled]="otp.invalid || flags.isOtpVerified" (click)="verify()"><span *ngIf="flags.isOtpVerified" class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.isOtpVerified?'Please wait...':'Verify Otp'}}</button>
             <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center"  (click)="goback()">Go Back</button>
-            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center"  (click)="ResendsendOtp()"><span class="spinner-border spinner-border-sm text-light mr-2"></span> Resend Otp</button>
+            <button class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" [disabled]="resendOtpSent"  (click)="ResendsendOtp()"><span *ngIf="resendOtpSent" class="spinner-border spinner-border-sm text-light mr-2"></span> {{resendOtpSent?'Please wait...':'Resend Otp'}} </button>
            
           </form>
           <!-- Form -->
@@ -71,7 +71,7 @@
             
             
 
-            <button *ngIf="!flags.isOtpSent" matRipple class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center"  (click)="sendOtp()"><span class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.isRegister?'Please wait...':'Sign Up'}}</button>
+            <button *ngIf="!flags.isOtpSent" matRipple class="btn btn-success btn-block mt-3 d-flex align-items-center justify-content-center" [disabled]="flags.isRegister"  (click)="sendOtp()"><span *ngIf="flags.isRegister" class="spinner-border spinner-border-sm text-light mr-2"></span> {{flags.isRegister?'Please wait...':'Sign Up'}}</button>
 
             
           </form>

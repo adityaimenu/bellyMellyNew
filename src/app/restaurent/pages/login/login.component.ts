@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   FName: string;
   LName: string;
   tel: string;
+  forgotOtpPresent: any = false;
   socialType: number;
   country: string;
   responseSendOTPForgot = [];
@@ -310,19 +311,26 @@ export class LoginComponent implements OnInit {
   }
 
   sendOtpForgot() {
+    console.log('hellooo');
+
+    this.forgotOtpPresent = true;
 
     if (!this.usernameForgot.trim().length) {
       this.toaster.errorToastr('Enter Valid Email');
+      this.forgotOtpPresent = false;
       return;
     }
     const data = { tId: this.localStorage.get('BM_tId'), data: { customerData: {}, username: this.usernameForgot } }
     this.api.sendOtpForgot(data).subscribe((response: any) => {
+      this.forgotOtpPresent = false;
 
       if (response.serviceStatus != 'S') return
       this.responseSendOTPForgot = response.data;
       $('#sendOtpForgotModal').modal('hide');
       $('#enterOtpForgotModal').modal('show');
       $("div").removeClass("modal-backdrop")
+    },error1 => {
+      this.forgotOtpPresent = false;
     });
 
   }

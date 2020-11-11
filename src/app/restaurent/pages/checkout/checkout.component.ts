@@ -47,6 +47,7 @@ export class CheckoutComponent implements OnInit {
   addressList: any[] = [];
   OrderHistory: any;
   itemList: any[] = [];
+  tableNumberSubmitted: any = false;
   imageUrl: string;
   locationDetails: any;
   days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -1790,11 +1791,12 @@ export class CheckoutComponent implements OnInit {
     this._stripe.createPaymentMethod({ type: 'card', card: this.element, billing_details: { name: 'Jenny Rosen', }, }).subscribe(result => {
       if (result.paymentMethod) {
         this.flags.placeorderButton = true;
-        setTimeout(() => {
-          this.flags.placeorderButton = false;
-        }, 2000);
+
         this.cardBody.StripeToken = result.paymentMethod.id;
         this.placeOrderCC()
+        setTimeout(() => {
+          this.flags.placeorderButton = false;
+        }, 5000);
       } else if (result.error) {
         this.flags.placeorderButton = false;
         alert(result.error.message)
@@ -1843,8 +1845,17 @@ export class CheckoutComponent implements OnInit {
     this.placeOrderBody.data.orderData.carplatenumber = val;
   }
   tableF(val) {
+    if (!val.trim().length) {
+      return this.toaster.errorToastr('Invalid value');
+    }
     this.DineInTableNum = val;
+    this.tableNumberSubmitted = true;
+    this.toaster.successToastr('Table Information Added');
    
+  }
+
+  changeTable() {
+    this.tableNumberSubmitted = false;
   }
   dineinsend(){
     if(!this.DineInTableNum) return this.error('Please Enter Your Table Number: ')

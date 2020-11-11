@@ -10,6 +10,10 @@ import html2canvas from "html2canvas";
 import {Meta} from "@angular/platform-browser";
 
 import * as fs from "fs";
+import {HttpClient} from "@angular/common/http";
+import {ApiService} from "../../../services/api/api.service";
+import {RestLoginBody} from "../../../requests/rest-login-body";
+import {ToastrManager} from "ng6-toastr-notifications";
 
 @Component({
   selector: 'app-thankyou',
@@ -20,8 +24,10 @@ export class ThankyouComponent implements OnInit {
   
   currency: string;
   timeInterval: any;
+  receiptSent: any = false;
   mobUrl: string;
   country: string;
+    restLoginBody = new RestLoginBody();
   orderId: string;
   capturedImage: any;
   orderData:any;
@@ -35,6 +41,8 @@ export class ThankyouComponent implements OnInit {
   constructor(
     private common: CommonService,
     private meta: Meta,
+   private api: ApiService,
+    private toaster: ToastrManager,
     private localStorage: LocalStorageService,
     private observable: ObservableService,
     private router: Router
@@ -56,6 +64,7 @@ export class ThankyouComponent implements OnInit {
       if (response) {
         this.orderId = response.orderId;
         this.orderData = response.data;
+        console.log(this.orderData);
         this.locationDetails = response.locationDetails;
         console.log(response);
         response.data.ItemList.forEach(element => {
@@ -188,6 +197,28 @@ export class ThankyouComponent implements OnInit {
           })
       console.log(image.src,'assets/images/',optionalObj);
      // setTimeout(() => {console.log(this.base64ToImage(image.src,'assets/images/',optionalObj));}, 500);
+
+  }
+
+    validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+  sendReceipt(val) {
+      if (!val.trim().length || !this.validateEmail(val)) {
+          this.toaster.errorToastr('Enter valid email');
+          return;
+      }
+      this.receiptSent = true;
+      this.restLoginBody.tId = this.localStorage.get('BM_tId');
+      this.restLoginBody.data = {OrderNumber: this.orderId,  EmailId: val};
+
+      this.api.SendOrderReceipt(this.restLoginBody).subscribe((val2: any) => {
+          this.receiptSent = false;
+
+          this.toaster.successToastr('Order Receipt Has Been Sent To' + ' ' + val);
+      })
 
   }
 

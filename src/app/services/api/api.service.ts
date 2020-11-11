@@ -20,6 +20,10 @@ export class ApiService {
   verifyOtp(body: any) {
     return this.http.post(this.url.verifyOtpUrl, body);
   }
+  SendOrderReceipt(body: any) {
+    return this.http.post(this.url.SendOrderReceipt, body);
+  }
+
   getLocationData(body: any) {
     return this.http.post(this.url.getLocationDataUrl, body);
   }

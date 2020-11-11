@@ -8,7 +8,7 @@
     <p>Please keep exact change handy to help us serve you better</p>
   </div>
   <div class="link">
-    <button class="btn btn-site btn-block rounded-0" (click)="onPlaceOrder.emit()" [disabled]="isOrderPlaced">{{isOrderPlaced?'Please Wait...':'Place Order'}}</button>
+    <button style="background-color: #28a745; border-color: #28a745;" class="btn btn-site btn-block rounded-0" (click)="onPlaceOrder.emit()" [disabled]="isOrderPlaced"><span *ngIf="isOrderPlaced" class="spinner-border spinner-border-sm text-light mr-2"></span>{{isOrderPlaced?'Please Wait...':'Place Order'}}</button>
 
   </div>
 </div>
