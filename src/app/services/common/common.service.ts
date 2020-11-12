@@ -231,7 +231,7 @@ export class CommonService {
   checkRestaurentOpenClose(getLocationDetail) {
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'us') {
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }
@@ -287,7 +287,7 @@ export class CommonService {
   onlyCheckRestaurentOpenClose(getLocationDetail) {
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'us') {
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }
@@ -330,7 +330,7 @@ export class CommonService {
   checkRestaurentTimeSchedule(getLocationDetail) {
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'us') {
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }
@@ -377,7 +377,7 @@ export class CommonService {
   checkRestaurentTimeScheduleLaterToday(day) {
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'us') {
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }
@@ -435,7 +435,7 @@ export class CommonService {
   showOpenCloseTime(getLocationDetail) {
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'us') {
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }

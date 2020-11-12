@@ -61,7 +61,7 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {
     this.country = window.location.pathname.replace('/', '').split('/')[0];
     if (this.country == 'us') {
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }

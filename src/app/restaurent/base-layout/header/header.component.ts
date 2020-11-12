@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
 
     this.country = window.location.pathname.replace('/', '').split('/')[0]; 
     if(this.country == 'us'){
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     }else if(this.country == 'au'){
       moment.tz.setDefault("Australia/Sydney");
     }
@@ -119,10 +119,18 @@ export class HeaderComponent implements OnInit {
 
       } else {
 
-        if (this.localStorage.get('guest') == true) {
+        if (this.localStorage.get('guest') == true && location.href.indexOf('checkout') == -1) {
+
           this.logout();
+          this.showLogin = true;
+        } else if (this.localStorage.get('guest') == true && location.href.indexOf('checkout') != -1)  {
+          this.showLogin = false;
+        } else if (this.localStorage.get('guest') != true){
+          this.showLogin = true;
+        } else {
+          this.showLogin = true;
         }
-        this.showLogin = true;
+
       }
 
 
@@ -145,7 +153,7 @@ export class HeaderComponent implements OnInit {
       this.mobUrlNew = window.location.pathname;
     });
 
-    if (location.href.indexOf('thankyou') != 1) {
+    if (location.href.indexOf('thankyou') != -1) {
       this.router.navigateByUrl(this.host + '/' + this.country + '/' + this.mobUrl);
     }
 

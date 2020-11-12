@@ -77,7 +77,7 @@ export class CartComponent implements OnInit {
     this.country = window.location.pathname.replace('/', '').split('/')[0]; 
     this.mobUrl = window.location.pathname.replace('/', '').split('/')[1]; // Without hasing
     if(this.country == 'us'){
-      moment.tz.setDefault("America/Jamaica");
+      moment.tz.setDefault("America/Chicago");
     }else if(this.country == 'au'){
       moment.tz.setDefault("Australia/Sydney");
     }
