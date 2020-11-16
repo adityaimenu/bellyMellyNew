@@ -3,7 +3,7 @@
 
 <div class="wrapper" id="wrapper">
 
-  <div style="min-height: 180px; background: #F8F8F8" class="top-banner">
+  <div style="min-height: 10px; background: #F8F8F8" class="top-banner">
     <app-restaurent-info [locationDetails]="getLocationDetail"></app-restaurent-info>
   </div>
   <div class="wrapper-content">
@@ -20,7 +20,7 @@
             <app-sidebar [catListNew]="catList"></app-sidebar>
           </div>
           <div class="main-view" fxFlex="52" fxFlex.sm="100" fxFlex.xs="100">
-            <app-dish-items   [itemList]="catList" (getCartList)="getCartListData($event)"></app-dish-items>
+            <app-dish-items   [itemList]="catList" (getCartList)="getCartListData($event)" style="padding-bottom: 0;"></app-dish-items>
             
           </div>
           <div class="cart-view" fxFlex="28" fxFlex.sm="100" fxFlex.xs="100">

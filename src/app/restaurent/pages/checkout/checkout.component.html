@@ -851,7 +851,61 @@
           <div class="container">
             <div class="row">
               <div  class="col-md-12">
-                <div  class="section-content1 border p-1 rounded ">
+                <ul class="nav nav-pills mb-3">
+                  <li class="active"><a data-toggle="pill" href="#dine-in" class="active">Dine in</a></li>
+                  <li><a data-toggle="pill" href="#to-go">To Go</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div id="dine-in" class="tab-pane in active">
+                    <div class="row">
+                      <div class="col-xs-6 left">
+                        <div class="form-group mb-0">
+                          <label class="pure-material-textfield-outlined w-100">
+                            <input type="text" placeholder=" "  required>
+                            <span>First Name</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 right">
+                        <div class="form-group mb-0">
+                          <label class="pure-material-textfield-outlined w-100">
+                            <input type="text" placeholder=" "  required>
+                            <span>Email Address</span>
+                          </label>
+                        </div>
+                      </div>  
+                      <div class="col-xs-12">
+                        <div class="form-group mb-0">
+                          <label class="pure-material-textfield-outlined w-100">
+                            <input type="text" placeholder=" "  required>
+                            <span>Table Number</span>
+                          </label>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                  <div id="to-go" class="tab-pane fade">
+                    <div class="row">
+                      <div class="col-xs-6 left">
+                        <div class="form-group mb-0">
+                          <label class="pure-material-textfield-outlined w-100">
+                            <input type="text" placeholder=" "  required>
+                            <span>First Name</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 right">
+                        <div class="form-group mb-0">
+                          <label class="pure-material-textfield-outlined w-100">
+                            <input type="text" placeholder=" "  required>
+                            <span>Email Address</span>
+                          </label>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+                <!-- <div  class="section-content1 border p-1 rounded ">
                   <div id="tb" class="d-flex align-items-center">
                     <div  class="d-flex align-items-center col-lg-12 px-0">
                       <span class="mr-02"><nb-icon icon="layers-outline"></nb-icon></span>
@@ -860,7 +914,7 @@
                     <button  *ngIf="!tableNumberSubmitted" (click)="tableF(tb.value)" class="btn btn-success btn-sm">Submit</button>
                     <button *ngIf="tableNumberSubmitted" (click)="changeTable()" class="btn btn-success btn-sm">Change</button>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

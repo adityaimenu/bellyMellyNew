@@ -1856,7 +1856,46 @@ overflow: auto;
   animation: shake .1s linear;
   animation-iteration-count: 3;
 }
-
+.nav.nav-pills{
+  background-color: #f8f9fa;
+  border-radius: 40px;
+  overflow: hidden;
+  li{
+    width: 100%;
+    max-width: 50%;
+    a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      width: 100%;
+      color: #222b45;
+      
+      &.active{
+        background-color: #28a745;
+        color: #ffffff;
+        border-radius: 40px;
+      }
+    }
+  }
+}
+.col-xs-6, .col-xs-12{
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.col-xs-12{
+  width: 100%;
+}
+.col-xs-6{
+  width: 50%;
+  &.left{
+    padding-right: 5px;
+  }
+  &.right{
+    padding-left: 5px;
+  }
+}
 @keyframes shake {
   0% { left: -5px; }
   100% { right: -5px; }
