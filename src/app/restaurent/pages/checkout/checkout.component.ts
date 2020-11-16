@@ -1194,6 +1194,16 @@ export class CheckoutComponent implements OnInit {
     else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
       if (!this.DineInTableNum) {
         $('.unchekRadioPayment').prop('checked', false)
+        var tb = document.getElementById('tb');
+        tb.style.border = '2px groove #ff4c4c';
+
+        // Add a class that defines an animation
+        tb.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          tb.classList.remove('errorr');
+        }, 300);
         return this.error('Please enter table number');
       }
     }
@@ -1844,9 +1854,26 @@ export class CheckoutComponent implements OnInit {
   carplatenumberF(val) {
     this.placeOrderBody.data.orderData.carplatenumber = val;
   }
-  tableF(val) {
+  tableF(val, e?: Event ) {
+    var tb = document.getElementById('tb');
     if (!val.trim().length) {
+
+
+      tb.style.border = '2px groove #ff4c4c';
+
+        // Add a class that defines an animation
+      tb.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          tb.classList.remove('errorr');
+        }, 300);
+
+        e.preventDefault();
+
       return this.toaster.errorToastr('Invalid value');
+    }  else {
+      tb.style.border = null;
     }
     this.DineInTableNum = val;
     this.tableNumberSubmitted = true;
@@ -1855,6 +1882,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   changeTable() {
+    this.DineInTableNum = '';
     this.tableNumberSubmitted = false;
   }
   dineinsend(){

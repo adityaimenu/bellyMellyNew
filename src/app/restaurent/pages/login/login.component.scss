@@ -529,3 +529,16 @@ li{
 #toast-container {
   z-index: 9999999;
 }
+
+
+input.ng-dirty.ng-invalid {
+  color: red
+}
+
+.ng-invalid {
+  border-color: red !important;
+}
+/*
+.ng-dirty {
+  border-color: red !important;
+}*/

@@ -49,6 +49,7 @@
               <label class="pure-material-textfield-outlined w-100">
                 <input placeholder=" " name="email" [(ngModel)]="loginBody.data.username" required>
                 <span>Enter Email</span>
+                <p class="text-danger mb-0" *ngIf="!loginBody.data.username">{{emailError}}</p>
               </label>
             </div>
             <div class="form-group mb-0">
@@ -153,6 +154,7 @@
                   <span *ngIf="!visiblePass"  style="cursor: pointer" title="Show Password" (click)="myFunction2()" class="visible"><mat-icon>visibility</mat-icon></span>
                   <span *ngIf="visiblePass" style="cursor: pointer" title="Hide Password" class="not-visible" (click)="myFunction2()"><mat-icon>visibility_off</mat-icon></span>
                 </div>
+                <p class="text-danger mb-0" *ngIf="!password">{{newPasswordError}}</p>
               </label>
             </div>
             <div class="row">

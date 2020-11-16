@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
     isOtpVerified: false
   };
   fnameError: string;
+  lnameError: string;
   emailError: string;
   tellError: string;
   passwordError: string;
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit {
   }
   sendOtp() {
     if (!this.signUpBody.data.customerData.fName) return this.fnameError = 'Enter Your First Name';
-    if (!this.signUpBody.data.customerData.lName) return this.fnameError = 'Enter Your Last Name';
+    if (!this.signUpBody.data.customerData.lName) return this.lnameError = 'Enter Your Last Name';
     if (!this.signUpBody.data.customerData.eMail) return this.emailError = 'Enter Your Email';
     if (!this.signUpBody.data.customerData.tel) return this.tellError = 'Enter Your Mobile No';
     if (!this.password) {return this.toaster.errorToastr('Enter Password')}

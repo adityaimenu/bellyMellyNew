@@ -44,12 +44,14 @@ export class LoginComponent implements OnInit {
   FName: string;
   LName: string;
   tel: string;
+  newPasswordError: string;
   forgotOtpPresent: any = false;
   socialType: number;
   country: string;
   responseSendOTPForgot = [];
   findCountry: boolean;
   mobUrl: string;
+  emailError: string;
   countryNew: string;
   constructor(
     private api: ApiService,
@@ -99,6 +101,7 @@ export class LoginComponent implements OnInit {
     this.loginBody.tId = this.common.loginToken;
     this.flags.isLogin = true;
     console.log(this.loginBody);
+    if (!this.loginBody.data.username) return this.emailError = 'Enter Your Email';
     if (!this.loginBody.data.username.trim().length || !this.loginBody.data.password.trim().length) {
       this.toaster.errorToastr('Please enter valid credentials');
       this.flags.isLogin = false;
@@ -386,7 +389,8 @@ export class LoginComponent implements OnInit {
 
   resetPassword() {
     if (!this.password) {
-      return this.toaster.errorToastr('Enter New Password');
+       return this.newPasswordError = 'Enter New Password';
+     // return this.toaster.errorToastr('Enter New Password');
     }
 
     if (this.password.length <= 7) {return this.toaster.errorToastr('Enter password minimum 8 digit')}

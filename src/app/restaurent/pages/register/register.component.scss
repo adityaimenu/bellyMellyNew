@@ -432,3 +432,12 @@ li{
     right: 12px;
   }
 }
+
+
+/*input.ng-dirty.ng-invalid {
+  color: red
+}*/
+
+.ng-invalid {
+  border-color: red !important;
+}

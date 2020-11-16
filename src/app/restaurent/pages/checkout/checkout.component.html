@@ -851,11 +851,11 @@
           <div class="container">
             <div class="row">
               <div  class="col-md-12">
-                <div class="section-content1 border p-1 rounded ">
-                  <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center col-lg-12 px-0">
+                <div  class="section-content1 border p-1 rounded ">
+                  <div id="tb" class="d-flex align-items-center">
+                    <div  class="d-flex align-items-center col-lg-12 px-0">
                       <span class="mr-02"><nb-icon icon="layers-outline"></nb-icon></span>
-                      <input #tb type="text" [disabled]="tableNumberSubmitted == true" class="form-control form-control-sm" name="table"  placeholder="Enter Your Table Number And Name">
+                      <input #tb  type="text" [disabled]="tableNumberSubmitted == true" class="form-control form-control-sm" name="table"  placeholder="Enter Your Table Number And Name">
                     </div>
                     <button  *ngIf="!tableNumberSubmitted" (click)="tableF(tb.value)" class="btn btn-success btn-sm">Submit</button>
                     <button *ngIf="tableNumberSubmitted" (click)="changeTable()" class="btn btn-success btn-sm">Change</button>
