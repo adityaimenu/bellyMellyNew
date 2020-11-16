@@ -154,7 +154,10 @@ export class HeaderComponent implements OnInit {
     });
 
     if (location.href.indexOf('thankyou') != -1) {
-      this.router.navigateByUrl(this.host + '/' + this.country + '/' + this.mobUrl);
+      // this.router.navigateByUrl(this.host + '/' + this.country + '/' + this.mobUrl);
+      if (this.host && this.mobUrl) {
+        window.location.href = `${this.host}` + '/' + this.country + '/' + this.mobUrl;
+      }
     }
 
     if (this.locationDetails && this.locationDetails.Address) {
