@@ -71,6 +71,7 @@ export class CheckoutComponent implements OnInit {
   orderData: any;
   selectedServiceDetail: any;
   country: string;
+  isToGo: any = false;
   totalAmmountData: number = 0;
   flags = {
     isPromoApplied: false,
@@ -199,6 +200,8 @@ export class CheckoutComponent implements OnInit {
         this.currency = this.common.currencyUs;
       }
     });
+
+    this.localStorage.set('isToGo', this.isToGo);
 
     this.observable.isAddressSelected().subscribe((address: any) => {
 
@@ -428,6 +431,33 @@ export class CheckoutComponent implements OnInit {
 
   itemTotal() {
     return _.sumBy(this.itemList, 'Amt');
+  }
+
+  changeIsToGo(val: any) {
+    if (val == 0) {
+      this.isToGo = false;
+    } else {
+      this.isToGo = true;
+    }
+    this.localStorage.set('isToGo', this.isToGo);
+  }
+
+  changeGuestEmail(val: any) {
+    if (!val.trim().length) {
+      return;
+    } else {
+      console.log(val);
+      this.placeOrderBody.data.orderData.GuestEmailId = val;
+      console.log(this.placeOrderBody.data.orderData.GuestEmailId);
+    }
+  }
+
+  changeGuestName(val: any) {
+    if (!val.trim().length) {
+      return;
+    } else {
+      this.placeOrderBody.data.orderData.GuestName = val;
+    }
   }
 
 
@@ -969,8 +999,13 @@ export class CheckoutComponent implements OnInit {
       this.placeOrderBody.data.orderData.donateValueWithPrcent = null;
       this.placeOrderBody.data.orderData.ngoSelectedVal = '';
       this.placeOrderBody.data.orderData.NGOName = '';
-    }
 
+      if (this.isToGo) {
+        console.log('togooooooooo')
+        this.placeOrderBody.data.orderData.specialInstructions = this.placeOrderBody.data.orderData.specialInstructions + 'This is a TO-GO Order'
+      }
+    }
+console.log('kkk');
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {
       this.flags.isOrderPlaced = false;
@@ -1176,7 +1211,7 @@ export class CheckoutComponent implements OnInit {
       $('.unchekRadioPayment').prop('checked', false)
       return this.error('Please select delivery address first.');
     } else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if (!this.DineInTableNum) {
+      if (!this.DineInTableNum && !this.isToGo) {
         $('.unchekRadioPayment').prop('checked', false)
         return this.error('Please enter table number');
       }
@@ -1192,7 +1227,7 @@ export class CheckoutComponent implements OnInit {
       return this.error('Please select delivery address first.');
     }
     else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if (!this.DineInTableNum) {
+      if (!this.DineInTableNum && !this.isToGo) {
         $('.unchekRadioPayment').prop('checked', false)
         var tb = document.getElementById('tb');
         tb.style.border = '2px groove #ff4c4c';
@@ -1425,7 +1460,7 @@ export class CheckoutComponent implements OnInit {
   }
   openwebdonation() {
     console.log('kkk');
-    if (this.placeOrderBody.data.orderData.ServiceId == 5 && !this.DineInTableNum) {
+    if (this.placeOrderBody.data.orderData.ServiceId == 5 && !this.DineInTableNum && !this.isToGo) {
       return this.error('Please enter table number');
     } else {
       if (this.placeOrderBody.data.orderData.ServiceId == 5 && this.DineInTableNum) {
@@ -1877,7 +1912,7 @@ export class CheckoutComponent implements OnInit {
     }
     this.DineInTableNum = val;
     this.tableNumberSubmitted = true;
-    this.toaster.successToastr('Table Information Added');
+   // this.toaster.successToastr('Table Information Added');
    
   }
 
@@ -1902,7 +1937,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if(!this.DineInTableNum) {
+      if(!this.DineInTableNum && !this.isToGo) {
         return this.error('Please enter table number');
       }
     }

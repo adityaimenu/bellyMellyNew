@@ -23,6 +23,8 @@ export class OrderDataDetail {
   DiscountType: any = null;
   Discount1Amt: any = null;
   Discount1Type: any = null;
+  GuestEmailId: any;
+  GuestName: any;
   CouponAmt: any = null;
   CustCouponId: any = null;
   CouponType: any = null;
