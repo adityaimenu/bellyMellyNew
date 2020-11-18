@@ -434,6 +434,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   changeIsToGo(val: any) {
+    this.localStorage.remove('guestEmail');
+    this.localStorage.remove('guestName');
     if (val == 0) {
       this.isToGo = false;
     } else {
@@ -442,21 +444,34 @@ export class CheckoutComponent implements OnInit {
     this.localStorage.set('isToGo', this.isToGo);
   }
 
+  confirmEmail(email) {
+    var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+    if (!pattern.test(email)) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   changeGuestEmail(val: any) {
     if (!val.trim().length) {
+      this.localStorage.remove('guestEmail');
       return;
     } else {
       console.log(val);
       this.placeOrderBody.data.orderData.GuestEmailId = val;
-      console.log(this.placeOrderBody.data.orderData.GuestEmailId);
+      this.localStorage.set('guestEmail', val);
     }
   }
 
   changeGuestName(val: any) {
     if (!val.trim().length) {
+      this.localStorage.remove('guestName');
       return;
     } else {
       this.placeOrderBody.data.orderData.GuestName = val;
+      this.localStorage.set('guestName', val);
     }
   }
 
@@ -821,6 +836,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrderResp(val) {
+    console.log(this.placeOrderBody.data.orderData.GuestEmailId);
 
 
 
@@ -990,6 +1006,7 @@ export class CheckoutComponent implements OnInit {
     } else {
       this.placeOrderBody.data.orderData.specialInstructions = "";
     }
+    console.log(this.placeOrderBody.data.orderData.GuestEmailId);
 
     if (this.placeOrderBody.data.orderData.ServiceId == 5) {
       console.log(this.placeOrderBody);
@@ -999,13 +1016,41 @@ export class CheckoutComponent implements OnInit {
       this.placeOrderBody.data.orderData.donateValueWithPrcent = null;
       this.placeOrderBody.data.orderData.ngoSelectedVal = '';
       this.placeOrderBody.data.orderData.NGOName = '';
+      if(this.localStorage.get('guestEmail')) {
+        this.placeOrderBody.data.orderData.GuestEmailId = this.localStorage.get('guestEmail');
+        this.placeOrderBody.data.orderData.GuestName = this.localStorage.get('guestName');
+      }
 
       if (this.isToGo) {
+        this.DineInTableNum = '';
+        this.placeOrderBody.data.orderData.DineInTableNum = '';
         console.log('togooooooooo')
+      /*  if (!this.placeOrderBody.data.orderData.GuestName) {
+          var tb = document.getElementById('ogn') ;
+
+          this.flags.isOrderPlaced = false;
+
+
+          tb.style.border = '2px groove #ff4c4c';
+
+          // Add a class that defines an animation
+          tb.classList.add('errorr');
+
+          // remove the class after the animation completes
+          setTimeout(function () {
+            tb.classList.remove('errorr');
+          }, 300);
+
+
+          return this.toaster.errorToastr('Enter First Name');
+
+      }*/
         this.placeOrderBody.data.orderData.specialInstructions = this.placeOrderBody.data.orderData.specialInstructions + 'This is a TO-GO Order'
+
+
       }
     }
-console.log('kkk');
+
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {
       this.flags.isOrderPlaced = false;
@@ -1014,6 +1059,8 @@ console.log('kkk');
         this.orderData = this.placeOrderBody.data.orderData;
         this.localStorage.remove('placeOrderData');
         this.localStorage.remove('cartItem');
+        this.localStorage.remove('guestEmail');
+        this.localStorage.remove('guestName');
         this.validCCForm = false;
         this.observable.setSpecialOffer(false)
         this.localStorage.set('specialOfferData', null)
@@ -1211,11 +1258,73 @@ console.log('kkk');
       $('.unchekRadioPayment').prop('checked', false)
       return this.error('Please select delivery address first.');
     } else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if (!this.DineInTableNum && !this.isToGo) {
+      if ((!this.DineInTableNum && !this.isToGo) || (!this.localStorage.get('guestName') && !this.isToGo)) {
         $('.unchekRadioPayment').prop('checked', false)
-        return this.error('Please enter table number');
+        var tb = document.getElementById('tb');
+        var gn = document.getElementById('gn');
+        tb.style.border = '2px groove #ff4c4c';
+        gn.style.border = '2px groove #ff4c4c';
+
+        // Add a class that defines an animation
+        tb.classList.add('errorr');
+        gn.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          tb.classList.remove('errorr');
+          gn.classList.remove('errorr');
+
+        }, 300);
+        return this.error('Please enter both table number and first name');
+      }
+      if (!this.localStorage.get('guestName') && this.isToGo) {
+        console.log('togooooooooo')
+        if (!this.localStorage.get('guestName')) {
+          var tb = document.getElementById('ogn');
+
+          this.flags.isOrderPlaced = false;
+
+
+          tb.style.border = '2px groove #ff4c4c';
+
+          // Add a class that defines an animation
+          tb.classList.add('errorr');
+
+          // remove the class after the animation completes
+          setTimeout(function () {
+            tb.classList.remove('errorr');
+          }, 300);
+
+
+          return this.toaster.errorToastr('Enter First Name');
+
+        }
       }
     }
+
+    /*if (!this.localStorage.get('guestName') && this.isToGo) {
+      console.log('togooooooooo')
+      if (!this.localStorage.get('guestName')) {
+        var tb = document.getElementById('ogn');
+
+        this.flags.isOrderPlaced = false;
+
+
+        tb.style.border = '2px groove #ff4c4c';
+
+        // Add a class that defines an animation
+        tb.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function () {
+          tb.classList.remove('errorr');
+        }, 300);
+
+
+        return this.toaster.errorToastr('Enter First Name');
+
+      }
+    }*/
     this.placeOrderBody.data.orderData.PaymentTypeId = 2;
     this.flags.isCCPayment = true;
     document.getElementById('open_cc_modal').click();
@@ -1227,19 +1336,46 @@ console.log('kkk');
       return this.error('Please select delivery address first.');
     }
     else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if (!this.DineInTableNum && !this.isToGo) {
+      if ((!this.DineInTableNum && !this.isToGo) || (!this.localStorage.get('guestName') && !this.isToGo)) {
         $('.unchekRadioPayment').prop('checked', false)
         var tb = document.getElementById('tb');
+        var gn = document.getElementById('gn');
         tb.style.border = '2px groove #ff4c4c';
+        gn.style.border = '2px groove #ff4c4c';
 
         // Add a class that defines an animation
         tb.classList.add('errorr');
+        gn.classList.add('errorr');
 
         // remove the class after the animation completes
         setTimeout(function() {
           tb.classList.remove('errorr');
+          gn.classList.remove('errorr');
         }, 300);
-        return this.error('Please enter table number');
+        return this.error('Please enter both table number and first name');
+      }
+
+      if ( (!this.localStorage.get('guestName') && this.isToGo)) {
+        if (!this.localStorage.get('guestName')) {
+          var tb = document.getElementById('ogn');
+
+          this.flags.isOrderPlaced = false;
+
+
+          tb.style.border = '2px groove #ff4c4c';
+
+          // Add a class that defines an animation
+          tb.classList.add('errorr');
+
+          // remove the class after the animation completes
+          setTimeout(function () {
+            tb.classList.remove('errorr');
+          }, 300);
+
+
+          return this.toaster.errorToastr('Enter First Name');
+
+        }
       }
     }
     this.placeOrderBody.data.orderData.PaymentTypeId = 3;
@@ -1461,7 +1597,7 @@ console.log('kkk');
   openwebdonation() {
     console.log('kkk');
     if (this.placeOrderBody.data.orderData.ServiceId == 5 && !this.DineInTableNum && !this.isToGo) {
-      return this.error('Please enter table number');
+      return this.error('Please enter both table number and first name');
     } else {
       if (this.placeOrderBody.data.orderData.ServiceId == 5 && this.DineInTableNum) {
        document.getElementById('dinesub').click();
@@ -1938,7 +2074,7 @@ console.log('kkk');
 
     if (this.placeOrderBody.data.orderData.ServiceId == 5) {
       if(!this.DineInTableNum && !this.isToGo) {
-        return this.error('Please enter table number');
+        return this.error('Please enter both table number and first name');
       }
     }
   }
