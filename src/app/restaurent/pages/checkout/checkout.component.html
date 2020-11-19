@@ -518,7 +518,7 @@
                     </li>
                     <li>
                       <p *ngIf="country.toUpperCase() == 'AU' || country.toUpperCase() == 'IN'">GST Applied</p>
-                      <p *ngIf="country.toUpperCase() == 'US'">TAX Applied</p>
+                      <p *ngIf="country.toUpperCase() == 'US'">Tax Applied</p>
                       <p>{{currency}} {{(itemList.length?placeOrderBody.data.orderData.TaxAmt:0).toFixed(2)}}</p>
                     </li>
                 
@@ -851,17 +851,17 @@
           <div class="container">
             <div class="row">
               <div  class="col-md-12">
-                <!-- <ul class="nav nav-pills mb-3">
-                  <li class="active"><a data-toggle="pill" href="#dine-in" class="active">Dine in</a></li>
-                  <li><a data-toggle="pill" href="#to-go">To Go</a></li>
+                <ul class="nav nav-pills mb-3">
+                  <li class="active"><a data-toggle="pill" href="#dine-in" (click)="changeIsToGo(0)" class="active">Dine in</a></li>
+                  <li><a data-toggle="pill" href="#to-go" (click)="changeIsToGo(1)">To Go</a></li>
                 </ul>
                 <div class="tab-content">
-                  <div id="dine-in" class="tab-pane in active">
+                  <div *ngIf="!isToGo" id="dine-in" class="tab-pane in active">
                     <div class="row">
                       <div class="col-xs-6 left">
                         <div class="form-group mb-0">
                           <label class="pure-material-textfield-outlined w-100">
-                            <input type="text" placeholder=" "  required>
+                            <input #gn id="gn" type="text" (keyup)="changeGuestName(gn.value)" placeholder=" "  required>
                             <span>First Name</span>
                           </label>
                         </div>
@@ -869,27 +869,27 @@
                       <div class="col-xs-6 right">
                         <div class="form-group mb-0">
                           <label class="pure-material-textfield-outlined w-100">
-                            <input type="text" placeholder=" "  required>
-                            <span>Email Address</span>
+                            <input #ge type="text"  (keyup)="changeGuestEmail(ge.value)" placeholder=" "  required>
+                            <span>Email For Receipt</span>
                           </label>
                         </div>
                       </div>  
                       <div class="col-xs-12">
                         <div class="form-group mb-0">
                           <label class="pure-material-textfield-outlined w-100">
-                            <input type="text" placeholder=" "  required>
+                            <input id="tb" #tb (keyup)="tableF(tb.value, $event)" type="text" placeholder=" "  required>
                             <span>Table Number</span>
                           </label>
                         </div>
                       </div>  
                     </div>
                   </div>
-                  <div id="to-go" class="tab-pane fade">
+                  <div *ngIf="isToGo" id="to-go" class="tab-pane fade">
                     <div class="row">
                       <div class="col-xs-6 left">
                         <div class="form-group mb-0">
                           <label class="pure-material-textfield-outlined w-100">
-                            <input type="text" placeholder=" "  required>
+                            <input #ogn id="ogn" type="text" (keyup)="changeGuestName(ogn.value)"  placeholder=" "  required>
                             <span>First Name</span>
                           </label>
                         </div>
@@ -897,8 +897,8 @@
                       <div class="col-xs-6 right">
                         <div class="form-group mb-0">
                           <label class="pure-material-textfield-outlined w-100">
-                            <input type="text" placeholder=" "  required>
-                            <span>Email Address</span>
+                            <input #oge type="text" (keyup)="changeGuestEmail(oge.value)" placeholder=" "  required>
+                            <span>Email For Receipt</span>
                           </label>
                         </div>
                       </div>  
@@ -1020,7 +1020,7 @@
                   </li>
                   <li>
                     <p *ngIf="checkCountry">GST Applied</p>
-                    <p *ngIf="!checkCountry">TAX Applied</p>
+                    <p *ngIf="!checkCountry">Tax Applied</p>
                     <p>{{currency}} {{(placeOrderBody.data.orderData.TaxAmt).toFixed(2)}}</p>
                   </li>
             

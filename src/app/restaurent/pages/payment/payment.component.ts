@@ -44,6 +44,7 @@ export class PaymentComponent implements OnInit {
     isOrderPlaced: false
   };
   currency: string;
+  isToGo: any = false;
   restUser = [];
   PaymentTypes: boolean = false;
   PaymentTypesCOD: boolean = false;
@@ -243,6 +244,8 @@ export class PaymentComponent implements OnInit {
       this.placeOrderBody.data.orderData.specialInstructions = "";
     }
 
+    this.isToGo = this.localStorage.get('isToGo');
+
     if (this.placeOrderBody.data.orderData.ServiceId == 5) {
       console.log(this.placeOrderBody);
       this.placeOrderBody.data.orderData.NGOId = '';
@@ -251,6 +254,11 @@ export class PaymentComponent implements OnInit {
       this.placeOrderBody.data.orderData.donateValueWithPrcent = null;
       this.placeOrderBody.data.orderData.ngoSelectedVal = '';
       this.placeOrderBody.data.orderData.NGOName = '';
+
+      if (this.isToGo) {
+        console.log('togooooooooo')
+        this.placeOrderBody.data.orderData.specialInstructions = this.placeOrderBody.data.orderData.specialInstructions + 'This is a TO-GO Order'
+      }
     }
 
     this.api.orderPlace(this.placeOrderBody).subscribe((response: any) => {
