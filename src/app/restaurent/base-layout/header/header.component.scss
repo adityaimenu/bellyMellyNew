@@ -182,14 +182,14 @@
   z-index: 1050;
   transition: width ease-in-out 0.5s;
 }
-.show-xs{
-  display: none;
-}
-@media (max-width: 640px){
-  .hide-xs{
-    display: none;
-  }
-  .show-xs{
-    display: block;
-  }
-}
+// .show-xs{
+//   display: none;
+// }
+// @media (max-width: 640px){
+//   .hide-xs{
+//     display: none;
+//   }
+//   .show-xs{
+//     display: block;
+//   }
+// }
