@@ -187,7 +187,7 @@ export class CheckoutComponent implements OnInit {
     } else if (this.country == 'au') {
       moment.tz.setDefault("Australia/Sydney");
     }
-
+    this.localStorage.remove('guestName')
     // js.donactecontentopen();
     // this.getLocation();
     // this.observable.setIsCheckout(false);
@@ -1254,14 +1254,16 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSelectCcPayment() {
+    console.log(this.DineInTableNum);
     if (this.placeOrderBody.data.orderData.ServiceId == 2 && !this.placeOrderBody.data.orderData.DeliveryInfo) {
       $('.unchekRadioPayment').prop('checked', false)
       return this.error('Please select delivery address first.');
     } else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if ((!this.DineInTableNum && !this.isToGo) || (!this.localStorage.get('guestName') && !this.isToGo)) {
+      if (((!this.DineInTableNum || !this.DineInTableNum.trim().length) && !this.isToGo) && (!this.localStorage.get('guestName') && !this.isToGo)) {
         $('.unchekRadioPayment').prop('checked', false)
         var tb = document.getElementById('tb');
         var gn = document.getElementById('gn');
+        gn.classList.remove('border');
         tb.style.border = '2px groove #ff4c4c';
         gn.style.border = '2px groove #ff4c4c';
 
@@ -1273,9 +1275,50 @@ export class CheckoutComponent implements OnInit {
         setTimeout(function() {
           tb.classList.remove('errorr');
           gn.classList.remove('errorr');
-
         }, 300);
         return this.error('Please enter both table number and first name');
+      }
+
+      if ((this.DineInTableNum && this.DineInTableNum.trim().length && !this.isToGo) && (!this.localStorage.get('guestName') && !this.isToGo)) {
+        $('.unchekRadioPayment').prop('checked', false)
+        //   var tb = document.getElementById('tb');
+        var gn = document.getElementById('gn');
+        //  tb.style.border = '2px groove #ff4c4c';
+        gn.classList.remove('border');
+        gn.style.border = '2px groove #ff4c4c';
+
+        // Add a class that defines an animation
+        //  tb.classList.add('errorr');
+        gn.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          //  tb.classList.remove('errorr');
+          gn.classList.remove('errorr');
+
+        }, 300);
+        return this.error('Please enter first name');
+      }
+
+      if (((!this.DineInTableNum || !this.DineInTableNum.trim().length) && !this.isToGo) && (this.localStorage.get('guestName') && !this.isToGo)) {
+        $('.unchekRadioPayment').prop('checked', false)
+        var tb = document.getElementById('tb');
+        var gn = document.getElementById('gn');
+        tb.style.border = '2px groove #ff4c4c';
+        gn.classList.remove('errorr');
+        gn.classList.add('border');
+
+        // Add a class that defines an animation
+        tb.classList.add('errorr');
+        // gn.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          tb.classList.remove('errorr');
+          // gn.classList.remove('errorr');
+
+        }, 300);
+        return this.error('Please enter table number');
       }
       if (!this.localStorage.get('guestName') && this.isToGo) {
         console.log('togooooooooo')
@@ -1336,10 +1379,11 @@ export class CheckoutComponent implements OnInit {
       return this.error('Please select delivery address first.');
     }
     else if (this.placeOrderBody.data.orderData.ServiceId == 5) {
-      if ((!this.DineInTableNum && !this.isToGo) || (!this.localStorage.get('guestName') && !this.isToGo)) {
+      if (((!this.DineInTableNum || !this.DineInTableNum.trim().length) && !this.isToGo) && (!this.localStorage.get('guestName') && !this.isToGo)) {
         $('.unchekRadioPayment').prop('checked', false)
         var tb = document.getElementById('tb');
         var gn = document.getElementById('gn');
+        gn.classList.remove('border');
         tb.style.border = '2px groove #ff4c4c';
         gn.style.border = '2px groove #ff4c4c';
 
@@ -1353,6 +1397,48 @@ export class CheckoutComponent implements OnInit {
           gn.classList.remove('errorr');
         }, 300);
         return this.error('Please enter both table number and first name');
+      }
+
+      if ((this.DineInTableNum && this.DineInTableNum.trim().length && !this.isToGo) && (!this.localStorage.get('guestName') && !this.isToGo)) {
+        $('.unchekRadioPayment').prop('checked', false)
+        //   var tb = document.getElementById('tb');
+        var gn = document.getElementById('gn');
+        //  tb.style.border = '2px groove #ff4c4c';
+        gn.classList.remove('border');
+        gn.style.border = '2px groove #ff4c4c';
+
+        // Add a class that defines an animation
+        //  tb.classList.add('errorr');
+        gn.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          //  tb.classList.remove('errorr');
+          gn.classList.remove('errorr');
+
+        }, 300);
+        return this.error('Please enter first name');
+      }
+
+      if (((!this.DineInTableNum || !this.DineInTableNum.trim().length)&& !this.isToGo) && (this.localStorage.get('guestName') && !this.isToGo)) {
+        $('.unchekRadioPayment').prop('checked', false)
+        var tb = document.getElementById('tb');
+         var gn = document.getElementById('gn');
+        tb.style.border = '2px groove #ff4c4c';
+        gn.classList.remove('errorr');
+         gn.classList.add('border');
+
+        // Add a class that defines an animation
+        tb.classList.add('errorr');
+        // gn.classList.add('errorr');
+
+        // remove the class after the animation completes
+        setTimeout(function() {
+          tb.classList.remove('errorr');
+          // gn.classList.remove('errorr');
+
+        }, 300);
+        return this.error('Please enter table number');
       }
 
       if ( (!this.localStorage.get('guestName') && this.isToGo)) {
@@ -2025,9 +2111,9 @@ export class CheckoutComponent implements OnInit {
   carplatenumberF(val) {
     this.placeOrderBody.data.orderData.carplatenumber = val;
   }
-  tableF(val, e?: Event ) {
+  tableF(val, e?: any ) {
     var tb = document.getElementById('tb');
-    if (!val.trim().length) {
+    if (!val.trim().length && e.code != 'Backspace') {
 
 
       tb.style.border = '2px groove #ff4c4c';
